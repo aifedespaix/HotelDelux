@@ -1,5 +1,7 @@
 package Launcher;
 	
+import Metier.Utilisateur;
+import Persistance.AccesData;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
@@ -12,7 +14,6 @@ public class Launcher extends Application {
 		try {
 			BorderPane root = new BorderPane();
 			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
@@ -22,5 +23,7 @@ public class Launcher extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
+		Utilisateur u = new Utilisateur(1,"bb","aa");
+		System.out.println(AccesData.getLoginUtilisateur(u.getLogin(), u.getMdp()));
 	}
 }
