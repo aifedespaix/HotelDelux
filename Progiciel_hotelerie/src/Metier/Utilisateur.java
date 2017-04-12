@@ -28,6 +28,12 @@ public class Utilisateur {
 		this.mdp = mdp;
 	}
 	
+	public Utilisateur(String login, String mdp) {
+		super();
+		this.login = login;
+		this.mdp = mdp;
+	}
+	
 	public Utilisateur(){
 		super();
 	}
