@@ -9,27 +9,21 @@ import javax.persistence.*;
 @Table(name = "droit_role_assoc", schema = "base_definitive", catalog = "")
 public class DroitRoleAssocEntity {
     private int id;
-    private int idDroit;
-    private int idRole;
     private DroitEntity droitByIdDroit;
     private RoleEntity roleByIdRole;
 
     
-    public DroitRoleAssocEntity(int id, int idDroit, int idRole, DroitEntity droitByIdDroit, RoleEntity roleByIdRole) {
+    public DroitRoleAssocEntity(int id, DroitEntity droitByIdDroit, RoleEntity roleByIdRole) {
 		super();
 		this.id = id;
-		this.idDroit = idDroit;
-		this.idRole = idRole;
 		this.droitByIdDroit = droitByIdDroit;
 		this.roleByIdRole = roleByIdRole;
 	}
     
     
 
-	public DroitRoleAssocEntity(int idDroit, int idRole, DroitEntity droitByIdDroit, RoleEntity roleByIdRole) {
+	public DroitRoleAssocEntity(DroitEntity droitByIdDroit, RoleEntity roleByIdRole) {
 		super();
-		this.idDroit = idDroit;
-		this.idRole = idRole;
 		this.droitByIdDroit = droitByIdDroit;
 		this.roleByIdRole = roleByIdRole;
 	}
@@ -47,7 +41,7 @@ public class DroitRoleAssocEntity {
 
 	@Override
 	public String toString() {
-		return "DroitRoleAssocEntity [id=" + id + ", idDroit=" + idDroit + ", idRole=" + idRole + ", droitByIdDroit="
+		return "DroitRoleAssocEntity [id=" + id + ", idDroit=" + ", idRole=" + ", droitByIdDroit="
 				+ droitByIdDroit + ", roleByIdRole=" + roleByIdRole + "]";
 	}
 
@@ -61,48 +55,6 @@ public class DroitRoleAssocEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_droit", nullable = false)
-    public int getIdDroit() {
-        return idDroit;
-    }
-
-    public void setIdDroit(int idDroit) {
-        this.idDroit = idDroit;
-    }
-
-    @Basic
-    @Column(name = "id_role", nullable = false)
-    public int getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DroitRoleAssocEntity that = (DroitRoleAssocEntity) o;
-
-        if (id != that.id) return false;
-        if (idDroit != that.idDroit) return false;
-        if (idRole != that.idRole) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + idDroit;
-        result = 31 * result + idRole;
-        return result;
     }
 
     @ManyToOne

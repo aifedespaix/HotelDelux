@@ -12,34 +12,28 @@ public class ReservationSpaEntity {
     private int id;
     private Date dateDebut;
     private Date dateArrivee;
-    private int idTva;
-    private int idSpa;
     private TvaEntity tvaByIdTva;
     private SpaEntity spaByIdSpa;
 
     
     
-    public ReservationSpaEntity(int id, Date dateDebut, Date dateArrivee, int idTva, int idSpa, TvaEntity tvaByIdTva,
+    public ReservationSpaEntity(int id, Date dateDebut, Date dateArrivee, TvaEntity tvaByIdTva,
 			SpaEntity spaByIdSpa) {
 		super();
 		this.id = id;
 		this.dateDebut = dateDebut;
 		this.dateArrivee = dateArrivee;
-		this.idTva = idTva;
-		this.idSpa = idSpa;
 		this.tvaByIdTva = tvaByIdTva;
 		this.spaByIdSpa = spaByIdSpa;
 	}
     
     
 
-	public ReservationSpaEntity(Date dateDebut, Date dateArrivee, int idTva, int idSpa, TvaEntity tvaByIdTva,
+	public ReservationSpaEntity(Date dateDebut, Date dateArrivee, TvaEntity tvaByIdTva,
 			SpaEntity spaByIdSpa) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateArrivee = dateArrivee;
-		this.idTva = idTva;
-		this.idSpa = idSpa;
 		this.tvaByIdTva = tvaByIdTva;
 		this.spaByIdSpa = spaByIdSpa;
 	}
@@ -55,7 +49,7 @@ public class ReservationSpaEntity {
 	@Override
 	public String toString() {
 		return "ReservationSpaEntity [id=" + id + ", dateDebut=" + dateDebut + ", dateArrivee=" + dateArrivee
-				+ ", idTva=" + idTva + ", idSpa=" + idSpa + ", tvaByIdTva=" + tvaByIdTva + ", spaByIdSpa=" + spaByIdSpa
+				+ ", tvaByIdTva=" + tvaByIdTva + ", spaByIdSpa=" + spaByIdSpa
 				+ "]";
 	}
 
@@ -89,52 +83,6 @@ public class ReservationSpaEntity {
 
     public void setDateArrivee(Date dateArrivee) {
         this.dateArrivee = dateArrivee;
-    }
-
-    @Basic
-    @Column(name = "id_tva", nullable = false)
-    public int getIdTva() {
-        return idTva;
-    }
-
-    public void setIdTva(int idTva) {
-        this.idTva = idTva;
-    }
-
-    @Basic
-    @Column(name = "id_spa", nullable = false)
-    public int getIdSpa() {
-        return idSpa;
-    }
-
-    public void setIdSpa(int idSpa) {
-        this.idSpa = idSpa;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ReservationSpaEntity that = (ReservationSpaEntity) o;
-
-        if (id != that.id) return false;
-        if (idTva != that.idTva) return false;
-        if (idSpa != that.idSpa) return false;
-        if (dateDebut != null ? !dateDebut.equals(that.dateDebut) : that.dateDebut != null) return false;
-        if (dateArrivee != null ? !dateArrivee.equals(that.dateArrivee) : that.dateArrivee != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (dateDebut != null ? dateDebut.hashCode() : 0);
-        result = 31 * result + (dateArrivee != null ? dateArrivee.hashCode() : 0);
-        result = 31 * result + idTva;
-        result = 31 * result + idSpa;
-        return result;
     }
 
     @ManyToOne

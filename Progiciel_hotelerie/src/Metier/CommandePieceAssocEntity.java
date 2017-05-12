@@ -9,28 +9,22 @@ import javax.persistence.*;
 @Table(name = "commande_piece_assoc", schema = "base_definitive", catalog = "")
 public class CommandePieceAssocEntity {
     private int id;
-    private int idCommande;
-    private int idPiece;
     private double quantite;
     private CommandeEntity commandeByIdCommande;
     private PieceDeRechangeEntity pieceDeRechangeByIdPiece;
 
-    public CommandePieceAssocEntity(int id, int idCommande, int idPiece, double quantite,
+    public CommandePieceAssocEntity(int id, double quantite,
 			CommandeEntity commandeByIdCommande, PieceDeRechangeEntity pieceDeRechangeByIdPiece) {
 		super();
 		this.id = id;
-		this.idCommande = idCommande;
-		this.idPiece = idPiece;
 		this.quantite = quantite;
 		this.commandeByIdCommande = commandeByIdCommande;
 		this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
 	}
 
-	public CommandePieceAssocEntity(int idCommande, int idPiece, double quantite, CommandeEntity commandeByIdCommande,
+	public CommandePieceAssocEntity(double quantite, CommandeEntity commandeByIdCommande,
 			PieceDeRechangeEntity pieceDeRechangeByIdPiece) {
 		super();
-		this.idCommande = idCommande;
-		this.idPiece = idPiece;
 		this.quantite = quantite;
 		this.commandeByIdCommande = commandeByIdCommande;
 		this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
@@ -43,7 +37,7 @@ public class CommandePieceAssocEntity {
 
 	@Override
 	public String toString() {
-		return "CommandePieceAssocEntity [id=" + id + ", idCommande=" + idCommande + ", idPiece=" + idPiece
+		return "CommandePieceAssocEntity [id=" + id + ", idCommande=" + ", idPiece="
 				+ ", quantite=" + quantite + ", commandeByIdCommande=" + commandeByIdCommande
 				+ ", pieceDeRechangeByIdPiece=" + pieceDeRechangeByIdPiece + "]";
 	}
@@ -58,25 +52,6 @@ public class CommandePieceAssocEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_commande", nullable = false)
-    public int getIdCommande() {
-        return idCommande;
-    }
-
-    public void setIdCommande(int idCommande) {
-        this.idCommande = idCommande;
-    }
-
-    @Basic
-    @Column(name = "id_piece", nullable = false)
-    public int getIdPiece() {
-        return idPiece;
-    }
-
-    public void setIdPiece(int idPiece) {
-        this.idPiece = idPiece;
-    }
 
     @Basic
     @Column(name = "quantite", nullable = false, precision = 0)
@@ -86,33 +61,6 @@ public class CommandePieceAssocEntity {
 
     public void setQuantite(double quantite) {
         this.quantite = quantite;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CommandePieceAssocEntity that = (CommandePieceAssocEntity) o;
-
-        if (id != that.id) return false;
-        if (idCommande != that.idCommande) return false;
-        if (idPiece != that.idPiece) return false;
-        if (Double.compare(that.quantite, quantite) != 0) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + idCommande;
-        result = 31 * result + idPiece;
-        temp = Double.doubleToLongBits(quantite);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
     }
 
     @ManyToOne

@@ -12,12 +12,12 @@ public class DroitEntity {
     private int id;
     private String code;
     private String description;
-    private byte visible;
-    private byte modifiable;
+    private Boolean visible;
+    private Boolean modifiable;
     private Collection<DroitRoleAssocEntity> droitRoleAssocsById;
 
     
-    public DroitEntity(int id, String code, String description, byte visible, byte modifiable,
+    public DroitEntity(int id, String code, String description, Boolean visible, Boolean modifiable,
 			Collection<DroitRoleAssocEntity> droitRoleAssocsById) {
 		super();
 		this.id = id;
@@ -28,7 +28,7 @@ public class DroitEntity {
 		this.droitRoleAssocsById = droitRoleAssocsById;
 	}
     
-	public DroitEntity(String code, String description, byte visible, byte modifiable,
+	public DroitEntity(String code, String description, Boolean visible, Boolean modifiable,
 			Collection<DroitRoleAssocEntity> droitRoleAssocsById) {
 		super();
 		this.code = code;
@@ -82,48 +82,22 @@ public class DroitEntity {
 
     @Basic
     @Column(name = "visible", nullable = false)
-    public byte getVisible() {
+    public Boolean getVisible() {
         return visible;
     }
 
-    public void setVisible(byte visible) {
+    public void setVisible(Boolean visible) {
         this.visible = visible;
     }
 
     @Basic
     @Column(name = "modifiable", nullable = false)
-    public byte getModifiable() {
+    public Boolean getModifiable() {
         return modifiable;
     }
 
-    public void setModifiable(byte modifiable) {
+    public void setModifiable(Boolean modifiable) {
         this.modifiable = modifiable;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DroitEntity that = (DroitEntity) o;
-
-        if (id != that.id) return false;
-        if (visible != that.visible) return false;
-        if (modifiable != that.modifiable) return false;
-        if (code != null ? !code.equals(that.code) : that.code != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (code != null ? code.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (int) visible;
-        result = 31 * result + (int) modifiable;
-        return result;
     }
 
     @OneToMany(mappedBy = "droitByIdDroit")

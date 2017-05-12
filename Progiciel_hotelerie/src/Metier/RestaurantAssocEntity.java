@@ -9,10 +9,6 @@ import javax.persistence.*;
 @Table(name = "restaurant_assoc", schema = "base_definitive", catalog = "")
 public class RestaurantAssocEntity {
     private int id;
-    private Integer idMenu;
-    private Integer idBoisson;
-    private Integer idPlat;
-    private int idReservation;
     private MenuEntity menuByIdMenu;
     private BoissonEntity boissonByIdBoisson;
     private PlatEntity platByIdPlat;
@@ -20,15 +16,11 @@ public class RestaurantAssocEntity {
 
     
     
-    public RestaurantAssocEntity(int id, Integer idMenu, Integer idBoisson, Integer idPlat, int idReservation,
+    public RestaurantAssocEntity(int id,
 			MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson, PlatEntity platByIdPlat,
 			EquipementRestaurantEntity equipementRestaurantByIdReservation) {
 		super();
 		this.id = id;
-		this.idMenu = idMenu;
-		this.idBoisson = idBoisson;
-		this.idPlat = idPlat;
-		this.idReservation = idReservation;
 		this.menuByIdMenu = menuByIdMenu;
 		this.boissonByIdBoisson = boissonByIdBoisson;
 		this.platByIdPlat = platByIdPlat;
@@ -38,14 +30,9 @@ public class RestaurantAssocEntity {
     
     
 
-	public RestaurantAssocEntity(Integer idMenu, Integer idBoisson, Integer idPlat, int idReservation,
-			MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson, PlatEntity platByIdPlat,
+	public RestaurantAssocEntity(MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson, PlatEntity platByIdPlat,
 			EquipementRestaurantEntity equipementRestaurantByIdReservation) {
 		super();
-		this.idMenu = idMenu;
-		this.idBoisson = idBoisson;
-		this.idPlat = idPlat;
-		this.idReservation = idReservation;
 		this.menuByIdMenu = menuByIdMenu;
 		this.boissonByIdBoisson = boissonByIdBoisson;
 		this.platByIdPlat = platByIdPlat;
@@ -65,8 +52,7 @@ public class RestaurantAssocEntity {
 
 	@Override
 	public String toString() {
-		return "RestaurantAssocEntity [id=" + id + ", idMenu=" + idMenu + ", idBoisson=" + idBoisson + ", idPlat="
-				+ idPlat + ", idReservation=" + idReservation + ", menuByIdMenu=" + menuByIdMenu
+		return "RestaurantAssocEntity [id=" + id + ", menuByIdMenu=" + menuByIdMenu
 				+ ", boissonByIdBoisson=" + boissonByIdBoisson + ", platByIdPlat=" + platByIdPlat
 				+ ", equipementRestaurantByIdReservation=" + equipementRestaurantByIdReservation + "]";
 	}
@@ -82,72 +68,6 @@ public class RestaurantAssocEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_menu", nullable = true)
-    public Integer getIdMenu() {
-        return idMenu;
-    }
-
-    public void setIdMenu(Integer idMenu) {
-        this.idMenu = idMenu;
-    }
-
-    @Basic
-    @Column(name = "id_boisson", nullable = true)
-    public Integer getIdBoisson() {
-        return idBoisson;
-    }
-
-    public void setIdBoisson(Integer idBoisson) {
-        this.idBoisson = idBoisson;
-    }
-
-    @Basic
-    @Column(name = "id_plat", nullable = true)
-    public Integer getIdPlat() {
-        return idPlat;
-    }
-
-    public void setIdPlat(Integer idPlat) {
-        this.idPlat = idPlat;
-    }
-
-    @Basic
-    @Column(name = "id_reservation", nullable = false)
-    public int getIdReservation() {
-        return idReservation;
-    }
-
-    public void setIdReservation(int idReservation) {
-        this.idReservation = idReservation;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        RestaurantAssocEntity that = (RestaurantAssocEntity) o;
-
-        if (id != that.id) return false;
-        if (idReservation != that.idReservation) return false;
-        if (idMenu != null ? !idMenu.equals(that.idMenu) : that.idMenu != null) return false;
-        if (idBoisson != null ? !idBoisson.equals(that.idBoisson) : that.idBoisson != null) return false;
-        if (idPlat != null ? !idPlat.equals(that.idPlat) : that.idPlat != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (idMenu != null ? idMenu.hashCode() : 0);
-        result = 31 * result + (idBoisson != null ? idBoisson.hashCode() : 0);
-        result = 31 * result + (idPlat != null ? idPlat.hashCode() : 0);
-        result = 31 * result + idReservation;
-        return result;
     }
 
     @ManyToOne

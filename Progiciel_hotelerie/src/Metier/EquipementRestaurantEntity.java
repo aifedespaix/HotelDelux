@@ -13,14 +13,13 @@ public class EquipementRestaurantEntity {
     private String libelle;
     private String description;
     private String photo;
-    private int idTable;
     private Collection<DemandeInterventionEntity> demandeInterventionsById;
     private TableEntity tableByIdTable;
     private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
     
     
-    public EquipementRestaurantEntity(int id, String libelle, String description, String photo, int idTable,
+    public EquipementRestaurantEntity(int id, String libelle, String description, String photo,
 			Collection<DemandeInterventionEntity> demandeInterventionsById, TableEntity tableByIdTable,
 			Collection<RestaurantAssocEntity> restaurantAssocsById) {
 		super();
@@ -28,7 +27,6 @@ public class EquipementRestaurantEntity {
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.idTable = idTable;
 		this.demandeInterventionsById = demandeInterventionsById;
 		this.tableByIdTable = tableByIdTable;
 		this.restaurantAssocsById = restaurantAssocsById;
@@ -36,14 +34,13 @@ public class EquipementRestaurantEntity {
     
     
 
-	public EquipementRestaurantEntity(String libelle, String description, String photo, int idTable,
+	public EquipementRestaurantEntity(String libelle, String description, String photo,
 			Collection<DemandeInterventionEntity> demandeInterventionsById, TableEntity tableByIdTable,
 			Collection<RestaurantAssocEntity> restaurantAssocsById) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.idTable = idTable;
 		this.demandeInterventionsById = demandeInterventionsById;
 		this.tableByIdTable = tableByIdTable;
 		this.restaurantAssocsById = restaurantAssocsById;
@@ -61,7 +58,7 @@ public class EquipementRestaurantEntity {
 	@Override
 	public String toString() {
 		return "EquipementRestaurantEntity [id=" + id + ", libelle=" + libelle + ", description=" + description
-				+ ", photo=" + photo + ", idTable=" + idTable + ", demandeInterventionsById=" + demandeInterventionsById
+				+ ", photo=" + photo + ", idTable=" + ", demandeInterventionsById=" + demandeInterventionsById
 				+ ", tableByIdTable=" + tableByIdTable + ", restaurantAssocsById=" + restaurantAssocsById + "]";
 	}
 
@@ -105,42 +102,6 @@ public class EquipementRestaurantEntity {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    @Basic
-    @Column(name = "id_table", nullable = false)
-    public int getIdTable() {
-        return idTable;
-    }
-
-    public void setIdTable(int idTable) {
-        this.idTable = idTable;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        EquipementRestaurantEntity that = (EquipementRestaurantEntity) o;
-
-        if (id != that.id) return false;
-        if (idTable != that.idTable) return false;
-        if (libelle != null ? !libelle.equals(that.libelle) : that.libelle != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (photo != null ? !photo.equals(that.photo) : that.photo != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (photo != null ? photo.hashCode() : 0);
-        result = 31 * result + idTable;
-        return result;
     }
 
     @OneToMany(mappedBy = "equipementRestaurantByIdEquipementRestaurant")

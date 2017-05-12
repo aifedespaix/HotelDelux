@@ -11,11 +11,11 @@ import java.util.Collection;
 public class FactureEntity {
     private int id;
     private String fichier;
-    private byte payee;
+    private Boolean payee;
     private Collection<FacturationAssocEntity> facturationAssocsById;
 
     
-    public FactureEntity(int id, String fichier, byte payee, Collection<FacturationAssocEntity> facturationAssocsById) {
+    public FactureEntity(int id, String fichier, Boolean payee, Collection<FacturationAssocEntity> facturationAssocsById) {
 		super();
 		this.id = id;
 		this.fichier = fichier;
@@ -23,7 +23,7 @@ public class FactureEntity {
 		this.facturationAssocsById = facturationAssocsById;
 	}
 
-	public FactureEntity(String fichier, byte payee, Collection<FacturationAssocEntity> facturationAssocsById) {
+	public FactureEntity(String fichier, Boolean payee, Collection<FacturationAssocEntity> facturationAssocsById) {
 		super();
 		this.fichier = fichier;
 		this.payee = payee;
@@ -63,35 +63,14 @@ public class FactureEntity {
 
     @Basic
     @Column(name = "payee", nullable = false)
-    public byte getPayee() {
+    public Boolean getPayee() {
         return payee;
     }
 
-    public void setPayee(byte payee) {
+    public void setPayee(Boolean payee) {
         this.payee = payee;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        FactureEntity that = (FactureEntity) o;
-
-        if (id != that.id) return false;
-        if (payee != that.payee) return false;
-        if (fichier != null ? !fichier.equals(that.fichier) : that.fichier != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (fichier != null ? fichier.hashCode() : 0);
-        result = 31 * result + (int) payee;
-        return result;
-    }
 
     @OneToMany(mappedBy = "factureByIdFacture")
     public Collection<FacturationAssocEntity> getFacturationAssocsById() {

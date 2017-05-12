@@ -2,8 +2,6 @@ package src.Metier;
 
 import javax.persistence.*;
 
-import src.Metier.RoleEntity;
-
 import java.util.Collection;
 
 /**
@@ -17,32 +15,20 @@ public class UtilisateurEntity {
     private String prenom;
     private String login;
     private String password;
-    private int idRole;
     private Collection<DemandeUtilisateurEntity> demandeUtilisateursById;
     private RoleEntity roleByIdRole;
 
-    
-    
-    public UtilisateurEntity(String nom, String prenom, String login, String password, int idRole,
-			Collection<DemandeUtilisateurEntity> demandeUtilisateursById, Metier.RoleEntity roleByIdRole) {
-		super();
-		this.nom = nom;
-		this.prenom = prenom;
-		this.login = login;
-		this.password = password;
-		this.idRole = idRole;
-		this.demandeUtilisateursById = demandeUtilisateursById;
-		this.roleByIdRole = roleByIdRole;
-	}
 
-	public UtilisateurEntity(String nom, String prenom, String login, String password, int idRole,
-			Collection<DemandeUtilisateurEntity> demandeUtilisateursById, Metier.RoleEntity roleByIdRole) {
+
+
+
+	public UtilisateurEntity(String nom, String prenom, String login, String password,
+			Collection<DemandeUtilisateurEntity> demandeUtilisateursById, RoleEntity roleByIdRole) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.login = login;
 		this.password = password;
-		this.idRole = idRole;
 		this.demandeUtilisateursById = demandeUtilisateursById;
 		this.roleByIdRole = roleByIdRole;
 	}
@@ -102,16 +88,6 @@ public class UtilisateurEntity {
         this.password = password;
     }
 
-    @Basic
-    @Column(name = "id_role", nullable = false)
-    public int getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
-    }
-
  
     @OneToMany(mappedBy = "utilisateurByIdUtilisateur")
     public Collection<DemandeUtilisateurEntity> getDemandeUtilisateursById() {
@@ -135,7 +111,7 @@ public class UtilisateurEntity {
 	@Override
 	public String toString() {
 		return "UtilisateurEntity [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login
-				+ ", password=" + password + ", idRole=" + idRole + ", demandeUtilisateursById="
+				+ ", password=" + password + ", demandeUtilisateursById="
 				+ demandeUtilisateursById + ", roleByIdRole=" + roleByIdRole + "]";
 	}
     

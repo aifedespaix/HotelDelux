@@ -16,7 +16,8 @@ public class Launcher extends Application {
 			Scene scene = new Scene(root,400,400);
 			primaryStage.setScene(scene);
 			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/Views/Login.fxml"));
+			loader.setLocation(getClass().getResource("/src/Views/login.fxml"));
+			System.out.println(loader.getLocation().toString());
 			Parent content = loader.load();
 			root.setTop(content);
 			primaryStage.show();

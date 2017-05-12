@@ -9,27 +9,21 @@ import javax.persistence.*;
 @Table(name = "demande_utilisateur", schema = "base_definitive", catalog = "")
 public class DemandeUtilisateurEntity {
     private int id;
-    private int idUtilisateur;
-    private int idDemande;
     private UtilisateurEntity utilisateurByIdUtilisateur;
     private DemandeInterventionEntity demandeInterventionByIdDemande;
 
     
-    public DemandeUtilisateurEntity(int id, int idUtilisateur, int idDemande,
+    public DemandeUtilisateurEntity(int id,
 			UtilisateurEntity utilisateurByIdUtilisateur, DemandeInterventionEntity demandeInterventionByIdDemande) {
 		super();
 		this.id = id;
-		this.idUtilisateur = idUtilisateur;
-		this.idDemande = idDemande;
 		this.utilisateurByIdUtilisateur = utilisateurByIdUtilisateur;
 		this.demandeInterventionByIdDemande = demandeInterventionByIdDemande;
 	}
 
-	public DemandeUtilisateurEntity(int idUtilisateur, int idDemande, UtilisateurEntity utilisateurByIdUtilisateur,
+	public DemandeUtilisateurEntity(UtilisateurEntity utilisateurByIdUtilisateur,
 			DemandeInterventionEntity demandeInterventionByIdDemande) {
 		super();
-		this.idUtilisateur = idUtilisateur;
-		this.idDemande = idDemande;
 		this.utilisateurByIdUtilisateur = utilisateurByIdUtilisateur;
 		this.demandeInterventionByIdDemande = demandeInterventionByIdDemande;
 	}
@@ -41,7 +35,7 @@ public class DemandeUtilisateurEntity {
 
 	@Override
 	public String toString() {
-		return "DemandeUtilisateurEntity [id=" + id + ", idUtilisateur=" + idUtilisateur + ", idDemande=" + idDemande
+		return "DemandeUtilisateurEntity [id=" + id + ", idUtilisateur=" + ", idDemande="
 				+ ", utilisateurByIdUtilisateur=" + utilisateurByIdUtilisateur + ", demandeInterventionByIdDemande="
 				+ demandeInterventionByIdDemande + "]";
 	}
@@ -54,48 +48,6 @@ public class DemandeUtilisateurEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "id_utilisateur", nullable = false)
-    public int getIdUtilisateur() {
-        return idUtilisateur;
-    }
-
-    public void setIdUtilisateur(int idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
-
-    @Basic
-    @Column(name = "id_demande", nullable = false)
-    public int getIdDemande() {
-        return idDemande;
-    }
-
-    public void setIdDemande(int idDemande) {
-        this.idDemande = idDemande;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DemandeUtilisateurEntity that = (DemandeUtilisateurEntity) o;
-
-        if (id != that.id) return false;
-        if (idUtilisateur != that.idUtilisateur) return false;
-        if (idDemande != that.idDemande) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + idUtilisateur;
-        result = 31 * result + idDemande;
-        return result;
     }
 
     @ManyToOne

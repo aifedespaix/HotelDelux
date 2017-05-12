@@ -1,0 +1,59 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+        <session-factory>
+                <!-- Affiche les logs SQL -->
+                <property name="show_sql">true</property>
+                <!--        <property name="hibernate.format_sql">true</property>-->
+                <!--        <property name="use_sql_comments">true</property>-->
+                <!--  Paramètres de connexion à la base de données -->
+                <property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+                <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+                <!--<property name="hibernate.connection.url">jdbc:mysql://10.29.143.42:3306/bd_java</property>-->
+                <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1/base_definitive</property>
+                <property name="hibernate.connection.username">root</property>
+                <property name="hibernate.connection.password"></property>
+
+                <!-- Comportement pour la conservation des tables -->
+                <property name="hbm2ddl.auto">validate</property>
+
+                <!-- Fichiers à mapper -->
+        <mapping class="src.Metier.AgenceEntity"/>
+        <mapping class="src.Metier.AlimentEntity"/>
+        <mapping class="src.Metier.AlimentCommandeAssocEntity"/>
+        <mapping class="src.Metier.BoissonEntity"/>
+        <mapping class="src.Metier.ChambreEntity"/>
+        <mapping class="src.Metier.ClientEntity"/>
+        <mapping class="src.Metier.ClientAgenceAssocEntity"/>
+        <mapping class="src.Metier.CommandeEntity"/>
+        <mapping class="src.Metier.CommandeAssocEntity"/>
+        <mapping class="src.Metier.CommandePieceAssocEntity"/>
+        <mapping class="src.Metier.CriticiteEntity"/>
+        <mapping class="src.Metier.DemandeInterventionEntity"/>
+        <mapping class="src.Metier.DemandeUtilisateurEntity"/>
+        <mapping class="src.Metier.DroitEntity"/>
+        <mapping class="src.Metier.DroitRoleAssocEntity"/>
+        <mapping class="src.Metier.EquipementHotelEntity"/>
+        <mapping class="src.Metier.EquipementRestaurantEntity"/>
+        <mapping class="src.Metier.EquipementSpaEntity"/>
+        <mapping class="src.Metier.FacturationAssocEntity"/>
+        <mapping class="src.Metier.FactureEntity"/>
+        <mapping class="src.Metier.MenuEntity"/>
+        <mapping class="src.Metier.PieceDeRechangeEntity"/>
+        <mapping class="src.Metier.PlatEntity"/>
+        <mapping class="src.Metier.PlatAlimentAssocEntity"/>
+        <mapping class="src.Metier.RapportEntity"/>
+        <mapping class="src.Metier.ReservationHotelEntity"/>
+        <mapping class="src.Metier.ReservationRestaurantEntity"/>
+        <mapping class="src.Metier.ReservationSpaEntity"/>
+        <mapping class="src.Metier.RestaurantAssocEntity"/>
+        <mapping class="src.Metier.RoleEntity"/>
+        <mapping class="src.Metier.SpaEntity"/>
+        <mapping class="src.Metier.TableEntity"/>
+        <mapping class="src.Metier.TvaEntity"/>
+        <mapping class="src.Metier.UtilisateurEntity"/>
+    </session-factory>
+</hibernate-configuration>

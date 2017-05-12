@@ -13,32 +13,29 @@ public class EquipementSpaEntity {
     private String libelle;
     private String description;
     private String photo;
-    private int idSpa;
     private Collection<DemandeInterventionEntity> demandeInterventionsById;
     private SpaEntity spaByIdSpa;
 
     
-    public EquipementSpaEntity(int id, String libelle, String description, String photo, int idSpa,
+    public EquipementSpaEntity(int id, String libelle, String description, String photo,
 			Collection<DemandeInterventionEntity> demandeInterventionsById, SpaEntity spaByIdSpa) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.idSpa = idSpa;
 		this.demandeInterventionsById = demandeInterventionsById;
 		this.spaByIdSpa = spaByIdSpa;
 	}
     
     
 
-	public EquipementSpaEntity(String libelle, String description, String photo, int idSpa,
+	public EquipementSpaEntity(String libelle, String description, String photo,
 			Collection<DemandeInterventionEntity> demandeInterventionsById, SpaEntity spaByIdSpa) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.idSpa = idSpa;
 		this.demandeInterventionsById = demandeInterventionsById;
 		this.spaByIdSpa = spaByIdSpa;
 	}
@@ -57,7 +54,7 @@ public class EquipementSpaEntity {
 	@Override
 	public String toString() {
 		return "EquipementSpaEntity [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
-				+ photo + ", idSpa=" + idSpa + ", demandeInterventionsById=" + demandeInterventionsById
+				+ photo + ", demandeInterventionsById=" + demandeInterventionsById
 				+ ", spaByIdSpa=" + spaByIdSpa + "]";
 	}
 
@@ -101,42 +98,6 @@ public class EquipementSpaEntity {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    @Basic
-    @Column(name = "id_spa", nullable = false)
-    public int getIdSpa() {
-        return idSpa;
-    }
-
-    public void setIdSpa(int idSpa) {
-        this.idSpa = idSpa;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        EquipementSpaEntity that = (EquipementSpaEntity) o;
-
-        if (id != that.id) return false;
-        if (idSpa != that.idSpa) return false;
-        if (libelle != null ? !libelle.equals(that.libelle) : that.libelle != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (photo != null ? !photo.equals(that.photo) : that.photo != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (photo != null ? photo.hashCode() : 0);
-        result = 31 * result + idSpa;
-        return result;
     }
 
     @OneToMany(mappedBy = "equipementSpaByIdEquipementSpa")

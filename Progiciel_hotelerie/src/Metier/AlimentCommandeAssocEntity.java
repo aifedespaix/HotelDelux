@@ -9,29 +9,23 @@ import javax.persistence.*;
 @Table(name = "aliment_commande_assoc", schema = "base_definitive", catalog = "")
 public class AlimentCommandeAssocEntity {
     private int id;
-    private int idAliment;
-    private int idCommande;
     private double quantite;
     private AlimentEntity alimentByIdAliment;
     private CommandeEntity commandeByIdCommande;
 
-    public AlimentCommandeAssocEntity(int id, int idAliment, int idCommande, double quantite,
+    public AlimentCommandeAssocEntity(int id,double quantite,
 			AlimentEntity alimentByIdAliment, CommandeEntity commandeByIdCommande) {
 		super();
 		this.id = id;
-		this.idAliment = idAliment;
-		this.idCommande = idCommande;
 		this.quantite = quantite;
 		this.alimentByIdAliment = alimentByIdAliment;
 		this.commandeByIdCommande = commandeByIdCommande;
 	}
 
     
-	public AlimentCommandeAssocEntity(int idAliment, int idCommande, double quantite, AlimentEntity alimentByIdAliment,
+	public AlimentCommandeAssocEntity(double quantite, AlimentEntity alimentByIdAliment,
 			CommandeEntity commandeByIdCommande) {
 		super();
-		this.idAliment = idAliment;
-		this.idCommande = idCommande;
 		this.quantite = quantite;
 		this.alimentByIdAliment = alimentByIdAliment;
 		this.commandeByIdCommande = commandeByIdCommande;
@@ -45,7 +39,7 @@ public class AlimentCommandeAssocEntity {
 
 	@Override
 	public String toString() {
-		return "AlimentCommandeAssocEntity [id=" + id + ", idAliment=" + idAliment + ", idCommande=" + idCommande
+		return "AlimentCommandeAssocEntity [id=" + id + ", idAliment=" + ", idCommande="
 				+ ", quantite=" + quantite + ", alimentByIdAliment=" + alimentByIdAliment + ", commandeByIdCommande="
 				+ commandeByIdCommande + "]";
 	}
@@ -61,26 +55,6 @@ public class AlimentCommandeAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_aliment", nullable = false)
-    public int getIdAliment() {
-        return idAliment;
-    }
-
-    public void setIdAliment(int idAliment) {
-        this.idAliment = idAliment;
-    }
-
-    @Basic
-    @Column(name = "id_commande", nullable = false)
-    public int getIdCommande() {
-        return idCommande;
-    }
-
-    public void setIdCommande(int idCommande) {
-        this.idCommande = idCommande;
-    }
-
-    @Basic
     @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
@@ -88,33 +62,6 @@ public class AlimentCommandeAssocEntity {
 
     public void setQuantite(double quantite) {
         this.quantite = quantite;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        AlimentCommandeAssocEntity that = (AlimentCommandeAssocEntity) o;
-
-        if (id != that.id) return false;
-        if (idAliment != that.idAliment) return false;
-        if (idCommande != that.idCommande) return false;
-        if (Double.compare(that.quantite, quantite) != 0) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + idAliment;
-        result = 31 * result + idCommande;
-        temp = Double.doubleToLongBits(quantite);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
     }
 
     @ManyToOne

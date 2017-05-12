@@ -104,37 +104,6 @@ public class ChambreEntity {
         this.etage = etage;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ChambreEntity that = (ChambreEntity) o;
-
-        if (id != that.id) return false;
-        if (Double.compare(that.prixAdulte, prixAdulte) != 0) return false;
-        if (Double.compare(that.prixEnfant, prixEnfant) != 0) return false;
-        if (Double.compare(that.capacite, capacite) != 0) return false;
-        if (etage != that.etage) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        temp = Double.doubleToLongBits(prixAdulte);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(prixEnfant);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(capacite);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + etage;
-        return result;
-    }
-
     @OneToMany(mappedBy = "chambreByIdChambre")
     public Collection<EquipementHotelEntity> getEquipementHotelsById() {
         return equipementHotelsById;

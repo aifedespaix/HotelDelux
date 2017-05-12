@@ -1,8 +1,10 @@
-package Persistance;
+package src.Persistance;
 
-import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import src.Metier.UtilisateurEntity;
+
+import java.util.List;
 
 
 public class AccesData {
@@ -10,9 +12,9 @@ public class AccesData {
 	private static Session s = HibernateSession.getSession();
 	private static Transaction t;
 	
-	public static Utilisateur getLoginUtilisateur(String login, String mdp){
-		Utilisateur u = null;
-		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.mdp = '" + mdp + "'").list();
+	public static UtilisateurEntity getLoginUtilisateur(String login, String mdp){
+		UtilisateurEntity u = null;
+		List<UtilisateurEntity> listeU = s.createQuery("FROM UtilisateurEntity U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
 		if(listeU.size() == 1){
 			u = listeU.get(0);
 		}

@@ -12,32 +12,26 @@ public class ReservationRestaurantEntity {
     private int id;
     private Date dateArrivee;
     private Date dateDepart;
-    private int idTva;
-    private int idTable;
     private TvaEntity tvaByIdTva;
     private TableEntity tableByIdTable;
 
     
-    public ReservationRestaurantEntity(int id, Date dateArrivee, Date dateDepart, int idTva, int idTable,
+    public ReservationRestaurantEntity(int id, Date dateArrivee, Date dateDepart,
 			TvaEntity tvaByIdTva, TableEntity tableByIdTable) {
 		super();
 		this.id = id;
 		this.dateArrivee = dateArrivee;
 		this.dateDepart = dateDepart;
-		this.idTva = idTva;
-		this.idTable = idTable;
 		this.tvaByIdTva = tvaByIdTva;
 		this.tableByIdTable = tableByIdTable;
 	}
     
 
-	public ReservationRestaurantEntity(Date dateArrivee, Date dateDepart, int idTva, int idTable, TvaEntity tvaByIdTva,
+	public ReservationRestaurantEntity(Date dateArrivee, Date dateDepart, TvaEntity tvaByIdTva,
 			TableEntity tableByIdTable) {
 		super();
 		this.dateArrivee = dateArrivee;
 		this.dateDepart = dateDepart;
-		this.idTva = idTva;
-		this.idTable = idTable;
 		this.tvaByIdTva = tvaByIdTva;
 		this.tableByIdTable = tableByIdTable;
 	}
@@ -54,11 +48,9 @@ public class ReservationRestaurantEntity {
 	@Override
 	public String toString() {
 		return "ReservationRestaurantEntity [id=" + id + ", dateArrivee=" + dateArrivee + ", dateDepart=" + dateDepart
-				+ ", idTva=" + idTva + ", idTable=" + idTable + ", tvaByIdTva=" + tvaByIdTva + ", tableByIdTable="
+				+ ", idTable=" + ", tvaByIdTva=" + tvaByIdTva + ", tableByIdTable="
 				+ tableByIdTable + "]";
 	}
-
-
 
 	@Id
     @Column(name = "id", nullable = false)
@@ -90,51 +82,6 @@ public class ReservationRestaurantEntity {
         this.dateDepart = dateDepart;
     }
 
-    @Basic
-    @Column(name = "id_tva", nullable = false)
-    public int getIdTva() {
-        return idTva;
-    }
-
-    public void setIdTva(int idTva) {
-        this.idTva = idTva;
-    }
-
-    @Basic
-    @Column(name = "id_table", nullable = false)
-    public int getIdTable() {
-        return idTable;
-    }
-
-    public void setIdTable(int idTable) {
-        this.idTable = idTable;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ReservationRestaurantEntity that = (ReservationRestaurantEntity) o;
-
-        if (id != that.id) return false;
-        if (idTva != that.idTva) return false;
-        if (idTable != that.idTable) return false;
-        if (dateArrivee != null ? !dateArrivee.equals(that.dateArrivee) : that.dateArrivee != null) return false;
-        if (dateDepart != null ? !dateDepart.equals(that.dateDepart) : that.dateDepart != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (dateArrivee != null ? dateArrivee.hashCode() : 0);
-        result = 31 * result + (dateDepart != null ? dateDepart.hashCode() : 0);
-        result = 31 * result + idTva;
-        result = 31 * result + idTable;
-        return result;
-    }
 
     @ManyToOne
     @JoinColumn(name = "id_tva", referencedColumnName = "id", nullable = false)
