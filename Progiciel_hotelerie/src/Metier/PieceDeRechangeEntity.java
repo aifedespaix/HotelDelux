@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -12,9 +13,11 @@ public class PieceDeRechangeEntity {
     private String libelle;
     private double prix;
     private int quantite;
+    private Collection<CommandePieceAssocEntity> commandePieceAssocsById;
+    private Collection<DemandeInterventionEntity> demandeInterventionsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +27,7 @@ public class PieceDeRechangeEntity {
     }
 
     @Basic
-    @Column(name = "libelle")
+    @Column(name = "libelle", nullable = false, length = 250)
     public String getLibelle() {
         return libelle;
     }
@@ -34,7 +37,7 @@ public class PieceDeRechangeEntity {
     }
 
     @Basic
-    @Column(name = "prix")
+    @Column(name = "prix", nullable = false, precision = 0)
     public double getPrix() {
         return prix;
     }
@@ -44,7 +47,7 @@ public class PieceDeRechangeEntity {
     }
 
     @Basic
-    @Column(name = "quantite")
+    @Column(name = "quantite", nullable = false)
     public int getQuantite() {
         return quantite;
     }
@@ -78,5 +81,23 @@ public class PieceDeRechangeEntity {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + quantite;
         return result;
+    }
+
+    @OneToMany(mappedBy = "pieceDeRechangeByIdPiece")
+    public Collection<CommandePieceAssocEntity> getCommandePieceAssocsById() {
+        return commandePieceAssocsById;
+    }
+
+    public void setCommandePieceAssocsById(Collection<CommandePieceAssocEntity> commandePieceAssocsById) {
+        this.commandePieceAssocsById = commandePieceAssocsById;
+    }
+
+    @OneToMany(mappedBy = "pieceDeRechangeByIdPieceRechange")
+    public Collection<DemandeInterventionEntity> getDemandeInterventionsById() {
+        return demandeInterventionsById;
+    }
+
+    public void setDemandeInterventionsById(Collection<DemandeInterventionEntity> demandeInterventionsById) {
+        this.demandeInterventionsById = demandeInterventionsById;
     }
 }

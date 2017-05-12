@@ -14,9 +14,11 @@ public class ReservationSpaEntity {
     private Date dateArrivee;
     private int idTva;
     private int idSpa;
+    private TvaEntity tvaByIdTva;
+    private SpaEntity spaByIdSpa;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -26,7 +28,7 @@ public class ReservationSpaEntity {
     }
 
     @Basic
-    @Column(name = "date_debut")
+    @Column(name = "date_debut", nullable = false)
     public Date getDateDebut() {
         return dateDebut;
     }
@@ -36,7 +38,7 @@ public class ReservationSpaEntity {
     }
 
     @Basic
-    @Column(name = "date_arrivee")
+    @Column(name = "date_arrivee", nullable = false)
     public Date getDateArrivee() {
         return dateArrivee;
     }
@@ -46,7 +48,7 @@ public class ReservationSpaEntity {
     }
 
     @Basic
-    @Column(name = "id_tva")
+    @Column(name = "id_tva", nullable = false)
     public int getIdTva() {
         return idTva;
     }
@@ -56,7 +58,7 @@ public class ReservationSpaEntity {
     }
 
     @Basic
-    @Column(name = "id_spa")
+    @Column(name = "id_spa", nullable = false)
     public int getIdSpa() {
         return idSpa;
     }
@@ -89,5 +91,25 @@ public class ReservationSpaEntity {
         result = 31 * result + idTva;
         result = 31 * result + idSpa;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_tva", referencedColumnName = "id", nullable = false)
+    public TvaEntity getTvaByIdTva() {
+        return tvaByIdTva;
+    }
+
+    public void setTvaByIdTva(TvaEntity tvaByIdTva) {
+        this.tvaByIdTva = tvaByIdTva;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_spa", referencedColumnName = "id", nullable = false)
+    public SpaEntity getSpaByIdSpa() {
+        return spaByIdSpa;
+    }
+
+    public void setSpaByIdSpa(SpaEntity spaByIdSpa) {
+        this.spaByIdSpa = spaByIdSpa;
     }
 }

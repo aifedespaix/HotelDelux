@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -13,9 +14,12 @@ public class EquipementRestaurantEntity {
     private String description;
     private String photo;
     private int idTable;
+    private Collection<DemandeInterventionEntity> demandeInterventionsById;
+    private TableEntity tableByIdTable;
+    private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,7 +29,7 @@ public class EquipementRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "libelle")
+    @Column(name = "libelle", nullable = false, length = 250)
     public String getLibelle() {
         return libelle;
     }
@@ -35,7 +39,7 @@ public class EquipementRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, length = 250)
     public String getDescription() {
         return description;
     }
@@ -45,7 +49,7 @@ public class EquipementRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "photo")
+    @Column(name = "photo", nullable = false, length = 250)
     public String getPhoto() {
         return photo;
     }
@@ -55,7 +59,7 @@ public class EquipementRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "id_table")
+    @Column(name = "id_table", nullable = false)
     public int getIdTable() {
         return idTable;
     }
@@ -88,5 +92,33 @@ public class EquipementRestaurantEntity {
         result = 31 * result + (photo != null ? photo.hashCode() : 0);
         result = 31 * result + idTable;
         return result;
+    }
+
+    @OneToMany(mappedBy = "equipementRestaurantByIdEquipementRestaurant")
+    public Collection<DemandeInterventionEntity> getDemandeInterventionsById() {
+        return demandeInterventionsById;
+    }
+
+    public void setDemandeInterventionsById(Collection<DemandeInterventionEntity> demandeInterventionsById) {
+        this.demandeInterventionsById = demandeInterventionsById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_table", referencedColumnName = "id", nullable = false)
+    public TableEntity getTableByIdTable() {
+        return tableByIdTable;
+    }
+
+    public void setTableByIdTable(TableEntity tableByIdTable) {
+        this.tableByIdTable = tableByIdTable;
+    }
+
+    @OneToMany(mappedBy = "equipementRestaurantByIdReservation")
+    public Collection<RestaurantAssocEntity> getRestaurantAssocsById() {
+        return restaurantAssocsById;
+    }
+
+    public void setRestaurantAssocsById(Collection<RestaurantAssocEntity> restaurantAssocsById) {
+        this.restaurantAssocsById = restaurantAssocsById;
     }
 }

@@ -12,9 +12,10 @@ public class CommandeAssocEntity {
     private int idCommande;
     private int idEquipement;
     private double quantite;
+    private CommandeEntity commandeByIdCommande;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +25,7 @@ public class CommandeAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_commande")
+    @Column(name = "id_commande", nullable = false)
     public int getIdCommande() {
         return idCommande;
     }
@@ -34,7 +35,7 @@ public class CommandeAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_equipement")
+    @Column(name = "id_equipement", nullable = false)
     public int getIdEquipement() {
         return idEquipement;
     }
@@ -44,7 +45,7 @@ public class CommandeAssocEntity {
     }
 
     @Basic
-    @Column(name = "quantite")
+    @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
     }
@@ -78,5 +79,15 @@ public class CommandeAssocEntity {
         temp = Double.doubleToLongBits(quantite);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false)
+    public CommandeEntity getCommandeByIdCommande() {
+        return commandeByIdCommande;
+    }
+
+    public void setCommandeByIdCommande(CommandeEntity commandeByIdCommande) {
+        this.commandeByIdCommande = commandeByIdCommande;
     }
 }

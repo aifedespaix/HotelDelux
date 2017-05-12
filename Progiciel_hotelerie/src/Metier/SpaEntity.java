@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -10,9 +11,11 @@ import javax.persistence.*;
 public class SpaEntity {
     private int id;
     private int numero;
+    private Collection<EquipementSpaEntity> equipementSpasById;
+    private Collection<ReservationSpaEntity> reservationSpasById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -22,7 +25,7 @@ public class SpaEntity {
     }
 
     @Basic
-    @Column(name = "numero")
+    @Column(name = "numero", nullable = false)
     public int getNumero() {
         return numero;
     }
@@ -49,5 +52,23 @@ public class SpaEntity {
         int result = id;
         result = 31 * result + numero;
         return result;
+    }
+
+    @OneToMany(mappedBy = "spaByIdSpa")
+    public Collection<EquipementSpaEntity> getEquipementSpasById() {
+        return equipementSpasById;
+    }
+
+    public void setEquipementSpasById(Collection<EquipementSpaEntity> equipementSpasById) {
+        this.equipementSpasById = equipementSpasById;
+    }
+
+    @OneToMany(mappedBy = "spaByIdSpa")
+    public Collection<ReservationSpaEntity> getReservationSpasById() {
+        return reservationSpasById;
+    }
+
+    public void setReservationSpasById(Collection<ReservationSpaEntity> reservationSpasById) {
+        this.reservationSpasById = reservationSpasById;
     }
 }

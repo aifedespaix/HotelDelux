@@ -11,9 +11,11 @@ public class ClientAgenceAssocEntity {
     private int id;
     private int idClient;
     private int idAgence;
+    private ClientEntity clientByIdClient;
+    private AgenceEntity agenceByIdAgence;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,7 +25,7 @@ public class ClientAgenceAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_client")
+    @Column(name = "id_client", nullable = false)
     public int getIdClient() {
         return idClient;
     }
@@ -33,7 +35,7 @@ public class ClientAgenceAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_agence")
+    @Column(name = "id_agence", nullable = false)
     public int getIdAgence() {
         return idAgence;
     }
@@ -62,5 +64,25 @@ public class ClientAgenceAssocEntity {
         result = 31 * result + idClient;
         result = 31 * result + idAgence;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    public ClientEntity getClientByIdClient() {
+        return clientByIdClient;
+    }
+
+    public void setClientByIdClient(ClientEntity clientByIdClient) {
+        this.clientByIdClient = clientByIdClient;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_agence", referencedColumnName = "id", nullable = false)
+    public AgenceEntity getAgenceByIdAgence() {
+        return agenceByIdAgence;
+    }
+
+    public void setAgenceByIdAgence(AgenceEntity agenceByIdAgence) {
+        this.agenceByIdAgence = agenceByIdAgence;
     }
 }

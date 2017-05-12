@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -13,9 +14,11 @@ public class EquipementSpaEntity {
     private String description;
     private String photo;
     private int idSpa;
+    private Collection<DemandeInterventionEntity> demandeInterventionsById;
+    private SpaEntity spaByIdSpa;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,7 +28,7 @@ public class EquipementSpaEntity {
     }
 
     @Basic
-    @Column(name = "libelle")
+    @Column(name = "libelle", nullable = false, length = 250)
     public String getLibelle() {
         return libelle;
     }
@@ -35,7 +38,7 @@ public class EquipementSpaEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, length = 250)
     public String getDescription() {
         return description;
     }
@@ -45,7 +48,7 @@ public class EquipementSpaEntity {
     }
 
     @Basic
-    @Column(name = "photo")
+    @Column(name = "photo", nullable = false, length = 250)
     public String getPhoto() {
         return photo;
     }
@@ -55,7 +58,7 @@ public class EquipementSpaEntity {
     }
 
     @Basic
-    @Column(name = "id_spa")
+    @Column(name = "id_spa", nullable = false)
     public int getIdSpa() {
         return idSpa;
     }
@@ -88,5 +91,24 @@ public class EquipementSpaEntity {
         result = 31 * result + (photo != null ? photo.hashCode() : 0);
         result = 31 * result + idSpa;
         return result;
+    }
+
+    @OneToMany(mappedBy = "equipementSpaByIdEquipementSpa")
+    public Collection<DemandeInterventionEntity> getDemandeInterventionsById() {
+        return demandeInterventionsById;
+    }
+
+    public void setDemandeInterventionsById(Collection<DemandeInterventionEntity> demandeInterventionsById) {
+        this.demandeInterventionsById = demandeInterventionsById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_spa", referencedColumnName = "id", nullable = false)
+    public SpaEntity getSpaByIdSpa() {
+        return spaByIdSpa;
+    }
+
+    public void setSpaByIdSpa(SpaEntity spaByIdSpa) {
+        this.spaByIdSpa = spaByIdSpa;
     }
 }

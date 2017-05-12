@@ -12,9 +12,11 @@ public class PlatAlimentAssocEntity {
     private int idPlat;
     private int idAliment;
     private double quantite;
+    private PlatEntity platByIdPlat;
+    private AlimentEntity alimentByIdAliment;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +26,7 @@ public class PlatAlimentAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_plat")
+    @Column(name = "id_plat", nullable = false)
     public int getIdPlat() {
         return idPlat;
     }
@@ -34,7 +36,7 @@ public class PlatAlimentAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_aliment")
+    @Column(name = "id_aliment", nullable = false)
     public int getIdAliment() {
         return idAliment;
     }
@@ -44,7 +46,7 @@ public class PlatAlimentAssocEntity {
     }
 
     @Basic
-    @Column(name = "quantite")
+    @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
     }
@@ -78,5 +80,25 @@ public class PlatAlimentAssocEntity {
         temp = Double.doubleToLongBits(quantite);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_plat", referencedColumnName = "id", nullable = false)
+    public PlatEntity getPlatByIdPlat() {
+        return platByIdPlat;
+    }
+
+    public void setPlatByIdPlat(PlatEntity platByIdPlat) {
+        this.platByIdPlat = platByIdPlat;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_aliment", referencedColumnName = "id", nullable = false)
+    public AlimentEntity getAlimentByIdAliment() {
+        return alimentByIdAliment;
+    }
+
+    public void setAlimentByIdAliment(AlimentEntity alimentByIdAliment) {
+        this.alimentByIdAliment = alimentByIdAliment;
     }
 }

@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -10,9 +11,11 @@ import javax.persistence.*;
 public class TableEntity {
     private int id;
     private int nbCouverts;
+    private Collection<EquipementRestaurantEntity> equipementRestaurantsById;
+    private Collection<ReservationRestaurantEntity> reservationRestaurantsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -22,7 +25,7 @@ public class TableEntity {
     }
 
     @Basic
-    @Column(name = "nbCouverts")
+    @Column(name = "nbCouverts", nullable = false)
     public int getNbCouverts() {
         return nbCouverts;
     }
@@ -49,5 +52,23 @@ public class TableEntity {
         int result = id;
         result = 31 * result + nbCouverts;
         return result;
+    }
+
+    @OneToMany(mappedBy = "tableByIdTable")
+    public Collection<EquipementRestaurantEntity> getEquipementRestaurantsById() {
+        return equipementRestaurantsById;
+    }
+
+    public void setEquipementRestaurantsById(Collection<EquipementRestaurantEntity> equipementRestaurantsById) {
+        this.equipementRestaurantsById = equipementRestaurantsById;
+    }
+
+    @OneToMany(mappedBy = "tableByIdTable")
+    public Collection<ReservationRestaurantEntity> getReservationRestaurantsById() {
+        return reservationRestaurantsById;
+    }
+
+    public void setReservationRestaurantsById(Collection<ReservationRestaurantEntity> reservationRestaurantsById) {
+        this.reservationRestaurantsById = reservationRestaurantsById;
     }
 }

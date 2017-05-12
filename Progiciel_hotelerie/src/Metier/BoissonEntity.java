@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -12,9 +13,10 @@ public class BoissonEntity {
     private String libelle;
     private double quantite;
     private double prix;
+    private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +26,7 @@ public class BoissonEntity {
     }
 
     @Basic
-    @Column(name = "libelle")
+    @Column(name = "libelle", nullable = false, length = 250)
     public String getLibelle() {
         return libelle;
     }
@@ -34,7 +36,7 @@ public class BoissonEntity {
     }
 
     @Basic
-    @Column(name = "quantite")
+    @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
     }
@@ -44,7 +46,7 @@ public class BoissonEntity {
     }
 
     @Basic
-    @Column(name = "prix")
+    @Column(name = "prix", nullable = false, precision = 0)
     public double getPrix() {
         return prix;
     }
@@ -79,5 +81,14 @@ public class BoissonEntity {
         temp = Double.doubleToLongBits(prix);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @OneToMany(mappedBy = "boissonByIdBoisson")
+    public Collection<RestaurantAssocEntity> getRestaurantAssocsById() {
+        return restaurantAssocsById;
+    }
+
+    public void setRestaurantAssocsById(Collection<RestaurantAssocEntity> restaurantAssocsById) {
+        this.restaurantAssocsById = restaurantAssocsById;
     }
 }

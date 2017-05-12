@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -11,9 +12,10 @@ public class FactureEntity {
     private int id;
     private String fichier;
     private byte payee;
+    private Collection<FacturationAssocEntity> facturationAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,7 +25,7 @@ public class FactureEntity {
     }
 
     @Basic
-    @Column(name = "fichier")
+    @Column(name = "fichier", nullable = false, length = 250)
     public String getFichier() {
         return fichier;
     }
@@ -33,7 +35,7 @@ public class FactureEntity {
     }
 
     @Basic
-    @Column(name = "payee")
+    @Column(name = "payee", nullable = false)
     public byte getPayee() {
         return payee;
     }
@@ -62,5 +64,14 @@ public class FactureEntity {
         result = 31 * result + (fichier != null ? fichier.hashCode() : 0);
         result = 31 * result + (int) payee;
         return result;
+    }
+
+    @OneToMany(mappedBy = "factureByIdFacture")
+    public Collection<FacturationAssocEntity> getFacturationAssocsById() {
+        return facturationAssocsById;
+    }
+
+    public void setFacturationAssocsById(Collection<FacturationAssocEntity> facturationAssocsById) {
+        this.facturationAssocsById = facturationAssocsById;
     }
 }

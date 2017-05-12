@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -12,9 +13,10 @@ public class AgenceEntity {
     private String nom;
     private int telephone;
     private String email;
+    private Collection<ClientAgenceAssocEntity> clientAgenceAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +26,7 @@ public class AgenceEntity {
     }
 
     @Basic
-    @Column(name = "nom")
+    @Column(name = "nom", nullable = false, length = 250)
     public String getNom() {
         return nom;
     }
@@ -34,7 +36,7 @@ public class AgenceEntity {
     }
 
     @Basic
-    @Column(name = "telephone")
+    @Column(name = "telephone", nullable = false)
     public int getTelephone() {
         return telephone;
     }
@@ -44,7 +46,7 @@ public class AgenceEntity {
     }
 
     @Basic
-    @Column(name = "email")
+    @Column(name = "email", nullable = false, length = 250)
     public String getEmail() {
         return email;
     }
@@ -75,5 +77,14 @@ public class AgenceEntity {
         result = 31 * result + telephone;
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "agenceByIdAgence")
+    public Collection<ClientAgenceAssocEntity> getClientAgenceAssocsById() {
+        return clientAgenceAssocsById;
+    }
+
+    public void setClientAgenceAssocsById(Collection<ClientAgenceAssocEntity> clientAgenceAssocsById) {
+        this.clientAgenceAssocsById = clientAgenceAssocsById;
     }
 }

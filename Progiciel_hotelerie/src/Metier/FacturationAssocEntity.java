@@ -12,9 +12,11 @@ public class FacturationAssocEntity {
     private int idReservation;
     private int idClient;
     private int idFacture;
+    private ClientEntity clientByIdClient;
+    private FactureEntity factureByIdFacture;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +26,7 @@ public class FacturationAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_reservation")
+    @Column(name = "id_reservation", nullable = false)
     public int getIdReservation() {
         return idReservation;
     }
@@ -34,7 +36,7 @@ public class FacturationAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_client")
+    @Column(name = "id_client", nullable = false)
     public int getIdClient() {
         return idClient;
     }
@@ -44,7 +46,7 @@ public class FacturationAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_facture")
+    @Column(name = "id_facture", nullable = false)
     public int getIdFacture() {
         return idFacture;
     }
@@ -75,5 +77,25 @@ public class FacturationAssocEntity {
         result = 31 * result + idClient;
         result = 31 * result + idFacture;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    public ClientEntity getClientByIdClient() {
+        return clientByIdClient;
+    }
+
+    public void setClientByIdClient(ClientEntity clientByIdClient) {
+        this.clientByIdClient = clientByIdClient;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_facture", referencedColumnName = "id", nullable = false)
+    public FactureEntity getFactureByIdFacture() {
+        return factureByIdFacture;
+    }
+
+    public void setFactureByIdFacture(FactureEntity factureByIdFacture) {
+        this.factureByIdFacture = factureByIdFacture;
     }
 }

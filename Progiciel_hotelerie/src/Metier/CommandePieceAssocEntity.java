@@ -12,9 +12,11 @@ public class CommandePieceAssocEntity {
     private int idCommande;
     private int idPiece;
     private double quantite;
+    private CommandeEntity commandeByIdCommande;
+    private PieceDeRechangeEntity pieceDeRechangeByIdPiece;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +26,7 @@ public class CommandePieceAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_commande")
+    @Column(name = "id_commande", nullable = false)
     public int getIdCommande() {
         return idCommande;
     }
@@ -34,7 +36,7 @@ public class CommandePieceAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_piece")
+    @Column(name = "id_piece", nullable = false)
     public int getIdPiece() {
         return idPiece;
     }
@@ -44,7 +46,7 @@ public class CommandePieceAssocEntity {
     }
 
     @Basic
-    @Column(name = "quantite")
+    @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
     }
@@ -78,5 +80,25 @@ public class CommandePieceAssocEntity {
         temp = Double.doubleToLongBits(quantite);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false)
+    public CommandeEntity getCommandeByIdCommande() {
+        return commandeByIdCommande;
+    }
+
+    public void setCommandeByIdCommande(CommandeEntity commandeByIdCommande) {
+        this.commandeByIdCommande = commandeByIdCommande;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_piece", referencedColumnName = "id", nullable = false)
+    public PieceDeRechangeEntity getPieceDeRechangeByIdPiece() {
+        return pieceDeRechangeByIdPiece;
+    }
+
+    public void setPieceDeRechangeByIdPiece(PieceDeRechangeEntity pieceDeRechangeByIdPiece) {
+        this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
     }
 }

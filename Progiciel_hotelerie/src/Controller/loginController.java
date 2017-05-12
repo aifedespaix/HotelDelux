@@ -1,10 +1,8 @@
 package Controller;
 
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import Metier.Utilisateur;
 import Persistance.AccesData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,9 +22,9 @@ public class loginController implements Initializable{
 	@FXML
 	public void Connect(ActionEvent event){
 		if(AccesData.getLoginUtilisateur(username.getText(), password.getText()) != null){
-			System.out.println("connecté");
+			System.out.println("connectï¿½");
 		} else {
-			System.out.println("échec");
+			System.out.println("ï¿½chec");
 		}
 	}
 }

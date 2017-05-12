@@ -2,6 +2,7 @@ package src.Metier;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -12,9 +13,12 @@ public class CommandeEntity {
     private int id;
     private Date dateCommande;
     private double prixTotal;
+    private Collection<AlimentCommandeAssocEntity> alimentCommandeAssocsById;
+    private Collection<CommandeAssocEntity> commandeAssocsById;
+    private Collection<CommandePieceAssocEntity> commandePieceAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +28,7 @@ public class CommandeEntity {
     }
 
     @Basic
-    @Column(name = "date_commande")
+    @Column(name = "date_commande", nullable = false)
     public Date getDateCommande() {
         return dateCommande;
     }
@@ -34,7 +38,7 @@ public class CommandeEntity {
     }
 
     @Basic
-    @Column(name = "prix_total")
+    @Column(name = "prix_total", nullable = false, precision = 0)
     public double getPrixTotal() {
         return prixTotal;
     }
@@ -66,5 +70,32 @@ public class CommandeEntity {
         temp = Double.doubleToLongBits(prixTotal);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @OneToMany(mappedBy = "commandeByIdCommande")
+    public Collection<AlimentCommandeAssocEntity> getAlimentCommandeAssocsById() {
+        return alimentCommandeAssocsById;
+    }
+
+    public void setAlimentCommandeAssocsById(Collection<AlimentCommandeAssocEntity> alimentCommandeAssocsById) {
+        this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+    }
+
+    @OneToMany(mappedBy = "commandeByIdCommande")
+    public Collection<CommandeAssocEntity> getCommandeAssocsById() {
+        return commandeAssocsById;
+    }
+
+    public void setCommandeAssocsById(Collection<CommandeAssocEntity> commandeAssocsById) {
+        this.commandeAssocsById = commandeAssocsById;
+    }
+
+    @OneToMany(mappedBy = "commandeByIdCommande")
+    public Collection<CommandePieceAssocEntity> getCommandePieceAssocsById() {
+        return commandePieceAssocsById;
+    }
+
+    public void setCommandePieceAssocsById(Collection<CommandePieceAssocEntity> commandePieceAssocsById) {
+        this.commandePieceAssocsById = commandePieceAssocsById;
     }
 }

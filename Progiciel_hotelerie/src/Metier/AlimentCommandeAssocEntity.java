@@ -12,9 +12,11 @@ public class AlimentCommandeAssocEntity {
     private int idAliment;
     private int idCommande;
     private double quantite;
+    private AlimentEntity alimentByIdAliment;
+    private CommandeEntity commandeByIdCommande;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -24,7 +26,7 @@ public class AlimentCommandeAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_aliment")
+    @Column(name = "id_aliment", nullable = false)
     public int getIdAliment() {
         return idAliment;
     }
@@ -34,7 +36,7 @@ public class AlimentCommandeAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_commande")
+    @Column(name = "id_commande", nullable = false)
     public int getIdCommande() {
         return idCommande;
     }
@@ -44,7 +46,7 @@ public class AlimentCommandeAssocEntity {
     }
 
     @Basic
-    @Column(name = "quantite")
+    @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
     }
@@ -78,5 +80,25 @@ public class AlimentCommandeAssocEntity {
         temp = Double.doubleToLongBits(quantite);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_aliment", referencedColumnName = "id", nullable = false)
+    public AlimentEntity getAlimentByIdAliment() {
+        return alimentByIdAliment;
+    }
+
+    public void setAlimentByIdAliment(AlimentEntity alimentByIdAliment) {
+        this.alimentByIdAliment = alimentByIdAliment;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false)
+    public CommandeEntity getCommandeByIdCommande() {
+        return commandeByIdCommande;
+    }
+
+    public void setCommandeByIdCommande(CommandeEntity commandeByIdCommande) {
+        this.commandeByIdCommande = commandeByIdCommande;
     }
 }

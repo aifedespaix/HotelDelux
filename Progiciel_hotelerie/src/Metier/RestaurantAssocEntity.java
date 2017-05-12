@@ -13,9 +13,13 @@ public class RestaurantAssocEntity {
     private Integer idBoisson;
     private Integer idPlat;
     private int idReservation;
+    private MenuEntity menuByIdMenu;
+    private BoissonEntity boissonByIdBoisson;
+    private PlatEntity platByIdPlat;
+    private EquipementRestaurantEntity equipementRestaurantByIdReservation;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,7 +29,7 @@ public class RestaurantAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_menu")
+    @Column(name = "id_menu", nullable = true)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -35,7 +39,7 @@ public class RestaurantAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_boisson")
+    @Column(name = "id_boisson", nullable = true)
     public Integer getIdBoisson() {
         return idBoisson;
     }
@@ -45,7 +49,7 @@ public class RestaurantAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_plat")
+    @Column(name = "id_plat", nullable = true)
     public Integer getIdPlat() {
         return idPlat;
     }
@@ -55,7 +59,7 @@ public class RestaurantAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_reservation")
+    @Column(name = "id_reservation", nullable = false)
     public int getIdReservation() {
         return idReservation;
     }
@@ -88,5 +92,45 @@ public class RestaurantAssocEntity {
         result = 31 * result + (idPlat != null ? idPlat.hashCode() : 0);
         result = 31 * result + idReservation;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_menu", referencedColumnName = "id")
+    public MenuEntity getMenuByIdMenu() {
+        return menuByIdMenu;
+    }
+
+    public void setMenuByIdMenu(MenuEntity menuByIdMenu) {
+        this.menuByIdMenu = menuByIdMenu;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_boisson", referencedColumnName = "id")
+    public BoissonEntity getBoissonByIdBoisson() {
+        return boissonByIdBoisson;
+    }
+
+    public void setBoissonByIdBoisson(BoissonEntity boissonByIdBoisson) {
+        this.boissonByIdBoisson = boissonByIdBoisson;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_plat", referencedColumnName = "id")
+    public PlatEntity getPlatByIdPlat() {
+        return platByIdPlat;
+    }
+
+    public void setPlatByIdPlat(PlatEntity platByIdPlat) {
+        this.platByIdPlat = platByIdPlat;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_reservation", referencedColumnName = "id", nullable = false)
+    public EquipementRestaurantEntity getEquipementRestaurantByIdReservation() {
+        return equipementRestaurantByIdReservation;
+    }
+
+    public void setEquipementRestaurantByIdReservation(EquipementRestaurantEntity equipementRestaurantByIdReservation) {
+        this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
     }
 }

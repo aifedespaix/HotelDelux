@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -11,9 +12,12 @@ public class TvaEntity {
     private int id;
     private String libelle;
     private double prix;
+    private Collection<ReservationHotelEntity> reservationHotelsById;
+    private Collection<ReservationRestaurantEntity> reservationRestaurantsById;
+    private Collection<ReservationSpaEntity> reservationSpasById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,7 +27,7 @@ public class TvaEntity {
     }
 
     @Basic
-    @Column(name = "libelle")
+    @Column(name = "libelle", nullable = false, length = 250)
     public String getLibelle() {
         return libelle;
     }
@@ -33,7 +37,7 @@ public class TvaEntity {
     }
 
     @Basic
-    @Column(name = "prix")
+    @Column(name = "prix", nullable = false, precision = 0)
     public double getPrix() {
         return prix;
     }
@@ -65,5 +69,32 @@ public class TvaEntity {
         temp = Double.doubleToLongBits(prix);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @OneToMany(mappedBy = "tvaByIdTva")
+    public Collection<ReservationHotelEntity> getReservationHotelsById() {
+        return reservationHotelsById;
+    }
+
+    public void setReservationHotelsById(Collection<ReservationHotelEntity> reservationHotelsById) {
+        this.reservationHotelsById = reservationHotelsById;
+    }
+
+    @OneToMany(mappedBy = "tvaByIdTva")
+    public Collection<ReservationRestaurantEntity> getReservationRestaurantsById() {
+        return reservationRestaurantsById;
+    }
+
+    public void setReservationRestaurantsById(Collection<ReservationRestaurantEntity> reservationRestaurantsById) {
+        this.reservationRestaurantsById = reservationRestaurantsById;
+    }
+
+    @OneToMany(mappedBy = "tvaByIdTva")
+    public Collection<ReservationSpaEntity> getReservationSpasById() {
+        return reservationSpasById;
+    }
+
+    public void setReservationSpasById(Collection<ReservationSpaEntity> reservationSpasById) {
+        this.reservationSpasById = reservationSpasById;
     }
 }

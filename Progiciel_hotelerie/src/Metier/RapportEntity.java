@@ -14,9 +14,10 @@ public class RapportEntity {
     private Date dateFin;
     private String description;
     private int idDemandeIntervention;
+    private DemandeInterventionEntity demandeInterventionByIdDemandeIntervention;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -26,7 +27,7 @@ public class RapportEntity {
     }
 
     @Basic
-    @Column(name = "date_debut")
+    @Column(name = "date_debut", nullable = false)
     public Date getDateDebut() {
         return dateDebut;
     }
@@ -36,7 +37,7 @@ public class RapportEntity {
     }
 
     @Basic
-    @Column(name = "date_fin")
+    @Column(name = "date_fin", nullable = false)
     public Date getDateFin() {
         return dateFin;
     }
@@ -46,7 +47,7 @@ public class RapportEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, length = 250)
     public String getDescription() {
         return description;
     }
@@ -56,7 +57,7 @@ public class RapportEntity {
     }
 
     @Basic
-    @Column(name = "id_demande_intervention")
+    @Column(name = "id_demande_intervention", nullable = false)
     public int getIdDemandeIntervention() {
         return idDemandeIntervention;
     }
@@ -89,5 +90,15 @@ public class RapportEntity {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + idDemandeIntervention;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_demande_intervention", referencedColumnName = "id", nullable = false)
+    public DemandeInterventionEntity getDemandeInterventionByIdDemandeIntervention() {
+        return demandeInterventionByIdDemandeIntervention;
+    }
+
+    public void setDemandeInterventionByIdDemandeIntervention(DemandeInterventionEntity demandeInterventionByIdDemandeIntervention) {
+        this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
     }
 }

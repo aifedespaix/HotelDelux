@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -11,9 +12,11 @@ public class PlatEntity {
     private int id;
     private String libelle;
     private double prix;
+    private Collection<PlatAlimentAssocEntity> platAlimentAssocsById;
+    private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,7 +26,7 @@ public class PlatEntity {
     }
 
     @Basic
-    @Column(name = "libelle")
+    @Column(name = "libelle", nullable = false, length = 250)
     public String getLibelle() {
         return libelle;
     }
@@ -33,7 +36,7 @@ public class PlatEntity {
     }
 
     @Basic
-    @Column(name = "prix")
+    @Column(name = "prix", nullable = false, precision = 0)
     public double getPrix() {
         return prix;
     }
@@ -65,5 +68,23 @@ public class PlatEntity {
         temp = Double.doubleToLongBits(prix);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @OneToMany(mappedBy = "platByIdPlat")
+    public Collection<PlatAlimentAssocEntity> getPlatAlimentAssocsById() {
+        return platAlimentAssocsById;
+    }
+
+    public void setPlatAlimentAssocsById(Collection<PlatAlimentAssocEntity> platAlimentAssocsById) {
+        this.platAlimentAssocsById = platAlimentAssocsById;
+    }
+
+    @OneToMany(mappedBy = "platByIdPlat")
+    public Collection<RestaurantAssocEntity> getRestaurantAssocsById() {
+        return restaurantAssocsById;
+    }
+
+    public void setRestaurantAssocsById(Collection<RestaurantAssocEntity> restaurantAssocsById) {
+        this.restaurantAssocsById = restaurantAssocsById;
     }
 }

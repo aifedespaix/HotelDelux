@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -13,9 +14,10 @@ public class DroitEntity {
     private String description;
     private byte visible;
     private byte modifiable;
+    private Collection<DroitRoleAssocEntity> droitRoleAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,7 +27,7 @@ public class DroitEntity {
     }
 
     @Basic
-    @Column(name = "code")
+    @Column(name = "code", nullable = false, length = 10)
     public String getCode() {
         return code;
     }
@@ -35,7 +37,7 @@ public class DroitEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, length = 250)
     public String getDescription() {
         return description;
     }
@@ -45,7 +47,7 @@ public class DroitEntity {
     }
 
     @Basic
-    @Column(name = "visible")
+    @Column(name = "visible", nullable = false)
     public byte getVisible() {
         return visible;
     }
@@ -55,7 +57,7 @@ public class DroitEntity {
     }
 
     @Basic
-    @Column(name = "modifiable")
+    @Column(name = "modifiable", nullable = false)
     public byte getModifiable() {
         return modifiable;
     }
@@ -88,5 +90,14 @@ public class DroitEntity {
         result = 31 * result + (int) visible;
         result = 31 * result + (int) modifiable;
         return result;
+    }
+
+    @OneToMany(mappedBy = "droitByIdDroit")
+    public Collection<DroitRoleAssocEntity> getDroitRoleAssocsById() {
+        return droitRoleAssocsById;
+    }
+
+    public void setDroitRoleAssocsById(Collection<DroitRoleAssocEntity> droitRoleAssocsById) {
+        this.droitRoleAssocsById = droitRoleAssocsById;
     }
 }

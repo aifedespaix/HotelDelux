@@ -1,9 +1,6 @@
 package src.Metier;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -17,9 +14,11 @@ public class ReservationHotelEntity {
     private Date dateDebut;
     private int idTva;
     private int idChambre;
+    private TvaEntity tvaByIdTva;
+    private ChambreEntity chambreByIdChambre;
 
     @Basic
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -29,7 +28,7 @@ public class ReservationHotelEntity {
     }
 
     @Basic
-    @Column(name = "date_arrivee")
+    @Column(name = "date_arrivee", nullable = false)
     public Date getDateArrivee() {
         return dateArrivee;
     }
@@ -39,7 +38,7 @@ public class ReservationHotelEntity {
     }
 
     @Basic
-    @Column(name = "date_debut")
+    @Column(name = "date_debut", nullable = false)
     public Date getDateDebut() {
         return dateDebut;
     }
@@ -49,7 +48,7 @@ public class ReservationHotelEntity {
     }
 
     @Basic
-    @Column(name = "id_tva")
+    @Column(name = "id_tva", nullable = false)
     public int getIdTva() {
         return idTva;
     }
@@ -59,7 +58,7 @@ public class ReservationHotelEntity {
     }
 
     @Basic
-    @Column(name = "id_chambre")
+    @Column(name = "id_chambre", nullable = false)
     public int getIdChambre() {
         return idChambre;
     }
@@ -92,5 +91,25 @@ public class ReservationHotelEntity {
         result = 31 * result + idTva;
         result = 31 * result + idChambre;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_tva", referencedColumnName = "id", nullable = false)
+    public TvaEntity getTvaByIdTva() {
+        return tvaByIdTva;
+    }
+
+    public void setTvaByIdTva(TvaEntity tvaByIdTva) {
+        this.tvaByIdTva = tvaByIdTva;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_chambre", referencedColumnName = "id", nullable = false)
+    public ChambreEntity getChambreByIdChambre() {
+        return chambreByIdChambre;
+    }
+
+    public void setChambreByIdChambre(ChambreEntity chambreByIdChambre) {
+        this.chambreByIdChambre = chambreByIdChambre;
     }
 }

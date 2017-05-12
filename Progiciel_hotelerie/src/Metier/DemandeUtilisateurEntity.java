@@ -11,9 +11,11 @@ public class DemandeUtilisateurEntity {
     private int id;
     private int idUtilisateur;
     private int idDemande;
+    private UtilisateurEntity utilisateurByIdUtilisateur;
+    private DemandeInterventionEntity demandeInterventionByIdDemande;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,7 +25,7 @@ public class DemandeUtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "id_utilisateur")
+    @Column(name = "id_utilisateur", nullable = false)
     public int getIdUtilisateur() {
         return idUtilisateur;
     }
@@ -33,7 +35,7 @@ public class DemandeUtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "id_demande")
+    @Column(name = "id_demande", nullable = false)
     public int getIdDemande() {
         return idDemande;
     }
@@ -62,5 +64,25 @@ public class DemandeUtilisateurEntity {
         result = 31 * result + idUtilisateur;
         result = 31 * result + idDemande;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_utilisateur", referencedColumnName = "id", nullable = false)
+    public UtilisateurEntity getUtilisateurByIdUtilisateur() {
+        return utilisateurByIdUtilisateur;
+    }
+
+    public void setUtilisateurByIdUtilisateur(UtilisateurEntity utilisateurByIdUtilisateur) {
+        this.utilisateurByIdUtilisateur = utilisateurByIdUtilisateur;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_demande", referencedColumnName = "id", nullable = false)
+    public DemandeInterventionEntity getDemandeInterventionByIdDemande() {
+        return demandeInterventionByIdDemande;
+    }
+
+    public void setDemandeInterventionByIdDemande(DemandeInterventionEntity demandeInterventionByIdDemande) {
+        this.demandeInterventionByIdDemande = demandeInterventionByIdDemande;
     }
 }

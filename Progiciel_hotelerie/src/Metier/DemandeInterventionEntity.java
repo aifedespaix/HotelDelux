@@ -2,6 +2,7 @@ package src.Metier;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -19,9 +20,16 @@ public class DemandeInterventionEntity {
     private Integer idEquipementHotel;
     private Integer idEquipementRestaurant;
     private Integer idPieceRechange;
+    private CriticiteEntity criticiteByIdCriticite;
+    private EquipementSpaEntity equipementSpaByIdEquipementSpa;
+    private EquipementHotelEntity equipementHotelByIdEquipementHotel;
+    private EquipementRestaurantEntity equipementRestaurantByIdEquipementRestaurant;
+    private PieceDeRechangeEntity pieceDeRechangeByIdPieceRechange;
+    private Collection<DemandeUtilisateurEntity> demandeUtilisateursById;
+    private Collection<RapportEntity> rapportsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -31,7 +39,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "date_creation")
+    @Column(name = "date_creation", nullable = false)
     public Date getDateCreation() {
         return dateCreation;
     }
@@ -41,7 +49,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "objet")
+    @Column(name = "objet", nullable = false, length = 250)
     public String getObjet() {
         return objet;
     }
@@ -51,7 +59,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "description")
+    @Column(name = "description", nullable = false, length = 250)
     public String getDescription() {
         return description;
     }
@@ -61,7 +69,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "valide")
+    @Column(name = "valide", nullable = false)
     public byte getValide() {
         return valide;
     }
@@ -71,7 +79,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "id_criticite")
+    @Column(name = "id_criticite", nullable = false)
     public int getIdCriticite() {
         return idCriticite;
     }
@@ -81,7 +89,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "id_equipement_spa")
+    @Column(name = "id_equipement_spa", nullable = true)
     public Integer getIdEquipementSpa() {
         return idEquipementSpa;
     }
@@ -91,7 +99,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "id_equipement_hotel")
+    @Column(name = "id_equipement_hotel", nullable = true)
     public Integer getIdEquipementHotel() {
         return idEquipementHotel;
     }
@@ -101,7 +109,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "id_equipement_restaurant")
+    @Column(name = "id_equipement_restaurant", nullable = true)
     public Integer getIdEquipementRestaurant() {
         return idEquipementRestaurant;
     }
@@ -111,7 +119,7 @@ public class DemandeInterventionEntity {
     }
 
     @Basic
-    @Column(name = "id_piece_rechange")
+    @Column(name = "id_piece_rechange", nullable = true)
     public Integer getIdPieceRechange() {
         return idPieceRechange;
     }
@@ -158,5 +166,73 @@ public class DemandeInterventionEntity {
         result = 31 * result + (idEquipementRestaurant != null ? idEquipementRestaurant.hashCode() : 0);
         result = 31 * result + (idPieceRechange != null ? idPieceRechange.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_criticite", referencedColumnName = "id", nullable = false)
+    public CriticiteEntity getCriticiteByIdCriticite() {
+        return criticiteByIdCriticite;
+    }
+
+    public void setCriticiteByIdCriticite(CriticiteEntity criticiteByIdCriticite) {
+        this.criticiteByIdCriticite = criticiteByIdCriticite;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_equipement_spa", referencedColumnName = "id")
+    public EquipementSpaEntity getEquipementSpaByIdEquipementSpa() {
+        return equipementSpaByIdEquipementSpa;
+    }
+
+    public void setEquipementSpaByIdEquipementSpa(EquipementSpaEntity equipementSpaByIdEquipementSpa) {
+        this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_equipement_hotel", referencedColumnName = "id")
+    public EquipementHotelEntity getEquipementHotelByIdEquipementHotel() {
+        return equipementHotelByIdEquipementHotel;
+    }
+
+    public void setEquipementHotelByIdEquipementHotel(EquipementHotelEntity equipementHotelByIdEquipementHotel) {
+        this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_equipement_restaurant", referencedColumnName = "id")
+    public EquipementRestaurantEntity getEquipementRestaurantByIdEquipementRestaurant() {
+        return equipementRestaurantByIdEquipementRestaurant;
+    }
+
+    public void setEquipementRestaurantByIdEquipementRestaurant(EquipementRestaurantEntity equipementRestaurantByIdEquipementRestaurant) {
+        this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_piece_rechange", referencedColumnName = "id")
+    public PieceDeRechangeEntity getPieceDeRechangeByIdPieceRechange() {
+        return pieceDeRechangeByIdPieceRechange;
+    }
+
+    public void setPieceDeRechangeByIdPieceRechange(PieceDeRechangeEntity pieceDeRechangeByIdPieceRechange) {
+        this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
+    }
+
+    @OneToMany(mappedBy = "demandeInterventionByIdDemande")
+    public Collection<DemandeUtilisateurEntity> getDemandeUtilisateursById() {
+        return demandeUtilisateursById;
+    }
+
+    public void setDemandeUtilisateursById(Collection<DemandeUtilisateurEntity> demandeUtilisateursById) {
+        this.demandeUtilisateursById = demandeUtilisateursById;
+    }
+
+    @OneToMany(mappedBy = "demandeInterventionByIdDemandeIntervention")
+    public Collection<RapportEntity> getRapportsById() {
+        return rapportsById;
+    }
+
+    public void setRapportsById(Collection<RapportEntity> rapportsById) {
+        this.rapportsById = rapportsById;
     }
 }

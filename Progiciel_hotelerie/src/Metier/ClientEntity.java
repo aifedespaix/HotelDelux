@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -16,9 +17,11 @@ public class ClientEntity {
     private int codePostal;
     private int telephone;
     private String allergies;
+    private Collection<ClientAgenceAssocEntity> clientAgenceAssocsById;
+    private Collection<FacturationAssocEntity> facturationAssocsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -28,7 +31,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "nom")
+    @Column(name = "nom", nullable = false, length = 250)
     public String getNom() {
         return nom;
     }
@@ -38,7 +41,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "prenom")
+    @Column(name = "prenom", nullable = false, length = 250)
     public String getPrenom() {
         return prenom;
     }
@@ -48,7 +51,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "adresse_rue")
+    @Column(name = "adresse_rue", nullable = false, length = 250)
     public String getAdresseRue() {
         return adresseRue;
     }
@@ -58,7 +61,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "adresse_ville")
+    @Column(name = "adresse_ville", nullable = false, length = 250)
     public String getAdresseVille() {
         return adresseVille;
     }
@@ -68,7 +71,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "code_postal")
+    @Column(name = "code_postal", nullable = false)
     public int getCodePostal() {
         return codePostal;
     }
@@ -78,7 +81,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "telephone")
+    @Column(name = "telephone", nullable = false)
     public int getTelephone() {
         return telephone;
     }
@@ -88,7 +91,7 @@ public class ClientEntity {
     }
 
     @Basic
-    @Column(name = "allergies")
+    @Column(name = "allergies", nullable = false, length = 250)
     public String getAllergies() {
         return allergies;
     }
@@ -127,5 +130,23 @@ public class ClientEntity {
         result = 31 * result + telephone;
         result = 31 * result + (allergies != null ? allergies.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "clientByIdClient")
+    public Collection<ClientAgenceAssocEntity> getClientAgenceAssocsById() {
+        return clientAgenceAssocsById;
+    }
+
+    public void setClientAgenceAssocsById(Collection<ClientAgenceAssocEntity> clientAgenceAssocsById) {
+        this.clientAgenceAssocsById = clientAgenceAssocsById;
+    }
+
+    @OneToMany(mappedBy = "clientByIdClient")
+    public Collection<FacturationAssocEntity> getFacturationAssocsById() {
+        return facturationAssocsById;
+    }
+
+    public void setFacturationAssocsById(Collection<FacturationAssocEntity> facturationAssocsById) {
+        this.facturationAssocsById = facturationAssocsById;
     }
 }

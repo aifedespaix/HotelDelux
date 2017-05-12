@@ -14,16 +14,82 @@
 		<property name="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property> 
 		<!--<property name="hibernate.connection.url">jdbc:mysql://10.29.143.42:3306/bd_java</property>-->
-		<property name="hibernate.connection.url">jdbc:mysql://127.0.0.1/db_hibernate</property>
-		<property name="hibernate.connection.username">root</property>
-		<property name="hibernate.connection.password"></property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306</property>
 
-		<!-- Comportement pour la conservation des tables -->
+        <!-- Comportement pour la conservation des tables -->
 		<property name="hbm2ddl.auto">validate</property>
 
-		<!-- Fichiers à mapper -->
+        <!-- Fichiers à mapper -->
 		<mapping class="Metier.Utilisateur" />
-		
-	
-	</session-factory>
+        <mapping class="src.Metier.AgenceEntity"/>
+        <mapping resource="src/Metier/AgenceEntity.hbm.xml"/>
+        <mapping resource="src/Metier/AlimentEntity.hbm.xml"/>
+        <mapping class="src.Metier.AlimentEntity"/>
+        <mapping resource="src/Metier/AlimentCommandeAssocEntity.hbm.xml"/>
+        <mapping class="src.Metier.AlimentCommandeAssocEntity"/>
+        <mapping resource="src/Metier/BoissonEntity.hbm.xml"/>
+        <mapping class="src.Metier.BoissonEntity"/>
+        <mapping resource="src/Metier/ChambreEntity.hbm.xml"/>
+        <mapping class="src.Metier.ChambreEntity"/>
+        <mapping resource="src/Metier/ClientEntity.hbm.xml"/>
+        <mapping class="src.Metier.ClientEntity"/>
+        <mapping class="src.Metier.ClientAgenceAssocEntity"/>
+        <mapping resource="src/Metier/ClientAgenceAssocEntity.hbm.xml"/>
+        <mapping class="src.Metier.CommandeEntity"/>
+        <mapping resource="src/Metier/CommandeEntity.hbm.xml"/>
+        <mapping class="src.Metier.CommandeAssocEntity"/>
+        <mapping resource="src/Metier/CommandeAssocEntity.hbm.xml"/>
+        <mapping resource="src/Metier/CommandePieceAssocEntity.hbm.xml"/>
+        <mapping class="src.Metier.CommandePieceAssocEntity"/>
+        <mapping resource="src/Metier/CriticiteEntity.hbm.xml"/>
+        <mapping class="src.Metier.CriticiteEntity"/>
+        <mapping resource="src/Metier/DemandeInterventionEntity.hbm.xml"/>
+        <mapping class="src.Metier.DemandeInterventionEntity"/>
+        <mapping class="src.Metier.DemandeUtilisateurEntity"/>
+        <mapping resource="src/Metier/DemandeUtilisateurEntity.hbm.xml"/>
+        <mapping class="src.Metier.DroitEntity"/>
+        <mapping resource="src/Metier/DroitEntity.hbm.xml"/>
+        <mapping class="src.Metier.DroitRoleAssocEntity"/>
+        <mapping resource="src/Metier/DroitRoleAssocEntity.hbm.xml"/>
+        <mapping class="src.Metier.EquipementHotelEntity"/>
+        <mapping resource="src/Metier/EquipementHotelEntity.hbm.xml"/>
+        <mapping class="src.Metier.EquipementRestaurantEntity"/>
+        <mapping resource="src/Metier/EquipementRestaurantEntity.hbm.xml"/>
+        <mapping class="src.Metier.EquipementSpaEntity"/>
+        <mapping resource="src/Metier/EquipementSpaEntity.hbm.xml"/>
+        <mapping resource="src/Metier/FacturationAssocEntity.hbm.xml"/>
+        <mapping class="src.Metier.FacturationAssocEntity"/>
+        <mapping class="src.Metier.FactureEntity"/>
+        <mapping resource="src/Metier/FactureEntity.hbm.xml"/>
+        <mapping resource="src/Metier/MenuEntity.hbm.xml"/>
+        <mapping class="src.Metier.MenuEntity"/>
+        <mapping class="src.Metier.PieceDeRechangeEntity"/>
+        <mapping resource="src/Metier/PieceDeRechangeEntity.hbm.xml"/>
+        <mapping class="src.Metier.PlatEntity"/>
+        <mapping resource="src/Metier/PlatEntity.hbm.xml"/>
+        <mapping class="src.Metier.PlatAlimentAssocEntity"/>
+        <mapping resource="src/Metier/PlatAlimentAssocEntity.hbm.xml"/>
+        <mapping class="src.Metier.RapportEntity"/>
+        <mapping resource="src/Metier/RapportEntity.hbm.xml"/>
+        <mapping resource="src/Metier/ReservationHotelEntity.hbm.xml"/>
+        <mapping class="src.Metier.ReservationHotelEntity"/>
+        <mapping resource="src/Metier/ReservationRestaurantEntity.hbm.xml"/>
+        <mapping class="src.Metier.ReservationRestaurantEntity"/>
+        <mapping class="src.Metier.ReservationSpaEntity"/>
+        <mapping resource="src/Metier/ReservationSpaEntity.hbm.xml"/>
+        <mapping class="src.Metier.RestaurantAssocEntity"/>
+        <mapping resource="src/Metier/RestaurantAssocEntity.hbm.xml"/>
+        <mapping resource="src/Metier/RoleEntity.hbm.xml"/>
+        <mapping class="src.Metier.RoleEntity"/>
+        <mapping resource="src/Metier/SpaEntity.hbm.xml"/>
+        <mapping class="src.Metier.SpaEntity"/>
+        <mapping resource="src/Metier/TableEntity.hbm.xml"/>
+        <mapping class="src.Metier.TableEntity"/>
+        <mapping class="src.Metier.TvaEntity"/>
+        <mapping resource="src/Metier/TvaEntity.hbm.xml"/>
+        <mapping class="src.Metier.UtilisateurEntity"/>
+        <mapping resource="src/Metier/UtilisateurEntity.hbm.xml"/>
+
+
+    </session-factory>
 </hibernate-configuration>

@@ -11,9 +11,11 @@ public class DroitRoleAssocEntity {
     private int id;
     private int idDroit;
     private int idRole;
+    private DroitEntity droitByIdDroit;
+    private RoleEntity roleByIdRole;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -23,7 +25,7 @@ public class DroitRoleAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_droit")
+    @Column(name = "id_droit", nullable = false)
     public int getIdDroit() {
         return idDroit;
     }
@@ -33,7 +35,7 @@ public class DroitRoleAssocEntity {
     }
 
     @Basic
-    @Column(name = "id_role")
+    @Column(name = "id_role", nullable = false)
     public int getIdRole() {
         return idRole;
     }
@@ -62,5 +64,25 @@ public class DroitRoleAssocEntity {
         result = 31 * result + idDroit;
         result = 31 * result + idRole;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_droit", referencedColumnName = "id", nullable = false)
+    public DroitEntity getDroitByIdDroit() {
+        return droitByIdDroit;
+    }
+
+    public void setDroitByIdDroit(DroitEntity droitByIdDroit) {
+        this.droitByIdDroit = droitByIdDroit;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_role", referencedColumnName = "id", nullable = false)
+    public RoleEntity getRoleByIdRole() {
+        return roleByIdRole;
+    }
+
+    public void setRoleByIdRole(RoleEntity roleByIdRole) {
+        this.roleByIdRole = roleByIdRole;
     }
 }

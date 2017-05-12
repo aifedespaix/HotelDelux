@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -14,9 +15,11 @@ public class UtilisateurEntity {
     private String login;
     private String password;
     private int idRole;
+    private Collection<DemandeUtilisateurEntity> demandeUtilisateursById;
+    private RoleEntity roleByIdRole;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -26,7 +29,7 @@ public class UtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "nom")
+    @Column(name = "nom", nullable = false, length = 250)
     public String getNom() {
         return nom;
     }
@@ -36,7 +39,7 @@ public class UtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "prenom")
+    @Column(name = "prenom", nullable = false, length = 250)
     public String getPrenom() {
         return prenom;
     }
@@ -46,7 +49,7 @@ public class UtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "login")
+    @Column(name = "login", nullable = false, length = 250)
     public String getLogin() {
         return login;
     }
@@ -56,7 +59,7 @@ public class UtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "password")
+    @Column(name = "password", nullable = false, length = 250)
     public String getPassword() {
         return password;
     }
@@ -66,7 +69,7 @@ public class UtilisateurEntity {
     }
 
     @Basic
-    @Column(name = "id_role")
+    @Column(name = "id_role", nullable = false)
     public int getIdRole() {
         return idRole;
     }
@@ -101,5 +104,24 @@ public class UtilisateurEntity {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + idRole;
         return result;
+    }
+
+    @OneToMany(mappedBy = "utilisateurByIdUtilisateur")
+    public Collection<DemandeUtilisateurEntity> getDemandeUtilisateursById() {
+        return demandeUtilisateursById;
+    }
+
+    public void setDemandeUtilisateursById(Collection<DemandeUtilisateurEntity> demandeUtilisateursById) {
+        this.demandeUtilisateursById = demandeUtilisateursById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_role", referencedColumnName = "id", nullable = false)
+    public RoleEntity getRoleByIdRole() {
+        return roleByIdRole;
+    }
+
+    public void setRoleByIdRole(RoleEntity roleByIdRole) {
+        this.roleByIdRole = roleByIdRole;
     }
 }

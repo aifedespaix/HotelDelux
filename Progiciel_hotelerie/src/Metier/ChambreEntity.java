@@ -1,6 +1,7 @@
 package src.Metier;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -13,9 +14,11 @@ public class ChambreEntity {
     private double prixEnfant;
     private double capacite;
     private int etage;
+    private Collection<EquipementHotelEntity> equipementHotelsById;
+    private Collection<ReservationHotelEntity> reservationHotelsById;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -25,7 +28,7 @@ public class ChambreEntity {
     }
 
     @Basic
-    @Column(name = "prix_adulte")
+    @Column(name = "prix_adulte", nullable = false, precision = 0)
     public double getPrixAdulte() {
         return prixAdulte;
     }
@@ -35,7 +38,7 @@ public class ChambreEntity {
     }
 
     @Basic
-    @Column(name = "prix_enfant")
+    @Column(name = "prix_enfant", nullable = false, precision = 0)
     public double getPrixEnfant() {
         return prixEnfant;
     }
@@ -45,7 +48,7 @@ public class ChambreEntity {
     }
 
     @Basic
-    @Column(name = "capacite")
+    @Column(name = "capacite", nullable = false, precision = 0)
     public double getCapacite() {
         return capacite;
     }
@@ -55,7 +58,7 @@ public class ChambreEntity {
     }
 
     @Basic
-    @Column(name = "etage")
+    @Column(name = "etage", nullable = false)
     public int getEtage() {
         return etage;
     }
@@ -93,5 +96,23 @@ public class ChambreEntity {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + etage;
         return result;
+    }
+
+    @OneToMany(mappedBy = "chambreByIdChambre")
+    public Collection<EquipementHotelEntity> getEquipementHotelsById() {
+        return equipementHotelsById;
+    }
+
+    public void setEquipementHotelsById(Collection<EquipementHotelEntity> equipementHotelsById) {
+        this.equipementHotelsById = equipementHotelsById;
+    }
+
+    @OneToMany(mappedBy = "chambreByIdChambre")
+    public Collection<ReservationHotelEntity> getReservationHotelsById() {
+        return reservationHotelsById;
+    }
+
+    public void setReservationHotelsById(Collection<ReservationHotelEntity> reservationHotelsById) {
+        this.reservationHotelsById = reservationHotelsById;
     }
 }

@@ -14,9 +14,11 @@ public class ReservationRestaurantEntity {
     private Date dateDepart;
     private int idTva;
     private int idTable;
+    private TvaEntity tvaByIdTva;
+    private TableEntity tableByIdTable;
 
     @Id
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     public int getId() {
         return id;
     }
@@ -26,7 +28,7 @@ public class ReservationRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "date_arrivee")
+    @Column(name = "date_arrivee", nullable = false)
     public Date getDateArrivee() {
         return dateArrivee;
     }
@@ -36,7 +38,7 @@ public class ReservationRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "date_depart")
+    @Column(name = "date_depart", nullable = false)
     public Date getDateDepart() {
         return dateDepart;
     }
@@ -46,7 +48,7 @@ public class ReservationRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "id_tva")
+    @Column(name = "id_tva", nullable = false)
     public int getIdTva() {
         return idTva;
     }
@@ -56,7 +58,7 @@ public class ReservationRestaurantEntity {
     }
 
     @Basic
-    @Column(name = "id_table")
+    @Column(name = "id_table", nullable = false)
     public int getIdTable() {
         return idTable;
     }
@@ -89,5 +91,25 @@ public class ReservationRestaurantEntity {
         result = 31 * result + idTva;
         result = 31 * result + idTable;
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_tva", referencedColumnName = "id", nullable = false)
+    public TvaEntity getTvaByIdTva() {
+        return tvaByIdTva;
+    }
+
+    public void setTvaByIdTva(TvaEntity tvaByIdTva) {
+        this.tvaByIdTva = tvaByIdTva;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_table", referencedColumnName = "id", nullable = false)
+    public TableEntity getTableByIdTable() {
+        return tableByIdTable;
+    }
+
+    public void setTableByIdTable(TableEntity tableByIdTable) {
+        this.tableByIdTable = tableByIdTable;
     }
 }
