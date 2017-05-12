@@ -17,7 +17,53 @@ public class EquipementSpaEntity {
     private Collection<DemandeInterventionEntity> demandeInterventionsById;
     private SpaEntity spaByIdSpa;
 
-    @Id
+    
+    public EquipementSpaEntity(int id, String libelle, String description, String photo, int idSpa,
+			Collection<DemandeInterventionEntity> demandeInterventionsById, SpaEntity spaByIdSpa) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.idSpa = idSpa;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.spaByIdSpa = spaByIdSpa;
+	}
+    
+    
+
+	public EquipementSpaEntity(String libelle, String description, String photo, int idSpa,
+			Collection<DemandeInterventionEntity> demandeInterventionsById, SpaEntity spaByIdSpa) {
+		super();
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.idSpa = idSpa;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.spaByIdSpa = spaByIdSpa;
+	}
+
+
+
+	public EquipementSpaEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+
+
+	@Override
+	public String toString() {
+		return "EquipementSpaEntity [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
+				+ photo + ", idSpa=" + idSpa + ", demandeInterventionsById=" + demandeInterventionsById
+				+ ", spaByIdSpa=" + spaByIdSpa + "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

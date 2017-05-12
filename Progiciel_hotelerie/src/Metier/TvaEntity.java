@@ -16,7 +16,40 @@ public class TvaEntity {
     private Collection<ReservationRestaurantEntity> reservationRestaurantsById;
     private Collection<ReservationSpaEntity> reservationSpasById;
 
-    @Id
+    
+    
+    public TvaEntity(int id, String libelle, double prix, Collection<ReservationHotelEntity> reservationHotelsById,
+			Collection<ReservationRestaurantEntity> reservationRestaurantsById,
+			Collection<ReservationSpaEntity> reservationSpasById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.reservationHotelsById = reservationHotelsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+		this.reservationSpasById = reservationSpasById;
+	}
+
+    
+	public TvaEntity(String libelle, double prix, Collection<ReservationHotelEntity> reservationHotelsById,
+			Collection<ReservationRestaurantEntity> reservationRestaurantsById,
+			Collection<ReservationSpaEntity> reservationSpasById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.reservationHotelsById = reservationHotelsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+		this.reservationSpasById = reservationSpasById;
+	}
+
+
+	public TvaEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -97,4 +130,14 @@ public class TvaEntity {
     public void setReservationSpasById(Collection<ReservationSpaEntity> reservationSpasById) {
         this.reservationSpasById = reservationSpasById;
     }
+
+
+	@Override
+	public String toString() {
+		return "TvaEntity [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", reservationHotelsById="
+				+ reservationHotelsById + ", reservationRestaurantsById=" + reservationRestaurantsById
+				+ ", reservationSpasById=" + reservationSpasById + "]";
+	}
+    
+    
 }

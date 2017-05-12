@@ -17,7 +17,44 @@ public class ChambreEntity {
     private Collection<EquipementHotelEntity> equipementHotelsById;
     private Collection<ReservationHotelEntity> reservationHotelsById;
 
-    @Id
+    public ChambreEntity(int id, double prixAdulte, double prixEnfant, double capacite, int etage,
+			Collection<EquipementHotelEntity> equipementHotelsById,
+			Collection<ReservationHotelEntity> reservationHotelsById) {
+		super();
+		this.id = id;
+		this.prixAdulte = prixAdulte;
+		this.prixEnfant = prixEnfant;
+		this.capacite = capacite;
+		this.etage = etage;
+		this.equipementHotelsById = equipementHotelsById;
+		this.reservationHotelsById = reservationHotelsById;
+	}
+
+	public ChambreEntity(double prixAdulte, double prixEnfant, double capacite, int etage,
+			Collection<EquipementHotelEntity> equipementHotelsById,
+			Collection<ReservationHotelEntity> reservationHotelsById) {
+		super();
+		this.prixAdulte = prixAdulte;
+		this.prixEnfant = prixEnfant;
+		this.capacite = capacite;
+		this.etage = etage;
+		this.equipementHotelsById = equipementHotelsById;
+		this.reservationHotelsById = reservationHotelsById;
+	}
+
+	public ChambreEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ChambreEntity [id=" + id + ", prixAdulte=" + prixAdulte + ", prixEnfant=" + prixEnfant + ", capacite="
+				+ capacite + ", etage=" + etage + ", equipementHotelsById=" + equipementHotelsById
+				+ ", reservationHotelsById=" + reservationHotelsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

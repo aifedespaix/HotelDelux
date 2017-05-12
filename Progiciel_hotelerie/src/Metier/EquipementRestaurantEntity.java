@@ -18,7 +18,56 @@ public class EquipementRestaurantEntity {
     private TableEntity tableByIdTable;
     private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
-    @Id
+    
+    
+    public EquipementRestaurantEntity(int id, String libelle, String description, String photo, int idTable,
+			Collection<DemandeInterventionEntity> demandeInterventionsById, TableEntity tableByIdTable,
+			Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.idTable = idTable;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.tableByIdTable = tableByIdTable;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+    
+    
+
+	public EquipementRestaurantEntity(String libelle, String description, String photo, int idTable,
+			Collection<DemandeInterventionEntity> demandeInterventionsById, TableEntity tableByIdTable,
+			Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.idTable = idTable;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.tableByIdTable = tableByIdTable;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+
+
+	public EquipementRestaurantEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "EquipementRestaurantEntity [id=" + id + ", libelle=" + libelle + ", description=" + description
+				+ ", photo=" + photo + ", idTable=" + idTable + ", demandeInterventionsById=" + demandeInterventionsById
+				+ ", tableByIdTable=" + tableByIdTable + ", restaurantAssocsById=" + restaurantAssocsById + "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

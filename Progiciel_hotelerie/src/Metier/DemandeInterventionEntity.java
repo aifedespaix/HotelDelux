@@ -28,7 +28,81 @@ public class DemandeInterventionEntity {
     private Collection<DemandeUtilisateurEntity> demandeUtilisateursById;
     private Collection<RapportEntity> rapportsById;
 
-    @Id
+    
+    public DemandeInterventionEntity(int id, Date dateCreation, String objet, String description, byte valide,
+			int idCriticite, Integer idEquipementSpa, Integer idEquipementHotel, Integer idEquipementRestaurant,
+			Integer idPieceRechange, CriticiteEntity criticiteByIdCriticite,
+			EquipementSpaEntity equipementSpaByIdEquipementSpa,
+			EquipementHotelEntity equipementHotelByIdEquipementHotel,
+			EquipementRestaurantEntity equipementRestaurantByIdEquipementRestaurant,
+			PieceDeRechangeEntity pieceDeRechangeByIdPieceRechange,
+			Collection<DemandeUtilisateurEntity> demandeUtilisateursById, Collection<RapportEntity> rapportsById) {
+		super();
+		this.id = id;
+		this.dateCreation = dateCreation;
+		this.objet = objet;
+		this.description = description;
+		this.valide = valide;
+		this.idCriticite = idCriticite;
+		this.idEquipementSpa = idEquipementSpa;
+		this.idEquipementHotel = idEquipementHotel;
+		this.idEquipementRestaurant = idEquipementRestaurant;
+		this.idPieceRechange = idPieceRechange;
+		this.criticiteByIdCriticite = criticiteByIdCriticite;
+		this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
+		this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.rapportsById = rapportsById;
+	}
+
+	public DemandeInterventionEntity(Date dateCreation, String objet, String description, byte valide, int idCriticite,
+			Integer idEquipementSpa, Integer idEquipementHotel, Integer idEquipementRestaurant, Integer idPieceRechange,
+			CriticiteEntity criticiteByIdCriticite, EquipementSpaEntity equipementSpaByIdEquipementSpa,
+			EquipementHotelEntity equipementHotelByIdEquipementHotel,
+			EquipementRestaurantEntity equipementRestaurantByIdEquipementRestaurant,
+			PieceDeRechangeEntity pieceDeRechangeByIdPieceRechange,
+			Collection<DemandeUtilisateurEntity> demandeUtilisateursById, Collection<RapportEntity> rapportsById) {
+		super();
+		this.dateCreation = dateCreation;
+		this.objet = objet;
+		this.description = description;
+		this.valide = valide;
+		this.idCriticite = idCriticite;
+		this.idEquipementSpa = idEquipementSpa;
+		this.idEquipementHotel = idEquipementHotel;
+		this.idEquipementRestaurant = idEquipementRestaurant;
+		this.idPieceRechange = idPieceRechange;
+		this.criticiteByIdCriticite = criticiteByIdCriticite;
+		this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
+		this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.rapportsById = rapportsById;
+	}
+
+	public DemandeInterventionEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "DemandeInterventionEntity [id=" + id + ", dateCreation=" + dateCreation + ", objet=" + objet
+				+ ", description=" + description + ", valide=" + valide + ", idCriticite=" + idCriticite
+				+ ", idEquipementSpa=" + idEquipementSpa + ", idEquipementHotel=" + idEquipementHotel
+				+ ", idEquipementRestaurant=" + idEquipementRestaurant + ", idPieceRechange=" + idPieceRechange
+				+ ", criticiteByIdCriticite=" + criticiteByIdCriticite + ", equipementSpaByIdEquipementSpa="
+				+ equipementSpaByIdEquipementSpa + ", equipementHotelByIdEquipementHotel="
+				+ equipementHotelByIdEquipementHotel + ", equipementRestaurantByIdEquipementRestaurant="
+				+ equipementRestaurantByIdEquipementRestaurant + ", pieceDeRechangeByIdPieceRechange="
+				+ pieceDeRechangeByIdPieceRechange + ", demandeUtilisateursById=" + demandeUtilisateursById
+				+ ", rapportsById=" + rapportsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

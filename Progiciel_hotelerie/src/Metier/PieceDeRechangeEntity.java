@@ -16,7 +16,51 @@ public class PieceDeRechangeEntity {
     private Collection<CommandePieceAssocEntity> commandePieceAssocsById;
     private Collection<DemandeInterventionEntity> demandeInterventionsById;
 
-    @Id
+    
+    public PieceDeRechangeEntity(int id, String libelle, double prix, int quantite,
+			Collection<CommandePieceAssocEntity> commandePieceAssocsById,
+			Collection<DemandeInterventionEntity> demandeInterventionsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+    
+    
+
+	public PieceDeRechangeEntity(String libelle, double prix, int quantite,
+			Collection<CommandePieceAssocEntity> commandePieceAssocsById,
+			Collection<DemandeInterventionEntity> demandeInterventionsById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+
+
+
+	public PieceDeRechangeEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "PieceDeRechangeEntity [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", quantite=" + quantite
+				+ ", commandePieceAssocsById=" + commandePieceAssocsById + ", demandeInterventionsById="
+				+ demandeInterventionsById + "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

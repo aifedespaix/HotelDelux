@@ -15,7 +15,37 @@ public class BoissonEntity {
     private double prix;
     private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
-    @Id
+    public BoissonEntity(int id, String libelle, double quantite, double prix,
+			Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public BoissonEntity(String libelle, double quantite, double prix,
+			Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public BoissonEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "BoissonEntity [id=" + id + ", libelle=" + libelle + ", quantite=" + quantite + ", prix=" + prix
+				+ ", restaurantAssocsById=" + restaurantAssocsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

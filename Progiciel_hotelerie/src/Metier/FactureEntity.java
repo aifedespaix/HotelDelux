@@ -14,7 +14,34 @@ public class FactureEntity {
     private byte payee;
     private Collection<FacturationAssocEntity> facturationAssocsById;
 
-    @Id
+    
+    public FactureEntity(int id, String fichier, byte payee, Collection<FacturationAssocEntity> facturationAssocsById) {
+		super();
+		this.id = id;
+		this.fichier = fichier;
+		this.payee = payee;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public FactureEntity(String fichier, byte payee, Collection<FacturationAssocEntity> facturationAssocsById) {
+		super();
+		this.fichier = fichier;
+		this.payee = payee;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public FactureEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "FactureEntity [id=" + id + ", fichier=" + fichier + ", payee=" + payee + ", facturationAssocsById="
+				+ facturationAssocsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

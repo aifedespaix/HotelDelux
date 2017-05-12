@@ -14,7 +14,35 @@ public class MenuEntity {
     private double prix;
     private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
-    @Id
+    
+    public MenuEntity(int id, String libelle, double prix, Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public MenuEntity(String libelle, double prix, Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public MenuEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "MenuEntity [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", restaurantAssocsById="
+				+ restaurantAssocsById + "]";
+	}
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

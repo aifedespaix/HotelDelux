@@ -15,7 +15,36 @@ public class CriticiteEntity {
     private Time tempsMaximum;
     private Collection<DemandeInterventionEntity> demandeInterventionsById;
 
-    @Id
+    
+    public CriticiteEntity(int id, String libelle, Time tempsMaximum,
+			Collection<DemandeInterventionEntity> demandeInterventionsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.tempsMaximum = tempsMaximum;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+
+	public CriticiteEntity(String libelle, Time tempsMaximum,
+			Collection<DemandeInterventionEntity> demandeInterventionsById) {
+		super();
+		this.libelle = libelle;
+		this.tempsMaximum = tempsMaximum;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+
+	public CriticiteEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "CriticiteEntity [id=" + id + ", libelle=" + libelle + ", tempsMaximum=" + tempsMaximum
+				+ ", demandeInterventionsById=" + demandeInterventionsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

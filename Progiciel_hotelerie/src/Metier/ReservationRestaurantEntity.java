@@ -17,7 +17,50 @@ public class ReservationRestaurantEntity {
     private TvaEntity tvaByIdTva;
     private TableEntity tableByIdTable;
 
-    @Id
+    
+    public ReservationRestaurantEntity(int id, Date dateArrivee, Date dateDepart, int idTva, int idTable,
+			TvaEntity tvaByIdTva, TableEntity tableByIdTable) {
+		super();
+		this.id = id;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
+		this.idTva = idTva;
+		this.idTable = idTable;
+		this.tvaByIdTva = tvaByIdTva;
+		this.tableByIdTable = tableByIdTable;
+	}
+    
+
+	public ReservationRestaurantEntity(Date dateArrivee, Date dateDepart, int idTva, int idTable, TvaEntity tvaByIdTva,
+			TableEntity tableByIdTable) {
+		super();
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
+		this.idTva = idTva;
+		this.idTable = idTable;
+		this.tvaByIdTva = tvaByIdTva;
+		this.tableByIdTable = tableByIdTable;
+	}
+
+
+
+	public ReservationRestaurantEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "ReservationRestaurantEntity [id=" + id + ", dateArrivee=" + dateArrivee + ", dateDepart=" + dateDepart
+				+ ", idTva=" + idTva + ", idTable=" + idTable + ", tvaByIdTva=" + tvaByIdTva + ", tableByIdTable="
+				+ tableByIdTable + "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

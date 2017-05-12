@@ -17,7 +17,51 @@ public class ReservationSpaEntity {
     private TvaEntity tvaByIdTva;
     private SpaEntity spaByIdSpa;
 
-    @Id
+    
+    
+    public ReservationSpaEntity(int id, Date dateDebut, Date dateArrivee, int idTva, int idSpa, TvaEntity tvaByIdTva,
+			SpaEntity spaByIdSpa) {
+		super();
+		this.id = id;
+		this.dateDebut = dateDebut;
+		this.dateArrivee = dateArrivee;
+		this.idTva = idTva;
+		this.idSpa = idSpa;
+		this.tvaByIdTva = tvaByIdTva;
+		this.spaByIdSpa = spaByIdSpa;
+	}
+    
+    
+
+	public ReservationSpaEntity(Date dateDebut, Date dateArrivee, int idTva, int idSpa, TvaEntity tvaByIdTva,
+			SpaEntity spaByIdSpa) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateArrivee = dateArrivee;
+		this.idTva = idTva;
+		this.idSpa = idSpa;
+		this.tvaByIdTva = tvaByIdTva;
+		this.spaByIdSpa = spaByIdSpa;
+	}
+
+
+
+	public ReservationSpaEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	@Override
+	public String toString() {
+		return "ReservationSpaEntity [id=" + id + ", dateDebut=" + dateDebut + ", dateArrivee=" + dateArrivee
+				+ ", idTva=" + idTva + ", idSpa=" + idSpa + ", tvaByIdTva=" + tvaByIdTva + ", spaByIdSpa=" + spaByIdSpa
+				+ "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

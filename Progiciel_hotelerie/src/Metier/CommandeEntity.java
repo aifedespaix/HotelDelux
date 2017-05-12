@@ -17,7 +17,44 @@ public class CommandeEntity {
     private Collection<CommandeAssocEntity> commandeAssocsById;
     private Collection<CommandePieceAssocEntity> commandePieceAssocsById;
 
-    @Id
+    public CommandeEntity(int id, Date dateCommande, double prixTotal,
+			Collection<AlimentCommandeAssocEntity> alimentCommandeAssocsById,
+			Collection<CommandeAssocEntity> commandeAssocsById,
+			Collection<CommandePieceAssocEntity> commandePieceAssocsById) {
+		super();
+		this.id = id;
+		this.dateCommande = dateCommande;
+		this.prixTotal = prixTotal;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.commandeAssocsById = commandeAssocsById;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+	}
+
+	public CommandeEntity(Date dateCommande, double prixTotal,
+			Collection<AlimentCommandeAssocEntity> alimentCommandeAssocsById,
+			Collection<CommandeAssocEntity> commandeAssocsById,
+			Collection<CommandePieceAssocEntity> commandePieceAssocsById) {
+		super();
+		this.dateCommande = dateCommande;
+		this.prixTotal = prixTotal;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.commandeAssocsById = commandeAssocsById;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+	}
+
+	public CommandeEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "CommandeEntity [id=" + id + ", dateCommande=" + dateCommande + ", prixTotal=" + prixTotal
+				+ ", alimentCommandeAssocsById=" + alimentCommandeAssocsById + ", commandeAssocsById="
+				+ commandeAssocsById + ", commandePieceAssocsById=" + commandePieceAssocsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

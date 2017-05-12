@@ -15,7 +15,44 @@ public class FacturationAssocEntity {
     private ClientEntity clientByIdClient;
     private FactureEntity factureByIdFacture;
 
-    @Id
+    
+    public FacturationAssocEntity(int id, int idReservation, int idClient, int idFacture, ClientEntity clientByIdClient,
+			FactureEntity factureByIdFacture) {
+		super();
+		this.id = id;
+		this.idReservation = idReservation;
+		this.idClient = idClient;
+		this.idFacture = idFacture;
+		this.clientByIdClient = clientByIdClient;
+		this.factureByIdFacture = factureByIdFacture;
+	}
+    
+
+	public FacturationAssocEntity(int idReservation, int idClient, int idFacture, ClientEntity clientByIdClient,
+			FactureEntity factureByIdFacture) {
+		super();
+		this.idReservation = idReservation;
+		this.idClient = idClient;
+		this.idFacture = idFacture;
+		this.clientByIdClient = clientByIdClient;
+		this.factureByIdFacture = factureByIdFacture;
+	}
+
+
+	public FacturationAssocEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "FacturationAssocEntity [id=" + id + ", idReservation=" + idReservation + ", idClient=" + idClient
+				+ ", idFacture=" + idFacture + ", clientByIdClient=" + clientByIdClient + ", factureByIdFacture="
+				+ factureByIdFacture + "]";
+	}
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

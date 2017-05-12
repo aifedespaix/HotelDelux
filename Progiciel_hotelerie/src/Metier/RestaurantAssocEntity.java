@@ -18,7 +18,63 @@ public class RestaurantAssocEntity {
     private PlatEntity platByIdPlat;
     private EquipementRestaurantEntity equipementRestaurantByIdReservation;
 
-    @Id
+    
+    
+    public RestaurantAssocEntity(int id, Integer idMenu, Integer idBoisson, Integer idPlat, int idReservation,
+			MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson, PlatEntity platByIdPlat,
+			EquipementRestaurantEntity equipementRestaurantByIdReservation) {
+		super();
+		this.id = id;
+		this.idMenu = idMenu;
+		this.idBoisson = idBoisson;
+		this.idPlat = idPlat;
+		this.idReservation = idReservation;
+		this.menuByIdMenu = menuByIdMenu;
+		this.boissonByIdBoisson = boissonByIdBoisson;
+		this.platByIdPlat = platByIdPlat;
+		this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
+	}
+    
+    
+    
+
+	public RestaurantAssocEntity(Integer idMenu, Integer idBoisson, Integer idPlat, int idReservation,
+			MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson, PlatEntity platByIdPlat,
+			EquipementRestaurantEntity equipementRestaurantByIdReservation) {
+		super();
+		this.idMenu = idMenu;
+		this.idBoisson = idBoisson;
+		this.idPlat = idPlat;
+		this.idReservation = idReservation;
+		this.menuByIdMenu = menuByIdMenu;
+		this.boissonByIdBoisson = boissonByIdBoisson;
+		this.platByIdPlat = platByIdPlat;
+		this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
+	}
+
+
+
+
+	public RestaurantAssocEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "RestaurantAssocEntity [id=" + id + ", idMenu=" + idMenu + ", idBoisson=" + idBoisson + ", idPlat="
+				+ idPlat + ", idReservation=" + idReservation + ", menuByIdMenu=" + menuByIdMenu
+				+ ", boissonByIdBoisson=" + boissonByIdBoisson + ", platByIdPlat=" + platByIdPlat
+				+ ", equipementRestaurantByIdReservation=" + equipementRestaurantByIdReservation + "]";
+	}
+
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

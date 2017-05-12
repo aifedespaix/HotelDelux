@@ -14,7 +14,46 @@ public class RoleEntity {
     private Collection<DroitRoleAssocEntity> droitRoleAssocsById;
     private Collection<UtilisateurEntity> utilisateursById;
 
-    @Id
+    
+    public RoleEntity(int id, String libelle, Collection<DroitRoleAssocEntity> droitRoleAssocsById,
+			Collection<UtilisateurEntity> utilisateursById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+		this.utilisateursById = utilisateursById;
+	}
+    
+    
+
+	public RoleEntity(String libelle, Collection<DroitRoleAssocEntity> droitRoleAssocsById,
+			Collection<UtilisateurEntity> utilisateursById) {
+		super();
+		this.libelle = libelle;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+		this.utilisateursById = utilisateursById;
+	}
+
+
+
+	public RoleEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+
+
+	@Override
+	public String toString() {
+		return "RoleEntity [id=" + id + ", libelle=" + libelle + ", droitRoleAssocsById=" + droitRoleAssocsById
+				+ ", utilisateursById=" + utilisateursById + "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

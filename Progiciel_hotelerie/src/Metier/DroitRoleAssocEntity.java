@@ -14,7 +14,46 @@ public class DroitRoleAssocEntity {
     private DroitEntity droitByIdDroit;
     private RoleEntity roleByIdRole;
 
-    @Id
+    
+    public DroitRoleAssocEntity(int id, int idDroit, int idRole, DroitEntity droitByIdDroit, RoleEntity roleByIdRole) {
+		super();
+		this.id = id;
+		this.idDroit = idDroit;
+		this.idRole = idRole;
+		this.droitByIdDroit = droitByIdDroit;
+		this.roleByIdRole = roleByIdRole;
+	}
+    
+    
+
+	public DroitRoleAssocEntity(int idDroit, int idRole, DroitEntity droitByIdDroit, RoleEntity roleByIdRole) {
+		super();
+		this.idDroit = idDroit;
+		this.idRole = idRole;
+		this.droitByIdDroit = droitByIdDroit;
+		this.roleByIdRole = roleByIdRole;
+	}
+
+
+
+	public DroitRoleAssocEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+
+
+	@Override
+	public String toString() {
+		return "DroitRoleAssocEntity [id=" + id + ", idDroit=" + idDroit + ", idRole=" + idRole + ", droitByIdDroit="
+				+ droitByIdDroit + ", roleByIdRole=" + roleByIdRole + "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

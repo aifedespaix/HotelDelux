@@ -1,6 +1,9 @@
 package src.Metier;
 
 import javax.persistence.*;
+
+import src.Metier.RoleEntity;
+
 import java.util.Collection;
 
 /**
@@ -18,7 +21,38 @@ public class UtilisateurEntity {
     private Collection<DemandeUtilisateurEntity> demandeUtilisateursById;
     private RoleEntity roleByIdRole;
 
-    @Id
+    
+    
+    public UtilisateurEntity(String nom, String prenom, String login, String password, int idRole,
+			Collection<DemandeUtilisateurEntity> demandeUtilisateursById, Metier.RoleEntity roleByIdRole) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.password = password;
+		this.idRole = idRole;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.roleByIdRole = roleByIdRole;
+	}
+
+	public UtilisateurEntity(String nom, String prenom, String login, String password, int idRole,
+			Collection<DemandeUtilisateurEntity> demandeUtilisateursById, Metier.RoleEntity roleByIdRole) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.password = password;
+		this.idRole = idRole;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.roleByIdRole = roleByIdRole;
+	}
+
+	public UtilisateurEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -78,34 +112,7 @@ public class UtilisateurEntity {
         this.idRole = idRole;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        UtilisateurEntity that = (UtilisateurEntity) o;
-
-        if (id != that.id) return false;
-        if (idRole != that.idRole) return false;
-        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
-        if (prenom != null ? !prenom.equals(that.prenom) : that.prenom != null) return false;
-        if (login != null ? !login.equals(that.login) : that.login != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
-        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + idRole;
-        return result;
-    }
-
+ 
     @OneToMany(mappedBy = "utilisateurByIdUtilisateur")
     public Collection<DemandeUtilisateurEntity> getDemandeUtilisateursById() {
         return demandeUtilisateursById;
@@ -124,4 +131,13 @@ public class UtilisateurEntity {
     public void setRoleByIdRole(RoleEntity roleByIdRole) {
         this.roleByIdRole = roleByIdRole;
     }
+
+	@Override
+	public String toString() {
+		return "UtilisateurEntity [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login
+				+ ", password=" + password + ", idRole=" + idRole + ", demandeUtilisateursById="
+				+ demandeUtilisateursById + ", roleByIdRole=" + roleByIdRole + "]";
+	}
+    
+    
 }

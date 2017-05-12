@@ -15,7 +15,40 @@ public class CommandePieceAssocEntity {
     private CommandeEntity commandeByIdCommande;
     private PieceDeRechangeEntity pieceDeRechangeByIdPiece;
 
-    @Id
+    public CommandePieceAssocEntity(int id, int idCommande, int idPiece, double quantite,
+			CommandeEntity commandeByIdCommande, PieceDeRechangeEntity pieceDeRechangeByIdPiece) {
+		super();
+		this.id = id;
+		this.idCommande = idCommande;
+		this.idPiece = idPiece;
+		this.quantite = quantite;
+		this.commandeByIdCommande = commandeByIdCommande;
+		this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
+	}
+
+	public CommandePieceAssocEntity(int idCommande, int idPiece, double quantite, CommandeEntity commandeByIdCommande,
+			PieceDeRechangeEntity pieceDeRechangeByIdPiece) {
+		super();
+		this.idCommande = idCommande;
+		this.idPiece = idPiece;
+		this.quantite = quantite;
+		this.commandeByIdCommande = commandeByIdCommande;
+		this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
+	}
+
+	public CommandePieceAssocEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "CommandePieceAssocEntity [id=" + id + ", idCommande=" + idCommande + ", idPiece=" + idPiece
+				+ ", quantite=" + quantite + ", commandeByIdCommande=" + commandeByIdCommande
+				+ ", pieceDeRechangeByIdPiece=" + pieceDeRechangeByIdPiece + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

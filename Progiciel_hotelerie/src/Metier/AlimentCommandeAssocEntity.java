@@ -15,7 +15,42 @@ public class AlimentCommandeAssocEntity {
     private AlimentEntity alimentByIdAliment;
     private CommandeEntity commandeByIdCommande;
 
-    @Id
+    public AlimentCommandeAssocEntity(int id, int idAliment, int idCommande, double quantite,
+			AlimentEntity alimentByIdAliment, CommandeEntity commandeByIdCommande) {
+		super();
+		this.id = id;
+		this.idAliment = idAliment;
+		this.idCommande = idCommande;
+		this.quantite = quantite;
+		this.alimentByIdAliment = alimentByIdAliment;
+		this.commandeByIdCommande = commandeByIdCommande;
+	}
+
+    
+	public AlimentCommandeAssocEntity(int idAliment, int idCommande, double quantite, AlimentEntity alimentByIdAliment,
+			CommandeEntity commandeByIdCommande) {
+		super();
+		this.idAliment = idAliment;
+		this.idCommande = idCommande;
+		this.quantite = quantite;
+		this.alimentByIdAliment = alimentByIdAliment;
+		this.commandeByIdCommande = commandeByIdCommande;
+	}
+
+
+	public AlimentCommandeAssocEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "AlimentCommandeAssocEntity [id=" + id + ", idAliment=" + idAliment + ", idCommande=" + idCommande
+				+ ", quantite=" + quantite + ", alimentByIdAliment=" + alimentByIdAliment + ", commandeByIdCommande="
+				+ commandeByIdCommande + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

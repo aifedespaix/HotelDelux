@@ -15,7 +15,41 @@ public class AgenceEntity {
     private String email;
     private Collection<ClientAgenceAssocEntity> clientAgenceAssocsById;
 
-    @Id
+    public AgenceEntity(int id, String nom, int telephone, String email,
+			Collection<ClientAgenceAssocEntity> clientAgenceAssocsById) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.telephone = telephone;
+		this.email = email;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+	}
+    
+    
+
+	public AgenceEntity(String nom, int telephone, String email,
+			Collection<ClientAgenceAssocEntity> clientAgenceAssocsById) {
+		super();
+		this.nom = nom;
+		this.telephone = telephone;
+		this.email = email;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+	}
+
+
+
+	public AgenceEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "AgenceEntity [id=" + id + ", nom=" + nom + ", telephone=" + telephone + ", email=" + email
+				+ ", clientAgenceAssocsById=" + clientAgenceAssocsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

@@ -15,7 +15,38 @@ public class AlimentEntity {
     private Collection<AlimentCommandeAssocEntity> alimentCommandeAssocsById;
     private Collection<PlatAlimentAssocEntity> platAlimentAssocsById;
 
-    @Id
+    public AlimentEntity(int id, String libelle, double prix,
+			Collection<AlimentCommandeAssocEntity> alimentCommandeAssocsById,
+			Collection<PlatAlimentAssocEntity> platAlimentAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.platAlimentAssocsById = platAlimentAssocsById;
+	}
+
+	public AlimentEntity(String libelle, double prix, Collection<AlimentCommandeAssocEntity> alimentCommandeAssocsById,
+			Collection<PlatAlimentAssocEntity> platAlimentAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.platAlimentAssocsById = platAlimentAssocsById;
+	}
+
+	public AlimentEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "AlimentEntity [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", alimentCommandeAssocsById="
+				+ alimentCommandeAssocsById + ", platAlimentAssocsById=" + platAlimentAssocsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

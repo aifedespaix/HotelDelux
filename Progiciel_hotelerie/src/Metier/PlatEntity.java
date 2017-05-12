@@ -15,7 +15,47 @@ public class PlatEntity {
     private Collection<PlatAlimentAssocEntity> platAlimentAssocsById;
     private Collection<RestaurantAssocEntity> restaurantAssocsById;
 
-    @Id
+    
+    public PlatEntity(int id, String libelle, double prix, Collection<PlatAlimentAssocEntity> platAlimentAssocsById,
+			Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.platAlimentAssocsById = platAlimentAssocsById;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+    
+    
+
+	public PlatEntity(String libelle, double prix, Collection<PlatAlimentAssocEntity> platAlimentAssocsById,
+			Collection<RestaurantAssocEntity> restaurantAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.platAlimentAssocsById = platAlimentAssocsById;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+
+
+	public PlatEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+	
+
+	@Override
+	public String toString() {
+		return "PlatEntity [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", platAlimentAssocsById="
+				+ platAlimentAssocsById + ", restaurantAssocsById=" + restaurantAssocsById + "]";
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

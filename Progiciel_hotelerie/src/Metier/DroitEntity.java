@@ -16,7 +16,41 @@ public class DroitEntity {
     private byte modifiable;
     private Collection<DroitRoleAssocEntity> droitRoleAssocsById;
 
-    @Id
+    
+    public DroitEntity(int id, String code, String description, byte visible, byte modifiable,
+			Collection<DroitRoleAssocEntity> droitRoleAssocsById) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.description = description;
+		this.visible = visible;
+		this.modifiable = modifiable;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+	}
+    
+	public DroitEntity(String code, String description, byte visible, byte modifiable,
+			Collection<DroitRoleAssocEntity> droitRoleAssocsById) {
+		super();
+		this.code = code;
+		this.description = description;
+		this.visible = visible;
+		this.modifiable = modifiable;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+	}
+
+	public DroitEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "DroitEntity [id=" + id + ", code=" + code + ", description=" + description + ", visible=" + visible
+				+ ", modifiable=" + modifiable + ", droitRoleAssocsById=" + droitRoleAssocsById + "]";
+	}
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

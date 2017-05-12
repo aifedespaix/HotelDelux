@@ -15,7 +15,46 @@ public class PlatAlimentAssocEntity {
     private PlatEntity platByIdPlat;
     private AlimentEntity alimentByIdAliment;
 
-    @Id
+    
+    public PlatAlimentAssocEntity(int id, int idPlat, int idAliment, double quantite, PlatEntity platByIdPlat,
+			AlimentEntity alimentByIdAliment) {
+		super();
+		this.id = id;
+		this.idPlat = idPlat;
+		this.idAliment = idAliment;
+		this.quantite = quantite;
+		this.platByIdPlat = platByIdPlat;
+		this.alimentByIdAliment = alimentByIdAliment;
+	}
+
+    
+	public PlatAlimentAssocEntity(int idPlat, int idAliment, double quantite, PlatEntity platByIdPlat,
+			AlimentEntity alimentByIdAliment) {
+		super();
+		this.idPlat = idPlat;
+		this.idAliment = idAliment;
+		this.quantite = quantite;
+		this.platByIdPlat = platByIdPlat;
+		this.alimentByIdAliment = alimentByIdAliment;
+	}
+
+
+	public PlatAlimentAssocEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+
+	@Override
+	public String toString() {
+		return "PlatAlimentAssocEntity [id=" + id + ", idPlat=" + idPlat + ", idAliment=" + idAliment + ", quantite="
+				+ quantite + ", platByIdPlat=" + platByIdPlat + ", alimentByIdAliment=" + alimentByIdAliment + "]";
+	}
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

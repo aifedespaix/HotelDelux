@@ -14,7 +14,39 @@ public class DemandeUtilisateurEntity {
     private UtilisateurEntity utilisateurByIdUtilisateur;
     private DemandeInterventionEntity demandeInterventionByIdDemande;
 
-    @Id
+    
+    public DemandeUtilisateurEntity(int id, int idUtilisateur, int idDemande,
+			UtilisateurEntity utilisateurByIdUtilisateur, DemandeInterventionEntity demandeInterventionByIdDemande) {
+		super();
+		this.id = id;
+		this.idUtilisateur = idUtilisateur;
+		this.idDemande = idDemande;
+		this.utilisateurByIdUtilisateur = utilisateurByIdUtilisateur;
+		this.demandeInterventionByIdDemande = demandeInterventionByIdDemande;
+	}
+
+	public DemandeUtilisateurEntity(int idUtilisateur, int idDemande, UtilisateurEntity utilisateurByIdUtilisateur,
+			DemandeInterventionEntity demandeInterventionByIdDemande) {
+		super();
+		this.idUtilisateur = idUtilisateur;
+		this.idDemande = idDemande;
+		this.utilisateurByIdUtilisateur = utilisateurByIdUtilisateur;
+		this.demandeInterventionByIdDemande = demandeInterventionByIdDemande;
+	}
+
+	public DemandeUtilisateurEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "DemandeUtilisateurEntity [id=" + id + ", idUtilisateur=" + idUtilisateur + ", idDemande=" + idDemande
+				+ ", utilisateurByIdUtilisateur=" + utilisateurByIdUtilisateur + ", demandeInterventionByIdDemande="
+				+ demandeInterventionByIdDemande + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

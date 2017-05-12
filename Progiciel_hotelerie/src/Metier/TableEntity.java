@@ -14,7 +14,36 @@ public class TableEntity {
     private Collection<EquipementRestaurantEntity> equipementRestaurantsById;
     private Collection<ReservationRestaurantEntity> reservationRestaurantsById;
 
-    @Id
+    
+    public TableEntity(int id, int nbCouverts, Collection<EquipementRestaurantEntity> equipementRestaurantsById,
+			Collection<ReservationRestaurantEntity> reservationRestaurantsById) {
+		super();
+		this.id = id;
+		this.nbCouverts = nbCouverts;
+		this.equipementRestaurantsById = equipementRestaurantsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+	}
+    
+    
+
+	public TableEntity(int nbCouverts, Collection<EquipementRestaurantEntity> equipementRestaurantsById,
+			Collection<ReservationRestaurantEntity> reservationRestaurantsById) {
+		super();
+		this.nbCouverts = nbCouverts;
+		this.equipementRestaurantsById = equipementRestaurantsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+	}
+
+
+
+	public TableEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
@@ -71,4 +100,13 @@ public class TableEntity {
     public void setReservationRestaurantsById(Collection<ReservationRestaurantEntity> reservationRestaurantsById) {
         this.reservationRestaurantsById = reservationRestaurantsById;
     }
+
+
+
+	@Override
+	public String toString() {
+		return "TableEntity [id=" + id + ", nbCouverts=" + nbCouverts + ", equipementRestaurantsById="
+				+ equipementRestaurantsById + ", reservationRestaurantsById=" + reservationRestaurantsById + "]";
+	}
+    
 }

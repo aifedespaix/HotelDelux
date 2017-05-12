@@ -14,7 +14,44 @@ public class SpaEntity {
     private Collection<EquipementSpaEntity> equipementSpasById;
     private Collection<ReservationSpaEntity> reservationSpasById;
 
-    @Id
+    
+    public SpaEntity(int id, int numero, Collection<EquipementSpaEntity> equipementSpasById,
+			Collection<ReservationSpaEntity> reservationSpasById) {
+		super();
+		this.id = id;
+		this.numero = numero;
+		this.equipementSpasById = equipementSpasById;
+		this.reservationSpasById = reservationSpasById;
+	}
+    
+    
+
+	public SpaEntity(int numero, Collection<EquipementSpaEntity> equipementSpasById,
+			Collection<ReservationSpaEntity> reservationSpasById) {
+		super();
+		this.numero = numero;
+		this.equipementSpasById = equipementSpasById;
+		this.reservationSpasById = reservationSpasById;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "SpaEntity [id=" + id + ", numero=" + numero + ", equipementSpasById=" + equipementSpasById
+				+ ", reservationSpasById=" + reservationSpasById + "]";
+	}
+
+
+
+	public SpaEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

@@ -16,7 +16,47 @@ public class RapportEntity {
     private int idDemandeIntervention;
     private DemandeInterventionEntity demandeInterventionByIdDemandeIntervention;
 
-    @Id
+    
+    
+    public RapportEntity(int id, Date dateDebut, Date dateFin, String description, int idDemandeIntervention,
+			DemandeInterventionEntity demandeInterventionByIdDemandeIntervention) {
+		super();
+		this.id = id;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.description = description;
+		this.idDemandeIntervention = idDemandeIntervention;
+		this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
+	}
+
+    
+	public RapportEntity(Date dateDebut, Date dateFin, String description, int idDemandeIntervention,
+			DemandeInterventionEntity demandeInterventionByIdDemandeIntervention) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.description = description;
+		this.idDemandeIntervention = idDemandeIntervention;
+		this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
+	}
+
+
+	public RapportEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
+
+	@Override
+	public String toString() {
+		return "RapportEntity [id=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", description="
+				+ description + ", idDemandeIntervention=" + idDemandeIntervention
+				+ ", demandeInterventionByIdDemandeIntervention=" + demandeInterventionByIdDemandeIntervention + "]";
+	}
+
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

@@ -20,7 +20,51 @@ public class ClientEntity {
     private Collection<ClientAgenceAssocEntity> clientAgenceAssocsById;
     private Collection<FacturationAssocEntity> facturationAssocsById;
 
-    @Id
+    public ClientEntity(int id, String nom, String prenom, String adresseRue, String adresseVille, int codePostal,
+			int telephone, String allergies, Collection<ClientAgenceAssocEntity> clientAgenceAssocsById,
+			Collection<FacturationAssocEntity> facturationAssocsById) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresseRue = adresseRue;
+		this.adresseVille = adresseVille;
+		this.codePostal = codePostal;
+		this.telephone = telephone;
+		this.allergies = allergies;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public ClientEntity(String nom, String prenom, String adresseRue, String adresseVille, int codePostal,
+			int telephone, String allergies, Collection<ClientAgenceAssocEntity> clientAgenceAssocsById,
+			Collection<FacturationAssocEntity> facturationAssocsById) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresseRue = adresseRue;
+		this.adresseVille = adresseVille;
+		this.codePostal = codePostal;
+		this.telephone = telephone;
+		this.allergies = allergies;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public ClientEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ClientEntity [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresseRue=" + adresseRue
+				+ ", adresseVille=" + adresseVille + ", codePostal=" + codePostal + ", telephone=" + telephone
+				+ ", allergies=" + allergies + ", clientAgenceAssocsById=" + clientAgenceAssocsById
+				+ ", facturationAssocsById=" + facturationAssocsById + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;

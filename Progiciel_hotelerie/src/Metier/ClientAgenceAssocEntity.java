@@ -14,7 +14,37 @@ public class ClientAgenceAssocEntity {
     private ClientEntity clientByIdClient;
     private AgenceEntity agenceByIdAgence;
 
-    @Id
+    public ClientAgenceAssocEntity(int id, int idClient, int idAgence, ClientEntity clientByIdClient,
+			AgenceEntity agenceByIdAgence) {
+		super();
+		this.id = id;
+		this.idClient = idClient;
+		this.idAgence = idAgence;
+		this.clientByIdClient = clientByIdClient;
+		this.agenceByIdAgence = agenceByIdAgence;
+	}
+
+	public ClientAgenceAssocEntity(int idClient, int idAgence, ClientEntity clientByIdClient,
+			AgenceEntity agenceByIdAgence) {
+		super();
+		this.idClient = idClient;
+		this.idAgence = idAgence;
+		this.clientByIdClient = clientByIdClient;
+		this.agenceByIdAgence = agenceByIdAgence;
+	}
+
+	public ClientAgenceAssocEntity() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ClientAgenceAssocEntity [id=" + id + ", idClient=" + idClient + ", idAgence=" + idAgence
+				+ ", clientByIdClient=" + clientByIdClient + ", agenceByIdAgence=" + agenceByIdAgence + "]";
+	}
+
+	@Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
