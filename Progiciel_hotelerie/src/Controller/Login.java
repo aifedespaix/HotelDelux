@@ -11,6 +11,8 @@ import src.Persistance.AccesData;
  */
 public class Login
 {
+    private final static int DIRECTEUR = 5;
+    private final static int RESTAURANT= 6;
     @FXML
    private JFXTextField login;
     @FXML
@@ -21,7 +23,20 @@ public class Login
         u = AccesData.getLoginUtilisateur(login.getText(), password.getText());
         if(u != null)
         {
-            System.out.println("connexion");
+           switch (u.getRoleByIdRole().getId())
+           {
+               case DIRECTEUR:
+                //  Appel de la vue
+                   System.out.println("case 5");
+                   break;
+               case RESTAURANT:
+                   //  Appel de la vue
+                   System.out.println("case 6");
+                   break;
+               default:
+                   System.out.println("default");
+                   break;
+           }
         }
         else
         {
