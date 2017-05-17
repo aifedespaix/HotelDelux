@@ -10,14 +10,14 @@ import java.util.Collection;
 public class Facture {
     private int id;
     private String fichier;
-    private byte payee;
+    private boolean payee;
     private Collection<FacturationAssoc> facturationAssocsById;
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setPayee(Byte payee) {
+    public void setPayee(boolean payee) {
         this.payee = payee;
     }
 
@@ -43,12 +43,8 @@ public class Facture {
 
     @Basic
     @Column(name = "payee", nullable = false)
-    public byte getPayee() {
+    public boolean getPayee() {
         return payee;
-    }
-
-    public void setPayee(byte payee) {
-        this.payee = payee;
     }
 
     @OneToMany(mappedBy = "factureByIdFacture")

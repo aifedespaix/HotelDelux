@@ -61,16 +61,6 @@ public class RestaurantAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_reservation", referencedColumnName = "id", nullable = false)
-    public EquipementRestaurant getEquipementRestaurantByIdReservation() {
-        return equipementRestaurantByIdReservation;
-    }
-
-    public void setEquipementRestaurantByIdReservation(EquipementRestaurant equipementRestaurantByIdReservation) {
-        this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
-    }
-
-    @ManyToOne
     @JoinColumn(name = "id_reservation_restaurant", referencedColumnName = "id")
     public ReservationRestaurant getReservationRestaurantByIdReservationRestaurant() {
         return reservationRestaurantByIdReservationRestaurant;

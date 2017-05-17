@@ -14,7 +14,7 @@ public class AccesData {
 	
 	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 		Utilisateur u = null;
-		List<Utilisateur> listeU = s.createQuery("FROM UtilisateurEntity U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
+		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
 		if(listeU.size() == 1){
 			u = listeU.get(0);
 		}

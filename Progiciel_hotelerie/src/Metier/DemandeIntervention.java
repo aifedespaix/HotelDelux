@@ -15,7 +15,7 @@ public class DemandeIntervention {
     private Date dateCreation;
     private String objet;
     private String description;
-    private byte valide;
+    private boolean valide;
     private int idCriticite;
     private Integer idEquipementSpa;
     private Integer idEquipementHotel;
@@ -33,7 +33,7 @@ public class DemandeIntervention {
         this.id = id;
     }
 
-    public void setValide(Byte valide) {
+    public void setValide(boolean valide) {
         this.valide = valide;
     }
 
@@ -83,12 +83,8 @@ public class DemandeIntervention {
 
     @Basic
     @Column(name = "valide", nullable = false)
-    public byte getValide() {
+    public boolean getValide() {
         return valide;
-    }
-
-    public void setValide(byte valide) {
-        this.valide = valide;
     }
 
     @ManyToOne

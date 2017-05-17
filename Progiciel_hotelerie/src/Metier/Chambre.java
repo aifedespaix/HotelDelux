@@ -11,7 +11,7 @@ public class Chambre {
     private int id;
     private double prixAdulte;
     private double prixEnfant;
-    private double capacite;
+    private int capacite;
     private int etage;
     private Collection<EquipementHotel> equipementHotelsById;
     private Collection<ReservationHotel> reservationHotelsById;
@@ -30,10 +30,6 @@ public class Chambre {
 
     public void setPrixEnfant(Double prixEnfant) {
         this.prixEnfant = prixEnfant;
-    }
-
-    public void setCapacite(Double capacite) {
-        this.capacite = capacite;
     }
 
     public void setEtage(Integer etage) {
@@ -70,15 +66,6 @@ public class Chambre {
         this.prixEnfant = prixEnfant;
     }
 
-    @Basic
-    @Column(name = "capacite", nullable = false, precision = 0)
-    public double getCapacite() {
-        return capacite;
-    }
-
-    public void setCapacite(double capacite) {
-        this.capacite = capacite;
-    }
 
     @Basic
     @Column(name = "etage", nullable = false)

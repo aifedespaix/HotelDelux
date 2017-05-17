@@ -11,19 +11,19 @@ public class Droit {
     private int id;
     private String code;
     private String description;
-    private byte visible;
-    private byte modifiable;
+    private boolean visible;
+    private boolean modifiable;
     private Collection<DroitRoleAssoc> droitRoleAssocsById;
 
     public void setId(Integer id) {
         this.id = id;
     }
 
-    public void setVisible(Byte visible) {
+    public void setVisible(boolean visible) {
         this.visible = visible;
     }
 
-    public void setModifiable(Byte modifiable) {
+    public void setModifiable(boolean modifiable) {
         this.modifiable = modifiable;
     }
 
@@ -59,22 +59,8 @@ public class Droit {
 
     @Basic
     @Column(name = "visible", nullable = false)
-    public byte getVisible() {
+    public boolean getVisible() {
         return visible;
-    }
-
-    public void setVisible(byte visible) {
-        this.visible = visible;
-    }
-
-    @Basic
-    @Column(name = "modifiable", nullable = false)
-    public byte getModifiable() {
-        return modifiable;
-    }
-
-    public void setModifiable(byte modifiable) {
-        this.modifiable = modifiable;
     }
 
     @OneToMany(mappedBy = "droitByIdDroit")
