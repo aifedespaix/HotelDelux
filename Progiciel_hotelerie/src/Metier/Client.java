@@ -128,4 +128,37 @@ public class Client {
     public void setFacturationAssocsById(Collection<FacturationAssoc> facturationAssocsById) {
         this.facturationAssocsById = facturationAssocsById;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Client client = (Client) o;
+
+        if (id != client.id) return false;
+        if (codePostal != client.codePostal) return false;
+        if (telephone != client.telephone) return false;
+        if (nom != null ? !nom.equals(client.nom) : client.nom != null) return false;
+        if (prenom != null ? !prenom.equals(client.prenom) : client.prenom != null) return false;
+        if (adresseRue != null ? !adresseRue.equals(client.adresseRue) : client.adresseRue != null) return false;
+        if (adresseVille != null ? !adresseVille.equals(client.adresseVille) : client.adresseVille != null)
+            return false;
+        if (allergies != null ? !allergies.equals(client.allergies) : client.allergies != null) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (nom != null ? nom.hashCode() : 0);
+        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
+        result = 31 * result + (adresseRue != null ? adresseRue.hashCode() : 0);
+        result = 31 * result + (adresseVille != null ? adresseVille.hashCode() : 0);
+        result = 31 * result + codePostal;
+        result = 31 * result + telephone;
+        result = 31 * result + (allergies != null ? allergies.hashCode() : 0);
+        return result;
+    }
 }

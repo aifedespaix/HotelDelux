@@ -91,4 +91,31 @@ public class AlimentCommandeAssoc {
     public void setCommandeByIdCommande(Commande commandeByIdCommande) {
         this.commandeByIdCommande = commandeByIdCommande;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AlimentCommandeAssoc that = (AlimentCommandeAssoc) o;
+
+        if (id != that.id) return false;
+        if (idAliment != that.idAliment) return false;
+        if (idCommande != that.idCommande) return false;
+        if (Double.compare(that.quantite, quantite) != 0) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = id;
+        result = 31 * result + idAliment;
+        result = 31 * result + idCommande;
+        temp = Double.doubleToLongBits(quantite);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }

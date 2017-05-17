@@ -56,4 +56,27 @@ public class Criticite {
     public void setDemandeInterventionsById(Collection<DemandeIntervention> demandeInterventionsById) {
         this.demandeInterventionsById = demandeInterventionsById;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Criticite criticite = (Criticite) o;
+
+        if (id != criticite.id) return false;
+        if (libelle != null ? !libelle.equals(criticite.libelle) : criticite.libelle != null) return false;
+        if (tempsMaximum != null ? !tempsMaximum.equals(criticite.tempsMaximum) : criticite.tempsMaximum != null)
+            return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
+        result = 31 * result + (tempsMaximum != null ? tempsMaximum.hashCode() : 0);
+        return result;
+    }
 }
