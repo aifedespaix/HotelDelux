@@ -105,6 +105,7 @@ public class EquipementRestaurantEntity {
     }
 
     @OneToMany(mappedBy = "equipementRestaurantByIdEquipementRestaurant")
+    //@OneToMany(mappedBy = "id_equipement_restaurant")
     public Collection<DemandeInterventionEntity> getDemandeInterventionsById() {
         return demandeInterventionsById;
     }

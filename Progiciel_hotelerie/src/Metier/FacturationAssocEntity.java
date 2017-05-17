@@ -9,28 +9,42 @@ import javax.persistence.*;
 @Table(name = "facturation_assoc", schema = "base_definitive", catalog = "")
 public class FacturationAssocEntity {
     private int id;
-    private int idReservation;
+    //private int idReservation;
+    private ReservationHotelEntity reservationHotelByIdReservationHotel;
+    private ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant;
+    private ReservationSpaEntity reservationSpaByIdReservationSpa;
     private ClientEntity clientByIdClient;
     private FactureEntity factureByIdFacture;
 
     
-    public FacturationAssocEntity(int id, int idReservation, ClientEntity clientByIdClient,
+
+	public FacturationAssocEntity(int id, ReservationHotelEntity reservationHotelByIdReservationHotel,
+			ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant,
+			ReservationSpaEntity reservationSpaByIdReservationSpa, ClientEntity clientByIdClient,
 			FactureEntity factureByIdFacture) {
 		super();
 		this.id = id;
-		this.idReservation = idReservation;
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
 		this.clientByIdClient = clientByIdClient;
 		this.factureByIdFacture = factureByIdFacture;
 	}
-    
+	
+	
 
-	public FacturationAssocEntity(int idReservation, ClientEntity clientByIdClient,
+	public FacturationAssocEntity(ReservationHotelEntity reservationHotelByIdReservationHotel,
+			ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant,
+			ReservationSpaEntity reservationSpaByIdReservationSpa, ClientEntity clientByIdClient,
 			FactureEntity factureByIdFacture) {
 		super();
-		this.idReservation = idReservation;
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
 		this.clientByIdClient = clientByIdClient;
 		this.factureByIdFacture = factureByIdFacture;
 	}
+
 
 
 	public FacturationAssocEntity() {
@@ -40,10 +54,12 @@ public class FacturationAssocEntity {
 
 	@Override
 	public String toString() {
-		return "FacturationAssocEntity [id=" + id + ", idReservation=" + idReservation + ", " + " clientByIdClient=" + clientByIdClient + ", factureByIdFacture="
+		return "FacturationAssocEntity [id=" + id + ", reservationHotelByIdReservationHotel="
+				+ reservationHotelByIdReservationHotel + ", reservationRestaurantByIdReservationRestaurant="
+				+ reservationRestaurantByIdReservationRestaurant + ", reservationSpaByIdReservationSpa="
+				+ reservationSpaByIdReservationSpa + ", clientByIdClient=" + clientByIdClient + ", factureByIdFacture="
 				+ factureByIdFacture + "]";
 	}
-
 
 	@Id
     @Column(name = "id", nullable = false)
@@ -55,17 +71,49 @@ public class FacturationAssocEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_reservation", nullable = false)
-    public int getIdReservation() {
-        return idReservation;
-    }
-
-    public void setIdReservation(int idReservation) {
-        this.idReservation = idReservation;
-    }
-
+   
     @ManyToOne
+    @JoinColumn(name = "id_reservation_hotel", referencedColumnName = "id", nullable = false)
+    public ReservationHotelEntity getReservationHotelByIdReservationHotel() {
+		return reservationHotelByIdReservationHotel;
+	}
+
+
+
+	public void setReservationHotelByIdReservationHotel(ReservationHotelEntity reservationHotelByIdReservationHotel) {
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+	}
+
+
+	@ManyToOne
+    @JoinColumn(name = "id_reservation_restaurant", referencedColumnName = "id", nullable = false)
+	public ReservationRestaurantEntity getReservationRestaurantByIdReservationRestaurant() {
+		return reservationRestaurantByIdReservationRestaurant;
+	}
+
+
+
+	public void setReservationRestaurantByIdReservationRestaurant(
+			ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant) {
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+	}
+
+
+	@ManyToOne
+    @JoinColumn(name = "id_reservation_spa", referencedColumnName = "id", nullable = false)
+	public ReservationSpaEntity getReservationSpaByIdReservationSpa() {
+		return reservationSpaByIdReservationSpa;
+	}
+
+
+
+	public void setReservationSpaByIdReservationSpa(ReservationSpaEntity reservationSpaByIdReservationSpa) {
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
+	}
+
+
+
+	@ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
     public ClientEntity getClientByIdClient() {
         return clientByIdClient;

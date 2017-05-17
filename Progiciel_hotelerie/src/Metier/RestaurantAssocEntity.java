@@ -12,31 +12,37 @@ public class RestaurantAssocEntity {
     private MenuEntity menuByIdMenu;
     private BoissonEntity boissonByIdBoisson;
     private PlatEntity platByIdPlat;
-    private EquipementRestaurantEntity equipementRestaurantByIdReservation;
+    private ReservationHotelEntity reservationHotelByIdReservationHotel;
+    private ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant;
+    private ReservationSpaEntity reservationSpaByIdReservationSpa;
 
-    
-    
-    public RestaurantAssocEntity(int id,
-			MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson, PlatEntity platByIdPlat,
-			EquipementRestaurantEntity equipementRestaurantByIdReservation) {
+
+	public RestaurantAssocEntity(int id, MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson,
+			PlatEntity platByIdPlat, ReservationHotelEntity reservationHotelByIdReservationHotel,
+			ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant,
+			ReservationSpaEntity reservationSpaByIdReservationSpa) {
 		super();
 		this.id = id;
 		this.menuByIdMenu = menuByIdMenu;
 		this.boissonByIdBoisson = boissonByIdBoisson;
 		this.platByIdPlat = platByIdPlat;
-		this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
 	}
-    
-    
-    
+
 
 	public RestaurantAssocEntity(MenuEntity menuByIdMenu, BoissonEntity boissonByIdBoisson, PlatEntity platByIdPlat,
-			EquipementRestaurantEntity equipementRestaurantByIdReservation) {
+			ReservationHotelEntity reservationHotelByIdReservationHotel,
+			ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant,
+			ReservationSpaEntity reservationSpaByIdReservationSpa) {
 		super();
 		this.menuByIdMenu = menuByIdMenu;
 		this.boissonByIdBoisson = boissonByIdBoisson;
 		this.platByIdPlat = platByIdPlat;
-		this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
 	}
 
 
@@ -48,16 +54,14 @@ public class RestaurantAssocEntity {
 	}
 
 
-
-
 	@Override
 	public String toString() {
-		return "RestaurantAssocEntity [id=" + id + ", menuByIdMenu=" + menuByIdMenu
-				+ ", boissonByIdBoisson=" + boissonByIdBoisson + ", platByIdPlat=" + platByIdPlat
-				+ ", equipementRestaurantByIdReservation=" + equipementRestaurantByIdReservation + "]";
+		return "RestaurantAssocEntity [id=" + id + ", menuByIdMenu=" + menuByIdMenu + ", boissonByIdBoisson="
+				+ boissonByIdBoisson + ", platByIdPlat=" + platByIdPlat + ", reservationHotelByIdReservationHotel="
+				+ reservationHotelByIdReservationHotel + ", reservationRestaurantByIdReservationRestaurant="
+				+ reservationRestaurantByIdReservationRestaurant + ", reservationSpaByIdReservationSpa="
+				+ reservationSpaByIdReservationSpa + "]";
 	}
-
-
 
 
 	@Id
@@ -101,12 +105,40 @@ public class RestaurantAssocEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_reservation", referencedColumnName = "id", nullable = false)
-    public EquipementRestaurantEntity getEquipementRestaurantByIdReservation() {
-        return equipementRestaurantByIdReservation;
-    }
+    @JoinColumn(name = "id_reservation_hotel", referencedColumnName = "id", nullable = false)
+	public ReservationHotelEntity getReservationHotelByIdReservationHotel() {
+		return reservationHotelByIdReservationHotel;
+	}
 
-    public void setEquipementRestaurantByIdReservation(EquipementRestaurantEntity equipementRestaurantByIdReservation) {
-        this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
-    }
+
+	public void setReservationHotelByIdReservationHotel(ReservationHotelEntity reservationHotelByIdReservationHotel) {
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+	}
+
+
+	@ManyToOne
+    @JoinColumn(name = "id_reservation_restaurant", referencedColumnName = "id", nullable = false)
+	public ReservationRestaurantEntity getReservationRestaurantByIdReservationRestaurant() {
+		return reservationRestaurantByIdReservationRestaurant;
+	}
+
+
+	public void setReservationRestaurantByIdReservationRestaurant(
+			ReservationRestaurantEntity reservationRestaurantByIdReservationRestaurant) {
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+	}
+
+	@ManyToOne
+    @JoinColumn(name = "id_reservation_spa", referencedColumnName = "id", nullable = false)
+	public ReservationSpaEntity getReservationSpaByIdReservationSpa() {
+		return reservationSpaByIdReservationSpa;
+	}
+
+
+	public void setReservationSpaByIdReservationSpa(ReservationSpaEntity reservationSpaByIdReservationSpa) {
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
+	}
+    
+    
+    
 }
