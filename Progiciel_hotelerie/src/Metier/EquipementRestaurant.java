@@ -15,7 +15,6 @@ public class EquipementRestaurant {
     private String photo;
     private Collection<DemandeIntervention> demandeInterventionsById;
     private Table tableByIdTable;
-    private Collection<RestaurantAssoc> restaurantAssocsById;
     private Collection<CommandeAssoc> commandeAssocsById;
 
     public void setId(Integer id) {
@@ -79,15 +78,6 @@ public class EquipementRestaurant {
 
     public void setTableByIdTable(Table tableByIdTable) {
         this.tableByIdTable = tableByIdTable;
-    }
-
-    @OneToMany(mappedBy = "equipementRestaurantByIdReservation")
-    public Collection<RestaurantAssoc> getRestaurantAssocsById() {
-        return restaurantAssocsById;
-    }
-
-    public void setRestaurantAssocsById(Collection<RestaurantAssoc> restaurantAssocsById) {
-        this.restaurantAssocsById = restaurantAssocsById;
     }
 
     @OneToMany(mappedBy = "equipementRestaurantByIdEquipementRestaurant")

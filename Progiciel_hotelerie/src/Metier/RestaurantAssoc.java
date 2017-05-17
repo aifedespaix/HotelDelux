@@ -13,7 +13,6 @@ public class RestaurantAssoc {
     private Menu menuByIdMenu;
     private Boisson boissonByIdBoisson;
     private Plat platByIdPlat;
-    private EquipementRestaurant equipementRestaurantByIdReservation;
     private ReservationRestaurant reservationRestaurantByIdReservationRestaurant;
 
     public void setId(Integer id) {
@@ -69,4 +68,5 @@ public class RestaurantAssoc {
     public void setReservationRestaurantByIdReservationRestaurant(ReservationRestaurant reservationRestaurantByIdReservationRestaurant) {
         this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
     }
+    
 }
