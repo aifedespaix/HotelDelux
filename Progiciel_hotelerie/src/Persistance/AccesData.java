@@ -2,7 +2,7 @@ package src.Persistance;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import src.Metier.UtilisateurEntity;
+import src.Metier.Utilisateur;
 
 import java.util.List;
 
@@ -12,9 +12,9 @@ public class AccesData {
 	private static Session s = HibernateSession.getSession();
 	private static Transaction t;
 	
-	public static UtilisateurEntity getLoginUtilisateur(String login, String mdp){
-		UtilisateurEntity u = null;
-		List<UtilisateurEntity> listeU = s.createQuery("FROM UtilisateurEntity U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
+	public static Utilisateur getLoginUtilisateur(String login, String mdp){
+		Utilisateur u = null;
+		List<Utilisateur> listeU = s.createQuery("FROM UtilisateurEntity U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
 		if(listeU.size() == 1){
 			u = listeU.get(0);
 		}

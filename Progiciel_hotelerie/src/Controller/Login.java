@@ -3,7 +3,7 @@ package src.Controller;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
-import src.Metier.UtilisateurEntity;
+import src.Metier.Utilisateur;
 import src.Persistance.AccesData;
 
 /**
@@ -19,7 +19,7 @@ public class Login
     private JFXPasswordField password;
     public void connexion()
     {
-        UtilisateurEntity u = null;
+        Utilisateur u = null;
         u = AccesData.getLoginUtilisateur(login.getText(), password.getText());
         if(u != null)
         {
