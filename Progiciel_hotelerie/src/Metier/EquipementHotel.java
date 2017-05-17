@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "equipement_hotel", schema = "hotel", catalog = "")
+@Table(name = "equipement_hotel")
 public class EquipementHotel {
     private int id;
     private String libelle;
@@ -18,7 +18,44 @@ public class EquipementHotel {
     private Chambre chambreByIdChambre;
     private Collection<CommandeAssoc> commandeAssocsById;
 
-    public void setId(Integer id) {
+    public EquipementHotel(int id, String libelle, String description, String photo,
+			Collection<DemandeIntervention> demandeInterventionsById, Chambre chambreByIdChambre,
+			Collection<CommandeAssoc> commandeAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.chambreByIdChambre = chambreByIdChambre;
+		this.commandeAssocsById = commandeAssocsById;
+	}
+
+	public EquipementHotel(String libelle, String description, String photo,
+			Collection<DemandeIntervention> demandeInterventionsById, Chambre chambreByIdChambre,
+			Collection<CommandeAssoc> commandeAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.chambreByIdChambre = chambreByIdChambre;
+		this.commandeAssocsById = commandeAssocsById;
+	}
+
+	public EquipementHotel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "EquipementHotel [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
+				+ photo + ", demandeInterventionsById=" + demandeInterventionsById + ", chambreByIdChambre="
+				+ chambreByIdChambre + ", commandeAssocsById=" + commandeAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

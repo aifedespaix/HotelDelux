@@ -18,7 +18,44 @@ public class EquipementSpa {
     private Spa spaByIdSpa;
     private Collection<CommandeAssoc> commandeAssocsById;
 
-    public void setId(Integer id) {
+    public EquipementSpa(int id, String libelle, String description, String photo,
+			Collection<DemandeIntervention> demandeInterventionsById, Spa spaByIdSpa,
+			Collection<CommandeAssoc> commandeAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.spaByIdSpa = spaByIdSpa;
+		this.commandeAssocsById = commandeAssocsById;
+	}
+
+	public EquipementSpa(String libelle, String description, String photo,
+			Collection<DemandeIntervention> demandeInterventionsById, Spa spaByIdSpa,
+			Collection<CommandeAssoc> commandeAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.spaByIdSpa = spaByIdSpa;
+		this.commandeAssocsById = commandeAssocsById;
+	}
+
+	public EquipementSpa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "EquipementSpa [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo=" + photo
+				+ ", demandeInterventionsById=" + demandeInterventionsById + ", spaByIdSpa=" + spaByIdSpa
+				+ ", commandeAssocsById=" + commandeAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

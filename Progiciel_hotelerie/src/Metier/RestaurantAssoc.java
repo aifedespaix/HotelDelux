@@ -15,7 +15,39 @@ public class RestaurantAssoc {
     private Plat platByIdPlat;
     private ReservationRestaurant reservationRestaurantByIdReservationRestaurant;
 
-    public void setId(Integer id) {
+    public RestaurantAssoc(int id, Menu menuByIdMenu, Boisson boissonByIdBoisson, Plat platByIdPlat,
+			ReservationRestaurant reservationRestaurantByIdReservationRestaurant) {
+		super();
+		this.id = id;
+		this.menuByIdMenu = menuByIdMenu;
+		this.boissonByIdBoisson = boissonByIdBoisson;
+		this.platByIdPlat = platByIdPlat;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+	}
+
+	public RestaurantAssoc(Menu menuByIdMenu, Boisson boissonByIdBoisson, Plat platByIdPlat,
+			ReservationRestaurant reservationRestaurantByIdReservationRestaurant) {
+		super();
+		this.menuByIdMenu = menuByIdMenu;
+		this.boissonByIdBoisson = boissonByIdBoisson;
+		this.platByIdPlat = platByIdPlat;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+	}
+
+	public RestaurantAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "RestaurantAssoc [id=" + id + ", menuByIdMenu=" + menuByIdMenu + ", boissonByIdBoisson="
+				+ boissonByIdBoisson + ", platByIdPlat=" + platByIdPlat
+				+ ", reservationRestaurantByIdReservationRestaurant=" + reservationRestaurantByIdReservationRestaurant
+				+ "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

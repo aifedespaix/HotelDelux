@@ -16,7 +16,41 @@ public class Commande {
     private Collection<CommandeAssoc> commandeAssocsById;
     private Collection<CommandePieceAssoc> commandePieceAssocsById;
 
-    public void setId(Integer id) {
+    public Commande(int id, Date dateCommande, double prixTotal,
+			Collection<AlimentCommandeAssoc> alimentCommandeAssocsById, Collection<CommandeAssoc> commandeAssocsById,
+			Collection<CommandePieceAssoc> commandePieceAssocsById) {
+		super();
+		this.id = id;
+		this.dateCommande = dateCommande;
+		this.prixTotal = prixTotal;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.commandeAssocsById = commandeAssocsById;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+	}
+
+	public Commande(Date dateCommande, double prixTotal, Collection<AlimentCommandeAssoc> alimentCommandeAssocsById,
+			Collection<CommandeAssoc> commandeAssocsById, Collection<CommandePieceAssoc> commandePieceAssocsById) {
+		super();
+		this.dateCommande = dateCommande;
+		this.prixTotal = prixTotal;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.commandeAssocsById = commandeAssocsById;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+	}
+
+	public Commande() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Commande [id=" + id + ", dateCommande=" + dateCommande + ", prixTotal=" + prixTotal
+				+ ", alimentCommandeAssocsById=" + alimentCommandeAssocsById + ", commandeAssocsById="
+				+ commandeAssocsById + ", commandePieceAssocsById=" + commandePieceAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

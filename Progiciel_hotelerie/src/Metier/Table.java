@@ -13,7 +13,35 @@ public class Table {
     private Collection<EquipementRestaurant> equipementRestaurantsById;
     private Collection<ReservationRestaurant> reservationRestaurantsById;
 
-    public void setId(Integer id) {
+    public Table(int id, int nbCouverts, Collection<EquipementRestaurant> equipementRestaurantsById,
+			Collection<ReservationRestaurant> reservationRestaurantsById) {
+		super();
+		this.id = id;
+		this.nbCouverts = nbCouverts;
+		this.equipementRestaurantsById = equipementRestaurantsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+	}
+
+	public Table(int nbCouverts, Collection<EquipementRestaurant> equipementRestaurantsById,
+			Collection<ReservationRestaurant> reservationRestaurantsById) {
+		super();
+		this.nbCouverts = nbCouverts;
+		this.equipementRestaurantsById = equipementRestaurantsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+	}
+
+	public Table() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Table [id=" + id + ", nbCouverts=" + nbCouverts + ", equipementRestaurantsById="
+				+ equipementRestaurantsById + ", reservationRestaurantsById=" + reservationRestaurantsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

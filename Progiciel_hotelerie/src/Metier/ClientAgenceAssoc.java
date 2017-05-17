@@ -13,7 +13,31 @@ public class ClientAgenceAssoc {
     private Client clientByIdClient;
     private Agence agenceByIdAgence;
 
-    public void setId(Integer id) {
+    public ClientAgenceAssoc(int id, Client clientByIdClient, Agence agenceByIdAgence) {
+		super();
+		this.id = id;
+		this.clientByIdClient = clientByIdClient;
+		this.agenceByIdAgence = agenceByIdAgence;
+	}
+
+	public ClientAgenceAssoc(Client clientByIdClient, Agence agenceByIdAgence) {
+		super();
+		this.clientByIdClient = clientByIdClient;
+		this.agenceByIdAgence = agenceByIdAgence;
+	}
+
+	public ClientAgenceAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ClientAgenceAssoc [id=" + id + ", clientByIdClient=" + clientByIdClient + ", agenceByIdAgence="
+				+ agenceByIdAgence + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

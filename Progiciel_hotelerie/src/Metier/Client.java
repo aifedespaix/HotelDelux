@@ -20,7 +20,51 @@ public class Client {
     private Collection<FacturationAssoc> facturationAssocsById;
 
 
-    public void setTelephone(String telephone) {
+    public Client(int id, String nom, String prenom, String adresseRue, String adresseVille, String codePostal,
+			String telephone, String allergies, Collection<ClientAgenceAssoc> clientAgenceAssocsById,
+			Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresseRue = adresseRue;
+		this.adresseVille = adresseVille;
+		this.codePostal = codePostal;
+		this.telephone = telephone;
+		this.allergies = allergies;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public Client(String nom, String prenom, String adresseRue, String adresseVille, String codePostal,
+			String telephone, String allergies, Collection<ClientAgenceAssoc> clientAgenceAssocsById,
+			Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresseRue = adresseRue;
+		this.adresseVille = adresseVille;
+		this.codePostal = codePostal;
+		this.telephone = telephone;
+		this.allergies = allergies;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public Client() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresseRue=" + adresseRue
+				+ ", adresseVille=" + adresseVille + ", codePostal=" + codePostal + ", telephone=" + telephone
+				+ ", allergies=" + allergies + ", clientAgenceAssocsById=" + clientAgenceAssocsById
+				+ ", facturationAssocsById=" + facturationAssocsById + "]";
+	}
+
+	public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

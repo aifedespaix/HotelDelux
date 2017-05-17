@@ -15,7 +15,39 @@ public class Droit {
     private boolean modifiable;
     private Collection<DroitRoleAssoc> droitRoleAssocsById;
 
-    public void setId(Integer id) {
+    public Droit(int id, String code, String description, boolean visible, boolean modifiable,
+			Collection<DroitRoleAssoc> droitRoleAssocsById) {
+		super();
+		this.id = id;
+		this.code = code;
+		this.description = description;
+		this.visible = visible;
+		this.modifiable = modifiable;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+	}
+
+	public Droit(String code, String description, boolean visible, boolean modifiable,
+			Collection<DroitRoleAssoc> droitRoleAssocsById) {
+		super();
+		this.code = code;
+		this.description = description;
+		this.visible = visible;
+		this.modifiable = modifiable;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+	}
+
+	public Droit() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Droit [id=" + id + ", code=" + code + ", description=" + description + ", visible=" + visible
+				+ ", modifiable=" + modifiable + ", droitRoleAssocsById=" + droitRoleAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

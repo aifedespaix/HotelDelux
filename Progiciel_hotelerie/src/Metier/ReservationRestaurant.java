@@ -18,7 +18,42 @@ public class ReservationRestaurant {
     private Collection<FacturationAssoc> facturationAssocsById;
     private Collection<RestaurantAssoc> restaurantAssocsById;
 
-    public void setId(Integer id) {
+    public ReservationRestaurant(int id, Date dateArrivee, Date dateDepart, Tva tvaByIdTva, Table tableByIdTable,
+			Collection<FacturationAssoc> facturationAssocsById, Collection<RestaurantAssoc> restaurantAssocsById) {
+		super();
+		this.id = id;
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
+		this.tvaByIdTva = tvaByIdTva;
+		this.tableByIdTable = tableByIdTable;
+		this.facturationAssocsById = facturationAssocsById;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public ReservationRestaurant(Date dateArrivee, Date dateDepart, Tva tvaByIdTva, Table tableByIdTable,
+			Collection<FacturationAssoc> facturationAssocsById, Collection<RestaurantAssoc> restaurantAssocsById) {
+		super();
+		this.dateArrivee = dateArrivee;
+		this.dateDepart = dateDepart;
+		this.tvaByIdTva = tvaByIdTva;
+		this.tableByIdTable = tableByIdTable;
+		this.facturationAssocsById = facturationAssocsById;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public ReservationRestaurant() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ReservationRestaurant [id=" + id + ", dateArrivee=" + dateArrivee + ", dateDepart=" + dateDepart
+				+ ", tvaByIdTva=" + tvaByIdTva + ", tableByIdTable=" + tableByIdTable + ", facturationAssocsById="
+				+ facturationAssocsById + ", restaurantAssocsById=" + restaurantAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

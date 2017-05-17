@@ -18,7 +18,40 @@ public class ReservationSpa {
     private Spa spaByIdSpa;
     private Collection<FacturationAssoc> facturationAssocsById;
 
-    public void setId(Integer id) {
+    public ReservationSpa(int id, Date dateDebut, Date dateArrivee, Tva tvaByIdTva, Spa spaByIdSpa,
+			Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.id = id;
+		this.dateDebut = dateDebut;
+		this.dateArrivee = dateArrivee;
+		this.tvaByIdTva = tvaByIdTva;
+		this.spaByIdSpa = spaByIdSpa;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public ReservationSpa(Date dateDebut, Date dateArrivee, Tva tvaByIdTva, Spa spaByIdSpa,
+			Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateArrivee = dateArrivee;
+		this.tvaByIdTva = tvaByIdTva;
+		this.spaByIdSpa = spaByIdSpa;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public ReservationSpa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ReservationSpa [id=" + id + ", dateDebut=" + dateDebut + ", dateArrivee=" + dateArrivee
+				+ ", tvaByIdTva=" + tvaByIdTva + ", spaByIdSpa=" + spaByIdSpa + ", facturationAssocsById="
+				+ facturationAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

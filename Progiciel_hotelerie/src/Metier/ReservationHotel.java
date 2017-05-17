@@ -18,7 +18,40 @@ public class ReservationHotel {
     private Chambre chambreByIdChambre;
     private Collection<FacturationAssoc> facturationAssocsById;
 
-    public void setId(Integer id) {
+    public ReservationHotel(int id, Date dateArrivee, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
+			Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.id = id;
+		this.dateArrivee = dateArrivee;
+		this.dateDebut = dateDebut;
+		this.tvaByIdTva = tvaByIdTva;
+		this.chambreByIdChambre = chambreByIdChambre;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public ReservationHotel(Date dateArrivee, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
+			Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.dateArrivee = dateArrivee;
+		this.dateDebut = dateDebut;
+		this.tvaByIdTva = tvaByIdTva;
+		this.chambreByIdChambre = chambreByIdChambre;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public ReservationHotel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "ReservationHotel [id=" + id + ", dateArrivee=" + dateArrivee + ", dateDebut=" + dateDebut
+				+ ", tvaByIdTva=" + tvaByIdTva + ", chambreByIdChambre=" + chambreByIdChambre
+				+ ", facturationAssocsById=" + facturationAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

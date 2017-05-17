@@ -13,7 +13,35 @@ public class Spa {
     private Collection<EquipementSpa> equipementSpasById;
     private Collection<ReservationSpa> reservationSpasById;
 
-    public void setId(Integer id) {
+    public Spa(int id, int numero, Collection<EquipementSpa> equipementSpasById,
+			Collection<ReservationSpa> reservationSpasById) {
+		super();
+		this.id = id;
+		this.numero = numero;
+		this.equipementSpasById = equipementSpasById;
+		this.reservationSpasById = reservationSpasById;
+	}
+
+	public Spa(int numero, Collection<EquipementSpa> equipementSpasById,
+			Collection<ReservationSpa> reservationSpasById) {
+		super();
+		this.numero = numero;
+		this.equipementSpasById = equipementSpasById;
+		this.reservationSpasById = reservationSpasById;
+	}
+
+	public Spa() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Spa [id=" + id + ", numero=" + numero + ", equipementSpasById=" + equipementSpasById
+				+ ", reservationSpasById=" + reservationSpasById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

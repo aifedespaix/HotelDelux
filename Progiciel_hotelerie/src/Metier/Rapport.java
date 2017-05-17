@@ -14,7 +14,38 @@ public class Rapport {
     private String description;
     private DemandeIntervention demandeInterventionByIdDemandeIntervention;
 
-    public void setId(Integer id) {
+    public Rapport(int id, Date dateDebut, Date dateFin, String description,
+			DemandeIntervention demandeInterventionByIdDemandeIntervention) {
+		super();
+		this.id = id;
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.description = description;
+		this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
+	}
+
+	public Rapport(Date dateDebut, Date dateFin, String description,
+			DemandeIntervention demandeInterventionByIdDemandeIntervention) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.description = description;
+		this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
+	}
+
+	public Rapport() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Rapport [id=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", description="
+				+ description + ", demandeInterventionByIdDemandeIntervention="
+				+ demandeInterventionByIdDemandeIntervention + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

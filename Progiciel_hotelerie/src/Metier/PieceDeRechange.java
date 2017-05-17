@@ -17,7 +17,42 @@ public class PieceDeRechange {
     private Collection<CommandePieceAssoc> commandePieceAssocsById;
     private Collection<DemandeIntervention> demandeInterventionsById;
 
-    public void setId(Integer id) {
+    public PieceDeRechange(int id, String libelle, double prix, int quantite,
+			Collection<CommandePieceAssoc> commandePieceAssocsById,
+			Collection<DemandeIntervention> demandeInterventionsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+
+	public PieceDeRechange(String libelle, double prix, int quantite,
+			Collection<CommandePieceAssoc> commandePieceAssocsById,
+			Collection<DemandeIntervention> demandeInterventionsById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.quantite = quantite;
+		this.commandePieceAssocsById = commandePieceAssocsById;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+
+	public PieceDeRechange() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "PieceDeRechange [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", quantite=" + quantite
+				+ ", commandePieceAssocsById=" + commandePieceAssocsById + ", demandeInterventionsById="
+				+ demandeInterventionsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

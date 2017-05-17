@@ -14,7 +14,37 @@ public class Aliment {
     private Collection<AlimentCommandeAssoc> alimentCommandeAssocsById;
     private Collection<PlatAlimentAssoc> platAlimentAssocsById;
 
-    public void setId(Integer id) {
+    public Aliment(int id, String libelle, double prix, Collection<AlimentCommandeAssoc> alimentCommandeAssocsById,
+			Collection<PlatAlimentAssoc> platAlimentAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.platAlimentAssocsById = platAlimentAssocsById;
+	}
+
+	public Aliment(String libelle, double prix, Collection<AlimentCommandeAssoc> alimentCommandeAssocsById,
+			Collection<PlatAlimentAssoc> platAlimentAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.alimentCommandeAssocsById = alimentCommandeAssocsById;
+		this.platAlimentAssocsById = platAlimentAssocsById;
+	}
+
+	public Aliment() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Aliment [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", alimentCommandeAssocsById="
+				+ alimentCommandeAssocsById + ", platAlimentAssocsById=" + platAlimentAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

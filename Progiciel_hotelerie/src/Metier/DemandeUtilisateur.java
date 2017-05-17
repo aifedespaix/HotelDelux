@@ -13,7 +13,33 @@ public class DemandeUtilisateur {
     private Utilisateur utilisateurByIdUtilisateur;
     private DemandeIntervention demandeInterventionByIdDemande;
 
-    public void setId(Integer id) {
+    public DemandeUtilisateur(int id, Utilisateur utilisateurByIdUtilisateur,
+			DemandeIntervention demandeInterventionByIdDemande) {
+		super();
+		this.id = id;
+		this.utilisateurByIdUtilisateur = utilisateurByIdUtilisateur;
+		this.demandeInterventionByIdDemande = demandeInterventionByIdDemande;
+	}
+
+	public DemandeUtilisateur(Utilisateur utilisateurByIdUtilisateur,
+			DemandeIntervention demandeInterventionByIdDemande) {
+		super();
+		this.utilisateurByIdUtilisateur = utilisateurByIdUtilisateur;
+		this.demandeInterventionByIdDemande = demandeInterventionByIdDemande;
+	}
+
+	public DemandeUtilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "DemandeUtilisateur [id=" + id + ", utilisateurByIdUtilisateur=" + utilisateurByIdUtilisateur
+				+ ", demandeInterventionByIdDemande=" + demandeInterventionByIdDemande + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

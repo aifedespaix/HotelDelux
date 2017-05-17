@@ -14,7 +14,34 @@ public class Criticite {
     private Time tempsMaximum;
     private Collection<DemandeIntervention> demandeInterventionsById;
 
-    public void setId(Integer id) {
+    public Criticite(int id, String libelle, Time tempsMaximum,
+			Collection<DemandeIntervention> demandeInterventionsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.tempsMaximum = tempsMaximum;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+
+	public Criticite(String libelle, Time tempsMaximum, Collection<DemandeIntervention> demandeInterventionsById) {
+		super();
+		this.libelle = libelle;
+		this.tempsMaximum = tempsMaximum;
+		this.demandeInterventionsById = demandeInterventionsById;
+	}
+
+	public Criticite() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Criticite [id=" + id + ", libelle=" + libelle + ", tempsMaximum=" + tempsMaximum
+				+ ", demandeInterventionsById=" + demandeInterventionsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

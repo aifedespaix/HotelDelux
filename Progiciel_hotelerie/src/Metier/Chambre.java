@@ -16,7 +16,42 @@ public class Chambre {
     private Collection<EquipementHotel> equipementHotelsById;
     private Collection<ReservationHotel> reservationHotelsById;
 
-    public void setCapacite(int capacite) {
+    public Chambre(int id, double prixAdulte, double prixEnfant, int capacite, int etage,
+			Collection<EquipementHotel> equipementHotelsById, Collection<ReservationHotel> reservationHotelsById) {
+		super();
+		this.id = id;
+		this.prixAdulte = prixAdulte;
+		this.prixEnfant = prixEnfant;
+		this.capacite = capacite;
+		this.etage = etage;
+		this.equipementHotelsById = equipementHotelsById;
+		this.reservationHotelsById = reservationHotelsById;
+	}
+
+	public Chambre(double prixAdulte, double prixEnfant, int capacite, int etage,
+			Collection<EquipementHotel> equipementHotelsById, Collection<ReservationHotel> reservationHotelsById) {
+		super();
+		this.prixAdulte = prixAdulte;
+		this.prixEnfant = prixEnfant;
+		this.capacite = capacite;
+		this.etage = etage;
+		this.equipementHotelsById = equipementHotelsById;
+		this.reservationHotelsById = reservationHotelsById;
+	}
+
+	public Chambre() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Chambre [id=" + id + ", prixAdulte=" + prixAdulte + ", prixEnfant=" + prixEnfant + ", capacite="
+				+ capacite + ", etage=" + etage + ", equipementHotelsById=" + equipementHotelsById
+				+ ", reservationHotelsById=" + reservationHotelsById + "]";
+	}
+
+	public void setCapacite(int capacite) {
         this.capacite = capacite;
     }
 

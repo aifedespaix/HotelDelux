@@ -17,7 +17,44 @@ public class EquipementRestaurant {
     private Table tableByIdTable;
     private Collection<CommandeAssoc> commandeAssocsById;
 
-    public void setId(Integer id) {
+    public EquipementRestaurant(int id, String libelle, String description, String photo,
+			Collection<DemandeIntervention> demandeInterventionsById, Table tableByIdTable,
+			Collection<CommandeAssoc> commandeAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.tableByIdTable = tableByIdTable;
+		this.commandeAssocsById = commandeAssocsById;
+	}
+
+	public EquipementRestaurant(String libelle, String description, String photo,
+			Collection<DemandeIntervention> demandeInterventionsById, Table tableByIdTable,
+			Collection<CommandeAssoc> commandeAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.description = description;
+		this.photo = photo;
+		this.demandeInterventionsById = demandeInterventionsById;
+		this.tableByIdTable = tableByIdTable;
+		this.commandeAssocsById = commandeAssocsById;
+	}
+
+	public EquipementRestaurant() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "EquipementRestaurant [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
+				+ photo + ", demandeInterventionsById=" + demandeInterventionsById + ", tableByIdTable="
+				+ tableByIdTable + ", commandeAssocsById=" + commandeAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

@@ -2,6 +2,8 @@ package src.Persistance;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+
+import src.Metier.EquipementHotel;
 import src.Metier.Utilisateur;
 
 import java.util.List;
@@ -19,6 +21,16 @@ public class AccesData {
 			u = listeU.get(0);
 		}
 		return u;
+	}
+	
+	public static EquipementHotel getEquipementHotel(int id){
+		EquipementHotel e = null;
+		List<EquipementHotel> listeE = s.createQuery("FROM EquipementHotel E WHERE E.id = " + id).list();
+		//List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
+		if(listeE.size() == 1){
+			e = listeE.get(0);
+		}
+		return e;
 	}
 
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){

@@ -16,7 +16,43 @@ public class CommandeAssoc {
     private EquipementHotel equipementHotelByIdEquipementHotel;
     private EquipementSpa equipementSpaByIdEquipementSpa;
 
-    public void setId(Integer id) {
+    public CommandeAssoc(int id, double quantite, Commande commandeByIdCommande,
+			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
+			EquipementHotel equipementHotelByIdEquipementHotel, EquipementSpa equipementSpaByIdEquipementSpa) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.commandeByIdCommande = commandeByIdCommande;
+		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+		this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+		this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
+	}
+
+	public CommandeAssoc(double quantite, Commande commandeByIdCommande,
+			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
+			EquipementHotel equipementHotelByIdEquipementHotel, EquipementSpa equipementSpaByIdEquipementSpa) {
+		super();
+		this.quantite = quantite;
+		this.commandeByIdCommande = commandeByIdCommande;
+		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+		this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+		this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
+	}
+
+	public CommandeAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "CommandeAssoc [id=" + id + ", quantite=" + quantite + ", commandeByIdCommande=" + commandeByIdCommande
+				+ ", equipementRestaurantByIdEquipementRestaurant=" + equipementRestaurantByIdEquipementRestaurant
+				+ ", equipementHotelByIdEquipementHotel=" + equipementHotelByIdEquipementHotel
+				+ ", equipementSpaByIdEquipementSpa=" + equipementSpaByIdEquipementSpa + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

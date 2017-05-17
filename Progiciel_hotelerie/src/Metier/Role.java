@@ -13,7 +13,35 @@ public class Role {
     private Collection<DroitRoleAssoc> droitRoleAssocsById;
     private Collection<Utilisateur> utilisateursById;
 
-    public void setId(Integer id) {
+    public Role(int id, String libelle, Collection<DroitRoleAssoc> droitRoleAssocsById,
+			Collection<Utilisateur> utilisateursById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+		this.utilisateursById = utilisateursById;
+	}
+
+	public Role(String libelle, Collection<DroitRoleAssoc> droitRoleAssocsById,
+			Collection<Utilisateur> utilisateursById) {
+		super();
+		this.libelle = libelle;
+		this.droitRoleAssocsById = droitRoleAssocsById;
+		this.utilisateursById = utilisateursById;
+	}
+
+	public Role() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", libelle=" + libelle + ", droitRoleAssocsById=" + droitRoleAssocsById
+				+ ", utilisateursById=" + utilisateursById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

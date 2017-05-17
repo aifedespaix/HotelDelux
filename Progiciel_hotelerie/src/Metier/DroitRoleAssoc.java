@@ -13,7 +13,31 @@ public class DroitRoleAssoc {
     private Droit droitByIdDroit;
     private Role roleByIdRole;
 
-    public void setId(Integer id) {
+    public DroitRoleAssoc(int id, Droit droitByIdDroit, Role roleByIdRole) {
+		super();
+		this.id = id;
+		this.droitByIdDroit = droitByIdDroit;
+		this.roleByIdRole = roleByIdRole;
+	}
+
+	public DroitRoleAssoc(Droit droitByIdDroit, Role roleByIdRole) {
+		super();
+		this.droitByIdDroit = droitByIdDroit;
+		this.roleByIdRole = roleByIdRole;
+	}
+
+	public DroitRoleAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "DroitRoleAssoc [id=" + id + ", droitByIdDroit=" + droitByIdDroit + ", roleByIdRole=" + roleByIdRole
+				+ "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

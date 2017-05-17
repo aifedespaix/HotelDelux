@@ -15,7 +15,42 @@ public class Tva {
     private Collection<ReservationRestaurant> reservationRestaurantsById;
     private Collection<ReservationSpa> reservationSpasById;
 
-    public void setId(Integer id) {
+    public Tva(int id, String libelle, double prix, Collection<ReservationHotel> reservationHotelsById,
+			Collection<ReservationRestaurant> reservationRestaurantsById,
+			Collection<ReservationSpa> reservationSpasById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.reservationHotelsById = reservationHotelsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+		this.reservationSpasById = reservationSpasById;
+	}
+    
+	public Tva() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Tva [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", reservationHotelsById="
+				+ reservationHotelsById + ", reservationRestaurantsById=" + reservationRestaurantsById
+				+ ", reservationSpasById=" + reservationSpasById + "]";
+	}
+
+	public Tva(String libelle, double prix, Collection<ReservationHotel> reservationHotelsById,
+			Collection<ReservationRestaurant> reservationRestaurantsById,
+			Collection<ReservationSpa> reservationSpasById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.reservationHotelsById = reservationHotelsById;
+		this.reservationRestaurantsById = reservationRestaurantsById;
+		this.reservationSpasById = reservationSpasById;
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

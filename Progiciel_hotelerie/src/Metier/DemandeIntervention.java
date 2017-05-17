@@ -24,7 +24,65 @@ public class DemandeIntervention {
     private Collection<DemandeUtilisateur> demandeUtilisateursById;
     private Collection<Rapport> rapportsById;
 
-    public void setId(Integer id) {
+    
+    public DemandeIntervention(int id, Date dateCreation, String objet, String description, boolean valide,
+			Criticite criticiteByIdCriticite, EquipementSpa equipementSpaByIdEquipementSpa,
+			EquipementHotel equipementHotelByIdEquipementHotel,
+			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
+			PieceDeRechange pieceDeRechangeByIdPieceRechange, Collection<DemandeUtilisateur> demandeUtilisateursById,
+			Collection<Rapport> rapportsById) {
+		super();
+		this.id = id;
+		this.dateCreation = dateCreation;
+		this.objet = objet;
+		this.description = description;
+		this.valide = valide;
+		this.criticiteByIdCriticite = criticiteByIdCriticite;
+		this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
+		this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.rapportsById = rapportsById;
+	}
+
+	public DemandeIntervention(Date dateCreation, String objet, String description, boolean valide,
+			Criticite criticiteByIdCriticite, EquipementSpa equipementSpaByIdEquipementSpa,
+			EquipementHotel equipementHotelByIdEquipementHotel,
+			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
+			PieceDeRechange pieceDeRechangeByIdPieceRechange, Collection<DemandeUtilisateur> demandeUtilisateursById,
+			Collection<Rapport> rapportsById) {
+		super();
+		this.dateCreation = dateCreation;
+		this.objet = objet;
+		this.description = description;
+		this.valide = valide;
+		this.criticiteByIdCriticite = criticiteByIdCriticite;
+		this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
+		this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.rapportsById = rapportsById;
+	}
+
+	public DemandeIntervention() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "DemandeIntervention [id=" + id + ", dateCreation=" + dateCreation + ", objet=" + objet
+				+ ", description=" + description + ", valide=" + valide + ", criticiteByIdCriticite="
+				+ criticiteByIdCriticite + ", equipementSpaByIdEquipementSpa=" + equipementSpaByIdEquipementSpa
+				+ ", equipementHotelByIdEquipementHotel=" + equipementHotelByIdEquipementHotel
+				+ ", equipementRestaurantByIdEquipementRestaurant=" + equipementRestaurantByIdEquipementRestaurant
+				+ ", pieceDeRechangeByIdPieceRechange=" + pieceDeRechangeByIdPieceRechange
+				+ ", demandeUtilisateursById=" + demandeUtilisateursById + ", rapportsById=" + rapportsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

@@ -14,7 +14,36 @@ public class Boisson {
     private double prix;
     private Collection<RestaurantAssoc> restaurantAssocsById;
 
-    public void setId(Integer id) {
+    public Boisson(int id, String libelle, double quantite, double prix,
+			Collection<RestaurantAssoc> restaurantAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public Boisson(String libelle, double quantite, double prix, Collection<RestaurantAssoc> restaurantAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.quantite = quantite;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public Boisson() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Boisson [id=" + id + ", libelle=" + libelle + ", quantite=" + quantite + ", prix=" + prix
+				+ ", restaurantAssocsById=" + restaurantAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

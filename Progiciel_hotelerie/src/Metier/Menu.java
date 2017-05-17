@@ -13,7 +13,33 @@ public class Menu {
     private double prix;
     private Collection<RestaurantAssoc> restaurantAssocsById;
 
-    public void setId(Integer id) {
+    public Menu(int id, String libelle, double prix, Collection<RestaurantAssoc> restaurantAssocsById) {
+		super();
+		this.id = id;
+		this.libelle = libelle;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public Menu(String libelle, double prix, Collection<RestaurantAssoc> restaurantAssocsById) {
+		super();
+		this.libelle = libelle;
+		this.prix = prix;
+		this.restaurantAssocsById = restaurantAssocsById;
+	}
+
+	public Menu() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Menu [id=" + id + ", libelle=" + libelle + ", prix=" + prix + ", restaurantAssocsById="
+				+ restaurantAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

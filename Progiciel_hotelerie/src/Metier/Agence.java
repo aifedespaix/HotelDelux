@@ -14,7 +14,36 @@ public class Agence {
     private String email;
     private Collection<ClientAgenceAssoc> clientAgenceAssocsById;
 
-    public void setId(Integer id) {
+    public Agence(int id, String nom, int telephone, String email,
+			Collection<ClientAgenceAssoc> clientAgenceAssocsById) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.telephone = telephone;
+		this.email = email;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+	}
+
+	public Agence(String nom, int telephone, String email, Collection<ClientAgenceAssoc> clientAgenceAssocsById) {
+		super();
+		this.nom = nom;
+		this.telephone = telephone;
+		this.email = email;
+		this.clientAgenceAssocsById = clientAgenceAssocsById;
+	}
+
+	@Override
+	public String toString() {
+		return "Agence [id=" + id + ", nom=" + nom + ", telephone=" + telephone + ", email=" + email
+				+ ", clientAgenceAssocsById=" + clientAgenceAssocsById + "]";
+	}
+
+	public Agence() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

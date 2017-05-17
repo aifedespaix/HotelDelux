@@ -13,7 +13,33 @@ public class Facture {
     private boolean payee;
     private Collection<FacturationAssoc> facturationAssocsById;
 
-    public void setId(Integer id) {
+    public Facture(int id, String fichier, boolean payee, Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.id = id;
+		this.fichier = fichier;
+		this.payee = payee;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public Facture(String fichier, boolean payee, Collection<FacturationAssoc> facturationAssocsById) {
+		super();
+		this.fichier = fichier;
+		this.payee = payee;
+		this.facturationAssocsById = facturationAssocsById;
+	}
+
+	public Facture() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Facture [id=" + id + ", fichier=" + fichier + ", payee=" + payee + ", facturationAssocsById="
+				+ facturationAssocsById + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

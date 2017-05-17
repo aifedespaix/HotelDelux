@@ -14,7 +14,33 @@ public class PlatAlimentAssoc {
     private Plat platByIdPlat;
     private Aliment alimentByIdAliment;
 
-    public void setId(Integer id) {
+    public PlatAlimentAssoc(int id, double quantite, Plat platByIdPlat, Aliment alimentByIdAliment) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.platByIdPlat = platByIdPlat;
+		this.alimentByIdAliment = alimentByIdAliment;
+	}
+
+	public PlatAlimentAssoc(double quantite, Plat platByIdPlat, Aliment alimentByIdAliment) {
+		super();
+		this.quantite = quantite;
+		this.platByIdPlat = platByIdPlat;
+		this.alimentByIdAliment = alimentByIdAliment;
+	}
+
+	public PlatAlimentAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "PlatAlimentAssoc [id=" + id + ", quantite=" + quantite + ", platByIdPlat=" + platByIdPlat
+				+ ", alimentByIdAliment=" + alimentByIdAliment + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

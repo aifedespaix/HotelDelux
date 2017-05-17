@@ -16,7 +16,43 @@ public class Utilisateur {
     private Collection<DemandeUtilisateur> demandeUtilisateursById;
     private Role roleByIdRole;
 
-    public void setId(Integer id) {
+    
+    public Utilisateur(int id, String nom, String prenom, String login, String password,
+			Collection<DemandeUtilisateur> demandeUtilisateursById, Role roleByIdRole) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.password = password;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.roleByIdRole = roleByIdRole;
+	}
+
+	public Utilisateur(String nom, String prenom, String login, String password,
+			Collection<DemandeUtilisateur> demandeUtilisateursById, Role roleByIdRole) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.login = login;
+		this.password = password;
+		this.demandeUtilisateursById = demandeUtilisateursById;
+		this.roleByIdRole = roleByIdRole;
+	}
+
+	public Utilisateur() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password="
+				+ password + ", demandeUtilisateursById=" + demandeUtilisateursById + ", roleByIdRole=" + roleByIdRole
+				+ "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

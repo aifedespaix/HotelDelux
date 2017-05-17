@@ -16,7 +16,44 @@ public class FacturationAssoc {
     private ReservationHotel reservationHotelByIdReservationHotel;
     private ReservationRestaurant reservationRestaurantByIdReservationRestaurant;
 
-    public void setId(Integer id) {
+    public FacturationAssoc(int id, Client clientByIdClient, Facture factureByIdFacture,
+			ReservationSpa reservationSpaByIdReservationSpa, ReservationHotel reservationHotelByIdReservationHotel,
+			ReservationRestaurant reservationRestaurantByIdReservationRestaurant) {
+		super();
+		this.id = id;
+		this.clientByIdClient = clientByIdClient;
+		this.factureByIdFacture = factureByIdFacture;
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+	}
+
+	public FacturationAssoc(Client clientByIdClient, Facture factureByIdFacture,
+			ReservationSpa reservationSpaByIdReservationSpa, ReservationHotel reservationHotelByIdReservationHotel,
+			ReservationRestaurant reservationRestaurantByIdReservationRestaurant) {
+		super();
+		this.clientByIdClient = clientByIdClient;
+		this.factureByIdFacture = factureByIdFacture;
+		this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
+		this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+		this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
+	}
+
+	public FacturationAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "FacturationAssoc [id=" + id + ", clientByIdClient=" + clientByIdClient + ", factureByIdFacture="
+				+ factureByIdFacture + ", reservationSpaByIdReservationSpa=" + reservationSpaByIdReservationSpa
+				+ ", reservationHotelByIdReservationHotel=" + reservationHotelByIdReservationHotel
+				+ ", reservationRestaurantByIdReservationRestaurant=" + reservationRestaurantByIdReservationRestaurant
+				+ "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

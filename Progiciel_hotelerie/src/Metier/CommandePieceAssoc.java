@@ -14,7 +14,35 @@ public class CommandePieceAssoc {
     private Commande commandeByIdCommande;
     private PieceDeRechange pieceDeRechangeByIdPiece;
 
-    public void setId(Integer id) {
+    public CommandePieceAssoc(int id, double quantite, Commande commandeByIdCommande,
+			PieceDeRechange pieceDeRechangeByIdPiece) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.commandeByIdCommande = commandeByIdCommande;
+		this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
+	}
+
+	public CommandePieceAssoc(double quantite, Commande commandeByIdCommande,
+			PieceDeRechange pieceDeRechangeByIdPiece) {
+		super();
+		this.quantite = quantite;
+		this.commandeByIdCommande = commandeByIdCommande;
+		this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
+	}
+
+	public CommandePieceAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "CommandePieceAssoc [id=" + id + ", quantite=" + quantite + ", commandeByIdCommande="
+				+ commandeByIdCommande + ", pieceDeRechangeByIdPiece=" + pieceDeRechangeByIdPiece + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 

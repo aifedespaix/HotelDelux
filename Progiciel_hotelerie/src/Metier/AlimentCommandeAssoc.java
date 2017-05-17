@@ -14,7 +14,33 @@ public class AlimentCommandeAssoc {
     private Aliment alimentByIdAliment;
     private Commande commandeByIdCommande;
 
-    public void setId(Integer id) {
+    public AlimentCommandeAssoc(int id, double quantite, Aliment alimentByIdAliment, Commande commandeByIdCommande) {
+		super();
+		this.id = id;
+		this.quantite = quantite;
+		this.alimentByIdAliment = alimentByIdAliment;
+		this.commandeByIdCommande = commandeByIdCommande;
+	}
+
+	public AlimentCommandeAssoc(double quantite, Aliment alimentByIdAliment, Commande commandeByIdCommande) {
+		super();
+		this.quantite = quantite;
+		this.alimentByIdAliment = alimentByIdAliment;
+		this.commandeByIdCommande = commandeByIdCommande;
+	}
+
+	public AlimentCommandeAssoc() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return "AlimentCommandeAssoc [id=" + id + ", quantite=" + quantite + ", alimentByIdAliment="
+				+ alimentByIdAliment + ", commandeByIdCommande=" + commandeByIdCommande + "]";
+	}
+
+	public void setId(Integer id) {
         this.id = id;
     }
 
