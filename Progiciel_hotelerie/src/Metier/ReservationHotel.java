@@ -31,6 +31,7 @@ public class ReservationHotel {
     }
 
     @Basic
+    @Id
     @Column(name = "id", nullable = false)
     public int getId() {
         return id;
