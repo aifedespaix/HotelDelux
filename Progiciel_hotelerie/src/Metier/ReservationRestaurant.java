@@ -13,8 +13,6 @@ public class ReservationRestaurant {
     private int id;
     private Date dateArrivee;
     private Date dateDepart;
-    private int idTva;
-    private int idTable;
     private Tva tvaByIdTva;
     private Table tableByIdTable;
     private Collection<FacturationAssoc> facturationAssocsById;
@@ -22,14 +20,6 @@ public class ReservationRestaurant {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdTva(Integer idTva) {
-        this.idTva = idTva;
-    }
-
-    public void setIdTable(Integer idTable) {
-        this.idTable = idTable;
     }
 
     @Id
@@ -61,27 +51,6 @@ public class ReservationRestaurant {
     public void setDateDepart(Date dateDepart) {
         this.dateDepart = dateDepart;
     }
-
-    @Basic
-    @Column(name = "id_tva", nullable = false, updatable = false,insertable = false)
-    public int getIdTva() {
-        return idTva;
-    }
-
-    public void setIdTva(int idTva) {
-        this.idTva = idTva;
-    }
-
-    @Basic
-    @Column(name = "id_table", nullable = false, updatable = false, insertable = false)
-    public int getIdTable() {
-        return idTable;
-    }
-
-    public void setIdTable(int idTable) {
-        this.idTable = idTable;
-    }
-
 
     @ManyToOne
     @JoinColumn(name = "id_tva", referencedColumnName = "id", nullable = false)
