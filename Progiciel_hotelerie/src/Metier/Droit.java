@@ -23,6 +23,11 @@ public class Droit {
         this.visible = visible;
     }
 
+    @Basic
+    @Column(name = "modifiable", nullable = false)
+    public boolean getModifiable() {
+        return modifiable;
+    }
     public void setModifiable(boolean modifiable) {
         this.modifiable = modifiable;
     }

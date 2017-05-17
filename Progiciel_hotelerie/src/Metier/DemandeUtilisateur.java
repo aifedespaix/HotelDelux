@@ -10,21 +10,11 @@ import javax.persistence.Table;
 @Table(name = "demande_utilisateur", schema = "hotel", catalog = "")
 public class DemandeUtilisateur {
     private int id;
-    private int idUtilisateur;
-    private int idDemande;
     private Utilisateur utilisateurByIdUtilisateur;
     private DemandeIntervention demandeInterventionByIdDemande;
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdUtilisateur(Integer idUtilisateur) {
-        this.idUtilisateur = idUtilisateur;
-    }
-
-    public void setIdDemande(Integer idDemande) {
-        this.idDemande = idDemande;
     }
 
     @Id

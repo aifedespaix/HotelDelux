@@ -10,22 +10,12 @@ import javax.persistence.Table;
 @Table(name = "commande_piece_assoc", schema = "hotel", catalog = "")
 public class CommandePieceAssoc {
     private int id;
-    private int idCommande;
-    private int idPiece;
     private double quantite;
     private Commande commandeByIdCommande;
     private PieceDeRechange pieceDeRechangeByIdPiece;
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdCommande(Integer idCommande) {
-        this.idCommande = idCommande;
-    }
-
-    public void setIdPiece(Integer idPiece) {
-        this.idPiece = idPiece;
     }
 
     public void setQuantite(Double quantite) {

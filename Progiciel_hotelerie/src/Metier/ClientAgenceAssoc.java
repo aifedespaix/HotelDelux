@@ -10,21 +10,11 @@ import javax.persistence.Table;
 @Table(name = "client_agence_assoc", schema = "hotel", catalog = "")
 public class ClientAgenceAssoc {
     private int id;
-    private int idClient;
-    private int idAgence;
     private Client clientByIdClient;
     private Agence agenceByIdAgence;
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdClient(Integer idClient) {
-        this.idClient = idClient;
-    }
-
-    public void setIdAgence(Integer idAgence) {
-        this.idAgence = idAgence;
     }
 
     @Id

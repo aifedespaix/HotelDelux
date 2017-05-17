@@ -10,8 +10,6 @@ import javax.persistence.Table;
 @Table(name = "commande_assoc", schema = "hotel", catalog = "")
 public class CommandeAssoc {
     private int id;
-    private int idCommande;
-    private int idEquipement;
     private double quantite;
     private Commande commandeByIdCommande;
     private EquipementRestaurant equipementRestaurantByIdEquipementRestaurant;
@@ -20,14 +18,6 @@ public class CommandeAssoc {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdCommande(Integer idCommande) {
-        this.idCommande = idCommande;
-    }
-
-    public void setIdEquipement(Integer idEquipement) {
-        this.idEquipement = idEquipement;
     }
 
     public void setQuantite(Double quantite) {

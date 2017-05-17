@@ -16,11 +16,6 @@ public class DemandeIntervention {
     private String objet;
     private String description;
     private boolean valide;
-    private int idCriticite;
-    private Integer idEquipementSpa;
-    private Integer idEquipementHotel;
-    private Integer idEquipementRestaurant;
-    private Integer idPieceRechange;
     private Criticite criticiteByIdCriticite;
     private EquipementSpa equipementSpaByIdEquipementSpa;
     private EquipementHotel equipementHotelByIdEquipementHotel;
@@ -35,10 +30,6 @@ public class DemandeIntervention {
 
     public void setValide(boolean valide) {
         this.valide = valide;
-    }
-
-    public void setIdCriticite(Integer idCriticite) {
-        this.idCriticite = idCriticite;
     }
 
     @Id

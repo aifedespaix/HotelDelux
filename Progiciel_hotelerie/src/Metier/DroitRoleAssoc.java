@@ -10,21 +10,11 @@ import javax.persistence.Table;
 @Table(name = "droit_role_assoc", schema = "hotel", catalog = "")
 public class DroitRoleAssoc {
     private int id;
-    private int idDroit;
-    private int idRole;
     private Droit droitByIdDroit;
     private Role roleByIdRole;
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdDroit(Integer idDroit) {
-        this.idDroit = idDroit;
-    }
-
-    public void setIdRole(Integer idRole) {
-        this.idRole = idRole;
     }
 
     @Id
