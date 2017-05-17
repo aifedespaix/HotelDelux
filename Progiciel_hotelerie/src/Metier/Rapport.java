@@ -12,15 +12,10 @@ public class Rapport {
     private Date dateDebut;
     private Date dateFin;
     private String description;
-    private int idDemandeIntervention;
     private DemandeIntervention demandeInterventionByIdDemandeIntervention;
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdDemandeIntervention(Integer idDemandeIntervention) {
-        this.idDemandeIntervention = idDemandeIntervention;
     }
 
     @Id
@@ -62,43 +57,7 @@ public class Rapport {
     public void setDescription(String description) {
         this.description = description;
     }
-
-    @Basic
-    @Column(name = "id_demande_intervention", nullable = false)
-    public int getIdDemandeIntervention() {
-        return idDemandeIntervention;
-    }
-
-    public void setIdDemandeIntervention(int idDemandeIntervention) {
-        this.idDemandeIntervention = idDemandeIntervention;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Rapport rapport = (Rapport) o;
-
-        if (id != rapport.id) return false;
-        if (idDemandeIntervention != rapport.idDemandeIntervention) return false;
-        if (dateDebut != null ? !dateDebut.equals(rapport.dateDebut) : rapport.dateDebut != null) return false;
-        if (dateFin != null ? !dateFin.equals(rapport.dateFin) : rapport.dateFin != null) return false;
-        if (description != null ? !description.equals(rapport.description) : rapport.description != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (dateDebut != null ? dateDebut.hashCode() : 0);
-        result = 31 * result + (dateFin != null ? dateFin.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + idDemandeIntervention;
-        return result;
-    }
-
+    
     @ManyToOne
     @JoinColumn(name = "id_demande_intervention", referencedColumnName = "id", nullable = false)
     public DemandeIntervention getDemandeInterventionByIdDemandeIntervention() {

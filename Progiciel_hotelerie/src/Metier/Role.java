@@ -37,26 +37,6 @@ public class Role {
         this.libelle = libelle;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Role role = (Role) o;
-
-        if (id != role.id) return false;
-        if (libelle != null ? !libelle.equals(role.libelle) : role.libelle != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        return result;
-    }
-
     @OneToMany(mappedBy = "roleByIdRole")
     public Collection<DroitRoleAssoc> getDroitRoleAssocsById() {
         return droitRoleAssocsById;

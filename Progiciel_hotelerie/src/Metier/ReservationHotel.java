@@ -14,22 +14,12 @@ public class ReservationHotel {
     private int id;
     private Date dateArrivee;
     private Date dateDebut;
-    private int idTva;
-    private int idChambre;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
     private Collection<FacturationAssoc> facturationAssocsById;
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdTva(Integer idTva) {
-        this.idTva = idTva;
-    }
-
-    public void setIdChambre(Integer idChambre) {
-        this.idChambre = idChambre;
     }
 
     @Id
@@ -60,52 +50,6 @@ public class ReservationHotel {
 
     public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
-    }
-
-    @Basic
-    @Column(name = "id_tva", nullable = false)
-    public int getIdTva() {
-        return idTva;
-    }
-
-    public void setIdTva(int idTva) {
-        this.idTva = idTva;
-    }
-
-    @Basic
-    @Column(name = "id_chambre", nullable = false)
-    public int getIdChambre() {
-        return idChambre;
-    }
-
-    public void setIdChambre(int idChambre) {
-        this.idChambre = idChambre;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ReservationHotel that = (ReservationHotel) o;
-
-        if (id != that.id) return false;
-        if (idTva != that.idTva) return false;
-        if (idChambre != that.idChambre) return false;
-        if (dateArrivee != null ? !dateArrivee.equals(that.dateArrivee) : that.dateArrivee != null) return false;
-        if (dateDebut != null ? !dateDebut.equals(that.dateDebut) : that.dateDebut != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (dateArrivee != null ? dateArrivee.hashCode() : 0);
-        result = 31 * result + (dateDebut != null ? dateDebut.hashCode() : 0);
-        result = 31 * result + idTva;
-        result = 31 * result + idChambre;
-        return result;
     }
 
     @ManyToOne

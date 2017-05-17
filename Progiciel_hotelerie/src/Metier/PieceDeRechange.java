@@ -69,33 +69,6 @@ public class PieceDeRechange {
         this.quantite = quantite;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        PieceDeRechange that = (PieceDeRechange) o;
-
-        if (id != that.id) return false;
-        if (Double.compare(that.prix, prix) != 0) return false;
-        if (quantite != that.quantite) return false;
-        if (libelle != null ? !libelle.equals(that.libelle) : that.libelle != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        temp = Double.doubleToLongBits(prix);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + quantite;
-        return result;
-    }
-
     @OneToMany(mappedBy = "pieceDeRechangeByIdPiece")
     public Collection<CommandePieceAssoc> getCommandePieceAssocsById() {
         return commandePieceAssocsById;

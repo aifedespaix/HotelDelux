@@ -41,26 +41,6 @@ public class Table {
         this.nbCouverts = nbCouverts;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Table table = (Table) o;
-
-        if (id != table.id) return false;
-        if (nbCouverts != table.nbCouverts) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + nbCouverts;
-        return result;
-    }
-
     @OneToMany(mappedBy = "tableByIdTable")
     public Collection<EquipementRestaurant> getEquipementRestaurantsById() {
         return equipementRestaurantsById;

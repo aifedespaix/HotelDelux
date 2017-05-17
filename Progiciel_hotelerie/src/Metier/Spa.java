@@ -41,26 +41,6 @@ public class Spa {
         this.numero = numero;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Spa spa = (Spa) o;
-
-        if (id != spa.id) return false;
-        if (numero != spa.numero) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + numero;
-        return result;
-    }
-
     @OneToMany(mappedBy = "spaByIdSpa")
     public Collection<EquipementSpa> getEquipementSpasById() {
         return equipementSpasById;

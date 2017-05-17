@@ -51,28 +51,6 @@ public class Facture {
         this.payee = payee;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Facture facture = (Facture) o;
-
-        if (id != facture.id) return false;
-        if (payee != facture.payee) return false;
-        if (fichier != null ? !fichier.equals(facture.fichier) : facture.fichier != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (fichier != null ? fichier.hashCode() : 0);
-        result = 31 * result + (int) payee;
-        return result;
-    }
-
     @OneToMany(mappedBy = "factureByIdFacture")
     public Collection<FacturationAssoc> getFacturationAssocsById() {
         return facturationAssocsById;

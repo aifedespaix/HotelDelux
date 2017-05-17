@@ -51,31 +51,6 @@ public class Menu {
         this.prix = prix;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Menu menu = (Menu) o;
-
-        if (id != menu.id) return false;
-        if (Double.compare(menu.prix, prix) != 0) return false;
-        if (libelle != null ? !libelle.equals(menu.libelle) : menu.libelle != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        temp = Double.doubleToLongBits(prix);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
     @OneToMany(mappedBy = "menuByIdMenu")
     public Collection<RestaurantAssoc> getRestaurantAssocsById() {
         return restaurantAssocsById;

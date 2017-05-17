@@ -13,16 +13,11 @@ public class Utilisateur {
     private String prenom;
     private String login;
     private String password;
-    private int idRole;
     private Collection<DemandeUtilisateur> demandeUtilisateursById;
     private Role roleByIdRole;
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public void setIdRole(Integer idRole) {
-        this.idRole = idRole;
     }
 
     @Id
@@ -74,45 +69,7 @@ public class Utilisateur {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    @Basic
-    @Column(name = "id_role", nullable = false)
-    public int getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Utilisateur that = (Utilisateur) o;
-
-        if (id != that.id) return false;
-        if (idRole != that.idRole) return false;
-        if (nom != null ? !nom.equals(that.nom) : that.nom != null) return false;
-        if (prenom != null ? !prenom.equals(that.prenom) : that.prenom != null) return false;
-        if (login != null ? !login.equals(that.login) : that.login != null) return false;
-        if (password != null ? !password.equals(that.password) : that.password != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
-        result = 31 * result + (prenom != null ? prenom.hashCode() : 0);
-        result = 31 * result + (login != null ? login.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + idRole;
-        return result;
-    }
-
+    
     @OneToMany(mappedBy = "utilisateurByIdUtilisateur")
     public Collection<DemandeUtilisateur> getDemandeUtilisateursById() {
         return demandeUtilisateursById;
