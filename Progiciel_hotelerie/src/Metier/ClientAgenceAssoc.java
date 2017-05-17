@@ -57,28 +57,6 @@ public class ClientAgenceAssoc {
         this.idAgence = idAgence;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ClientAgenceAssoc that = (ClientAgenceAssoc) o;
-
-        if (id != that.id) return false;
-        if (idClient != that.idClient) return false;
-        if (idAgence != that.idAgence) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + idClient;
-        result = 31 * result + idAgence;
-        return result;
-    }
-
     @ManyToOne
     @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
     public Client getClientByIdClient() {

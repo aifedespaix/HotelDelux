@@ -66,34 +66,6 @@ public class Boisson {
         this.prix = prix;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Boisson boisson = (Boisson) o;
-
-        if (id != boisson.id) return false;
-        if (Double.compare(boisson.quantite, quantite) != 0) return false;
-        if (Double.compare(boisson.prix, prix) != 0) return false;
-        if (libelle != null ? !libelle.equals(boisson.libelle) : boisson.libelle != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        temp = Double.doubleToLongBits(quantite);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(prix);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
     @OneToMany(mappedBy = "boissonByIdBoisson")
     public Collection<RestaurantAssoc> getRestaurantAssocsById() {
         return restaurantAssocsById;

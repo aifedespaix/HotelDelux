@@ -52,31 +52,6 @@ public class Aliment {
         this.prix = prix;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Aliment aliment = (Aliment) o;
-
-        if (id != aliment.id) return false;
-        if (Double.compare(aliment.prix, prix) != 0) return false;
-        if (libelle != null ? !libelle.equals(aliment.libelle) : aliment.libelle != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + (libelle != null ? libelle.hashCode() : 0);
-        temp = Double.doubleToLongBits(prix);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
-
     @OneToMany(mappedBy = "alimentByIdAliment")
     public Collection<AlimentCommandeAssoc> getAlimentCommandeAssocsById() {
         return alimentCommandeAssocsById;
