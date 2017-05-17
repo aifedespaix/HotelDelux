@@ -16,6 +16,10 @@ public class Chambre {
     private Collection<EquipementHotel> equipementHotelsById;
     private Collection<ReservationHotel> reservationHotelsById;
 
+    public void setCapacite(int capacite) {
+        this.capacite = capacite;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

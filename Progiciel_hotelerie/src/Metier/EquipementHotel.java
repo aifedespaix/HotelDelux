@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "equipement_hotel", schema = "base_definitive", catalog = "")
+@Table(name = "equipement_hotel", schema = "hotel", catalog = "")
 public class EquipementHotel {
     private int id;
     private String libelle;
@@ -17,6 +17,7 @@ public class EquipementHotel {
     private int idChambre;
     private Collection<DemandeIntervention> demandeInterventionsById;
     private Chambre chambreByIdChambre;
+    private Collection<CommandeAssoc> commandeAssocsById;
 
     public void setId(Integer id) {
         this.id = id;
@@ -67,7 +68,7 @@ public class EquipementHotel {
     }
 
     @Basic
-    @Column(name = "id_chambre", nullable = false)
+    @Column(name = "id_chambre", nullable = false, updatable = false,insertable = false)
     public int getIdChambre() {
         return idChambre;
     }
@@ -119,5 +120,14 @@ public class EquipementHotel {
 
     public void setChambreByIdChambre(Chambre chambreByIdChambre) {
         this.chambreByIdChambre = chambreByIdChambre;
+    }
+
+    @OneToMany(mappedBy = "equipementHotelByIdEquipementHotel")
+    public Collection<CommandeAssoc> getCommandeAssocsById() {
+        return commandeAssocsById;
+    }
+
+    public void setCommandeAssocsById(Collection<CommandeAssoc> commandeAssocsById) {
+        this.commandeAssocsById = commandeAssocsById;
     }
 }

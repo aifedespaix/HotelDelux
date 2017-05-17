@@ -7,13 +7,16 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "commande_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "commande_assoc", schema = "hotel", catalog = "")
 public class CommandeAssoc {
     private int id;
     private int idCommande;
     private int idEquipement;
     private double quantite;
     private Commande commandeByIdCommande;
+    private EquipementRestaurant equipementRestaurantByIdEquipementRestaurant;
+    private EquipementHotel equipementHotelByIdEquipementHotel;
+    private EquipementSpa equipementSpaByIdEquipementSpa;
 
     public void setId(Integer id) {
         this.id = id;
@@ -42,7 +45,7 @@ public class CommandeAssoc {
     }
 
     @Basic
-    @Column(name = "id_commande", nullable = false)
+    @Column(name = "id_commande", nullable = false, updatable = false,insertable = false)
     public int getIdCommande() {
         return idCommande;
     }
@@ -52,7 +55,7 @@ public class CommandeAssoc {
     }
 
     @Basic
-    @Column(name = "id_equipement", nullable = false)
+    @Column(name = "id_equipement", nullable = false, updatable = false,insertable = false)
     public int getIdEquipement() {
         return idEquipement;
     }
@@ -72,7 +75,7 @@ public class CommandeAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Commande getCommandeByIdCommande() {
         return commandeByIdCommande;
     }
@@ -106,5 +109,35 @@ public class CommandeAssoc {
         temp = Double.doubleToLongBits(quantite);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_equipement_restaurant", referencedColumnName = "id")
+    public EquipementRestaurant getEquipementRestaurantByIdEquipementRestaurant() {
+        return equipementRestaurantByIdEquipementRestaurant;
+    }
+
+    public void setEquipementRestaurantByIdEquipementRestaurant(EquipementRestaurant equipementRestaurantByIdEquipementRestaurant) {
+        this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_equipement_hotel", referencedColumnName = "id")
+    public EquipementHotel getEquipementHotelByIdEquipementHotel() {
+        return equipementHotelByIdEquipementHotel;
+    }
+
+    public void setEquipementHotelByIdEquipementHotel(EquipementHotel equipementHotelByIdEquipementHotel) {
+        this.equipementHotelByIdEquipementHotel = equipementHotelByIdEquipementHotel;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_equipement_spa", referencedColumnName = "id")
+    public EquipementSpa getEquipementSpaByIdEquipementSpa() {
+        return equipementSpaByIdEquipementSpa;
+    }
+
+    public void setEquipementSpaByIdEquipementSpa(EquipementSpa equipementSpaByIdEquipementSpa) {
+        this.equipementSpaByIdEquipementSpa = equipementSpaByIdEquipementSpa;
     }
 }

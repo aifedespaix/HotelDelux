@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "facturation_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "facturation_assoc", schema = "hotel", catalog = "")
 public class FacturationAssoc {
     private int id;
     private int idReservation;
@@ -15,6 +15,9 @@ public class FacturationAssoc {
     private int idFacture;
     private Client clientByIdClient;
     private Facture factureByIdFacture;
+    private ReservationSpa reservationSpaByIdReservationSpa;
+    private ReservationHotel reservationHotelByIdReservationHotel;
+    private ReservationRestaurant reservationRestaurantByIdReservationRestaurant;
 
     public void setId(Integer id) {
         this.id = id;
@@ -43,7 +46,7 @@ public class FacturationAssoc {
     }
 
     @Basic
-    @Column(name = "id_reservation", nullable = false)
+    @Column(name = "id_reservation", nullable = false, updatable = false,insertable = false)
     public int getIdReservation() {
         return idReservation;
     }
@@ -53,7 +56,7 @@ public class FacturationAssoc {
     }
 
     @Basic
-    @Column(name = "id_client", nullable = false)
+    @Column(name = "id_client", nullable = false, updatable = false,insertable = false)
     public int getIdClient() {
         return idClient;
     }
@@ -63,7 +66,7 @@ public class FacturationAssoc {
     }
 
     @Basic
-    @Column(name = "id_facture", nullable = false)
+    @Column(name = "id_facture", nullable = false, updatable = false,insertable = false)
     public int getIdFacture() {
         return idFacture;
     }
@@ -114,5 +117,35 @@ public class FacturationAssoc {
 
     public void setFactureByIdFacture(Facture factureByIdFacture) {
         this.factureByIdFacture = factureByIdFacture;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_reservation_spa", referencedColumnName = "id")
+    public ReservationSpa getReservationSpaByIdReservationSpa() {
+        return reservationSpaByIdReservationSpa;
+    }
+
+    public void setReservationSpaByIdReservationSpa(ReservationSpa reservationSpaByIdReservationSpa) {
+        this.reservationSpaByIdReservationSpa = reservationSpaByIdReservationSpa;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_reservation_hotel", referencedColumnName = "id")
+    public ReservationHotel getReservationHotelByIdReservationHotel() {
+        return reservationHotelByIdReservationHotel;
+    }
+
+    public void setReservationHotelByIdReservationHotel(ReservationHotel reservationHotelByIdReservationHotel) {
+        this.reservationHotelByIdReservationHotel = reservationHotelByIdReservationHotel;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_reservation_restaurant", referencedColumnName = "id")
+    public ReservationRestaurant getReservationRestaurantByIdReservationRestaurant() {
+        return reservationRestaurantByIdReservationRestaurant;
+    }
+
+    public void setReservationRestaurantByIdReservationRestaurant(ReservationRestaurant reservationRestaurantByIdReservationRestaurant) {
+        this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
     }
 }

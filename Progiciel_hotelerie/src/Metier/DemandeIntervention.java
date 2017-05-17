@@ -9,7 +9,7 @@ import java.util.Collection;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "demande_intervention", schema = "base_definitive", catalog = "")
+@Table(name = "demande_intervention", schema = "hotel", catalog = "")
 public class DemandeIntervention {
     private int id;
     private Date dateCreation;

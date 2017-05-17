@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "commande_piece_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "commande_piece_assoc", schema = "hotel", catalog = "")
 public class CommandePieceAssoc {
     private int id;
     private int idCommande;
@@ -43,7 +43,7 @@ public class CommandePieceAssoc {
     }
 
     @Basic
-    @Column(name = "id_commande", nullable = false)
+    @Column(name = "id_commande", nullable = false, updatable = false,insertable = false)
     public int getIdCommande() {
         return idCommande;
     }
@@ -53,7 +53,7 @@ public class CommandePieceAssoc {
     }
 
     @Basic
-    @Column(name = "id_piece", nullable = false)
+    @Column(name = "id_piece", nullable = false, updatable = false,insertable = false)
     public int getIdPiece() {
         return idPiece;
     }
@@ -73,7 +73,7 @@ public class CommandePieceAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Commande getCommandeByIdCommande() {
         return commandeByIdCommande;
     }
@@ -83,7 +83,7 @@ public class CommandePieceAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_piece", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_piece", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public PieceDeRechange getPieceDeRechangeByIdPiece() {
         return pieceDeRechangeByIdPiece;
     }

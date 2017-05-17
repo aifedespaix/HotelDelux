@@ -8,7 +8,7 @@ import java.util.Collection;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "piece_de_rechange", schema = "base_definitive", catalog = "")
+@Table(name = "piece_de_rechange", schema = "hotel", catalog = "")
 public class PieceDeRechange {
     private int id;
     private String libelle;

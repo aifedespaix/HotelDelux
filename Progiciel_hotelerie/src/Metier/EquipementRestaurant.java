@@ -7,7 +7,7 @@ import java.util.Collection;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@javax.persistence.Table(name = "equipement_restaurant", schema = "base_definitive", catalog = "")
+@javax.persistence.Table(name = "equipement_restaurant", schema = "hotel", catalog = "")
 public class EquipementRestaurant {
     private int id;
     private String libelle;
@@ -17,6 +17,7 @@ public class EquipementRestaurant {
     private Collection<DemandeIntervention> demandeInterventionsById;
     private Table tableByIdTable;
     private Collection<RestaurantAssoc> restaurantAssocsById;
+    private Collection<CommandeAssoc> commandeAssocsById;
 
     public void setId(Integer id) {
         this.id = id;
@@ -67,7 +68,7 @@ public class EquipementRestaurant {
     }
 
     @Basic
-    @Column(name = "id_table", nullable = false)
+    @Column(name = "id_table", nullable = false, updatable = false,insertable = false)
     public int getIdTable() {
         return idTable;
     }
@@ -112,7 +113,7 @@ public class EquipementRestaurant {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_table", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_table", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Table getTableByIdTable() {
         return tableByIdTable;
     }
@@ -128,5 +129,14 @@ public class EquipementRestaurant {
 
     public void setRestaurantAssocsById(Collection<RestaurantAssoc> restaurantAssocsById) {
         this.restaurantAssocsById = restaurantAssocsById;
+    }
+
+    @OneToMany(mappedBy = "equipementRestaurantByIdEquipementRestaurant")
+    public Collection<CommandeAssoc> getCommandeAssocsById() {
+        return commandeAssocsById;
+    }
+
+    public void setCommandeAssocsById(Collection<CommandeAssoc> commandeAssocsById) {
+        this.commandeAssocsById = commandeAssocsById;
     }
 }

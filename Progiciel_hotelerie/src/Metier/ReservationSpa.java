@@ -3,12 +3,13 @@ package src.Metier;
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.sql.Date;
+import java.util.Collection;
 
 /**
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "reservation_spa", schema = "base_definitive", catalog = "")
+@Table(name = "reservation_spa", schema = "hotel", catalog = "")
 public class ReservationSpa {
     private int id;
     private Date dateDebut;
@@ -17,6 +18,7 @@ public class ReservationSpa {
     private int idSpa;
     private Tva tvaByIdTva;
     private Spa spaByIdSpa;
+    private Collection<FacturationAssoc> facturationAssocsById;
 
     public void setId(Integer id) {
         this.id = id;
@@ -124,5 +126,14 @@ public class ReservationSpa {
 
     public void setSpaByIdSpa(Spa spaByIdSpa) {
         this.spaByIdSpa = spaByIdSpa;
+    }
+
+    @OneToMany(mappedBy = "reservationSpaByIdReservationSpa")
+    public Collection<FacturationAssoc> getFacturationAssocsById() {
+        return facturationAssocsById;
+    }
+
+    public void setFacturationAssocsById(Collection<FacturationAssoc> facturationAssocsById) {
+        this.facturationAssocsById = facturationAssocsById;
     }
 }

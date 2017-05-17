@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "restaurant_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "restaurant_assoc", schema = "hotel", catalog = "")
 public class RestaurantAssoc {
     private int id;
     private Integer idMenu;
@@ -18,6 +18,7 @@ public class RestaurantAssoc {
     private Boisson boissonByIdBoisson;
     private Plat platByIdPlat;
     private EquipementRestaurant equipementRestaurantByIdReservation;
+    private ReservationRestaurant reservationRestaurantByIdReservationRestaurant;
 
     public void setId(Integer id) {
         this.id = id;
@@ -38,7 +39,7 @@ public class RestaurantAssoc {
     }
 
     @Basic
-    @Column(name = "id_menu", nullable = true)
+    @Column(name = "id_menu", nullable = true, updatable = false,insertable = false)
     public Integer getIdMenu() {
         return idMenu;
     }
@@ -48,7 +49,7 @@ public class RestaurantAssoc {
     }
 
     @Basic
-    @Column(name = "id_boisson", nullable = true)
+    @Column(name = "id_boisson", nullable = true, updatable = false,insertable = false)
     public Integer getIdBoisson() {
         return idBoisson;
     }
@@ -58,7 +59,7 @@ public class RestaurantAssoc {
     }
 
     @Basic
-    @Column(name = "id_plat", nullable = true)
+    @Column(name = "id_plat", nullable = true, updatable = false,insertable = false)
     public Integer getIdPlat() {
         return idPlat;
     }
@@ -68,7 +69,7 @@ public class RestaurantAssoc {
     }
 
     @Basic
-    @Column(name = "id_reservation", nullable = false)
+    @Column(name = "id_reservation", nullable = false, updatable = false,insertable = false)
     public int getIdReservation() {
         return idReservation;
     }
@@ -141,5 +142,15 @@ public class RestaurantAssoc {
 
     public void setEquipementRestaurantByIdReservation(EquipementRestaurant equipementRestaurantByIdReservation) {
         this.equipementRestaurantByIdReservation = equipementRestaurantByIdReservation;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "id_reservation_restaurant", referencedColumnName = "id")
+    public ReservationRestaurant getReservationRestaurantByIdReservationRestaurant() {
+        return reservationRestaurantByIdReservationRestaurant;
+    }
+
+    public void setReservationRestaurantByIdReservationRestaurant(ReservationRestaurant reservationRestaurantByIdReservationRestaurant) {
+        this.reservationRestaurantByIdReservationRestaurant = reservationRestaurantByIdReservationRestaurant;
     }
 }

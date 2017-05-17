@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "client_agence_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "client_agence_assoc", schema = "hotel", catalog = "")
 public class ClientAgenceAssoc {
     private int id;
     private int idClient;
@@ -38,7 +38,7 @@ public class ClientAgenceAssoc {
     }
 
     @Basic
-    @Column(name = "id_client", nullable = false)
+    @Column(name = "id_client", nullable = false, updatable = false,insertable = false)
     public int getIdClient() {
         return idClient;
     }
@@ -48,7 +48,7 @@ public class ClientAgenceAssoc {
     }
 
     @Basic
-    @Column(name = "id_agence", nullable = false)
+    @Column(name = "id_agence", nullable = false, updatable = false,insertable = false)
     public int getIdAgence() {
         return idAgence;
     }
@@ -58,7 +58,7 @@ public class ClientAgenceAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_client", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Client getClientByIdClient() {
         return clientByIdClient;
     }
@@ -68,7 +68,7 @@ public class ClientAgenceAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_agence", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_agence", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Agence getAgenceByIdAgence() {
         return agenceByIdAgence;
     }

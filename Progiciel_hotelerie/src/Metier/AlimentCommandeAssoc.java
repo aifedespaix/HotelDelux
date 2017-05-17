@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "aliment_commande_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "aliment_commande_assoc", schema = "hotel", catalog = "")
 public class AlimentCommandeAssoc {
     private int id;
     private int idAliment;
@@ -43,7 +43,7 @@ public class AlimentCommandeAssoc {
     }
 
     @Basic
-    @Column(name = "id_aliment", nullable = false)
+    @Column(name = "id_aliment", nullable = false, updatable = false,insertable = false)
     public int getIdAliment() {
         return idAliment;
     }
@@ -53,7 +53,7 @@ public class AlimentCommandeAssoc {
     }
 
     @Basic
-    @Column(name = "id_commande", nullable = false)
+    @Column(name = "id_commande", nullable = false, updatable = false,insertable = false)
     public int getIdCommande() {
         return idCommande;
     }
@@ -73,7 +73,7 @@ public class AlimentCommandeAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_aliment", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_aliment", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Aliment getAlimentByIdAliment() {
         return alimentByIdAliment;
     }
@@ -83,7 +83,7 @@ public class AlimentCommandeAssoc {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_commande", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Commande getCommandeByIdCommande() {
         return commandeByIdCommande;
     }

@@ -3,12 +3,13 @@ package src.Metier;
 import javax.persistence.*;
 import javax.persistence.Table;
 import java.sql.Date;
+import java.util.Collection;
 
 /**
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "reservation_hotel", schema = "base_definitive", catalog = "")
+@Table(name = "reservation_hotel", schema = "hotel", catalog = "")
 public class ReservationHotel {
     private int id;
     private Date dateArrivee;
@@ -17,6 +18,7 @@ public class ReservationHotel {
     private int idChambre;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
+    private Collection<FacturationAssoc> facturationAssocsById;
 
     public void setId(Integer id) {
         this.id = id;
@@ -30,7 +32,6 @@ public class ReservationHotel {
         this.idChambre = idChambre;
     }
 
-    @Basic
     @Id
     @Column(name = "id", nullable = false)
     public int getId() {
@@ -125,5 +126,14 @@ public class ReservationHotel {
 
     public void setChambreByIdChambre(Chambre chambreByIdChambre) {
         this.chambreByIdChambre = chambreByIdChambre;
+    }
+
+    @OneToMany(mappedBy = "reservationHotelByIdReservationHotel")
+    public Collection<FacturationAssoc> getFacturationAssocsById() {
+        return facturationAssocsById;
+    }
+
+    public void setFacturationAssocsById(Collection<FacturationAssoc> facturationAssocsById) {
+        this.facturationAssocsById = facturationAssocsById;
     }
 }

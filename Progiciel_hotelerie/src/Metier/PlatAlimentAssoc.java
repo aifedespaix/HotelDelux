@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "plat_aliment_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "plat_aliment_assoc", schema = "hotel", catalog = "")
 public class PlatAlimentAssoc {
     private int id;
     private int idPlat;
@@ -43,7 +43,7 @@ public class PlatAlimentAssoc {
     }
 
     @Basic
-    @Column(name = "id_plat", nullable = false)
+    @Column(name = "id_plat", nullable = false, updatable = false,insertable = false)
     public int getIdPlat() {
         return idPlat;
     }
@@ -53,7 +53,7 @@ public class PlatAlimentAssoc {
     }
 
     @Basic
-    @Column(name = "id_aliment", nullable = false)
+    @Column(name = "id_aliment", nullable = false, updatable = false,insertable = false)
     public int getIdAliment() {
         return idAliment;
     }

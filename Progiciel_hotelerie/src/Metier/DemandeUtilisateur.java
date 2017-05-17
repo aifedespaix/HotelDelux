@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "demande_utilisateur", schema = "base_definitive", catalog = "")
+@Table(name = "demande_utilisateur", schema = "hotel", catalog = "")
 public class DemandeUtilisateur {
     private int id;
     private int idUtilisateur;
@@ -45,16 +45,6 @@ public class DemandeUtilisateur {
 
     public void setIdUtilisateur(int idUtilisateur) {
         this.idUtilisateur = idUtilisateur;
-    }
-
-    @Basic
-    @Column(name = "id_demande", nullable = false)
-    public int getIdDemande() {
-        return idDemande;
-    }
-
-    public void setIdDemande(int idDemande) {
-        this.idDemande = idDemande;
     }
 
     @Override

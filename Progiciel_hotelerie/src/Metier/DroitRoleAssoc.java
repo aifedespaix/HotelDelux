@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "droit_role_assoc", schema = "base_definitive", catalog = "")
+@Table(name = "droit_role_assoc", schema = "hotel", catalog = "")
 public class DroitRoleAssoc {
     private int id;
     private int idDroit;
