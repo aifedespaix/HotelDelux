@@ -45,26 +45,6 @@ public class CommandeAssoc {
     }
 
     @Basic
-    @Column(name = "id_commande", nullable = false, updatable = false,insertable = false)
-    public int getIdCommande() {
-        return idCommande;
-    }
-
-    public void setIdCommande(int idCommande) {
-        this.idCommande = idCommande;
-    }
-
-    @Basic
-    @Column(name = "id_equipement", nullable = false, updatable = false,insertable = false)
-    public int getIdEquipement() {
-        return idEquipement;
-    }
-
-    public void setIdEquipement(int idEquipement) {
-        this.idEquipement = idEquipement;
-    }
-
-    @Basic
     @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
@@ -84,32 +64,7 @@ public class CommandeAssoc {
         this.commandeByIdCommande = commandeByIdCommande;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        CommandeAssoc that = (CommandeAssoc) o;
-
-        if (id != that.id) return false;
-        if (idCommande != that.idCommande) return false;
-        if (idEquipement != that.idEquipement) return false;
-        if (Double.compare(that.quantite, quantite) != 0) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + idCommande;
-        result = 31 * result + idEquipement;
-        temp = Double.doubleToLongBits(quantite);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
 
     @ManyToOne
     @JoinColumn(name = "id_equipement_restaurant", referencedColumnName = "id")

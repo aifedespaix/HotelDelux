@@ -37,48 +37,6 @@ public class DroitRoleAssoc {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_droit", nullable = false)
-    public int getIdDroit() {
-        return idDroit;
-    }
-
-    public void setIdDroit(int idDroit) {
-        this.idDroit = idDroit;
-    }
-
-    @Basic
-    @Column(name = "id_role", nullable = false)
-    public int getIdRole() {
-        return idRole;
-    }
-
-    public void setIdRole(int idRole) {
-        this.idRole = idRole;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DroitRoleAssoc that = (DroitRoleAssoc) o;
-
-        if (id != that.id) return false;
-        if (idDroit != that.idDroit) return false;
-        if (idRole != that.idRole) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + idDroit;
-        result = 31 * result + idRole;
-        return result;
-    }
-
     @ManyToOne
     @JoinColumn(name = "id_droit", referencedColumnName = "id", nullable = false)
     public Droit getDroitByIdDroit() {

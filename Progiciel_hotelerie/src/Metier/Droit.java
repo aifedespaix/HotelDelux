@@ -77,32 +77,6 @@ public class Droit {
         this.modifiable = modifiable;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Droit droit = (Droit) o;
-
-        if (id != droit.id) return false;
-        if (visible != droit.visible) return false;
-        if (modifiable != droit.modifiable) return false;
-        if (code != null ? !code.equals(droit.code) : droit.code != null) return false;
-        if (description != null ? !description.equals(droit.description) : droit.description != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (code != null ? code.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (int) visible;
-        result = 31 * result + (int) modifiable;
-        return result;
-    }
-
     @OneToMany(mappedBy = "droitByIdDroit")
     public Collection<DroitRoleAssoc> getDroitRoleAssocsById() {
         return droitRoleAssocsById;

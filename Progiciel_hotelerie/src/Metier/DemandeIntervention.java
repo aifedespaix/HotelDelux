@@ -91,56 +91,6 @@ public class DemandeIntervention {
         this.valide = valide;
     }
 
-    @Basic
-    @Column(name = "id_criticite", nullable = false)
-    public int getIdCriticite() {
-        return idCriticite;
-    }
-
-    public void setIdCriticite(int idCriticite) {
-        this.idCriticite = idCriticite;
-    }
-
-    @Basic
-    @Column(name = "id_equipement_spa", nullable = true)
-    public Integer getIdEquipementSpa() {
-        return idEquipementSpa;
-    }
-
-    public void setIdEquipementSpa(Integer idEquipementSpa) {
-        this.idEquipementSpa = idEquipementSpa;
-    }
-
-    @Basic
-    @Column(name = "id_equipement_hotel", nullable = true)
-    public Integer getIdEquipementHotel() {
-        return idEquipementHotel;
-    }
-
-    public void setIdEquipementHotel(Integer idEquipementHotel) {
-        this.idEquipementHotel = idEquipementHotel;
-    }
-
-    @Basic
-    @Column(name = "id_equipement_restaurant", nullable = true)
-    public Integer getIdEquipementRestaurant() {
-        return idEquipementRestaurant;
-    }
-
-    public void setIdEquipementRestaurant(Integer idEquipementRestaurant) {
-        this.idEquipementRestaurant = idEquipementRestaurant;
-    }
-
-    @Basic
-    @Column(name = "id_piece_rechange", nullable = true)
-    public Integer getIdPieceRechange() {
-        return idPieceRechange;
-    }
-
-    public void setIdPieceRechange(Integer idPieceRechange) {
-        this.idPieceRechange = idPieceRechange;
-    }
-
     @ManyToOne
     @JoinColumn(name = "id_criticite", referencedColumnName = "id", nullable = false)
     public Criticite getCriticiteByIdCriticite() {
@@ -207,45 +157,5 @@ public class DemandeIntervention {
 
     public void setRapportsById(Collection<Rapport> rapportsById) {
         this.rapportsById = rapportsById;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DemandeIntervention that = (DemandeIntervention) o;
-
-        if (id != that.id) return false;
-        if (valide != that.valide) return false;
-        if (idCriticite != that.idCriticite) return false;
-        if (dateCreation != null ? !dateCreation.equals(that.dateCreation) : that.dateCreation != null) return false;
-        if (objet != null ? !objet.equals(that.objet) : that.objet != null) return false;
-        if (description != null ? !description.equals(that.description) : that.description != null) return false;
-        if (idEquipementSpa != null ? !idEquipementSpa.equals(that.idEquipementSpa) : that.idEquipementSpa != null)
-            return false;
-        if (idEquipementHotel != null ? !idEquipementHotel.equals(that.idEquipementHotel) : that.idEquipementHotel != null)
-            return false;
-        if (idEquipementRestaurant != null ? !idEquipementRestaurant.equals(that.idEquipementRestaurant) : that.idEquipementRestaurant != null)
-            return false;
-        if (idPieceRechange != null ? !idPieceRechange.equals(that.idPieceRechange) : that.idPieceRechange != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (dateCreation != null ? dateCreation.hashCode() : 0);
-        result = 31 * result + (objet != null ? objet.hashCode() : 0);
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (int) valide;
-        result = 31 * result + idCriticite;
-        result = 31 * result + (idEquipementSpa != null ? idEquipementSpa.hashCode() : 0);
-        result = 31 * result + (idEquipementHotel != null ? idEquipementHotel.hashCode() : 0);
-        result = 31 * result + (idEquipementRestaurant != null ? idEquipementRestaurant.hashCode() : 0);
-        result = 31 * result + (idPieceRechange != null ? idPieceRechange.hashCode() : 0);
-        return result;
     }
 }

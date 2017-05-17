@@ -43,26 +43,6 @@ public class CommandePieceAssoc {
     }
 
     @Basic
-    @Column(name = "id_commande", nullable = false, updatable = false,insertable = false)
-    public int getIdCommande() {
-        return idCommande;
-    }
-
-    public void setIdCommande(int idCommande) {
-        this.idCommande = idCommande;
-    }
-
-    @Basic
-    @Column(name = "id_piece", nullable = false, updatable = false,insertable = false)
-    public int getIdPiece() {
-        return idPiece;
-    }
-
-    public void setIdPiece(int idPiece) {
-        this.idPiece = idPiece;
-    }
-
-    @Basic
     @Column(name = "quantite", nullable = false, precision = 0)
     public double getQuantite() {
         return quantite;
@@ -90,32 +70,5 @@ public class CommandePieceAssoc {
 
     public void setPieceDeRechangeByIdPiece(PieceDeRechange pieceDeRechangeByIdPiece) {
         this.pieceDeRechangeByIdPiece = pieceDeRechangeByIdPiece;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        CommandePieceAssoc that = (CommandePieceAssoc) o;
-
-        if (id != that.id) return false;
-        if (idCommande != that.idCommande) return false;
-        if (idPiece != that.idPiece) return false;
-        if (Double.compare(that.quantite, quantite) != 0) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + idCommande;
-        result = 31 * result + idPiece;
-        temp = Double.doubleToLongBits(quantite);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
     }
 }

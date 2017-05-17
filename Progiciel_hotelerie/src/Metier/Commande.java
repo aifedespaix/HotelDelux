@@ -80,30 +80,4 @@ public class Commande {
     public void setCommandePieceAssocsById(Collection<CommandePieceAssoc> commandePieceAssocsById) {
         this.commandePieceAssocsById = commandePieceAssocsById;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Commande commande = (Commande) o;
-
-        if (id != commande.id) return false;
-        if (Double.compare(commande.prixTotal, prixTotal) != 0) return false;
-        if (dateCommande != null ? !dateCommande.equals(commande.dateCommande) : commande.dateCommande != null)
-            return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + (dateCommande != null ? dateCommande.hashCode() : 0);
-        temp = Double.doubleToLongBits(prixTotal);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
 }

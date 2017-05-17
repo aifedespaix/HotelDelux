@@ -42,25 +42,6 @@ public class AlimentCommandeAssoc {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "id_aliment", nullable = false, updatable = false,insertable = false)
-    public int getIdAliment() {
-        return idAliment;
-    }
-
-    public void setIdAliment(int idAliment) {
-        this.idAliment = idAliment;
-    }
-
-    @Basic
-    @Column(name = "id_commande", nullable = false, updatable = false,insertable = false)
-    public int getIdCommande() {
-        return idCommande;
-    }
-
-    public void setIdCommande(int idCommande) {
-        this.idCommande = idCommande;
-    }
 
     @Basic
     @Column(name = "quantite", nullable = false, precision = 0)
@@ -92,30 +73,4 @@ public class AlimentCommandeAssoc {
         this.commandeByIdCommande = commandeByIdCommande;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        AlimentCommandeAssoc that = (AlimentCommandeAssoc) o;
-
-        if (id != that.id) return false;
-        if (idAliment != that.idAliment) return false;
-        if (idCommande != that.idCommande) return false;
-        if (Double.compare(that.quantite, quantite) != 0) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + idAliment;
-        result = 31 * result + idCommande;
-        temp = Double.doubleToLongBits(quantite);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        return result;
-    }
 }
