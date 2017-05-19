@@ -1,13 +1,38 @@
 package util;
 
-import java.io.IOException;
+import src.Controller.BoissonTab;
 
-import com.jfoenix.controls.JFXButton;
+public class generalFunctions<T> {
 
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+    /*
+    Mettre à jour le switch de la fonction enregistrer
+    avec les nouveaux controller
+     */
 
-public class generalFunctions {
+    /**
+     *
+     * @param t
+     * @param nb_ligne_a_update
+     * @return
+     */
+    public boolean enregistrer(T t, int nb_ligne_a_update)
+    {
+        switch(t.getClass().getName())
+        {
+            case "BoissonTab":
+                BoissonTab boissonTab = (BoissonTab) t;
+                break;
+            case "MenuTab":
+                break;
+            case "PlatTab":
+            break;
+
+            default:
+                break;
+        }
+
+        return true;
+
+    }
 
 }
