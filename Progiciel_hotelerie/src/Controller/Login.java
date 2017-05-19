@@ -1,20 +1,17 @@
 package src.Controller;
 
-import java.io.IOException;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.javafx.fxml.builder.JavaFXImageBuilder;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import src.Metier.Utilisateur;
 import src.Persistance.AccesData;
-import util.generalFunctions;
+
+import java.io.IOException;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -29,6 +26,8 @@ public class Login
     private JFXPasswordField password;
     @FXML
     private JFXButton btn_login;
+    @FXML
+    private JavaFXImageBuilder login_image;
     public void connexion() throws IOException
     {
         Utilisateur u = null;
@@ -56,6 +55,10 @@ public class Login
         else
         {
             System.out.println("Echec");
+            Stage primaryStage = (Stage) password.getScene().getWindow();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/src/Views/menu_restaurant.fxml")));
+            primaryStage.setScene(scene);
+            primaryStage.show();
         }
 
     }

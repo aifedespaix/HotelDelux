@@ -3,13 +3,14 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.Login">
    <children>
-      <JFXTextField fx:id="login" layoutX="198.0" layoutY="135.0" promptText="login" />
-      <JFXPasswordField fx:id="password" layoutX="198.0" layoutY="200.0" promptText="Password" />
-      <JFXButton fx:id="btn_login" layoutX="239.0" layoutY="254.0" mnemonicParsing="false" onAction="#connexion" text="Valider" />
+      <JFXTextField fx:id="login" layoutX="222.0" layoutY="182.0" promptText="login" />
+      <JFXPasswordField fx:id="password" layoutX="222.0" layoutY="247.0" promptText="Password" />
+      <JFXButton fx:id="btn_login" layoutX="263.0" layoutY="301.0" mnemonicParsing="false" onAction="#connexion" text="Valider" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="163.0" layoutY="32.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
