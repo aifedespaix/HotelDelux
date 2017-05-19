@@ -1,10 +1,20 @@
 package src.Controller;
 
+import java.io.IOException;
+
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import src.Metier.Utilisateur;
 import src.Persistance.AccesData;
+import util.generalFunctions;
 
 /**
  * Created by ledze on 12/05/2017.
@@ -17,12 +27,15 @@ public class Login
    private JFXTextField login;
     @FXML
     private JFXPasswordField password;
-    public void connexion()
+    @FXML
+    private JFXButton btn_login;
+    public void connexion() throws IOException
     {
         Utilisateur u = null;
         u = AccesData.getLoginUtilisateur(login.getText(), password.getText());
         if(u != null)
         {
+        	Stage primaryStage = (Stage) password.getScene().getWindow();
            switch (u.getRoleByIdRole().getId())
            {
                case DIRECTEUR:
@@ -35,12 +48,14 @@ public class Login
                    break;
                default:
                    System.out.println("default");
-                   break;
+                   Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/src/Views/login.fxml")));
+                   primaryStage.setScene(scene);
+                   primaryStage.show();
            }
         }
         else
         {
-            System.out.println("échec");
+            System.out.println("Echec");
         }
 
     }
