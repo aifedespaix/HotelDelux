@@ -48,9 +48,11 @@ public class Login
                    break;
                default:
                    System.out.println("default");
-                   Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/src/Views/login.fxml")));
-                   primaryStage.setScene(scene);
-                   primaryStage.show();
+//                   Scene menu = new Scene(FXMLLoader.load(getClass().getResource("/src/Views/menu.fxml")),200,200);
+//                   Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/src/Views/login.fxml")));
+//                   primaryStage.setScene(scene);
+//                   primaryStage.setScene(menu);
+//                   primaryStage.show();
            }
         }
         else
