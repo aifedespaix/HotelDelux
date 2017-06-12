@@ -1,13 +1,18 @@
 package src.Metier;
 
 import javax.persistence.*;
+
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
+import src.Persistance.AccesData;
+
 import java.util.Collection;
 
 /**
  * Created by ledze on 17/05/2017.
  */
 @Entity
-public class Client {
+public class Client extends RecursiveTreeObject<Client>{
     private int id;
     private String nom;
     private String prenom;
@@ -16,13 +21,11 @@ public class Client {
     private String codePostal;
     private String telephone;
     private String allergies;
-    private Collection<ClientAgenceAssoc> clientAgenceAssocsById;
-    private Collection<FacturationAssoc> facturationAssocsById;
+    private int chambreActuelle;
 
-
+    
     public Client(int id, String nom, String prenom, String adresseRue, String adresseVille, String codePostal,
-			String telephone, String allergies, Collection<ClientAgenceAssoc> clientAgenceAssocsById,
-			Collection<FacturationAssoc> facturationAssocsById) {
+			String telephone, String allergies) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -32,13 +35,10 @@ public class Client {
 		this.codePostal = codePostal;
 		this.telephone = telephone;
 		this.allergies = allergies;
-		this.clientAgenceAssocsById = clientAgenceAssocsById;
-		this.facturationAssocsById = facturationAssocsById;
 	}
 
 	public Client(String nom, String prenom, String adresseRue, String adresseVille, String codePostal,
-			String telephone, String allergies, Collection<ClientAgenceAssoc> clientAgenceAssocsById,
-			Collection<FacturationAssoc> facturationAssocsById) {
+			String telephone, String allergies) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -47,8 +47,6 @@ public class Client {
 		this.codePostal = codePostal;
 		this.telephone = telephone;
 		this.allergies = allergies;
-		this.clientAgenceAssocsById = clientAgenceAssocsById;
-		this.facturationAssocsById = facturationAssocsById;
 	}
 
 	public Client() {
@@ -60,8 +58,7 @@ public class Client {
 	public String toString() {
 		return "Client [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresseRue=" + adresseRue
 				+ ", adresseVille=" + adresseVille + ", codePostal=" + codePostal + ", telephone=" + telephone
-				+ ", allergies=" + allergies + ", clientAgenceAssocsById=" + clientAgenceAssocsById
-				+ ", facturationAssocsById=" + facturationAssocsById + "]";
+				+ ", allergies=" + allergies + "]";
 	}
 
 	public void setTelephone(String telephone) {
@@ -152,23 +149,24 @@ public class Client {
         this.allergies = allergies;
     }
 
-    @OneToMany(mappedBy = "clientByIdClient")
-    public Collection<ClientAgenceAssoc> getClientAgenceAssocsById() {
-        return clientAgenceAssocsById;
-    }
-
-    public void setClientAgenceAssocsById(Collection<ClientAgenceAssoc> clientAgenceAssocsById) {
-        this.clientAgenceAssocsById = clientAgenceAssocsById;
-    }
-
-    @OneToMany(mappedBy = "clientByIdClient")
-    public Collection<FacturationAssoc> getFacturationAssocsById() {
-        return facturationAssocsById;
-    }
-
-    public void setFacturationAssocsById(Collection<FacturationAssoc> facturationAssocsById) {
-        this.facturationAssocsById = facturationAssocsById;
-    }
+//    @OneToMany(mappedBy = "clientByIdClient")
+//    public Collection<ClientAgenceAssoc> getClientAgenceAssocsById() {
+//    	System.out.println(clientAgenceAssocsById);
+//        return clientAgenceAssocsById;
+//    }
+//
+//    public void setClientAgenceAssocsById(Collection<ClientAgenceAssoc> clientAgenceAssocsById) {
+//        this.clientAgenceAssocsById = clientAgenceAssocsById;
+//    }
+//
+//    @OneToMany(mappedBy = "clientByIdClient")
+//    public Collection<FacturationAssoc> getFacturationAssocsById() {
+//        return facturationAssocsById;
+//    }
+//
+//    public void setFacturationAssocsById(Collection<FacturationAssoc> facturationAssocsById) {
+//        this.facturationAssocsById = facturationAssocsById;
+//    }
 
 
 }

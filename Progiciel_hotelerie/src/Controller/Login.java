@@ -73,6 +73,14 @@ public class Login
 	       			AnchorPane menuHebergement = loaderHebergement.load();
 	       			menuHebergement.setMaxWidth(width);
 	       			root.setTop(menuHebergement);
+	       			
+	       			
+	       			FXMLLoader loaderHebergementClients = new FXMLLoader(getClass().getResource("/src/Views/hebergementClients.fxml"));
+	       			AnchorPane menuHebergementClients = loaderHebergementClients.load();
+	       			menuHebergementClients.setMaxWidth(width);
+	       			root.setCenter(menuHebergementClients);
+	       			
+	       			
                    break;
                case 4:
                    //  Appel de la vue

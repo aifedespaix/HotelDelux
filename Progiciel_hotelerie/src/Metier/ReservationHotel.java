@@ -9,13 +9,14 @@ import java.util.Collection;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "reservation_hotel", schema = "hotel", catalog = "")
+@Table(name = "reservation_hotel")
 public class ReservationHotel {
     private int id;
     private Date dateArrivee;
     private Date dateDebut;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
+    private int id_client;
     private Collection<FacturationAssoc> facturationAssocsById;
 
     public ReservationHotel(int id, Date dateArrivee, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
@@ -83,6 +84,16 @@ public class ReservationHotel {
 
     public void setDateDebut(Date dateDebut) {
         this.dateDebut = dateDebut;
+    }
+    
+    @Basic
+    @Column(name = "id_client", nullable = false)
+    public int getidClient(){
+    	return this.id_client;
+    }
+    
+    public void setidClient(int id_client){
+    	this.id_client = id_client;
     }
 
     @ManyToOne

@@ -7,7 +7,7 @@ import javax.persistence.Table;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-@Table(name = "client_agence_assoc", schema = "hotel", catalog = "")
+@Table(name = "client_agence_assoc")
 public class ClientAgenceAssoc {
     private int id;
     private Client clientByIdClient;
