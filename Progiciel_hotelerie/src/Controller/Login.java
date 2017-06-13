@@ -63,7 +63,6 @@ public class Login
                     System.out.println("direction");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuDirecteur.fxml"));
 	       			AnchorPane menu = loader.load();
-	       			menu.setMaxWidth(width);
 	       			root.setTop(menu);
                    break;
                case 3:
@@ -71,23 +70,17 @@ public class Login
                     System.out.println("Hebergement");
                     FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuHebergement.fxml"));
 	       			AnchorPane menuHebergement = loaderHebergement.load();
-	       			menuHebergement.setMaxWidth(width);
 	       			root.setTop(menuHebergement);
 	       			
-	       			
-	       			FXMLLoader loaderHebergementClients = new FXMLLoader(getClass().getResource("/src/Views/hebergementClients.fxml"));
-	       			AnchorPane menuHebergementClients = loaderHebergementClients.load();
-	       			menuHebergementClients.setMaxWidth(width);
-	       			root.setCenter(menuHebergementClients);
-	       			
-	       			
+//	       			FXMLLoader loaderClientNew = new FXMLLoader(getClass().getResource("/src/Views/newClient.fxml"));
+//	       			AnchorPane newClient = loaderClientNew.load();
+//	       			root.setCenter(newClient);
                    break;
                case 4:
                    //  Appel de la vue
                    System.out.println("Maintenance");
                    FXMLLoader loaderMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
 	       			AnchorPane menuMaintenance = loaderMaintenance.load();
-	       			menuMaintenance.setMaxWidth(width);
 	       			root.setTop(menuMaintenance);
                    break;
                case 5:
@@ -95,7 +88,6 @@ public class Login
                    System.out.println("Restaurant");
                    FXMLLoader loaderRestaurant = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuRestaurant.fxml"));
 	       			AnchorPane menuRestaurant = loaderRestaurant.load();
-	       			menuRestaurant.setMaxWidth(width);
 	       			root.setTop(menuRestaurant);
                    break;
                case 6:
@@ -103,7 +95,6 @@ public class Login
                    System.out.println("Responsable Spa");
                    FXMLLoader loaderSpa = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuSpa.fxml"));
 	       			AnchorPane menuSpa = loaderSpa.load();
-	       			menuSpa.setMaxWidth(width);
 	       			root.setTop(menuSpa);
                    break;
                case 7:

@@ -14,7 +14,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <JFXButton layoutX="555.0" layoutY="19.0" prefHeight="41.0" prefWidth="78.0" text="Créer" />
+      <JFXButton fx:id="btnCreate" layoutX="555.0" layoutY="19.0" onAction="#createClient" prefHeight="41.0" prefWidth="78.0" text="Créer" />
       <JFXTextField fx:id="txtName" layoutX="42.0" layoutY="99.0" />
       <JFXTextField fx:id="txtPrenom" layoutX="201.0" layoutY="99.0" />
       <JFXTextField fx:id="txtAdresse" layoutX="359.0" layoutY="99.0" />

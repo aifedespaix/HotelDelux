@@ -1,5 +1,6 @@
 package src.Persistance;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -79,6 +80,19 @@ public class AccesData {
 			idChambreString = String.valueOf(idChambre);
 		}
 		return idChambreString;
+	}
+	
+	public static boolean ajouterModifierClient(Client unClient){
+		boolean ok = false;
+		try{
+			t=s.beginTransaction();
+			s.saveOrUpdate(unClient);
+			t.commit();
+			ok = true;
+		} catch(HibernateException e){
+			ok = false;
+		}
+		return ok;
 	}
 
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){

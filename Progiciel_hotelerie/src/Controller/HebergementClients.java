@@ -1,6 +1,7 @@
 package src.Controller;
 
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -18,9 +19,11 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import src.Launcher.Launcher;
 import src.Metier.Client;
 import src.Persistance.AccesData;
 
@@ -142,6 +145,20 @@ public class HebergementClients implements Initializable {
 				listeClients.add(c);
 			}
 		}
+	}
+	
+	public void createClient(){
+		BorderPane root = Launcher.getRoot();
+		FXMLLoader loaderClientNew = new FXMLLoader(getClass().getResource("/src/Views/newClient.fxml"));
+		AnchorPane newClient;
+		try {
+			newClient = loaderClientNew.load();
+			root.setCenter(newClient);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 }

@@ -6,6 +6,7 @@ import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
 import src.Persistance.AccesData;
 
+import java.sql.Date;
 import java.util.Collection;
 
 /**
@@ -20,12 +21,12 @@ public class Client extends RecursiveTreeObject<Client>{
     private String adresseVille;
     private String codePostal;
     private String telephone;
+    private Date dateNaissance;
     private String allergies;
-    private int chambreActuelle;
 
     
     public Client(int id, String nom, String prenom, String adresseRue, String adresseVille, String codePostal,
-			String telephone, String allergies) {
+			String telephone, Date dateNaissance, String allergies) {
 		super();
 		this.id = id;
 		this.nom = nom;
@@ -34,11 +35,12 @@ public class Client extends RecursiveTreeObject<Client>{
 		this.adresseVille = adresseVille;
 		this.codePostal = codePostal;
 		this.telephone = telephone;
+		this.dateNaissance = dateNaissance;
 		this.allergies = allergies;
 	}
 
 	public Client(String nom, String prenom, String adresseRue, String adresseVille, String codePostal,
-			String telephone, String allergies) {
+			String telephone, Date dateNaissance, String allergies) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -46,6 +48,7 @@ public class Client extends RecursiveTreeObject<Client>{
 		this.adresseVille = adresseVille;
 		this.codePostal = codePostal;
 		this.telephone = telephone;
+		this.dateNaissance = dateNaissance;
 		this.allergies = allergies;
 	}
 
@@ -129,7 +132,16 @@ public class Client extends RecursiveTreeObject<Client>{
     public String getCodePostal() {
         return codePostal;
     }
+    
+    @Basic
+    @Column(name = "date_naissance")
+    public Date getDateNaissance() {
+        return dateNaissance;
+    }
 
+    public void setDateNaissance(Date dateNaissance) {
+        this.dateNaissance = dateNaissance;
+    }
 
 
     @Basic
