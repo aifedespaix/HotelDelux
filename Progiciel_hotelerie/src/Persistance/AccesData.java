@@ -1,10 +1,18 @@
-package Persistance;
+package src.Persistance;
 
-import java.util.List;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.transform.Transformers;
 
-import Metier.Utilisateur;
+import src.Metier.Client;
+import src.Metier.EquipementHotel;
+import src.Metier.ReservationHotel;
+import src.Metier.Utilisateur;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.List;
 
 
 public class AccesData {
@@ -14,12 +22,84 @@ public class AccesData {
 	
 	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 		Utilisateur u = null;
-		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.mdp = '" + mdp + "'").list();
+		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
 		if(listeU.size() == 1){
 			u = listeU.get(0);
 		}
 		return u;
 	}
+	
+	public static EquipementHotel getEquipementHotel(int id){
+		EquipementHotel e = null;
+		List<EquipementHotel> listeE = s.createQuery("FROM EquipementHotel E WHERE E.id = " + id).list();
+		//List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
+		if(listeE.size() == 1){
+			e = listeE.get(0);
+		}
+		return e;
+	}
+	/**
+	 * Fonction de récupération des clients
+	 * @return
+	 */
+	public static List<Client> getClients(){
+		List<Client> listeC = s.createQuery("FROM Client C").list();		
+		return listeC;
+	}
+	
+	public static List<Client> getClientsByName(String nom){
+		List<Client> listeC = s.createQuery("FROM Client C WHERE C.nom LIKE '%" + nom + "%'").list();		
+		return listeC;
+	}
+	
+	public static List<Client> getClientsByPrenom(String prenom){
+		System.out.println(prenom);
+		List<Client> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		
+		return listeC;
+	}
+	
+	public static List<Client> getClientsByAdresse(String adresse){
+		List<Client> listeC = s.createQuery("FROM Client C WHERE C.adresseRue LIKE '%" + adresse + "%' OR C.adresseVille LIKE '%" + adresse + "%' OR C.codePostal LIKE '%" + adresse + "%'").list();		
+		return listeC;
+	}
+	
+	public static List<Client> getClientsByPhone(String phone){
+		List<Client> listeC = s.createQuery("FROM Client C WHERE C.telephone LIKE '%" + phone + "%'").list();		
+		return listeC;
+	}
+	
+	public static String  getChambreClientActuelle(int idClient){
+		int idChambre = -1;
+		String idChambreString = "";
+		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
+		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient + " AND date_debut < '" + timeStamp + "' AND date_arrivee > '" + timeStamp + "'").list();
+		if(listeR.size() > 0){
+			idChambre = listeR.get(0).getidClient();
+		}
+		
+		if(idChambre != -1){
+			idChambreString = String.valueOf(idChambre);
+		}
+		return idChambreString;
+	}
+	
+	public static boolean ajouterModifierClient(Client unClient){
+		boolean ok = false;
+		try{
+			t=s.beginTransaction();
+			s.saveOrUpdate(unClient);
+			t.commit();
+			ok = true;
+		} catch(HibernateException e){
+			ok = false;
+		}
+		return ok;
+	}
+	
+	public static Client getClientById(int id){
+		return (Client) s.get(Client.class, id);
+	}
+	
 
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 //		Utilisateur u = null;

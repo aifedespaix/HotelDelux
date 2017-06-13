@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="84.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="84.0" prefWidth="750.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <JFXButton layoutX="201.0" layoutY="13.0" prefHeight="49.0" prefWidth="99.0" text="Restaurant" />
+            <JFXButton layoutX="309.0" layoutY="13.0" prefHeight="49.0" prefWidth="99.0" text="Hébergement" />
+            <JFXButton layoutX="88.0" layoutY="13.0" prefHeight="49.0" prefWidth="99.0" text="Maintenance" />
+            <JFXButton layoutX="416.0" layoutY="13.0" prefHeight="49.0" prefWidth="99.0" text="SPA" />
+            <Pane layoutY="-6.0" prefHeight="81.0" prefWidth="71.0" style="-fx-background-color: #1254;" />
+            <Text layoutX="549.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administration" />
+            <Pane layoutX="677.0" layoutY="6.0" prefHeight="81.0" prefWidth="71.0" style="-fx-background-color: #1254;" />
+            <JFXButton layoutX="538.0" layoutY="42.0" prefHeight="17.0" prefWidth="99.0" text="Déconnexion" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

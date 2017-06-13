@@ -1,4 +1,4 @@
-package Persistance;
+package src.Persistance;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -8,12 +8,12 @@ import org.hibernate.cfg.AnnotationConfiguration;
 public class HibernateSession {
 	private static final SessionFactory sessionFactory;
 
-	// Crée une unique instance de la SessionFactory à partir de hibernate.cfg.xml
+	// Crï¿½e une unique instance de la SessionFactory ï¿½ partir de hibernate.cfg.xml
 	static {
 		try {
 			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		} catch (HibernateException ex) {
-			throw new RuntimeException("Problème de configuration : " + ex.getMessage(), ex);
+			throw new RuntimeException("Problï¿½me de configuration : " + ex.getMessage(), ex);
 		}
 	}
 

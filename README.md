@@ -2,7 +2,6 @@
 Le porno est en suplément, mais les luxxx est présent !
 
 # 1 Script BDD :
-
 /db_final.sql
  Evitez d'utiliser phpmyadmin, prennez un logiciel qui permet d'executer des requetes dans votre base directement.
  Si votre base s'appelle hotel, faites ça avant d'executer le script :
@@ -29,8 +28,8 @@ Le porno est en suplément, mais les luxxx est présent !
   # 3 Librairies Java
   Oubliez pas d'importer dans la gestion de votre ID les librairies (Progiciel_hotelerie/Librairies/Java et JavaFx)
   
+
   # 4 Connexion
-  
   Pour se connecter à l'appli, un compte par défaut est présent : 
   identifiant   : a
   mot de passe  : a
