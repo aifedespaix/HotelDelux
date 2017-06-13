@@ -3,6 +3,7 @@ package src.Persistance;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.transform.Transformers;
 
 import src.Metier.Client;
 import src.Metier.EquipementHotel;
@@ -96,8 +97,7 @@ public class AccesData {
 	}
 	
 	public static Client getClientById(int id){
-		Client c = (Client) s.createQuery("FROM Client C WHERE C.id = " + id);		
-		return c;
+		return (Client) s.get(Client.class, id);
 	}
 	
 

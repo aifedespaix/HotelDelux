@@ -108,11 +108,42 @@ public class HebergementClients implements Initializable {
 				public Object getValue() {
 					// TODO Auto-generated method stub
 					JFXButton bouton = new JFXButton("Visualiser");
+					
+					/**
+					 * Id pour recupere le client correspondant a la ligne
+					 */
 					bouton.setId(String.valueOf(param.getValue().getValue().getId()));
+					
+					/**
+					 * Gere l'evenement clique sur le bouton
+					 */
 					bouton.setOnAction(new EventHandler<ActionEvent>() {
 					    @Override public void handle(ActionEvent e) {
-					    	Client c = AccesData.getClientById(Integer.parseInt(bouton.getId()));
-					        System.out.println(c);
+					    	
+					    	/**
+					    	 * Recupere la fenetre
+					    	 */
+					    	BorderPane rootPane = Launcher.getRoot();
+					    	/**
+					    	 * Charge la vue client details
+					    	 */
+					    	FXMLLoader loaderClientDetails = new FXMLLoader(getClass().getResource("/src/Views/clientDetails.fxml"));
+			       			AnchorPane clientDetails;
+							try {
+								clientDetails = loaderClientDetails.load();
+								rootPane.setCenter(clientDetails);
+								/**
+								 * Recupere le client correspondant à l'id
+								 */
+						    	Client c = AccesData.getClientById(Integer.parseInt(bouton.getId()));
+						        //System.out.println(c);
+						        ClientDetails controllerClient = loaderClientDetails.<ClientDetails>getController();
+						        controllerClient.setClient(c);
+						        controllerClient.update();
+						    } catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}   
 					    }
 					});
 					return bouton;
