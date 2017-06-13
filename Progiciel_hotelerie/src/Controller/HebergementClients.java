@@ -14,15 +14,25 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.cells.editors.base.JFXTreeTableCell;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeTableCell;
+import javafx.scene.control.TreeTableColumn;
+import javafx.scene.control.TreeTableColumn.CellDataFeatures;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
+import javafx.util.Callback;
 import src.Launcher.Launcher;
 import src.Metier.Client;
 import src.Persistance.AccesData;
@@ -64,6 +74,50 @@ public class HebergementClients implements Initializable {
 		 * Créé l'arbre d'objets avec la liste d'observables de clients
 		 */
 		final TreeItem<Client> root = new RecursiveTreeItem<Client>(listeClients, RecursiveTreeObject::getChildren);	
+		
+
+		JFXTreeTableColumn<Client, JFXButton> voir = new JFXTreeTableColumn<>("Voir");
+		voir.setPrefWidth(100);
+		//Adding the Button to the cell
+		voir.setSortable(false);
+		
+		// create a cell value factory with an add button for each row in the table.
+		//voir.setCellFactory((JFXButton) -> new JFXButton());
+		
+		
+//		voir.setCellValueFactory(param -> new ObservableValue() {
+//				JFXButton bouton = new JFXButton("bouton");
+//
+//				@Override
+//				public void addListener(InvalidationListener listener) {
+//					// TODO Auto-generated method stub
+//					
+//				}
+//
+//				@Override
+//				public void removeListener(InvalidationListener listener) {
+//					// TODO Auto-generated method stub
+//					
+//				}
+//
+//				@Override
+//				public void addListener(ChangeListener listener) {
+//					// TODO Auto-generated method stub
+//					
+//				}
+//
+//				@Override
+//				public Object getValue() {
+//					// TODO Auto-generated method stub
+//					return null;
+//				}
+//
+//				@Override
+//				public void removeListener(ChangeListener listener) {
+//					// TODO Auto-generated method stub
+//					
+//				}
+//		});
 		
 		
 		/**
@@ -110,7 +164,7 @@ public class HebergementClients implements Initializable {
 		/**
 		 * Récupère les colonnes du tableau puis ajoute les nouvelles colonnes précédemment déclarées
 		 */
-		tableHebergementClient.getColumns().setAll(nom,prenom,adresse,telephone,chambre);
+		tableHebergementClient.getColumns().setAll(voir,nom,prenom,adresse,telephone,chambre);
 
 	}
 	
