@@ -17,12 +17,15 @@ import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.cells.editors.base.JFXTreeTableCell;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
+import javafx.application.Application.Parameters;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.TableCell;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeTableCell;
@@ -49,12 +52,13 @@ public class HebergementClients implements Initializable {
 	@FXML private JFXTextField txtPrenom;
 	@FXML private JFXTextField txtAdresse;
 	@FXML private JFXTextField txtPhone;
-	
+	@SuppressWarnings(value = { "" })
 	/**
 	 * Déclaration de la liste d'observables qui contiendra les objets a afficher dans le tableau
 	 */
 	private ObservableList<Client> listeClients = FXCollections.observableArrayList();
 
+	@SuppressWarnings({ "unchecked", "unchecked", "unchecked", "unchecked" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
@@ -81,43 +85,45 @@ public class HebergementClients implements Initializable {
 		//Adding the Button to the cell
 		voir.setSortable(false);
 		
-		// create a cell value factory with an add button for each row in the table.
-		//voir.setCellFactory((JFXButton) -> new JFXButton());
-		
-		
-//		voir.setCellValueFactory(param -> new ObservableValue() {
-//				JFXButton bouton = new JFXButton("bouton");
-//
-//				@Override
-//				public void addListener(InvalidationListener listener) {
-//					// TODO Auto-generated method stub
-//					
-//				}
-//
-//				@Override
-//				public void removeListener(InvalidationListener listener) {
-//					// TODO Auto-generated method stub
-//					
-//				}
-//
-//				@Override
-//				public void addListener(ChangeListener listener) {
-//					// TODO Auto-generated method stub
-//					
-//				}
-//
-//				@Override
-//				public Object getValue() {
-//					// TODO Auto-generated method stub
-//					return null;
-//				}
-//
-//				@Override
-//				public void removeListener(ChangeListener listener) {
-//					// TODO Auto-generated method stub
-//					
-//				}
-//		});
+		voir.setCellValueFactory(param -> new ObservableValue() {
+				
+				@Override
+				public void addListener(InvalidationListener listener) {
+					// TODO Auto-generated method stub
+				}
+
+				@Override
+				public void removeListener(InvalidationListener listener) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public void addListener(ChangeListener listener) {
+					// TODO Auto-generated method stub
+					
+				}
+
+				@Override
+				public Object getValue() {
+					// TODO Auto-generated method stub
+					JFXButton bouton = new JFXButton("Visualiser");
+					bouton.setId(String.valueOf(param.getValue().getValue().getId()));
+					bouton.setOnAction(new EventHandler<ActionEvent>() {
+					    @Override public void handle(ActionEvent e) {
+					    	Client c = AccesData.getClientById(Integer.parseInt(bouton.getId()));
+					        System.out.println(c);
+					    }
+					});
+					return bouton;
+				}
+
+				@Override
+				public void removeListener(ChangeListener listener) {
+					// TODO Auto-generated method stub
+					
+				}
+		});
 		
 		
 		/**
