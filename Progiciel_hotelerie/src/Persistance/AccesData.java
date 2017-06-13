@@ -94,6 +94,12 @@ public class AccesData {
 		}
 		return ok;
 	}
+	
+	public static Client getClientById(int id){
+		Client c = (Client) s.createQuery("FROM Client C WHERE C.id = " + id);		
+		return c;
+	}
+	
 
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 //		Utilisateur u = null;
