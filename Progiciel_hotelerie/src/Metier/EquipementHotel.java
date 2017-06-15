@@ -14,31 +14,26 @@ public class EquipementHotel {
     private String libelle;
     private String description;
     private String photo;
-    private Collection<DemandeIntervention> demandeInterventionsById;
     private Chambre chambreByIdChambre;
     private Collection<CommandeAssoc> commandeAssocsById;
 
     public EquipementHotel(int id, String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Chambre chambreByIdChambre,
-			Collection<CommandeAssoc> commandeAssocsById) {
+    		Chambre chambreByIdChambre, Collection<CommandeAssoc> commandeAssocsById) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
 		this.chambreByIdChambre = chambreByIdChambre;
 		this.commandeAssocsById = commandeAssocsById;
 	}
 
-	public EquipementHotel(String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Chambre chambreByIdChambre,
+	public EquipementHotel(String libelle, String description, String photo, Chambre chambreByIdChambre,
 			Collection<CommandeAssoc> commandeAssocsById) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
 		this.chambreByIdChambre = chambreByIdChambre;
 		this.commandeAssocsById = commandeAssocsById;
 	}
@@ -50,9 +45,7 @@ public class EquipementHotel {
 
 	@Override
 	public String toString() {
-		return "EquipementHotel [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
-				+ photo + ", demandeInterventionsById=" + demandeInterventionsById + ", chambreByIdChambre="
-				+ chambreByIdChambre + ", commandeAssocsById=" + commandeAssocsById + "]";
+		return libelle;
 	}
 
 	public void setId(Integer id) {
@@ -97,15 +90,6 @@ public class EquipementHotel {
 
     public void setPhoto(String photo) {
         this.photo = photo;
-    }
-
-    @OneToMany(mappedBy = "equipementHotelByIdEquipementHotel")
-    public Collection<DemandeIntervention> getDemandeInterventionsById() {
-        return demandeInterventionsById;
-    }
-
-    public void setDemandeInterventionsById(Collection<DemandeIntervention> demandeInterventionsById) {
-        this.demandeInterventionsById = demandeInterventionsById;
     }
 
     @ManyToOne
