@@ -4,10 +4,12 @@ import java.io.File;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
+import src.Metier.Client;
 import src.Persistance.AccesData;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -42,6 +44,8 @@ public class Launcher extends Application {
 			Scene scene = new Scene(root,640,480);			
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			
+			System.out.println(AccesData.getChambreClientActuelle(1));
 //			loader.setLocation(getClass().getResource("/src/Views/login.fxml"));
 //			Parent content = loader.load();
 //			root.setTop(content);
@@ -58,8 +62,5 @@ public class Launcher extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-		//Utilisateur u = new Utilisateur(1,"bb","aa");
-		//System.out.println(AccesData.getLoginUtilisateur(u.getLogin(), u.getMdp()));
-		
 	}
 }

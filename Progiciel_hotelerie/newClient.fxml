@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="499.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.NewClient">
+   <children>
+      <Text layoutX="47.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau client" wrappingWidth="110.13671875" />
+      <Text layoutX="42.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom : " />
+      <Text layoutX="36.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone :" />
+      <Text layoutX="36.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :" />
+      <Text layoutX="45.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ville :" />
+      <Text layoutX="332.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" />
+      <Text layoutX="329.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance :" />
+      <Text layoutX="333.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code postal :" />
+      <Text layoutX="340.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pays : " />
+      <Text layoutX="36.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires :" />
+      <JFXTextArea fx:id="txtComplementaire" layoutX="32.0" layoutY="290.0" />
+      <JFXTextField fx:id="txtNom" layoutX="120.0" layoutY="66.0" />
+      <JFXTextField fx:id="txtPhone" layoutX="120.0" layoutY="105.0" />
+      <JFXTextField fx:id="txtAdress" layoutX="120.0" layoutY="143.0" />
+      <JFXTextField fx:id="txtCity" layoutX="120.0" layoutY="183.0" />
+      <JFXTextField fx:id="txtPrenom" layoutX="445.0" layoutY="84.0" />
+      <JFXTextField fx:id="txtCp" layoutX="445.0" layoutY="161.0" />
+      <JFXTextField fx:id="txtCountry" layoutX="445.0" layoutY="201.0" />
+      <JFXButton fx:id="btnSave" layoutX="539.0" layoutY="337.0" onAction="#save" text="Enregistrer" />
+      <JFXButton fx:id="btnCancel" layoutX="543.0" layoutY="391.0" onAction="#cancel" text="Annuler" />
+      <JFXDatePicker fx:id="dateBirth" layoutX="442.0" layoutY="129.0" />
+   </children>
+</AnchorPane>
