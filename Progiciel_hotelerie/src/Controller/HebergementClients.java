@@ -82,8 +82,6 @@ public class HebergementClients implements Initializable {
 
 		JFXTreeTableColumn<Client, JFXButton> voir = new JFXTreeTableColumn<>("Voir");
 		voir.setPrefWidth(100);
-		//Adding the Button to the cell
-		voir.setSortable(false);
 		
 		voir.setCellValueFactory(param -> new ObservableValue() {
 				
@@ -192,6 +190,7 @@ public class HebergementClients implements Initializable {
 		chambre.setPrefWidth(100);		
 		chambre.setCellValueFactory(param -> new SimpleStringProperty(AccesData.getChambreClientActuelle(param.getValue().getValue().getId())));
 		
+		System.out.println("id de la chambre : " + AccesData.getChambreClientActuelle(1));
 		/**
 		 * Ajoute l'arbre de clients au panel
 		 */

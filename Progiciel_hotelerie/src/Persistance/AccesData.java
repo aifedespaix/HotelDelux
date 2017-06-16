@@ -72,7 +72,7 @@ public class AccesData {
 		int idChambre = -1;
 		String idChambreString = "";
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
-		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient + " AND date_debut < '" + timeStamp + "' AND date_arrivee > '" + timeStamp + "'").list();
+		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient + " AND date_debut <= '" + timeStamp + "' AND date_fin >= '" + timeStamp + "'").list();
 		if(listeR.size() > 0){
 			idChambre = listeR.get(0).getidClient();
 		}
@@ -100,7 +100,10 @@ public class AccesData {
 		return (Client) s.get(Client.class, id);
 	}
 	
-
+	public static List<ReservationHotel> getReservationsClients(int idClient){
+		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient).list();		
+		return listeR;
+	}
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 //		Utilisateur u = null;
 //		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.mdp = '" + mdp + "'").list();
