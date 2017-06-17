@@ -47,18 +47,6 @@ public class AccesData {
 		List<Client> listeC = s.createQuery("FROM Client C").list();		
 		return listeC;
 	}
-
-	public static List<Client> getClientFiltre(String f_nom, String f_prenom, String f_adresse, String f_phone) {
-
-		String where = "";
-		where += whereFilter("C.nom", f_nom);
-		where += whereFilter("C.prenom", f_prenom);
-		where += whereFilter("C.adresse", f_adresse);
-		where += whereFilter("C.phone", f_phone);
-
-		List<Client> listeC = s.createQuery("FROM Client C WHERE "+where).list();
-		return listeC;
-	}
 	
 	public static List<Client> getClientsByName(String nom){
 		List<Client> listeC = s.createQuery("FROM Client C WHERE C.nom LIKE '%" + nom + "%'").list();		
@@ -127,23 +115,8 @@ public class AccesData {
 	public static Chambre getChambreById(int idChambre){
 		return (Chambre) s.get(Chambre.class, idChambre);
 	}
-
-	/**
-	 * Génére un filtre sous la forme : colonne LIKE '%filterValue%'
-	 * @param col String Colonne a filtrer
-	 * @param filterValue String Valeur de filtrage
-	 * @return String COmposante de la requête permettant le filtre, séparé par des espaces pour éviter tout problème et.
-	 * Renvoie une chaîne vide si la filterValue est nulle.
-	 */
-	private static String whereFilter(String col, String filterValue) {
-		String filter = "";
-
-		if(!filterValue.equals("")) {
-			filter = " "+col+" LIKE '%" + filterValue + "%' ";
-		}
-
-		return filter;
-	}
+	
+	
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 //		Utilisateur u = null;
 //		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.mdp = '" + mdp + "'").list();
