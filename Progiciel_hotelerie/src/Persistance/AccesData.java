@@ -20,6 +20,23 @@ public class AccesData {
 
 	private static Session s = HibernateSession.getSession();
 	private static Transaction t;
+
+	/**
+	 * GÃ©nÃ©re un filtre sous la forme : colonne LIKE '%filterValue%'
+	 * @param col String Colonne a filtrer
+	 * @param filterValue String Valeur de filtrage
+	 * @return String COmposante de la requÃªte permettant le filtre, sÃ©parÃ© par des espaces pour Ã©viter tout problÃ¨me et.
+	 * Renvoie une chaÃ®ne vide si la filterValue est nulle.
+	 */
+	private static String whereFilter(String col, String filterValue) {
+		String filter = "";
+
+		if(!filterValue.equals("")) {
+			filter = " "+col+" LIKE '%" + filterValue + "%' ";
+		}
+
+		return filter;
+	}
 	
 	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 		Utilisateur u = null;
@@ -40,7 +57,7 @@ public class AccesData {
 		return e;
 	}
 	/**
-	 * Fonction de récupération des clients
+	 * Fonction de rï¿½cupï¿½ration des clients
 	 * @return
 	 */
 	public static List<Client> getClients(){
@@ -49,7 +66,6 @@ public class AccesData {
 	}
 
 	public static List<Client> getClientFiltre(String f_nom, String f_prenom, String f_adresse, String f_phone) {
-
 		String where = "";
 		where += whereFilter("C.nom", f_nom);
 		where += whereFilter("C.prenom", f_prenom);
@@ -59,28 +75,7 @@ public class AccesData {
 		List<Client> listeC = s.createQuery("FROM Client C WHERE "+where).list();
 		return listeC;
 	}
-	
-	public static List<Client> getClientsByName(String nom){
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.nom LIKE '%" + nom + "%'").list();		
-		return listeC;
-	}
-	
-	public static List<Client> getClientsByPrenom(String prenom){
-		System.out.println(prenom);
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		
-		return listeC;
-	}
-	
-	public static List<Client> getClientsByAdresse(String adresse){
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.adresseRue LIKE '%" + adresse + "%' OR C.adresseVille LIKE '%" + adresse + "%' OR C.codePostal LIKE '%" + adresse + "%'").list();		
-		return listeC;
-	}
-	
-	public static List<Client> getClientsByPhone(String phone){
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.telephone LIKE '%" + phone + "%'").list();		
-		return listeC;
-	}
-	
+
 	public static String  getChambreClientActuelle(int idClient){
 		int idChambre = -1;
 		String idChambreString = "";
@@ -89,13 +84,13 @@ public class AccesData {
 		if(listeR.size() > 0){
 			idChambre = listeR.get(0).getChambreByIdChambre().getNumeroChambre();
 		}
-		
+
 		if(idChambre != -1){
 			idChambreString = String.valueOf(idChambre);
 		}
 		return idChambreString;
 	}
-	
+
 	public static boolean ajouterModifierClient(Client unClient){
 		boolean ok = false;
 		try{
@@ -108,42 +103,26 @@ public class AccesData {
 		}
 		return ok;
 	}
-	
+
 	public static Client getClientById(int id){
 		return (Client) s.get(Client.class, id);
 	}
-	
+
 	public static List<ReservationHotel> getReservationsClients(int idClient){
-		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient).list();		
+		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient).list();
 		return listeR;
 	}
-	
-	
+
+
 	public static List<ReservationHotel> getReservationsHotel(){
-		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R").list();		
+		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R").list();
 		return listeR;
 	}
-	
+
 	public static Chambre getChambreById(int idChambre){
 		return (Chambre) s.get(Chambre.class, idChambre);
 	}
 
-	/**
-	 * Génére un filtre sous la forme : colonne LIKE '%filterValue%'
-	 * @param col String Colonne a filtrer
-	 * @param filterValue String Valeur de filtrage
-	 * @return String COmposante de la requête permettant le filtre, séparé par des espaces pour éviter tout problème et.
-	 * Renvoie une chaîne vide si la filterValue est nulle.
-	 */
-	private static String whereFilter(String col, String filterValue) {
-		String filter = "";
-
-		if(!filterValue.equals("")) {
-			filter = " "+col+" LIKE '%" + filterValue + "%' ";
-		}
-
-		return filter;
-	}
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 //		Utilisateur u = null;
 //		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.mdp = '" + mdp + "'").list();
