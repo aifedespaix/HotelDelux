@@ -66,6 +66,7 @@ public class ReservationListe implements Initializable {
 		// TODO Auto-generated method stub
 		//List<Client> listec = AccesData.getClients();
 		List<ReservationHotel> listeResasHotel = AccesData.getReservationsHotel();
+		System.out.println("taille de la liste" + listeResasHotel.size());
 		/**
 		 * Ajoute chaque client récupéré à la liste d'observable de clients
 		 */
@@ -204,22 +205,23 @@ public class ReservationListe implements Initializable {
 	
 	public void search(){
 		listeReservationHotel.clear();
+		
 		List<ReservationHotel> listeReservations = null;
-//		if(!txtName.getText().equals("")){
-//			listeClient = AccesData.getClientsByName(txtName.getText());
-//		} else if (!txtPrenom.getText().equals("")){
-//			listeClient = AccesData.getClientsByPrenom(txtPrenom.getText());
-//		} else if (!txtAdresse.getText().equals("")){
-//			listeClient = AccesData.getClientsByAdresse(txtAdresse.getText());
-//		} else if (!txtPhone.getText().equals("")){
-//			listeClient = AccesData.getClientsByPhone(txtPhone.getText());
-//		}
-//
-//		if(listeClient.size() > 0){
-//			for(Client c : listeClient){
-//				listeClients.add(c);
-//			}
-//		}
+		
+		if(!txtName.getText().equals("")){
+			listeReservations = AccesData.getReservationHotelByName(txtName.getText());
+		} else if (txtPrenom.getText().equals("")){
+		} else if (dateArrive.getValue() != null){
+		} else if (dateDepart.getValue() != null){
+		}		
+		
+		System.out.println("taille de la liste 2" + listeReservations.size());
+		if(listeReservations.size() > 0){
+			for(ReservationHotel rh : listeReservations){
+				System.out.println(rh.getidClient());
+				listeReservationHotel.add(rh);
+			}
+		}
 	}
 	
 	public void createReservation(){

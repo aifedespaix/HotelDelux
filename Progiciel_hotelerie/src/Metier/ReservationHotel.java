@@ -21,7 +21,7 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     private int nbAdultes;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
-    private int id_client;
+    private int idClient;
     private Collection<FacturationAssoc> facturationAssocsById;
 
     public ReservationHotel(int id, Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes) {
@@ -94,11 +94,11 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     @Basic
     @Column(name = "id_client", nullable = false)
     public int getidClient(){
-    	return this.id_client;
+    	return this.idClient;
     }
     
     public void setidClient(int id_client){
-    	this.id_client = id_client;
+    	this.idClient = idClient;
     }
     
     @Basic

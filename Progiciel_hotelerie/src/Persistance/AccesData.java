@@ -11,6 +11,7 @@ import src.Metier.EquipementHotel;
 import src.Metier.ReservationHotel;
 import src.Metier.Utilisateur;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -116,6 +117,32 @@ public class AccesData {
 		return (Chambre) s.get(Chambre.class, idChambre);
 	}
 	
+	
+	/**
+	 * 
+	 */
+	
+	public static List<ReservationHotel> getReservationHotelByName(String nom){
+		System.out.println(nom);
+		List<ReservationHotel> listeC = s.createQuery("Select R FROM ReservationHotel R, Client C WHERE R.idClient = C.id AND C.nom LIKE '%" + nom + "%'").list();		
+		return listeC;
+	}
+	
+//	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){
+//		System.out.println(prenom);
+//		List<ReservationHotel> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		
+//		return listeC;
+//	}
+//	
+//	public static List<ReservationHotel> getReservationHotelDateDebut(Date date){
+//		List<ReservationHotel> listeC = s.createQuery("FROM Client C WHERE C.adresseRue LIKE '%" + date + "%' OR C.adresseVille LIKE '%" + adresse + "%' OR C.codePostal LIKE '%" + adresse + "%'").list();		
+//		return listeC;
+//	}
+//	
+//	public static List<ReservationHotel> getReservationHotelDateFin(Date date){
+//		List<ReservationHotel> listeC = s.createQuery("FROM Client C WHERE C.telephone LIKE '%" + date + "%'").list();		
+//		return listeC;
+//	}
 	
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 //		Utilisateur u = null;
