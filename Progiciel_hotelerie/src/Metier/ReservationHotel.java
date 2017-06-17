@@ -17,20 +17,22 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     private int id;
     private Date dateFin;
     private Date dateDebut;
+    private int nbEnfants;
+    private int nbAdultes;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
     private int id_client;
     private Collection<FacturationAssoc> facturationAssocsById;
 
-    public ReservationHotel(int id, Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
-			Collection<FacturationAssoc> facturationAssocsById) {
+    public ReservationHotel(int id, Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes) {
 		super();
 		this.id = id;
 		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
-		this.facturationAssocsById = facturationAssocsById;
+		this.nbAdultes = nbAdultes;
+		this.nbEnfants = nbEnfants;
 	}
 
 	public ReservationHotel(Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
@@ -97,6 +99,26 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     
     public void setidClient(int id_client){
     	this.id_client = id_client;
+    }
+    
+    @Basic
+    @Column(name = "nb_enfants", nullable = false)
+    public int getNbEnfants() {
+        return this.nbEnfants;
+    }
+
+    public void setNbEnfants(int nbEnfants) {
+        this.nbEnfants = nbEnfants;
+    }
+    
+    @Basic
+    @Column(name = "nb_adultes", nullable = false)
+    public int getNbAdultes() {
+        return this.nbAdultes;
+    }
+
+    public void setNbAdultes(int nbAdultes) {
+        this.nbAdultes = nbAdultes;
     }
 
     @ManyToOne

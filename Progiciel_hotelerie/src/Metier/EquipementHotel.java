@@ -4,9 +4,6 @@ import javax.persistence.*;
 import javax.persistence.Table;
 import java.util.Collection;
 
-/**
- * Created by ledze on 17/05/2017.
- */
 @Entity
 @Table(name = "equipement_hotel")
 public class EquipementHotel {
@@ -14,33 +11,26 @@ public class EquipementHotel {
     private String libelle;
     private String description;
     private String photo;
-    private Collection<DemandeIntervention> demandeInterventionsById;
+    private Boolean estEquipementJardin;
     private Chambre chambreByIdChambre;
-    private Collection<CommandeAssoc> commandeAssocsById;
 
-    public EquipementHotel(int id, String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Chambre chambreByIdChambre,
-			Collection<CommandeAssoc> commandeAssocsById) {
+    public EquipementHotel(int id, String libelle, String description, String photo, Boolean estEquipementJardin,Chambre chambreByIdChambre) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
+		this.estEquipementJardin = estEquipementJardin;
 		this.chambreByIdChambre = chambreByIdChambre;
-		this.commandeAssocsById = commandeAssocsById;
 	}
 
-	public EquipementHotel(String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Chambre chambreByIdChambre,
-			Collection<CommandeAssoc> commandeAssocsById) {
+	public EquipementHotel(String libelle, String description, String photo,Boolean estEquipementJardin,Chambre chambreByIdChambre) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
+		this.estEquipementJardin = estEquipementJardin;
 		this.chambreByIdChambre = chambreByIdChambre;
-		this.commandeAssocsById = commandeAssocsById;
 	}
 
 	public EquipementHotel() {
@@ -51,8 +41,7 @@ public class EquipementHotel {
 	@Override
 	public String toString() {
 		return "EquipementHotel [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
-				+ photo + ", demandeInterventionsById=" + demandeInterventionsById + ", chambreByIdChambre="
-				+ chambreByIdChambre + ", commandeAssocsById=" + commandeAssocsById + "]";
+				+ photo + ", chambreByIdChambre=" + chambreByIdChambre + "]";
 	}
 
 	public void setId(Integer id) {
@@ -98,15 +87,16 @@ public class EquipementHotel {
     public void setPhoto(String photo) {
         this.photo = photo;
     }
+    
+    @Basic
+    @Column(name = "est_equipement_jardin")
+    public Boolean getEstEquipementJardin() {
+		return estEquipementJardin;
+	}
 
-    @OneToMany(mappedBy = "equipementHotelByIdEquipementHotel")
-    public Collection<DemandeIntervention> getDemandeInterventionsById() {
-        return demandeInterventionsById;
-    }
-
-    public void setDemandeInterventionsById(Collection<DemandeIntervention> demandeInterventionsById) {
-        this.demandeInterventionsById = demandeInterventionsById;
-    }
+	public void setEstEquipementJardin(Boolean estEquipementJardin) {
+		this.estEquipementJardin = estEquipementJardin;
+	}
 
     @ManyToOne
     @JoinColumn(name = "id_chambre", referencedColumnName = "id", nullable = false)
@@ -116,14 +106,5 @@ public class EquipementHotel {
 
     public void setChambreByIdChambre(Chambre chambreByIdChambre) {
         this.chambreByIdChambre = chambreByIdChambre;
-    }
-
-    @OneToMany(mappedBy = "equipementHotelByIdEquipementHotel")
-    public Collection<CommandeAssoc> getCommandeAssocsById() {
-        return commandeAssocsById;
-    }
-
-    public void setCommandeAssocsById(Collection<CommandeAssoc> commandeAssocsById) {
-        this.commandeAssocsById = commandeAssocsById;
     }
 }
