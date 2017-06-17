@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="lblNumChambre" prefHeight="569.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.ReservationHebergementDetails">
+   <children>
+      <Text fx:id="lblNumReservation" layoutX="117.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réservation n°" />
+      <Text fx:id="lblValide" layoutX="276.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Validée :" />
+      <JFXButton fx:id="btnFacture" layoutX="499.0" layoutY="44.0" text="Facture" />
+      <Text layoutX="124.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chambre n°" />
+      <Text fx:id="lblDateArrivee" layoutX="276.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrivée le " />
+      <Text fx:id="lblDateDepart" layoutX="395.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Départ le " />
+      <Text layoutX="117.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" />
+      <Text fx:id="lblClientName" layoutX="121.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" />
+      <Text fx:id="lblNbAdultes" layoutX="121.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'adultes : " />
+      <Text fx:id="lblNbEnfants" layoutX="121.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'enfants : " />
+      <Text layoutX="121.0" layoutY="342.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires :" />
+      <JFXTextArea fx:id="areaInfosComp" layoutX="121.0" layoutY="363.0" />
+      <Text fx:id="lblPrixChambre" layoutX="474.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :" />
+   </children>
+</AnchorPane>

@@ -24,7 +24,7 @@
       <Text layoutX="545.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date départ :" />
       <JFXButton fx:id="searchButton" layoutX="774.0" layoutY="90.0" onAction="#search" prefHeight="41.0" prefWidth="78.0" text="Rechercher" />
       <JFXTreeTableView fx:id="tableReservations" layoutX="41.0" layoutY="165.0" prefHeight="272.0" prefWidth="709.0" />
-      <JFXDatePicker fx:id="dateArrive" layoutX="545.0" layoutY="94.0" />
-      <JFXDatePicker fx:id="dateDepart" layoutX="362.0" layoutY="95.0" />
+      <JFXDatePicker fx:id="dateArrive" layoutX="354.0" layoutY="98.0" />
+      <JFXDatePicker fx:id="dateDepart" layoutX="528.0" layoutY="98.0" />
    </children>
 </AnchorPane>

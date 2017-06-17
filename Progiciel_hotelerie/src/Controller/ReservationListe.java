@@ -114,31 +114,21 @@ public class ReservationListe implements Initializable {
 					 */
 					bouton.setOnAction(new EventHandler<ActionEvent>() {
 					    @Override public void handle(ActionEvent e) {
-					    	
-//					    	/**
-//					    	 * Recupere la fenetre
-//					    	 */
-//					    	BorderPane rootPane = Launcher.getRoot();
-//					    	/**
-//					    	 * Charge la vue client details
-//					    	 */
-//					    	FXMLLoader loaderClientDetails = new FXMLLoader(getClass().getResource("/src/Views/clientDetails.fxml"));
-//			       			AnchorPane clientDetails;
-//							try {
-//								clientDetails = loaderClientDetails.load();
-//								rootPane.setCenter(clientDetails);
-//								/**
-//								 * Recupere le client correspondant à l'id
-//								 */
-//						    	Client c = AccesData.getClientById(Integer.parseInt(bouton.getId()));
-//						        //System.out.println(c);
-//						        ClientDetails controllerClient = loaderClientDetails.<ClientDetails>getController();
-//						        controllerClient.setClient(c);
-//						        controllerClient.update();
-//						    } catch (IOException e1) {
-//								// TODO Auto-generated catch block
-//								e1.printStackTrace();
-//							}   
+					    	BorderPane rootPane = Launcher.getRoot();
+
+					    	FXMLLoader loaderReservationDetails = new FXMLLoader(getClass().getResource("/src/Views/hebergementReservationDetails.fxml"));
+			       			AnchorPane reservationDetails;
+							try {
+								reservationDetails = loaderReservationDetails.load();
+								rootPane.setCenter(reservationDetails);
+						    	ReservationHotel r = AccesData.getReservationHotelById(Integer.parseInt(bouton.getId()));
+						        ReservationHebergementDetails controllerReservationHotel = loaderReservationDetails.<ReservationHebergementDetails>getController();
+						        controllerReservationHotel.setReservationHotel(r);
+						        controllerReservationHotel.update();
+						    } catch (IOException e1) {
+								// TODO Auto-generated catch block
+								e1.printStackTrace();
+							}   
 					    }
 					});
 					return bouton;
@@ -187,6 +177,11 @@ public class ReservationListe implements Initializable {
 		prix.setPrefWidth(100);		
 		prix.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(generalFunctions.calculPrixChambre(param.getValue().getValue().getChambreByIdChambre().getPrix(),param.getValue().getValue().getDateDebut(), param.getValue().getValue().getDateFin()))));
 		
+
+		JFXTreeTableColumn<ReservationHotel, String> valide = new JFXTreeTableColumn<>("Validée");
+		valide.setPrefWidth(100);		
+		valide.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.isValidate(param.getValue().getValue().getValide())));
+		
 		
 		/**
 		 * Ajoute l'arbre de clients au panel
@@ -197,9 +192,10 @@ public class ReservationListe implements Initializable {
 		/**
 		 * Récupère les colonnes du tableau puis ajoute les nouvelles colonnes précédemment déclarées
 		 */
-		tableReservations.getColumns().setAll(voir,client,numChambre,dateArrivee,dateFin,prix);
+		tableReservations.getColumns().setAll(voir,client,numChambre,dateArrivee,dateFin,prix,valide);
 
 	}
+	
 	
 	public void search(){
 		listeReservationHotel.clear();
@@ -213,7 +209,7 @@ public class ReservationListe implements Initializable {
 		} else if (dateArrive.getValue() != null){
 			listeReservations = AccesData.getReservationHotelByBeginDate(Date.valueOf(dateArrive.getValue()));
 		} else if (dateDepart.getValue() != null){
-			listeReservations = AccesData.getReservationHotelByBeginDate(Date.valueOf(dateDepart.getValue()));
+			listeReservations = AccesData.getReservationHotelByEndDate(Date.valueOf(dateDepart.getValue()));
 		}		
 		
 		if(listeReservations.size() > 0){

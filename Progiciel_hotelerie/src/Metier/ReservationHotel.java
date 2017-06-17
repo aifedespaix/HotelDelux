@@ -19,15 +19,19 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     private Date dateDebut;
     private int nbEnfants;
     private int nbAdultes;
+    private Boolean valide;
+    private String informationsComplementaires;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
     private int idClient;
 
-    public ReservationHotel(int id, Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes, int idClient) {
+    public ReservationHotel(int id, Date dateFin, Date dateDebut, Boolean valide, String informationsComplementaires, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes, int idClient) {
 		super();
 		this.id = id;
 		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
+		this.valide = valide;
+		this.informationsComplementaires = informationsComplementaires;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
 		this.nbAdultes = nbAdultes;
@@ -35,10 +39,12 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
 		this.idClient = idClient;
 	}
 
-	public ReservationHotel(Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre) {
+	public ReservationHotel(Date dateFin, Date dateDebut, Boolean valide, String informationsComplementaires, Tva tvaByIdTva, Chambre chambreByIdChambre) {
 		super();
 		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
+		this.valide = valide;
+		this.informationsComplementaires = informationsComplementaires;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
 	}
@@ -99,7 +105,29 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     	this.idClient = id_client;
     }
     
+    
     @Basic
+    @Column(name = "valide")
+    public Boolean getValide() {
+		return valide;
+	}
+
+	public void setValide(Boolean valide) {
+		this.valide = valide;
+	}
+	
+	
+	@Basic
+    @Column(name = "infos_complementaires")
+	public String getInformationsComplementaires() {
+		return informationsComplementaires;
+	}
+
+	public void setInformationsComplementaires(String informationsComplementaires) {
+		this.informationsComplementaires = informationsComplementaires;
+	}
+
+	@Basic
     @Column(name = "nb_enfants", nullable = false)
     public int getNbEnfants() {
         return this.nbEnfants;

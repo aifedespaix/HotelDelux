@@ -49,27 +49,107 @@ public class AccesData {
 		return listeC;
 	}
 	
-	public static List<Client> getClientsByName(String nom){
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.nom LIKE '%" + nom + "%'").list();		
-		return listeC;
-	}
+//	public static List<Client> getClientsByName(String nom){
+//		List<Client> listeC = s.createQuery("FROM Client C WHERE C.nom LIKE '%" + nom + "%'").list();		
+//		return listeC;
+//	}
+//	
+//	public static List<Client> getClientsByPrenom(String prenom){
+//		System.out.println(prenom);
+//		List<Client> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		
+//		return listeC;
+//	}
+//	
+//	public static List<Client> getClientsByAdresse(String adresse){
+//		List<Client> listeC = s.createQuery("FROM Client C WHERE C.adresseRue LIKE '%" + adresse + "%' OR C.adresseVille LIKE '%" + adresse + "%' OR C.codePostal LIKE '%" + adresse + "%'").list();		
+//		return listeC;
+//	}
+//	
+//	public static List<Client> getClientsByPhone(String phone){
+//		List<Client> listeC = s.createQuery("FROM Client C WHERE C.telephone LIKE '%" + phone + "%'").list();		
+//		return listeC;
+//	}
 	
-	public static List<Client> getClientsByPrenom(String prenom){
-		System.out.println(prenom);
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		
-		return listeC;
-	}
-	
-	public static List<Client> getClientsByAdresse(String adresse){
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.adresseRue LIKE '%" + adresse + "%' OR C.adresseVille LIKE '%" + adresse + "%' OR C.codePostal LIKE '%" + adresse + "%'").list();		
-		return listeC;
-	}
-	
-	public static List<Client> getClientsByPhone(String phone){
-		List<Client> listeC = s.createQuery("FROM Client C WHERE C.telephone LIKE '%" + phone + "%'").list();		
-		return listeC;
-	}
-	
+	 public static List<Client> getClientFiltre(String f_nom, String f_prenom, String f_adresse, String f_phone) {
+		  String where = "";
+
+		  String[][] filtreClientConfig = {
+		    {"C.nom", f_nom},
+		    {"C.prenom", f_prenom},
+		    {"C.phone", f_phone}
+		  };
+
+		  where += whereFilter(filtreClientConfig);
+
+		  String[] filtreClientConfigAdress = {"C.adresseRue", "C.adresseVille", "C.codePostal"};
+		  if(where.equals("")) {
+		   where += whereFilterCompose(f_adresse, filtreClientConfigAdress, false);
+		  } else {
+		   where += whereFilterCompose(f_adresse, filtreClientConfigAdress, true);
+		  }
+
+		  List<Client> listeC = s.createQuery("FROM Client C " + (where.equals("") ? "" : "WHERE "+where)).list();
+		  return listeC;
+		}
+	 
+	/**
+	  * Génére un filtre sous la forme : colonne LIKE '%filterValue%'
+	  * @param filterConfig String[][] Tableau de config de la forme :
+	  * @return String Composante de la requête permettant le filtre, séparé par des espaces pour éviter tout problème
+	  * Renvoie une chaîne vide si la filterValue est nulle.
+	  */
+	 private static String whereFilter(String[][] filterConfig) {
+	  Boolean firstFilter = true;
+	  String filter = "";
+
+
+	  for(String[] filterConfigElem : filterConfig) {
+	   if(!filterConfigElem[1].equals("")) {
+	    // Ajoute AND sauf au premier
+	    if(firstFilter) { firstFilter = false; }
+	    else    { filter += " AND "; }
+
+	    filter += " " + filterConfigElem[0]+" LIKE '%" + filterConfigElem[1] + "%' ";
+	   }
+	  }
+
+	  return filter;
+	 }
+
+	 /**
+	  *
+	  * @param filter String Element filtrant
+	  * @param cols String[] Liste des colonnes ciblées
+	  * @param add {@link Boolean} ajouter ADD devant
+	  * @return String
+	  */
+	 private static String whereFilterCompose(String filter, String[] cols, Boolean add) {
+	  String filterSQL = "";
+
+	  if(!filter.equals("")) {
+	   if(add) { filterSQL += " AND "; }
+
+	   filterSQL += " ( ";
+
+	   Boolean firstElem = true;
+	   for(String col : cols) {
+	    // Ajoute OR sauf au premier
+	    if(firstElem)  { firstElem = false; }
+	    else    { filterSQL += " OR "; }
+
+	    // Ajoute le filtre
+	    filterSQL += col + " LIKE '%" + filter + "%'";
+	   }
+
+	   filterSQL += " ) ";
+	  }
+
+	  return  filterSQL;
+	 }
+	 
+	 
+	 
+	 
 	public static String  getChambreClientActuelle(int idClient){
 		int idChambre = -1;
 		String idChambreString = "";
@@ -139,8 +219,13 @@ public class AccesData {
 	}
 	
 	public static List<ReservationHotel> getReservationHotelByEndDate(Date dateFin){
+		System.out.println("date de depart : " + dateFin);
 		List<ReservationHotel> listeC = s.createQuery("FROM ReservationHotel R WHERE R.dateFin = '" + dateFin + "'").list();		
 		return listeC;
+	}
+	
+	public static ReservationHotel getReservationHotelById(int id){
+		return (ReservationHotel) s.get(ReservationHotel.class, id);
 	}
 	
 //	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){

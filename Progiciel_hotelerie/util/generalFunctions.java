@@ -30,4 +30,14 @@ public class generalFunctions {
 		
 		return prixReservation;
 	}
+	
+	public static String isValidate(Boolean valide){
+		String isValide = "";
+		if( valide == true){
+			isValide = "Validée";
+		} else {
+			isValide = "Non validée";
+		}
+		return isValide;
+	}
 }
