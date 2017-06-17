@@ -31,17 +31,11 @@ import util.generalFunctions;
 
 public class ReservationHebergementDetails implements Initializable {
 	ReservationHotel reservation = new ReservationHotel();
-//	@FXML private Text lblName;
-//	@FXML private Text lblPhone;
-//	@FXML private Text lblBirth;
-//	@FXML private Text lblAddress;
-//	@FXML private JFXTextArea areaInfos;
-//	@FXML private Text lblResaChambre;
-	
+
 	@FXML private Text lblNumReservation;
 	@FXML private Text lblValide;
 	@FXML private JFXButton btnFacture;
-	@FXML private Text lblNumChambre;
+	@FXML private Text lblNumeroChambre;
 	@FXML private Text lblDateArrivee;
 	@FXML private Text lblDateDepart;
 	@FXML private Text lblClientName;
@@ -61,18 +55,16 @@ public class ReservationHebergementDetails implements Initializable {
 	}
 	
 	public void update(){
-		System.out.println("update");
 		lblNumReservation.setText("Réservation n°" + this.reservation.getId());
 		lblValide.setText("Validée : " + generalFunctions.isValidate(this.reservation.getValide()));
-		lblNumChambre.setText("Chambre n° : " + this.reservation.getChambreByIdChambre().getNumeroChambre());
+		lblNumeroChambre.setText("Chambre n° : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
 		lblDateArrivee.setText("Arrivée le " + this.reservation.getDateDebut());
-		lblDateDepart.setText("Départ le " + this.reservation.getDateFin());
-		
+		lblDateDepart.setText("Départ le " + this.reservation.getDateFin());		
 		lblClientName.setText(AccesData.getClientById(this.reservation.getIdClient()).getNom() + " " + AccesData.getClientById(this.reservation.getIdClient()).getPrenom());
 		lblNbAdultes.setText("Nombre d'adulte(s) : " + this.reservation.getNbAdultes());
 		lblNbEnfants.setText("Nombre d'enfant(s) : " + this.reservation.getNbEnfants());
 		areaInfosComp.setText(this.reservation.getInformationsComplementaires());
-		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()));
+		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "€");
 
 	}
 	

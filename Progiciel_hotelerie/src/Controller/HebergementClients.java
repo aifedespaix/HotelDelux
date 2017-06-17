@@ -225,9 +225,7 @@ public class HebergementClients implements Initializable {
 //			listeClient = AccesData.getClientsByAdresse(txtAdresse.getText());
 //		} else if (!txtPhone.getText().equals("")){
 //			listeClient = AccesData.getClientsByPhone(txtPhone.getText());
-//		}
-		
-		
+//		}		
 		
 		/**
 		 * Ajoute les clients à la liste d'observables pour qu'ils soient affichés

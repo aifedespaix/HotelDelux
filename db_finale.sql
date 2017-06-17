@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 17 Juin 2017 à 15:59
+-- Généré le :  Sam 17 Juin 2017 à 23:12
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.4.24
 
@@ -718,6 +718,8 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
   `date_debut` date NOT NULL,
   `nb_enfants` int(11) NOT NULL DEFAULT '0',
   `nb_adultes` int(11) NOT NULL DEFAULT '0',
+  `valide` tinyint(1) NOT NULL DEFAULT '0',
+  `infos_complementaires` varchar(250) NOT NULL,
   `id_tva` int(11) NOT NULL,
   `id_chambre` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
@@ -732,15 +734,15 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
 -- Contenu de la table `reservation_hotel`
 --
 
-INSERT INTO `reservation_hotel` (`id`, `date_fin`, `date_debut`, `nb_enfants`, `nb_adultes`, `id_tva`, `id_chambre`, `id_client`) VALUES
-(1, '2017-07-14', '2017-07-12', 2, 2, 1, 1, 1),
-(2, '2017-06-15', '2017-06-12', 2, 2, 1, 2, 0),
-(3, '2017-08-17', '2017-08-12', 1, 1, 1, 1, 0),
-(4, '2017-07-18', '2017-07-16', 2, 2, 1, 2, 0),
-(5, '2017-08-21', '2017-08-17', 0, 0, 1, 1, 0),
-(6, '2017-06-17', '2017-06-15', 2, 2, 1, 2, 1),
-(7, '2017-07-12', '2017-07-10', 0, 15, 1, 1, 0),
-(8, '2017-08-29', '2017-08-27', 2, 2, 1, 2, 0);
+INSERT INTO `reservation_hotel` (`id`, `date_fin`, `date_debut`, `nb_enfants`, `nb_adultes`, `valide`, `infos_complementaires`, `id_tva`, `id_chambre`, `id_client`) VALUES
+(1, '2017-07-14', '2017-07-12', 2, 2, 0, '', 1, 1, 1),
+(2, '2017-06-15', '2017-06-12', 2, 2, 0, '', 1, 2, 1),
+(3, '2017-08-17', '2017-08-12', 1, 1, 0, '', 1, 1, 3),
+(4, '2017-07-18', '2017-07-16', 2, 2, 0, '', 1, 2, 4),
+(5, '2017-08-21', '2017-08-17', 0, 0, 1, '', 1, 1, 4),
+(6, '2017-06-17', '2017-06-15', 2, 2, 0, '', 1, 2, 2),
+(7, '2017-07-12', '2017-07-10', 0, 15, 0, '', 1, 1, 5),
+(8, '2017-08-29', '2017-08-27', 2, 2, 0, '', 1, 2, 6);
 
 -- --------------------------------------------------------
 
