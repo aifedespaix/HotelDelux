@@ -22,9 +22,8 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
     private int idClient;
-    private Collection<FacturationAssoc> facturationAssocsById;
 
-    public ReservationHotel(int id, Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes) {
+    public ReservationHotel(int id, Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes, int idClient) {
 		super();
 		this.id = id;
 		this.dateFin = dateFin;
@@ -33,16 +32,15 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
 		this.chambreByIdChambre = chambreByIdChambre;
 		this.nbAdultes = nbAdultes;
 		this.nbEnfants = nbEnfants;
+		this.idClient = idClient;
 	}
 
-	public ReservationHotel(Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
-			Collection<FacturationAssoc> facturationAssocsById) {
+	public ReservationHotel(Date dateFin, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre) {
 		super();
 		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
-		this.facturationAssocsById = facturationAssocsById;
 	}
 
 	public ReservationHotel() {
@@ -53,8 +51,8 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
 	@Override
 	public String toString() {
 		return "ReservationHotel [id=" + id + ", dateFin=" + dateFin + ", dateDebut=" + dateDebut
-				+ ", tvaByIdTva=" + tvaByIdTva + ", chambreByIdChambre=" + chambreByIdChambre
-				+ ", facturationAssocsById=" + facturationAssocsById + "]";
+				+ ", tvaByIdTva=" + tvaByIdTva.getId() + ", chambreByIdChambre=" + chambreByIdChambre.getId()
+				+ "]";
 	}
 
 	public void setId(Integer id) {
@@ -93,12 +91,12 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     
     @Basic
     @Column(name = "id_client", nullable = false)
-    public int getidClient(){
+    public int getIdClient(){
     	return this.idClient;
     }
     
-    public void setidClient(int id_client){
-    	this.idClient = idClient;
+    public void setIdClient(int id_client){
+    	this.idClient = id_client;
     }
     
     @Basic
@@ -139,14 +137,5 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
 
     public void setChambreByIdChambre(Chambre chambreByIdChambre) {
         this.chambreByIdChambre = chambreByIdChambre;
-    }
-
-    @OneToMany(mappedBy = "reservationHotelByIdReservationHotel")
-    public Collection<FacturationAssoc> getFacturationAssocsById() {
-        return facturationAssocsById;
-    }
-
-    public void setFacturationAssocsById(Collection<FacturationAssoc> facturationAssocsById) {
-        this.facturationAssocsById = facturationAssocsById;
     }
 }

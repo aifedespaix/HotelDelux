@@ -51,7 +51,7 @@ public class ReservationListe implements Initializable {
 	 */
 	@FXML private JFXTreeTableView<ReservationHotel> tableReservations;
 	@FXML private JFXTextField txtName;
-	@FXML private JFXTextField txtPrenom;
+	@FXML private JFXTextField txtNumeroChambre;
 	@FXML private JFXDatePicker dateArrive;
 	@FXML private JFXDatePicker dateDepart;
 	@SuppressWarnings(value = { "" })
@@ -66,14 +66,12 @@ public class ReservationListe implements Initializable {
 		// TODO Auto-generated method stub
 		//List<Client> listec = AccesData.getClients();
 		List<ReservationHotel> listeResasHotel = AccesData.getReservationsHotel();
-		System.out.println("taille de la liste" + listeResasHotel.size());
 		/**
 		 * Ajoute chaque client récupéré à la liste d'observable de clients
 		 */
 		for(ReservationHotel r : listeResasHotel){
 			listeReservationHotel.add(r);
 		}
-		System.out.println(listeReservationHotel.size());
 		/**
 		 * Créé l'arbre d'objets avec la liste d'observables de clients
 		 */
@@ -159,7 +157,7 @@ public class ReservationListe implements Initializable {
 		 */
 		JFXTreeTableColumn<ReservationHotel, String> client = new JFXTreeTableColumn<>("Client");
 		client.setPrefWidth(100);
-		client.setCellValueFactory(param -> new SimpleStringProperty(AccesData.getClientById(param.getValue().getValue().getId()).getNom() + " " + AccesData.getClientById(param.getValue().getValue().getId()).getPrenom()));
+		client.setCellValueFactory(param -> new SimpleStringProperty(AccesData.getClientById(param.getValue().getValue().getIdClient()).getNom() + " " + AccesData.getClientById(param.getValue().getValue().getIdClient()).getPrenom()));
 		
 		/**
 		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
@@ -210,15 +208,16 @@ public class ReservationListe implements Initializable {
 		
 		if(!txtName.getText().equals("")){
 			listeReservations = AccesData.getReservationHotelByName(txtName.getText());
-		} else if (txtPrenom.getText().equals("")){
+		} else if (!txtNumeroChambre.getText().equals("")){
+			listeReservations = AccesData.getReservationHotelByRoomNumber(Integer.valueOf(txtNumeroChambre.getText()));
 		} else if (dateArrive.getValue() != null){
+			listeReservations = AccesData.getReservationHotelByBeginDate(Date.valueOf(dateArrive.getValue()));
 		} else if (dateDepart.getValue() != null){
+			listeReservations = AccesData.getReservationHotelByBeginDate(Date.valueOf(dateDepart.getValue()));
 		}		
 		
-		System.out.println("taille de la liste 2" + listeReservations.size());
 		if(listeReservations.size() > 0){
 			for(ReservationHotel rh : listeReservations){
-				System.out.println(rh.getidClient());
 				listeReservationHotel.add(rh);
 			}
 		}
@@ -228,27 +227,6 @@ public class ReservationListe implements Initializable {
 		
 	}
 
-//	public void search(){
-//
-//		listeClients.clear();
-//	
-//		List<Client> listeClient = null;
-//		if(!txtName.getText().equals("")){
-//			listeClient = AccesData.getClientsByName(txtName.getText());
-//		} else if (!txtPrenom.getText().equals("")){
-//			listeClient = AccesData.getClientsByPrenom(txtPrenom.getText());
-//		} else if (!txtAdresse.getText().equals("")){
-//			listeClient = AccesData.getClientsByAdresse(txtAdresse.getText());
-//		} else if (!txtPhone.getText().equals("")){
-//			listeClient = AccesData.getClientsByPhone(txtPhone.getText());
-//		}
-//
-//		if(listeClient.size() > 0){
-//			for(Client c : listeClient){
-//				listeClients.add(c);
-//			}
-//		}
-//	}
 //	
 //	public void createClient(){
 //		BorderPane root = Launcher.getRoot();

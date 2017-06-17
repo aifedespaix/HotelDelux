@@ -128,6 +128,21 @@ public class AccesData {
 		return listeC;
 	}
 	
+	public static List<ReservationHotel> getReservationHotelByRoomNumber(int numeroChambre){
+		List<ReservationHotel> listeC = s.createQuery("FROM ReservationHotel R WHERE R.chambreByIdChambre.id = " + numeroChambre).list();		
+		return listeC;
+	}
+	
+	public static List<ReservationHotel> getReservationHotelByBeginDate(Date dateDebut){
+		List<ReservationHotel> listeC = s.createQuery("FROM ReservationHotel R WHERE R.dateDebut = '" + dateDebut + "'").list();		
+		return listeC;
+	}
+	
+	public static List<ReservationHotel> getReservationHotelByEndDate(Date dateFin){
+		List<ReservationHotel> listeC = s.createQuery("FROM ReservationHotel R WHERE R.dateFin = '" + dateFin + "'").list();		
+		return listeC;
+	}
+	
 //	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){
 //		System.out.println(prenom);
 //		List<ReservationHotel> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		
