@@ -5,15 +5,20 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="94.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="94.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuMaintenance">
    <children>
       <Pane prefHeight="87.0" prefWidth="800.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <JFXButton layoutX="89.0" layoutY="19.0" prefHeight="49.0" prefWidth="180.0" text="Demande de maintenance" />
+            <JFXButton layoutX="75.0" layoutY="19.0" prefHeight="49.0" prefWidth="108.0" text="Demandes" />
+            <JFXButton layoutX="189.0" layoutY="19.0" prefHeight="49.0" prefWidth="85.0" text="Planning" />
+            <JFXButton layoutX="272.0" layoutY="19.0" prefHeight="49.0" prefWidth="108.0" text="Rapports" />
+            <JFXButton layoutX="382.0" layoutY="19.0" prefHeight="49.0" prefWidth="71.0" text="Stock" />
+            <JFXButton layoutX="459.0" layoutY="19.0" prefHeight="49.0" prefWidth="108.0" text="Commandes" />
             <Pane layoutY="-6.0" prefHeight="94.0" prefWidth="71.0" style="-fx-background-color: #1254;" />
             <Pane layoutX="731.0" layoutY="3.0" prefHeight="81.0" prefWidth="71.0" style="-fx-background-color: #1254;" />
             <Text layoutX="652.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
             <JFXButton layoutX="616.0" layoutY="50.0" prefHeight="24.0" prefWidth="99.0" text="Déconnexion" />
+            <JFXButton fx:id="btnNewDemande" layoutX="567.0" layoutY="27.0" onAction="#openNewDemande" prefHeight="33.0" prefWidth="41.0" text="Icon" />
          </children>
       </Pane>
    </children>

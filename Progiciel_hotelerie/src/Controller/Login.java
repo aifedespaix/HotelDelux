@@ -78,11 +78,7 @@ public class Login
                    break;
                case 4:
                    //  Appel de la vue
-                   System.out.println("Maintenance");
-                   FXMLLoader loaderMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
-	       			AnchorPane menuMaintenance = loaderMaintenance.load();
-	       			root.setTop(menuMaintenance);
-                   break;
+                   System.out.println("Réception");
                case 5:
                    //  Appel de la vue
                    System.out.println("Restaurant");
@@ -99,7 +95,10 @@ public class Login
                    break;
                case 7:
                    //  Appel de la vue
-                   System.out.println("maintenance");
+                   System.out.println("Maintenance");
+                   FXMLLoader loaderMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
+	       		   AnchorPane menuMaintenance = loaderMaintenance.load();
+	       		   root.setTop(menuMaintenance);
                    break;
                case 8:
                    //  Appel de la vue
