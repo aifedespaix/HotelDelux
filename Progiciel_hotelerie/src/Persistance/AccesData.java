@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.transform.Transformers;
 
+import src.Metier.Chambre;
 import src.Metier.Client;
 import src.Metier.EquipementHotel;
 import src.Metier.ReservationHotel;
@@ -74,7 +75,7 @@ public class AccesData {
 		String timeStamp = new SimpleDateFormat("yyyy-MM-dd").format(Calendar.getInstance().getTime());
 		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient + " AND date_debut <= '" + timeStamp + "' AND date_fin >= '" + timeStamp + "'").list();
 		if(listeR.size() > 0){
-			idChambre = listeR.get(0).getidClient();
+			idChambre = listeR.get(0).getChambreByIdChambre().getNumeroChambre();
 		}
 		
 		if(idChambre != -1){
@@ -104,6 +105,18 @@ public class AccesData {
 		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R WHERE R.idClient = " + idClient).list();		
 		return listeR;
 	}
+	
+	
+	public static List<ReservationHotel> getReservationsHotel(){
+		List<ReservationHotel> listeR = s.createQuery("FROM ReservationHotel R").list();		
+		return listeR;
+	}
+	
+	public static Chambre getChambreById(int idChambre){
+		return (Chambre) s.get(Chambre.class, idChambre);
+	}
+	
+	
 //	public static Utilisateur getLoginUtilisateur(String login, String mdp){
 //		Utilisateur u = null;
 //		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.mdp = '" + mdp + "'").list();

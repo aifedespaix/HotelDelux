@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 16 Juin 2017 à 19:07
+-- Généré le :  Sam 17 Juin 2017 à 15:59
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.4.24
 
@@ -141,26 +141,27 @@ INSERT INTO `boisson` (`id`, `libelle`, `quantite`, `prix`) VALUES
 
 CREATE TABLE IF NOT EXISTS `chambre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prix_adulte` double NOT NULL,
-  `prix_enfant` double NOT NULL,
+  `numero_chambre` int(11) NOT NULL,
+  `prix` double NOT NULL,
   `capacite` int(11) NOT NULL,
   `etage` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `numero_chambre` (`numero_chambre`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `chambre`
 --
 
-INSERT INTO `chambre` (`id`, `prix_adulte`, `prix_enfant`, `capacite`, `etage`) VALUES
-(1, 55, 25, 4, 1),
-(2, 45, 20, 2, 1),
-(3, 65, 35, 2, 2),
-(4, 80, 45, 4, 2),
-(5, 75, 37, 2, 3),
-(6, 85, 42, 4, 3),
-(7, 145, 120, 2, 4),
-(8, 330, 210, 4, 4);
+INSERT INTO `chambre` (`id`, `numero_chambre`, `prix`, `capacite`, `etage`) VALUES
+(1, 1, 55, 4, 1),
+(2, 2, 45, 2, 1),
+(3, 3, 65, 2, 2),
+(4, 4, 80, 4, 2),
+(5, 5, 75, 2, 3),
+(6, 6, 85, 4, 3),
+(7, 7, 145, 2, 4),
+(8, 8, 330, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -448,6 +449,7 @@ CREATE TABLE IF NOT EXISTS `equipement_hotel` (
   `libelle` varchar(250) NOT NULL,
   `description` varchar(250) NOT NULL,
   `photo` varchar(250) NOT NULL,
+  `est_equipement_jardin` tinyint(1) NOT NULL DEFAULT '0',
   `id_chambre` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_chambre` (`id_chambre`)
@@ -457,15 +459,15 @@ CREATE TABLE IF NOT EXISTS `equipement_hotel` (
 -- Contenu de la table `equipement_hotel`
 --
 
-INSERT INTO `equipement_hotel` (`id`, `libelle`, `description`, `photo`, `id_chambre`) VALUES
-(1, 'lit_1', 'lit 1 place', 'image/hotel/lit_1.jpg', 1),
-(2, 'lit_2', 'lit 2 place', 'image/hotel/lit_2_place.jpg', 1),
-(3, 'table', 'table en verre', 'image/hotel/table_verre.jpg', 2),
-(4, 'lampe', 'lampe de chevet', 'image/hotel/lampe.jpg', 3),
-(5, 'table_de_chevet', 'gueridon', 'image/hotel/table_chevet.jpg', 4),
-(6, 'frigo', 'mini bar', 'image/hotel/table_chevet.jpg', 2),
-(7, 'rideaux', 'rideaux en soie', 'image/hotel/rideau.jpg', 3),
-(8, 'canapé', 'canapé cuir blanc', 'image/hotel/canape.jpg', 3);
+INSERT INTO `equipement_hotel` (`id`, `libelle`, `description`, `photo`, `est_equipement_jardin`, `id_chambre`) VALUES
+(1, 'lit_1', 'lit 1 place', 'image/hotel/lit_1.jpg', 0, 1),
+(2, 'lit_2', 'lit 2 place', 'image/hotel/lit_2_place.jpg', 0, 1),
+(3, 'table', 'table en verre', 'image/hotel/table_verre.jpg', 0, 2),
+(4, 'lampe', 'lampe de chevet', 'image/hotel/lampe.jpg', 0, 3),
+(5, 'table_de_chevet', 'gueridon', 'image/hotel/table_chevet.jpg', 0, 4),
+(6, 'frigo', 'mini bar', 'image/hotel/table_chevet.jpg', 0, 2),
+(7, 'rideaux', 'rideaux en soie', 'image/hotel/rideau.jpg', 0, 3),
+(8, 'canapé', 'canapé cuir blanc', 'image/hotel/canape.jpg', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -478,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `equipement_restaurant` (
   `libelle` varchar(250) NOT NULL,
   `description` varchar(250) NOT NULL,
   `photo` varchar(250) NOT NULL,
-  `id_table` int(11) NOT NULL,
+  `id_table` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_table` (`id_table`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
@@ -714,6 +716,8 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `date_fin` date NOT NULL,
   `date_debut` date NOT NULL,
+  `nb_enfants` int(11) NOT NULL DEFAULT '0',
+  `nb_adultes` int(11) NOT NULL DEFAULT '0',
   `id_tva` int(11) NOT NULL,
   `id_chambre` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
@@ -728,15 +732,15 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
 -- Contenu de la table `reservation_hotel`
 --
 
-INSERT INTO `reservation_hotel` (`id`, `date_fin`, `date_debut`, `id_tva`, `id_chambre`, `id_client`) VALUES
-(1, '2017-07-14', '2017-07-12', 1, 1, 1),
-(2, '2017-06-15', '2017-06-12', 1, 2, 0),
-(3, '2017-08-17', '2017-08-12', 1, 1, 0),
-(4, '2017-07-18', '2017-07-16', 1, 2, 0),
-(5, '2017-08-21', '2017-08-17', 1, 1, 0),
-(6, '2017-06-17', '2017-06-15', 1, 2, 1),
-(7, '2017-07-12', '2017-07-10', 1, 1, 0),
-(8, '2017-08-29', '2017-08-27', 1, 2, 0);
+INSERT INTO `reservation_hotel` (`id`, `date_fin`, `date_debut`, `nb_enfants`, `nb_adultes`, `id_tva`, `id_chambre`, `id_client`) VALUES
+(1, '2017-07-14', '2017-07-12', 2, 2, 1, 1, 1),
+(2, '2017-06-15', '2017-06-12', 2, 2, 1, 2, 0),
+(3, '2017-08-17', '2017-08-12', 1, 1, 1, 1, 0),
+(4, '2017-07-18', '2017-07-16', 2, 2, 1, 2, 0),
+(5, '2017-08-21', '2017-08-17', 0, 0, 1, 1, 0),
+(6, '2017-06-17', '2017-06-15', 2, 2, 1, 2, 1),
+(7, '2017-07-12', '2017-07-10', 0, 15, 1, 1, 0),
+(8, '2017-08-29', '2017-08-27', 2, 2, 1, 2, 0);
 
 -- --------------------------------------------------------
 
