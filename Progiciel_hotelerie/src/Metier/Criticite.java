@@ -12,22 +12,18 @@ public class Criticite {
     private int id;
     private String libelle;
     private Time tempsMaximum;
-    private Collection<DemandeIntervention> demandeInterventionsById;
 
-    public Criticite(int id, String libelle, Time tempsMaximum,
-			Collection<DemandeIntervention> demandeInterventionsById) {
+    public Criticite(int id, String libelle, Time tempsMaximum) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.tempsMaximum = tempsMaximum;
-		this.demandeInterventionsById = demandeInterventionsById;
 	}
 
-	public Criticite(String libelle, Time tempsMaximum, Collection<DemandeIntervention> demandeInterventionsById) {
+	public Criticite(String libelle, Time tempsMaximum) {
 		super();
 		this.libelle = libelle;
 		this.tempsMaximum = tempsMaximum;
-		this.demandeInterventionsById = demandeInterventionsById;
 	}
 
 	public Criticite() {
@@ -37,8 +33,7 @@ public class Criticite {
 
 	@Override
 	public String toString() {
-		return "Criticite [id=" + id + ", libelle=" + libelle + ", tempsMaximum=" + tempsMaximum
-				+ ", demandeInterventionsById=" + demandeInterventionsById + "]";
+		return libelle;
 	}
 
 	public void setId(Integer id) {
@@ -73,14 +68,5 @@ public class Criticite {
 
     public void setTempsMaximum(Time tempsMaximum) {
         this.tempsMaximum = tempsMaximum;
-    }
-
-    @OneToMany(mappedBy = "criticiteByIdCriticite")
-    public Collection<DemandeIntervention> getDemandeInterventionsById() {
-        return demandeInterventionsById;
-    }
-
-    public void setDemandeInterventionsById(Collection<DemandeIntervention> demandeInterventionsById) {
-        this.demandeInterventionsById = demandeInterventionsById;
     }
 }
