@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
@@ -13,6 +14,7 @@ import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import src.Metier.Criticite;
 import src.Metier.DemandeIntervention;
 import src.Metier.EquipementHotel;
@@ -22,7 +24,7 @@ import src.Persistance.Maintenance.AccesDataNewDemande;
 
 public class NewDemande implements Initializable {
 	
-	@FXML private JFXTabPane onglets;
+	@FXML private JFXTabPane onglet;
 	@FXML private JFXComboBox etages;
 	@FXML private JFXComboBox chambres;
 	@FXML private JFXComboBox<EquipementHotel> equipementsHotel;
@@ -32,10 +34,19 @@ public class NewDemande implements Initializable {
 	@FXML private JFXTextField objetField;
 	@FXML private JFXTextArea descriptionField;
 	@FXML private JFXComboBox<Criticite> criticite;
+	@FXML private JFXButton closeButton;
 	@FXML private Text priseEnCharge;
+	
+	private int locationEquipement;
+	private final int ID_ONGLET_HOTEL = 1;
+	private final int ID_ONGLET_JARDIN = 2;
+	private final int ID_ONGLET_RESTAURANT = 3;
+	private final int ID_ONGLET_SPA = 4;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		locationEquipement = 1; // => Hôtel
+		
 		// Charge la liste des étages dans le combo box correspondant
 		etages.getItems().addAll(AccesDataNewDemande.getListeEtages());
 		
@@ -64,7 +75,29 @@ public class NewDemande implements Initializable {
 		System.out.println("Objet : " + objetField.getText());
 		System.out.println("Description : " + descriptionField.getText());
 		System.out.println("Criticité : " + criticite.getValue());
-		System.out.println("Equipement : " + equipementsHotel.getValue());
+		
+		EquipementHotel equipementHotel = null;
+		EquipementRestaurant equipementRestaurant = null;
+		EquipementSpa equipementSpa = null;
+		
+		switch (locationEquipement) {
+			case ID_ONGLET_HOTEL :
+				System.out.println("Equipement Hôtel : " + equipementsHotel.getValue());
+				equipementHotel = equipementsHotel.getValue();
+				break;
+			case ID_ONGLET_JARDIN :
+				System.out.println("Equipement Jardin : " + equipementsJardin.getValue());
+				equipementHotel = equipementsJardin.getValue();
+				break;
+			case ID_ONGLET_RESTAURANT :
+				System.out.println("Equipement Restaurant : " + equipementsRestaurant.getValue());
+				equipementRestaurant = equipementsRestaurant.getValue();
+				break;
+			case ID_ONGLET_SPA :
+				System.out.println("Equipement Spa : " + equipementsSpa.getValue());
+				equipementSpa = equipementsSpa.getValue();
+				break;
+		}
 		
 		// Création de la demande
 		DemandeIntervention newDemande = new DemandeIntervention(
@@ -73,15 +106,18 @@ public class NewDemande implements Initializable {
 				descriptionField.getText(),
 				true, //valide
 				criticite.getValue(),
-				null, //spa
-				(EquipementHotel) equipementsHotel.getValue(),
-				null, //restaurant
+				(EquipementSpa) equipementSpa, //spa
+				(EquipementHotel) equipementHotel, // hotel ou jardin
+				(EquipementRestaurant) equipementRestaurant, //restaurant
 				null, //pièce de rechange
 				null, //demande utilisateur
 				null //rapport
 				);
 		//Persistance dans la base
 		AccesDataNewDemande.ajouterDemande(newDemande);
+		// TODO Afficher un message de confirmation
+		
+		closeButtonAction();
 	}
 	
 	/**
@@ -102,7 +138,28 @@ public class NewDemande implements Initializable {
 		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByChambre((int) chambres.getValue()));
 	}
 	
-	public void changeLocationEquipement() {
-		System.out.println(onglets.toString());
+	/**
+	 * Ferme la fenêtre
+	 */
+	public void closeButtonAction(){
+	    // Récupère la scène et la ferme
+	    Stage stage = (Stage) closeButton.getScene().getWindow();
+	    stage.close();
+	}
+	
+	public void setOngletHotel() {
+		locationEquipement = 1;
+	}
+	
+	public void setOngletJardin() {
+		locationEquipement = 2;
+	}
+	
+	public void setOngletRestaurant() {
+		locationEquipement = 3;
+	}
+	
+	public void setOngletSpa() {
+		locationEquipement = 4;
 	}
 }

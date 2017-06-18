@@ -28,7 +28,7 @@ public class AccesDataNewDemande {
 			s.save(newDemande);
 			t.commit();
 		} catch (org.hibernate.HibernateException e) {
-			System.err.println(e.getMessage());
+			System.err.println("Erreur Hibernate : " + e.getMessage());
 		}
 	}
 	

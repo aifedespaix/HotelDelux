@@ -33,9 +33,9 @@
                   <Font size="26.0" />
                </font>
             </Text>
-            <JFXTabPane layoutY="49.0" prefHeight="138.0" prefWidth="850.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
+            <JFXTabPane fx:id="onglet" layoutY="49.0" prefHeight="138.0" prefWidth="850.0" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="49.0">
                <tabs>
-                <Tab text="Hôtel">
+                <Tab onSelectionChanged="#setOngletHotel" text="Hôtel">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -65,7 +65,7 @@
                         </AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Jardin">
+                  <Tab onSelectionChanged="#setOngletJardin" text="Jardin">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -78,7 +78,7 @@
                            </children></AnchorPane>
                      </content>
                   </Tab>
-                <Tab text="Restaurant">
+                <Tab onSelectionChanged="#setOngletRestaurant" text="Restaurant">
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -91,7 +91,7 @@
                            </children></AnchorPane>
                   </content>
                 </Tab>
-                  <Tab text="Spa">
+                  <Tab onSelectionChanged="#setOngletSpa" text="Spa">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -194,7 +194,7 @@
                   <Font size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton cancelButton="true" prefHeight="41.0" prefWidth="103.0" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton fx:id="closeButton" cancelButton="true" onAction="#closeButtonAction" prefHeight="41.0" prefWidth="103.0" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
