@@ -18,7 +18,7 @@ public class MenuMaintenance {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("src/Views/newDemande.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Nouvelle demande de maintenance");
-            stage.setScene(new Scene(root, 450, 450));
+            stage.setScene(new Scene(root,800, 700));
             stage.show();
         }
         catch (IOException e) {

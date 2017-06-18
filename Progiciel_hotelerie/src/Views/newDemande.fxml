@@ -15,20 +15,20 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane minHeight="500.0" minWidth="700.0" prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.NewDemande">
+<GridPane minHeight="500.0" minWidth="700.0" prefHeight="629.0" prefWidth="909.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.NewDemande">
    <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="1000.0" minWidth="700.0" prefWidth="800.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="361.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="361.0" minHeight="10.0" prefHeight="202.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="383.0" minHeight="10.0" prefHeight="351.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="77.0" minHeight="10.0" prefHeight="77.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="80.0" minHeight="57.0" prefHeight="57.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="230.0" minHeight="199.0" prefHeight="199.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="400.0" minHeight="280.0" prefHeight="335.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="95.0" minHeight="80.0" prefHeight="95.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="848.0" GridPane.rowIndex="1">
          <children>
-            <Text layoutX="14.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" wrappingWidth="76.62109375">
+            <Text layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lieu" wrappingWidth="76.62109375">
                <font>
                   <Font size="26.0" />
                </font>
@@ -67,17 +67,41 @@
                 </Tab>
                   <Tab text="Jardin">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="43.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipement" wrappingWidth="152.62109375">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Text>
+                              <JFXComboBox fx:id="equipementsJardin" layoutX="212.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" />
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                 <Tab text="Restaurant">
                   <content>
-                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="40.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipement" wrappingWidth="152.62109375">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Text>
+                              <JFXComboBox fx:id="equipementsRestaurant" layoutX="226.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" />
+                           </children></AnchorPane>
                   </content>
                 </Tab>
                   <Tab text="Spa">
                      <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <Text layoutX="40.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipement" wrappingWidth="152.62109375">
+                                 <font>
+                                    <Font size="26.0" />
+                                 </font>
+                              </Text>
+                              <JFXComboBox fx:id="equipementsSpa" layoutX="218.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" />
+                           </children></AnchorPane>
                      </content>
                   </Tab>
                </tabs>
@@ -135,7 +159,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </JFXTextArea>
-            <JFXComboBox fx:id="criticite" prefHeight="25.0" prefWidth="163.0" promptText="Choisir" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <JFXComboBox fx:id="criticite" onAction="#tempsPriseEnCharge" prefHeight="25.0" prefWidth="163.0" promptText="Choisir" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
@@ -143,6 +167,14 @@
                   <Insets left="10.0" />
                </padding>
             </JFXComboBox>
+            <Text fx:id="priseEnCharge" strokeType="OUTSIDE" strokeWidth="0.0" text="Temps de prise en charge :" wrappingWidth="397.62109375" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="220.0" />
+               </GridPane.margin>
+            </Text>
          </children>
          <padding>
             <Insets left="20.0" right="20.0" />
@@ -157,12 +189,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <JFXButton onAction="#createDemande" prefHeight="49.0" prefWidth="147.0" text="Enregistrer" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton defaultButton="true" onAction="#createDemande" prefHeight="49.0" prefWidth="147.0" text="Enregistrer" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>
             </JFXButton>
-            <JFXButton prefHeight="41.0" prefWidth="103.0" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <JFXButton cancelButton="true" prefHeight="41.0" prefWidth="103.0" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font>

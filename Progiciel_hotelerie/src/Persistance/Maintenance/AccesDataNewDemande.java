@@ -4,10 +4,11 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import src.Metier.Chambre;
 import src.Metier.Criticite;
 import src.Metier.DemandeIntervention;
 import src.Metier.EquipementHotel;
+import src.Metier.EquipementRestaurant;
+import src.Metier.EquipementSpa;
 import src.Persistance.HibernateSession;
 
 import java.util.List;
@@ -94,5 +95,29 @@ public class AccesDataNewDemande {
 	public static List<Criticite> getListeCriticite() {
 		List<Criticite> listeCriticite = s.createQuery("FROM Criticite").list();
 		return listeCriticite;
+	}
+	
+	/**
+	 * @return la liste de tous les équipements du jardin
+	 */
+	public static List<EquipementHotel> getListeEquipementJardin() {
+		List<EquipementHotel> listeEquipements = s.createQuery("FROM EquipementHotel").list();
+		return listeEquipements;
+	}
+	
+	/**
+	 * @return la liste de tous les équipements du restaurant
+	 */
+	public static List<EquipementRestaurant> getListeEquipementRestaurant() {
+		List<EquipementRestaurant> listeEquipements = s.createQuery("FROM EquipementRestaurant").list();
+		return listeEquipements;
+	}
+	
+	/**
+	 * @return la liste de tous les équipements du spa
+	 */
+	public static List<EquipementSpa> getListeEquipementSpa() {
+		List<EquipementSpa> listeEquipements = s.createQuery("FROM EquipementSpa").list();
+		return listeEquipements;
 	}
 }

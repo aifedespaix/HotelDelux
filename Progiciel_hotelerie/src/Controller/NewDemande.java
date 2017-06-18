@@ -11,9 +11,12 @@ import com.jfoenix.controls.JFXTextField;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
 import src.Metier.Criticite;
 import src.Metier.DemandeIntervention;
 import src.Metier.EquipementHotel;
+import src.Metier.EquipementRestaurant;
+import src.Metier.EquipementSpa;
 import src.Persistance.Maintenance.AccesDataNewDemande;
 
 public class NewDemande implements Initializable {
@@ -21,9 +24,13 @@ public class NewDemande implements Initializable {
 	@FXML private JFXComboBox etages;
 	@FXML private JFXComboBox chambres;
 	@FXML private JFXComboBox<EquipementHotel> equipementsHotel;
+	@FXML private JFXComboBox<EquipementHotel> equipementsJardin;
+	@FXML private JFXComboBox<EquipementRestaurant> equipementsRestaurant;
+	@FXML private JFXComboBox<EquipementSpa> equipementsSpa;
 	@FXML private JFXTextField objetField;
 	@FXML private JFXTextArea descriptionField;
 	@FXML private JFXComboBox<Criticite> criticite;
+	@FXML private Text priseEnCharge;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -36,9 +43,16 @@ public class NewDemande implements Initializable {
 		
 		// Charge la liste des équipements
 		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipement());
+		equipementsJardin.getItems().addAll(AccesDataNewDemande.getListeEquipementJardin());
+		equipementsRestaurant.getItems().addAll(AccesDataNewDemande.getListeEquipementRestaurant());
+		equipementsSpa.getItems().addAll(AccesDataNewDemande.getListeEquipementSpa());
 		
 		// Charge la liste des criticité
 		criticite.getItems().addAll(AccesDataNewDemande.getListeCriticite());
+	}
+	
+	public void tempsPriseEnCharge() {
+		priseEnCharge.setText("Temps de prise en charge : " + criticite.getValue().getTempsMaximum().toString());
 	}
 	
 	/**
