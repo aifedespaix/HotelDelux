@@ -72,7 +72,7 @@ public class AccesDataNewDemande {
 	 * @return la liste de tous les équipements d'un étage donné
 	 */
 	public static List<EquipementHotel> getListeEquipementByEtage(int etage) {
-		Query query = s.createQuery("SELECT eh.id, eh.libelle, eh.description, eh.photo, eh.chambreByIdChambre, eh.commandeAssocsById FROM EquipementHotel eh, Chambre c WHERE c.id = eh.chambreByIdChambre AND c.etage = :etage");
+		Query query = s.createQuery("SELECT eh.id, eh.libelle, eh.description, eh.photo, eh.estEquipementJardin, eh.chambreByIdChambre FROM EquipementHotel eh, Chambre c WHERE c.id = eh.chambreByIdChambre AND c.etage = :etage");
 		query.setInteger("etage", etage);
 		List<EquipementHotel> listeEquipements = query.list();
 		return listeEquipements;
@@ -101,7 +101,7 @@ public class AccesDataNewDemande {
 	 * @return la liste de tous les équipements du jardin
 	 */
 	public static List<EquipementHotel> getListeEquipementJardin() {
-		List<EquipementHotel> listeEquipements = s.createQuery("FROM EquipementHotel").list();
+		List<EquipementHotel> listeEquipements = s.createQuery("FROM EquipementHotel WHERE estEquipementJardin = 1").list();
 		return listeEquipements;
 	}
 	

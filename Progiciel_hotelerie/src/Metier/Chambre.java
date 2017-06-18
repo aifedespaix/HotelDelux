@@ -9,7 +9,7 @@ import java.util.Collection;
 @Entity
 public class Chambre {
     private int id;
-    private int numeroChambre;
+    private Integer numeroChambre;
     private double prix;
     private int capacite;
     private int etage;    
@@ -46,9 +46,7 @@ public class Chambre {
 
 	@Override
 	public String toString() {
-		return "Chambre [id=" + id + ", prix=" + prix + ", capacite="
-				+ capacite + ", etage=" + etage + ", equipementHotelsById=" + equipementHotelsById
-				+ ", reservationHotelsById=" + reservationHotelsById + "]";
+		return numeroChambre.toString();
 	}
 
 	public void setCapacite(int capacite) {

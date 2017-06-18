@@ -40,8 +40,7 @@ public class EquipementSpa {
 
 	@Override
 	public String toString() {
-		return "EquipementSpa [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo=" + photo
-				+ ", spaByIdSpa=" + spaByIdSpa + "]";
+		return libelle;
 	}
 
 	public void setId(Integer id) {

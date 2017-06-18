@@ -52,7 +52,7 @@
         <mapping class="src.Metier.RestaurantAssoc"/>
         <mapping class="src.Metier.Role"/>
         <mapping class="src.Metier.Spa"/>
-        <mapping class="src.Metier.Table"/>
+        <mapping class="src.Metier.TableRestaurant"/>
         <mapping class="src.Metier.Tva"/>
         <mapping class="src.Metier.Utilisateur"/>
             <mapping class="src.Metier.Agence"/>
@@ -86,7 +86,7 @@
             <mapping class="src.Metier.RestaurantAssoc"/>
             <mapping class="src.Metier.Role"/>
             <mapping class="src.Metier.Spa"/>
-            <mapping class="src.Metier.Table"/>
+            <mapping class="src.Metier.TableRestaurant"/>
             <mapping class="src.Metier.Tva"/>
             <mapping class="src.Metier.Utilisateur"/>
         </session-factory>

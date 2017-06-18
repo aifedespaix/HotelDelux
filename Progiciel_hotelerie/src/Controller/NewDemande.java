@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 
@@ -21,6 +22,7 @@ import src.Persistance.Maintenance.AccesDataNewDemande;
 
 public class NewDemande implements Initializable {
 	
+	@FXML private JFXTabPane onglets;
 	@FXML private JFXComboBox etages;
 	@FXML private JFXComboBox chambres;
 	@FXML private JFXComboBox<EquipementHotel> equipementsHotel;
@@ -98,5 +100,9 @@ public class NewDemande implements Initializable {
 	public void filterChambre() {
 		equipementsHotel.getItems().clear();
 		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByChambre((int) chambres.getValue()));
+	}
+	
+	public void changeLocationEquipement() {
+		System.out.println(onglets.toString());
 	}
 }

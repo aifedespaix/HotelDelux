@@ -13,9 +13,9 @@ public class EquipementRestaurant {
     private String libelle;
     private String description;
     private String photo;
-    private Table tableByIdTable;
+    private TableRestaurant tableByIdTable;
 
-    public EquipementRestaurant(int id, String libelle, String description, String photo, Table tableByIdTable) {
+    public EquipementRestaurant(int id, String libelle, String description, String photo, TableRestaurant tableByIdTable) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
@@ -24,7 +24,7 @@ public class EquipementRestaurant {
 		this.tableByIdTable = tableByIdTable;
 	}
 
-	public EquipementRestaurant(String libelle, String description, String photo, Table tableByIdTable) {
+	public EquipementRestaurant(String libelle, String description, String photo, TableRestaurant tableByIdTable) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
@@ -39,8 +39,7 @@ public class EquipementRestaurant {
 
 	@Override
 	public String toString() {
-		return "EquipementRestaurant [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
-				+ photo + ", tableByIdTable=" + tableByIdTable + "]";
+		return libelle;
 	}
 
 	public void setId(Integer id) {
@@ -89,11 +88,11 @@ public class EquipementRestaurant {
 
     @ManyToOne
     @JoinColumn(name = "id_table", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
-    public Table getTableByIdTable() {
+    public TableRestaurant getTableByIdTable() {
         return tableByIdTable;
     }
 
-    public void setTableByIdTable(Table tableByIdTable) {
+    public void setTableByIdTable(TableRestaurant tableByIdTable) {
         this.tableByIdTable = tableByIdTable;
     }
 }
