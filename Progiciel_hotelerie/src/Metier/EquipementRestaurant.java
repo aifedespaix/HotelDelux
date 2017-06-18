@@ -13,33 +13,23 @@ public class EquipementRestaurant {
     private String libelle;
     private String description;
     private String photo;
-    private Collection<DemandeIntervention> demandeInterventionsById;
     private Table tableByIdTable;
-    private Collection<CommandeAssoc> commandeAssocsById;
 
-    public EquipementRestaurant(int id, String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Table tableByIdTable,
-			Collection<CommandeAssoc> commandeAssocsById) {
+    public EquipementRestaurant(int id, String libelle, String description, String photo, Table tableByIdTable) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
 		this.tableByIdTable = tableByIdTable;
-		this.commandeAssocsById = commandeAssocsById;
 	}
 
-	public EquipementRestaurant(String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Table tableByIdTable,
-			Collection<CommandeAssoc> commandeAssocsById) {
+	public EquipementRestaurant(String libelle, String description, String photo, Table tableByIdTable) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
 		this.tableByIdTable = tableByIdTable;
-		this.commandeAssocsById = commandeAssocsById;
 	}
 
 	public EquipementRestaurant() {
@@ -50,8 +40,7 @@ public class EquipementRestaurant {
 	@Override
 	public String toString() {
 		return "EquipementRestaurant [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
-				+ photo + ", demandeInterventionsById=" + demandeInterventionsById + ", tableByIdTable="
-				+ tableByIdTable + ", commandeAssocsById=" + commandeAssocsById + "]";
+				+ photo + ", tableByIdTable=" + tableByIdTable + "]";
 	}
 
 	public void setId(Integer id) {
@@ -98,15 +87,6 @@ public class EquipementRestaurant {
         this.photo = photo;
     }
 
-    @OneToMany(mappedBy = "equipementRestaurantByIdEquipementRestaurant")
-    public Collection<DemandeIntervention> getDemandeInterventionsById() {
-        return demandeInterventionsById;
-    }
-
-    public void setDemandeInterventionsById(Collection<DemandeIntervention> demandeInterventionsById) {
-        this.demandeInterventionsById = demandeInterventionsById;
-    }
-
     @ManyToOne
     @JoinColumn(name = "id_table", referencedColumnName = "id", nullable = false, updatable = false,insertable = false)
     public Table getTableByIdTable() {
@@ -115,14 +95,5 @@ public class EquipementRestaurant {
 
     public void setTableByIdTable(Table tableByIdTable) {
         this.tableByIdTable = tableByIdTable;
-    }
-
-    @OneToMany(mappedBy = "equipementRestaurantByIdEquipementRestaurant")
-    public Collection<CommandeAssoc> getCommandeAssocsById() {
-        return commandeAssocsById;
-    }
-
-    public void setCommandeAssocsById(Collection<CommandeAssoc> commandeAssocsById) {
-        this.commandeAssocsById = commandeAssocsById;
     }
 }

@@ -216,16 +216,16 @@ public class HebergementClients implements Initializable {
 		/**
 		 * Ajoute dans une liste tous les clients correspondant au filtre apr�s avoir fait la requ�te n�cessaire
 		 */
-		List<Client> listeClient = null;
-		if(!txtName.getText().equals("")){
-			listeClient = AccesData.getClientsByName(txtName.getText());
-		} else if (!txtPrenom.getText().equals("")){
-			listeClient = AccesData.getClientsByPrenom(txtPrenom.getText());
-		} else if (!txtAdresse.getText().equals("")){
-			listeClient = AccesData.getClientsByAdresse(txtAdresse.getText());
-		} else if (!txtPhone.getText().equals("")){
-			listeClient = AccesData.getClientsByPhone(txtPhone.getText());
-		}
+		 List<Client> listeClient = AccesData.getClientFiltre(this.txtName.getText(), this.txtPrenom.getText(), this.txtAdresse.getText(), this.txtPhone.getText());
+//		if(!txtName.getText().equals("")){
+//			listeClient = AccesData.getClientsByName(txtName.getText());
+//		} else if (!txtPrenom.getText().equals("")){
+//			listeClient = AccesData.getClientsByPrenom(txtPrenom.getText());
+//		} else if (!txtAdresse.getText().equals("")){
+//			listeClient = AccesData.getClientsByAdresse(txtAdresse.getText());
+//		} else if (!txtPhone.getText().equals("")){
+//			listeClient = AccesData.getClientsByPhone(txtPhone.getText());
+//		}		
 		
 		/**
 		 * Ajoute les clients � la liste d'observables pour qu'ils soient affich�s
