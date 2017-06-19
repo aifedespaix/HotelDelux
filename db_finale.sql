@@ -881,20 +881,20 @@ INSERT INTO `spa` (`id`, `numero`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `table`
+-- Structure de la table `table_restaurant`
 --
 
-CREATE TABLE IF NOT EXISTS `table` (
+CREATE TABLE IF NOT EXISTS `table_restaurant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nbCouverts` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `table`
+-- Contenu de la table `table_restaurant`
 --
 
-INSERT INTO `table` (`id`, `nbCouverts`) VALUES
+INSERT INTO `table_restaurant` (`id`, `nbCouverts`) VALUES
 (1, 2),
 (2, 4),
 (3, 3),
