@@ -1,3 +1,6 @@
+USE hotel;
+
+
 -- phpMyAdmin SQL Dump
 -- version 4.1.4
 -- http://www.phpmyadmin.net

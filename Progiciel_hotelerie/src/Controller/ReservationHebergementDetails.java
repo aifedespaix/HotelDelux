@@ -1,33 +1,18 @@
 package src.Controller;
 
-import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import javafx.beans.property.SimpleStringProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TreeItem;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
-import src.Launcher.Launcher;
-import src.Metier.Client;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
-import util.generalFunctions;
+import src.util.generalFunctions;
+import src.util.generationFactureHebergement;
 
 public class ReservationHebergementDetails implements Initializable {
 	ReservationHotel reservation = new ReservationHotel();
@@ -55,19 +40,21 @@ public class ReservationHebergementDetails implements Initializable {
 	}
 	
 	public void update(){
-		lblNumReservation.setText("Réservation n°" + this.reservation.getId());
-		lblValide.setText("Validée : " + generalFunctions.isValidate(this.reservation.getValide()));
-		lblNumeroChambre.setText("Chambre n° : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
-		lblDateArrivee.setText("Arrivée le " + this.reservation.getDateDebut());
-		lblDateDepart.setText("Départ le " + this.reservation.getDateFin());		
+		lblNumReservation.setText("Rï¿½servation nï¿½" + this.reservation.getId());
+		lblValide.setText("Validï¿½e : " + generalFunctions.isValidate(this.reservation.getValide()));
+		lblNumeroChambre.setText("Chambre nï¿½ : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
+		lblDateArrivee.setText("Arrivï¿½e le " + this.reservation.getDateDebut());
+		lblDateDepart.setText("Dï¿½part le " + this.reservation.getDateFin());		
 		lblClientName.setText(AccesData.getClientById(this.reservation.getIdClient()).getNom() + " " + AccesData.getClientById(this.reservation.getIdClient()).getPrenom());
 		lblNbAdultes.setText("Nombre d'adulte(s) : " + this.reservation.getNbAdultes());
 		lblNbEnfants.setText("Nombre d'enfant(s) : " + this.reservation.getNbEnfants());
 		areaInfosComp.setText(this.reservation.getInformationsComplementaires());
-		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "€");
+		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "ï¿½");
 
 	}
-	
+	public void generateFacture(){
+		generationFactureHebergement.editFactureLauncher(this.reservation);
+	}
 	public void editClient(){
 //		/**
 //    	 * Recupere la fenetre
