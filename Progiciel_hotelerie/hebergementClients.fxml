@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="hebergementClientPane" prefHeight="444.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.HebergementClients">
+   <children>
+      <Text layoutX="61.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" wrappingWidth="116.466796875">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="btnCreate" layoutX="555.0" layoutY="19.0" onAction="#createClient" prefHeight="41.0" prefWidth="78.0" text="Créer" />
+      <JFXTextField fx:id="txtName" layoutX="42.0" layoutY="99.0" />
+      <JFXTextField fx:id="txtPrenom" layoutX="201.0" layoutY="99.0" />
+      <JFXTextField fx:id="txtAdresse" layoutX="359.0" layoutY="99.0" />
+      <JFXTextField fx:id="txtPhone" layoutX="517.0" layoutY="99.0" />
+      <Text layoutX="42.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom :" />
+      <Text layoutX="201.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" />
+      <Text layoutX="359.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :" />
+      <Text layoutX="517.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone :" />
+      <JFXButton fx:id="searchButton" layoutX="674.0" layoutY="79.0" onAction="#search" prefHeight="41.0" prefWidth="78.0" text="Rechercher" />
+      <JFXTreeTableView fx:id="tableHebergementClient" layoutX="41.0" layoutY="165.0" prefHeight="272.0" prefWidth="709.0" />
+   </children>
+</AnchorPane>

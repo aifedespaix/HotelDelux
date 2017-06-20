@@ -43,7 +43,7 @@ import src.Persistance.AccesData;
 public class HebergementClients implements Initializable {
 	
 	/**
-	 * Déclaration des objets présents dans la vue pour y ajouter des événements
+	 * Dï¿½claration des objets prï¿½sents dans la vue pour y ajouter des ï¿½vï¿½nements
 	 */
 	@FXML private AnchorPane hebergementClientPane;
 	@FXML private JFXTreeTableView<Client> tableHebergementClient;
@@ -54,7 +54,7 @@ public class HebergementClients implements Initializable {
 	@FXML private JFXTextField txtPhone;
 	@SuppressWarnings(value = { "" })
 	/**
-	 * Déclaration de la liste d'observables qui contiendra les objets a afficher dans le tableau
+	 * Dï¿½claration de la liste d'observables qui contiendra les objets a afficher dans le tableau
 	 */
 	private ObservableList<Client> listeClients = FXCollections.observableArrayList();
 
@@ -63,19 +63,19 @@ public class HebergementClients implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		/**
-		 * Récupère la liste de tous les clients		
+		 * Rï¿½cupï¿½re la liste de tous les clients		
 		 */
 		List<Client> listec = AccesData.getClients();
 		
 		/**
-		 * Ajoute chaque client récupéré à la liste d'observable de clients
+		 * Ajoute chaque client rï¿½cupï¿½rï¿½ ï¿½ la liste d'observable de clients
 		 */
 		for(Client c : listec){
 			listeClients.add(c);
 		}
 		
 		/**
-		 * Créé l'arbre d'objets avec la liste d'observables de clients
+		 * Crï¿½ï¿½ l'arbre d'objets avec la liste d'observables de clients
 		 */
 		final TreeItem<Client> root = new RecursiveTreeItem<Client>(listeClients, RecursiveTreeObject::getChildren);	
 		
@@ -131,7 +131,7 @@ public class HebergementClients implements Initializable {
 								clientDetails = loaderClientDetails.load();
 								rootPane.setCenter(clientDetails);
 								/**
-								 * Recupere le client correspondant à l'id
+								 * Recupere le client correspondant ï¿½ l'id
 								 */
 						    	Client c = AccesData.getClientById(Integer.parseInt(bouton.getId()));
 						        //System.out.println(c);
@@ -156,35 +156,35 @@ public class HebergementClients implements Initializable {
 		
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
 		JFXTreeTableColumn<Client, String> nom = new JFXTreeTableColumn<>("Nom");
 		nom.setPrefWidth(100);
 		nom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNom()));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
-		JFXTreeTableColumn<Client, String> prenom = new JFXTreeTableColumn<>("Prénom");
+		JFXTreeTableColumn<Client, String> prenom = new JFXTreeTableColumn<>("Prï¿½nom");
 		prenom.setPrefWidth(100);
 		prenom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getPrenom()));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
 		JFXTreeTableColumn<Client, String> adresse = new JFXTreeTableColumn<>("Adresse");
 		adresse.setPrefWidth(100);
 		adresse.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAdresseRue() + ", " + param.getValue().getValue().getAdresseVille() + ", " + param.getValue().getValue().getCodePostal()));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
-		JFXTreeTableColumn<Client, String> telephone = new JFXTreeTableColumn<>("Téléphone");
+		JFXTreeTableColumn<Client, String> telephone = new JFXTreeTableColumn<>("Tï¿½lï¿½phone");
 		telephone.setPrefWidth(100);
 		telephone.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTelephone()));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
 		JFXTreeTableColumn<Client, String> chambre = new JFXTreeTableColumn<>("Chambre actuelle");
 		chambre.setPrefWidth(100);		
@@ -198,7 +198,7 @@ public class HebergementClients implements Initializable {
 		tableHebergementClient.setShowRoot(false);
 		
 		/**
-		 * Récupère les colonnes du tableau puis ajoute les nouvelles colonnes précédemment déclarées
+		 * Rï¿½cupï¿½re les colonnes du tableau puis ajoute les nouvelles colonnes prï¿½cï¿½demment dï¿½clarï¿½es
 		 */
 		tableHebergementClient.getColumns().setAll(voir,nom,prenom,adresse,telephone,chambre);
 
@@ -214,7 +214,7 @@ public class HebergementClients implements Initializable {
 		listeClients.clear();
 		
 		/**
-		 * Ajoute dans une liste tous les clients correspondant au filtre après avoir fait la requête nécessaire
+		 * Ajoute dans une liste tous les clients correspondant au filtre aprï¿½s avoir fait la requï¿½te nï¿½cessaire
 		 */
 		 List<Client> listeClient = AccesData.getClientFiltre(this.txtName.getText(), this.txtPrenom.getText(), this.txtAdresse.getText(), this.txtPhone.getText());
 //		if(!txtName.getText().equals("")){
@@ -228,7 +228,7 @@ public class HebergementClients implements Initializable {
 //		}		
 		
 		/**
-		 * Ajoute les clients à la liste d'observables pour qu'ils soient affichés
+		 * Ajoute les clients ï¿½ la liste d'observables pour qu'ils soient affichï¿½s
 		 */
 		if(listeClient.size() > 0){
 			for(Client c : listeClient){
