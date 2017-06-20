@@ -1,32 +1,18 @@
-package util;
+package src.util;
+
+import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import src.Metier.Client;
+import src.Metier.ReservationHotel;
+import src.Persistance.AccesData;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Date;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Calendar;
-
-import com.itextpdf.text.BaseColor;
-import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Element;
-import com.itextpdf.text.Font;
-import com.itextpdf.text.Image;
-import com.itextpdf.text.Paragraph;
-import com.itextpdf.text.pdf.PdfPCell;
-import com.itextpdf.text.pdf.PdfPTable;
-import com.itextpdf.text.pdf.PdfWriter;
-import com.sun.prism.paint.Color;
-
-import datechooser.model.DaysGrid;
-import src.Metier.Client;
-import src.Metier.ReservationHotel;
-import src.Metier.ReservationRestaurant;
-import src.Persistance.AccesData;
 
 
 public class generationFactureHebergement {
@@ -56,7 +42,7 @@ public class generationFactureHebergement {
 			image1.setAbsolutePosition(35f, 700F);
 			document.add(image1);
 			
-			Paragraph para1 = new Paragraph("Facture de l'hôtel");			
+			Paragraph para1 = new Paragraph("Facture de l'hôtel");
 			para1.setAlignment(Element.ALIGN_RIGHT);			
 			document.add(para1);
 			

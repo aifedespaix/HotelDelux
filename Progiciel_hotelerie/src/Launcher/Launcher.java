@@ -1,20 +1,14 @@
 package src.Launcher;
 	
-import java.io.File;
-import java.net.URL;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.List;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import src.Metier.Client;
-import src.Persistance.AccesData;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+import src.Persistance.AccesData;
+
+import java.net.URL;
 
 
 public class Launcher extends Application {

@@ -1,13 +1,6 @@
-package util;
+package src.util;
 
-import java.io.IOException;
 import java.sql.Date;
-
-import com.jfoenix.controls.JFXButton;
-
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
 public class generalFunctions {
 
@@ -34,9 +27,9 @@ public class generalFunctions {
 	public static String isValidate(Boolean valide){
 		String isValide = "";
 		if( valide == true){
-			isValide = "Validée";
+			isValide = "Validï¿½e";
 		} else {
-			isValide = "Non validée";
+			isValide = "Non validï¿½e";
 		}
 		return isValide;
 	}
