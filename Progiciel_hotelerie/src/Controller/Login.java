@@ -46,17 +46,15 @@ public class Login
     
     public void connexion() throws IOException
     {
-    	Stage primaryStage = (Stage) password.getScene().getWindow();
-    	primaryStage.setMaximized(true);
-    	
-    	root.prefHeightProperty().bind(primaryStage.heightProperty());
-        root.prefWidthProperty().bind(primaryStage.widthProperty());
-        
-        
         Utilisateur u = null;
         u = AccesData.getLoginUtilisateur(login.getText(), password.getText());
         if(u != null)
         {
+        	Stage primaryStage = (Stage) password.getScene().getWindow();
+        	primaryStage.setMaximized(true);
+        	
+        	root.prefHeightProperty().bind(primaryStage.heightProperty());
+            root.prefWidthProperty().bind(primaryStage.widthProperty());
            switch (u.getRoleByIdRole().getId())
            {
                case 1:
@@ -74,10 +72,6 @@ public class Login
                     FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuHebergement.fxml"));
 	       			AnchorPane menuHebergement = loaderHebergement.load();
 	       			root.setTop(menuHebergement);
-	       			
-//	       			FXMLLoader loaderClientNew = new FXMLLoader(getClass().getResource("/src/Views/newClient.fxml"));
-//	       			AnchorPane newClient = loaderClientNew.load();
-//	       			root.setCenter(newClient);
                    break;
                case 4:
                    System.out.println("Réception");
@@ -111,15 +105,15 @@ public class Login
                    break;
                default:
                    	System.out.println("default");
-                   	                   
-//                   Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/src/Views/login.fxml")));
-//                   primaryStage.setScene(scene);
-//                   primaryStage.show();
            }
         }
         else
         {
             System.out.println("Echec");
+            // Efface les champs et remet le curseur sur le champs du login
+        	login.setText("");
+        	password.setText("");
+        	login.requestFocus();
         }
 
     }
