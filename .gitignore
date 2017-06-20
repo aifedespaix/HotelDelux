@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea/HotelDeluXxX.iml
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/dataSources/
+.idea/encodings.xml
+.idea/misc.xml
+.idea/modules.xml
+.idea/php.xml
+.idea/vcs.xml
+.idea/workspace.xml
+.idea/libraries
+out/
+**/*.class
+/*.class
+*.class
