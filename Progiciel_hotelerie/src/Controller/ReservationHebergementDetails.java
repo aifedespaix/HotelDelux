@@ -1,11 +1,7 @@
 package src.Controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
@@ -13,6 +9,9 @@ import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
 import src.util.generalFunctions;
 import src.util.generationFactureHebergement;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ReservationHebergementDetails implements Initializable {
 	ReservationHotel reservation = new ReservationHotel();
