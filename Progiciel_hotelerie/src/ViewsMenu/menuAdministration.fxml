@@ -11,35 +11,17 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #EF5350;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuMaintenance">
+<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #BBB;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuDirecteur">
    <children>
       <HBox alignment="CENTER" prefHeight="113.0" prefWidth="962.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="logoMaintenance" fitHeight="113.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/icons/Maintenance.png" />
-               </image></ImageView>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="114.0" style="-fx-background-color: #FFF;" text="Demandes" textAlignment="CENTER">
+            <ImageView fitHeight="113.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true" />
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="127.0" style="-fx-background-color: #FFF;" text="A faire" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="118.0" style="-fx-background-color: #FFF;" text="Planning" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="105.0" style="-fx-background-color: #FFF;" text="Rapports" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="89.0" style="-fx-background-color: #FFF;" text="Stock" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="135.0" style="-fx-background-color: #FFF;" text="Commandes" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="104.0" style="-fx-background-color: #FFF;" text="..." textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -61,7 +43,7 @@
             </JFXButton>
             <VBox alignment="CENTER" prefHeight="113.0" prefWidth="173.0" spacing="20.0">
                <children>
-                  <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="140.9765625">
+                  <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="139.9765625">
                      <font>
                         <Font size="18.0" />
                      </font>

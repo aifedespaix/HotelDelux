@@ -40,8 +40,7 @@ public class EquipementHotel {
 
 	@Override
 	public String toString() {
-		return "EquipementHotel [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo="
-				+ photo + ", chambreByIdChambre=" + chambreByIdChambre + "]";
+		return libelle;
 	}
 
 	public void setId(Integer id) {

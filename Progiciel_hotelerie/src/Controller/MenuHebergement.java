@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXButton;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.Launcher.Launcher;
@@ -41,4 +42,14 @@ public class MenuHebergement {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * Appelle la fonction dans le menu maintenance qui permet d'ouvrir la fenêtre de nouvelle demande
+	 * @throws IOException
+	 */
+	public void openNewDemande() throws IOException
+    {
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("src/Views/newDemande.fxml"));
+		MenuMaintenance.openWindowNewDemande(root);
+    }
 }
