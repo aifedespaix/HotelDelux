@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="Librairies/Java/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/DateChooser.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/ejb3-persistence.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/hibernate-annotations.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/hibernate-commons-annotations.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/hibernate-core.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/hibernate-validator.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/hibernate3.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/javassist-3.4.GA.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/javax.persistence.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/jstl-1.2.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/mysql-connector-java-3.1.14-bin.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/slf4j-simple-1.5.6.jar"/>
+	<classpathentry kind="lib" path="Librairies/JavaFx Material Design/jfoenix.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

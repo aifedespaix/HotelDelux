@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="Java EE 6-Java EE 6">
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.annotation.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.jms.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.ejb.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.persistence.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.transaction.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.resource.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.servlet.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.servlet.jsp.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/lib/javax.servlet.jsp.jstl.jar" />
+  </library>
+  <library name="antlr-2.7.6">
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/antlr-2.7.6.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/commons-collections-3.1.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/DateChooser.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/dom4j-1.6.1.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/ejb3-persistence.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/hibernate3.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/hibernate-annotations.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/hibernate-commons-annotations.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/hibernate-core.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/hibernate-validator.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/javassist-3.4.GA.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/javassist-3.9.0.GA.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/javax.persistence.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/jcalendar-1.4.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/jstl-1.2.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/jta-1.1.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/mysql-connector-java-3.1.14-bin.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/slf4j-api-1.5.6.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/slf4j-api-1.5.8.jar" />
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/Java/slf4j-simple-1.5.6.jar" />
+  </library>
+  <library name="jfoenix">
+    <archive path="C:/Users/ledze/Documents/Projethotel/HotelDeluXxX/Progiciel_hotelerie/Librairies/JavaFx Material Design/jfoenix.jar" />
+  </library>
+</eclipse-userlibraries>
+

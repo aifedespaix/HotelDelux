@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #757575;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuDirecteur">
+   <children>
+      <HBox alignment="CENTER" prefHeight="113.0" prefWidth="962.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fx:id="logoDirecteur" fitHeight="113.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../image/icons/Direction.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin></ImageView>
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="127.0" style="-fx-background-color: #FFF;" text="Réservations" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="132.0" style="-fx-background-color: #FFF;" text="Maintenance" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="90.0" style="-fx-background-color: #FFF;" text="Client" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="122.0" style="-fx-background-color: #FFF;" text="Restaurant" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font></JFXButton>
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="89.0" style="-fx-background-color: #FFF;" text="Stock" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="104.0" style="-fx-background-color: #FFF;" text="Employés" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="btnNewDemande" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openNewDemande" prefHeight="60.0" prefWidth="77.0" style="-fx-background-color: #FFF;" text=" " textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/icons/maintenance-icon.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
+            </JFXButton>
+            <VBox alignment="CENTER" prefHeight="113.0" prefWidth="173.0" spacing="20.0">
+               <children>
+                  <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="139.9765625">
+                     <font>
+                        <Font size="18.0" />
+                     </font></Text>
+                  <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="145.0" text="Déconnexion">
+                     <font>
+                        <Font size="18.0" />
+                     </font></JFXButton>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </VBox>
+            <StackPane alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="136.0">
+               <children>
+                  <ImageView fitHeight="101.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </StackPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
