@@ -38,7 +38,7 @@ public class generationFactureHebergement {
 			fontWhite.setColor(255,255,255);
 			
 			//Image
-			Image image1 = Image.getInstance ("ghdp.png");
+			Image image1 = Image.getInstance ("Progiciel_hotelerie/src/image/Hotel/ghdp.png");
 			image1.setAbsolutePosition(35f, 700F);
 			document.add(image1);
 			

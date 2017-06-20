@@ -9,7 +9,7 @@ public class Parametre {
 		String cheminComplet = null;
 		String nomFich = getNomFichier(nomClient, prenomClient,dateReservation);
 		System.out.println(nomFich);
-		cheminComplet = "C:" + File.separator + "Users" + File.separator + "Kev" + File.separator + "Desktop" + File.separator + "pdf" + File.separator + nomFich;
+		cheminComplet = "C:" + File.separator + "Users" + File.separator + "AifeDesPaix" + File.separator + "Desktop" + File.separator + "pdf" + File.separator + nomFich;
 		System.out.println(cheminComplet);
 		return cheminComplet;
 	}
