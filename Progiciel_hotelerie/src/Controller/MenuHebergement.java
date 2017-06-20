@@ -13,6 +13,7 @@ import src.Launcher.Launcher;
 public class MenuHebergement {
 	
 	@FXML private JFXButton btnClient;
+	@FXML private JFXButton btnReservations;
 	BorderPane root = Launcher.getRoot();
 	
 	
@@ -27,5 +28,17 @@ public class MenuHebergement {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}		
+	}
+	
+	public void accessToReservation(){
+		FXMLLoader loaderReservations = new FXMLLoader(getClass().getResource("/src/Views/reservationsList.fxml"));
+		AnchorPane menuReservations;
+		try {
+			menuReservations = loaderReservations.load();
+			root.setCenter(menuReservations);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
