@@ -10,20 +10,18 @@ import javafx.stage.Stage;
 
 public class MenuMaintenance {
 	
-	public void openNewDemande() throws IOException
+	public void openNewDemande() throws IOException {
+		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("src/Views/newDemande.fxml"));
+		openWindowNewDemande(root);
+	}
+	
+	public static void openWindowNewDemande(Parent root) throws IOException
     {
-		Parent root;
-		
-		try {
-            root = FXMLLoader.load(getClass().getClassLoader().getResource("src/Views/newDemande.fxml"));
-            Stage stage = new Stage();
-            stage.setTitle("Nouvelle demande de maintenance");
-            stage.setScene(new Scene(root,800, 700));
-            stage.show();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+        Stage stage = new Stage();
+        stage.setTitle("Nouvelle demande de maintenance");
+        stage.setScene(new Scene(root,800, 700));
+        stage.show();
+        
     }
 
 }

@@ -23,6 +23,7 @@ public class AccesDataNewDemande {
 	 * @param newDemande la demande créée dans la fenêtre
 	 */
 	public static void ajouterDemande(DemandeIntervention newDemande) {
+		System.out.println(newDemande);
 		try {
 			t = s.beginTransaction();
 			s.save(newDemande);
@@ -72,7 +73,7 @@ public class AccesDataNewDemande {
 	 * @return la liste de tous les équipements d'un étage donné
 	 */
 	public static List<EquipementHotel> getListeEquipementByEtage(int etage) {
-		Query query = s.createQuery("SELECT eh.id, eh.libelle, eh.description, eh.photo, eh.estEquipementJardin, eh.chambreByIdChambre FROM EquipementHotel eh, Chambre c WHERE c.id = eh.chambreByIdChambre AND c.etage = :etage");
+		Query query = s.createQuery("SELECT eh FROM EquipementHotel eh, Chambre c WHERE c.id = eh.chambreByIdChambre AND c.etage = :etage");
 		query.setInteger("etage", etage);
 		List<EquipementHotel> listeEquipements = query.list();
 		return listeEquipements;
