@@ -27,7 +27,9 @@ import src.Launcher.Launcher;
 import src.Metier.Client;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
+import util.Parametre;
 import util.generalFunctions;
+import util.generationFactureHebergement;
 
 public class ReservationHebergementDetails implements Initializable {
 	ReservationHotel reservation = new ReservationHotel();
@@ -67,7 +69,9 @@ public class ReservationHebergementDetails implements Initializable {
 		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "€");
 
 	}
-	
+	public void generateFacture(){
+		generationFactureHebergement.editFactureLauncher(this.reservation);
+	}
 	public void editClient(){
 //		/**
 //    	 * Recupere la fenetre
