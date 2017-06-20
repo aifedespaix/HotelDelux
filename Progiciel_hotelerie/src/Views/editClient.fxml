@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="499.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.NewClient">
+<AnchorPane prefHeight="499.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditClient">
    <children>
-      <Text layoutX="47.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau client" wrappingWidth="110.13671875" />
+      <Text layoutX="47.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edition du client" wrappingWidth="110.13671875" />
       <Text layoutX="42.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom : " />
       <Text layoutX="36.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone :" />
       <Text layoutX="36.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :" />
@@ -27,7 +27,7 @@
       <JFXTextField fx:id="txtPrenom" layoutX="445.0" layoutY="84.0" />
       <JFXTextField fx:id="txtCp" layoutX="445.0" layoutY="161.0" />
       <JFXTextField fx:id="txtCountry" layoutX="445.0" layoutY="201.0" />
-      <JFXButton fx:id="btnSave" layoutX="539.0" layoutY="337.0" onAction="#save" text="Enregistrer" />
+      <JFXButton fx:id="btnSave" layoutX="539.0" layoutY="337.0" onAction="#saveClientEdit" text="Enregistrer" />
       <JFXButton fx:id="btnCancel" layoutX="543.0" layoutY="391.0" onAction="#cancel" text="Annuler" />
       <JFXDatePicker fx:id="dateBirth" layoutX="442.0" layoutY="129.0" />
    </children>

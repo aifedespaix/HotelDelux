@@ -14,33 +14,23 @@ public class EquipementSpa {
     private String libelle;
     private String description;
     private String photo;
-    private Collection<DemandeIntervention> demandeInterventionsById;
     private Spa spaByIdSpa;
-    private Collection<CommandeAssoc> commandeAssocsById;
 
-    public EquipementSpa(int id, String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Spa spaByIdSpa,
-			Collection<CommandeAssoc> commandeAssocsById) {
+    public EquipementSpa(int id, String libelle, String description, String photo,Spa spaByIdSpa) {
 		super();
 		this.id = id;
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
 		this.spaByIdSpa = spaByIdSpa;
-		this.commandeAssocsById = commandeAssocsById;
 	}
 
-	public EquipementSpa(String libelle, String description, String photo,
-			Collection<DemandeIntervention> demandeInterventionsById, Spa spaByIdSpa,
-			Collection<CommandeAssoc> commandeAssocsById) {
+	public EquipementSpa(String libelle, String description, String photo, Spa spaByIdSpa) {
 		super();
 		this.libelle = libelle;
 		this.description = description;
 		this.photo = photo;
-		this.demandeInterventionsById = demandeInterventionsById;
 		this.spaByIdSpa = spaByIdSpa;
-		this.commandeAssocsById = commandeAssocsById;
 	}
 
 	public EquipementSpa() {
@@ -50,9 +40,7 @@ public class EquipementSpa {
 
 	@Override
 	public String toString() {
-		return "EquipementSpa [id=" + id + ", libelle=" + libelle + ", description=" + description + ", photo=" + photo
-				+ ", demandeInterventionsById=" + demandeInterventionsById + ", spaByIdSpa=" + spaByIdSpa
-				+ ", commandeAssocsById=" + commandeAssocsById + "]";
+		return libelle;
 	}
 
 	public void setId(Integer id) {
@@ -99,15 +87,6 @@ public class EquipementSpa {
         this.photo = photo;
     }
 
-    @OneToMany(mappedBy = "equipementSpaByIdEquipementSpa")
-    public Collection<DemandeIntervention> getDemandeInterventionsById() {
-        return demandeInterventionsById;
-    }
-
-    public void setDemandeInterventionsById(Collection<DemandeIntervention> demandeInterventionsById) {
-        this.demandeInterventionsById = demandeInterventionsById;
-    }
-
     @ManyToOne
     @JoinColumn(name = "id_spa", referencedColumnName = "id", nullable = false)
     public Spa getSpaByIdSpa() {
@@ -116,14 +95,5 @@ public class EquipementSpa {
 
     public void setSpaByIdSpa(Spa spaByIdSpa) {
         this.spaByIdSpa = spaByIdSpa;
-    }
-
-    @OneToMany(mappedBy = "equipementSpaByIdEquipementSpa")
-    public Collection<CommandeAssoc> getCommandeAssocsById() {
-        return commandeAssocsById;
-    }
-
-    public void setCommandeAssocsById(Collection<CommandeAssoc> commandeAssocsById) {
-        this.commandeAssocsById = commandeAssocsById;
     }
 }

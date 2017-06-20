@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 13 Juin 2017 à 19:29
+-- Généré le :  Sam 17 Juin 2017 à 23:12
 -- Version du serveur :  5.6.15-log
 -- Version de PHP :  5.4.24
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données :  `db_finale`
+-- Base de données :  `hotel`
 --
 
 -- --------------------------------------------------------
@@ -141,26 +141,27 @@ INSERT INTO `boisson` (`id`, `libelle`, `quantite`, `prix`) VALUES
 
 CREATE TABLE IF NOT EXISTS `chambre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `prix_adulte` double NOT NULL,
-  `prix_enfant` double NOT NULL,
+  `numero_chambre` int(11) NOT NULL,
+  `prix` double NOT NULL,
   `capacite` int(11) NOT NULL,
   `etage` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `numero_chambre` (`numero_chambre`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
 -- Contenu de la table `chambre`
 --
 
-INSERT INTO `chambre` (`id`, `prix_adulte`, `prix_enfant`, `capacite`, `etage`) VALUES
-(1, 55, 25, 4, 1),
-(2, 45, 20, 2, 1),
-(3, 65, 35, 2, 2),
-(4, 80, 45, 4, 2),
-(5, 75, 37, 2, 3),
-(6, 85, 42, 4, 3),
-(7, 145, 120, 2, 4),
-(8, 330, 210, 4, 4);
+INSERT INTO `chambre` (`id`, `numero_chambre`, `prix`, `capacite`, `etage`) VALUES
+(1, 1, 55, 4, 1),
+(2, 2, 45, 2, 1),
+(3, 3, 65, 2, 2),
+(4, 4, 80, 4, 2),
+(5, 5, 75, 2, 3),
+(6, 6, 85, 4, 3),
+(7, 7, 145, 2, 4),
+(8, 8, 330, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -186,8 +187,8 @@ CREATE TABLE IF NOT EXISTS `client` (
 --
 
 INSERT INTO `client` (`id`, `nom`, `prenom`, `adresse_rue`, `adresse_ville`, `code_postal`, `telephone`, `date_naissance`, `allergies`) VALUES
-(1, 'Perkins', 'Thomas', 'Lodewijk De Raetlaan 303', 'Clermont', '5650', '0471786439', '2017-06-22', 'gluten'),
-(2, 'Audet', 'Shelley', 'Blancefloerlaan 217', 'Borsbeek', '2150', '0481452833', '2017-06-22', 'fruit de mer'),
+(1, 'Perkins', 'Thomas', 'Lodewijk De Raetlaan 303', 'Clermont', '56505650', '0471786439', '2017-06-22', 'gluten'),
+(2, 'Audet edit', 'Shelley edit', 'Blancefloerlaan 217 edit', 'Borsbeek edit', '2150 edit', '0481452833 edit', '2017-06-08', 'fruit de mer edit'),
 (3, 'Bassett', 'Margaret', 'Ctra. Hornos, 54', 'Hormilla', '26223', '762309866', '2017-06-22', ''),
 (4, 'Edwards', 'Kevin', 'Ctra. de Fuentenueva, 40', 'Fresnedillas de la Oliva', '28214', '727467873', '2017-06-22', ''),
 (5, 'Stone', 'Kelly', '84, Rue de Verdun', 'MONTFERMEIL', '93370', '0114864961', '2017-06-22', ''),
@@ -448,6 +449,7 @@ CREATE TABLE IF NOT EXISTS `equipement_hotel` (
   `libelle` varchar(250) NOT NULL,
   `description` varchar(250) NOT NULL,
   `photo` varchar(250) NOT NULL,
+  `est_equipement_jardin` tinyint(1) NOT NULL DEFAULT '0',
   `id_chambre` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_chambre` (`id_chambre`)
@@ -457,15 +459,15 @@ CREATE TABLE IF NOT EXISTS `equipement_hotel` (
 -- Contenu de la table `equipement_hotel`
 --
 
-INSERT INTO `equipement_hotel` (`id`, `libelle`, `description`, `photo`, `id_chambre`) VALUES
-(1, 'lit_1', 'lit 1 place', 'image/hotel/lit_1.jpg', 1),
-(2, 'lit_2', 'lit 2 place', 'image/hotel/lit_2_place.jpg', 1),
-(3, 'table', 'table en verre', 'image/hotel/table_verre.jpg', 2),
-(4, 'lampe', 'lampe de chevet', 'image/hotel/lampe.jpg', 3),
-(5, 'table_de_chevet', 'gueridon', 'image/hotel/table_chevet.jpg', 4),
-(6, 'frigo', 'mini bar', 'image/hotel/table_chevet.jpg', 2),
-(7, 'rideaux', 'rideaux en soie', 'image/hotel/rideau.jpg', 3),
-(8, 'canapé', 'canapé cuir blanc', 'image/hotel/canape.jpg', 3);
+INSERT INTO `equipement_hotel` (`id`, `libelle`, `description`, `photo`, `est_equipement_jardin`, `id_chambre`) VALUES
+(1, 'lit_1', 'lit 1 place', 'image/hotel/lit_1.jpg', 0, 1),
+(2, 'lit_2', 'lit 2 place', 'image/hotel/lit_2_place.jpg', 0, 1),
+(3, 'table', 'table en verre', 'image/hotel/table_verre.jpg', 0, 2),
+(4, 'lampe', 'lampe de chevet', 'image/hotel/lampe.jpg', 0, 3),
+(5, 'table_de_chevet', 'gueridon', 'image/hotel/table_chevet.jpg', 0, 4),
+(6, 'frigo', 'mini bar', 'image/hotel/table_chevet.jpg', 0, 2),
+(7, 'rideaux', 'rideaux en soie', 'image/hotel/rideau.jpg', 0, 3),
+(8, 'canapé', 'canapé cuir blanc', 'image/hotel/canape.jpg', 0, 3);
 
 -- --------------------------------------------------------
 
@@ -478,7 +480,7 @@ CREATE TABLE IF NOT EXISTS `equipement_restaurant` (
   `libelle` varchar(250) NOT NULL,
   `description` varchar(250) NOT NULL,
   `photo` varchar(250) NOT NULL,
-  `id_table` int(11) NOT NULL,
+  `id_table` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_table` (`id_table`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
@@ -712,8 +714,12 @@ CREATE TABLE IF NOT EXISTS `rapport` (
 
 CREATE TABLE IF NOT EXISTS `reservation_hotel` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `date_arrivee` date NOT NULL,
+  `date_fin` date NOT NULL,
   `date_debut` date NOT NULL,
+  `nb_enfants` int(11) NOT NULL DEFAULT '0',
+  `nb_adultes` int(11) NOT NULL DEFAULT '0',
+  `valide` tinyint(1) NOT NULL DEFAULT '0',
+  `infos_complementaires` varchar(250) NOT NULL,
   `id_tva` int(11) NOT NULL,
   `id_chambre` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
@@ -728,15 +734,15 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
 -- Contenu de la table `reservation_hotel`
 --
 
-INSERT INTO `reservation_hotel` (`id`, `date_arrivee`, `date_debut`, `id_tva`, `id_chambre`, `id_client`) VALUES
-(1, '2017-07-14', '2017-07-12', 1, 1, 0),
-(2, '2017-06-15', '2017-06-12', 1, 2, 0),
-(3, '2017-08-17', '2017-08-12', 1, 1, 0),
-(4, '2017-07-18', '2017-07-16', 1, 2, 0),
-(5, '2017-08-21', '2017-08-17', 1, 1, 0),
-(6, '2017-06-27', '2017-06-25', 1, 2, 0),
-(7, '2017-07-12', '2017-07-10', 1, 1, 0),
-(8, '2017-08-29', '2017-08-27', 1, 2, 0);
+INSERT INTO `reservation_hotel` (`id`, `date_fin`, `date_debut`, `nb_enfants`, `nb_adultes`, `valide`, `infos_complementaires`, `id_tva`, `id_chambre`, `id_client`) VALUES
+(1, '2017-07-14', '2017-07-12', 2, 2, 0, '', 1, 1, 1),
+(2, '2017-06-15', '2017-06-12', 2, 2, 0, '', 1, 2, 1),
+(3, '2017-08-17', '2017-08-12', 1, 1, 0, '', 1, 1, 3),
+(4, '2017-07-18', '2017-07-16', 2, 2, 0, '', 1, 2, 4),
+(5, '2017-08-21', '2017-08-17', 0, 0, 1, '', 1, 1, 4),
+(6, '2017-06-17', '2017-06-15', 2, 2, 0, '', 1, 2, 2),
+(7, '2017-07-12', '2017-07-10', 0, 15, 0, '', 1, 1, 5),
+(8, '2017-08-29', '2017-08-27', 2, 2, 0, '', 1, 2, 6);
 
 -- --------------------------------------------------------
 
@@ -875,20 +881,20 @@ INSERT INTO `spa` (`id`, `numero`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `table`
+-- Structure de la table `table_restaurant`
 --
 
-CREATE TABLE IF NOT EXISTS `table` (
+CREATE TABLE IF NOT EXISTS `table_restaurant` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nbCouverts` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `table`
+-- Contenu de la table `table_restaurant`
 --
 
-INSERT INTO `table` (`id`, `nbCouverts`) VALUES
+INSERT INTO `table_restaurant` (`id`, `nbCouverts`) VALUES
 (1, 2),
 (2, 4),
 (3, 3),
@@ -950,141 +956,6 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `password`, `id_role`
 (7, 'Directeur', 'restaurant', 'resto', 'root', 2),
 (8, 'Directeur', 'spa', 'spa', 'root', 2),
 (9, 'a', 'a', 'a', 'a', 3);
-
---
--- Contraintes pour les tables exportées
---
-
---
--- Contraintes pour la table `aliment_commande_assoc`
---
-ALTER TABLE `aliment_commande_assoc`
-  ADD CONSTRAINT `aliment_commande_assoc_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `assoc_aliment` FOREIGN KEY (`id_aliment`) REFERENCES `aliment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `client_agence_assoc`
---
-ALTER TABLE `client_agence_assoc`
-  ADD CONSTRAINT `client_agence_assoc_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `client_agence_assoc_ibfk_2` FOREIGN KEY (`id_agence`) REFERENCES `agence` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `commande_assoc`
---
-ALTER TABLE `commande_assoc`
-  ADD CONSTRAINT `commande_assoc_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `commande_assoc_ibfk_2` FOREIGN KEY (`id_equipement_restaurant`) REFERENCES `equipement_restaurant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `commande_assoc_ibfk_3` FOREIGN KEY (`id_equipement_hotel`) REFERENCES `equipement_hotel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `commande_assoc_ibfk_4` FOREIGN KEY (`id_equipement_spa`) REFERENCES `equipement_spa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `commande_piece_assoc`
---
-ALTER TABLE `commande_piece_assoc`
-  ADD CONSTRAINT `commande_piece_assoc_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `commande_piece_assoc_ibfk_2` FOREIGN KEY (`id_piece`) REFERENCES `piece_de_rechange` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `demande_intervention`
---
-ALTER TABLE `demande_intervention`
-  ADD CONSTRAINT `demande_intervention_ibfk_1` FOREIGN KEY (`id_criticite`) REFERENCES `criticite` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `demande_intervention_ibfk_2` FOREIGN KEY (`id_equipement_spa`) REFERENCES `equipement_spa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `demande_intervention_ibfk_3` FOREIGN KEY (`id_equipement_hotel`) REFERENCES `equipement_hotel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `demande_intervention_ibfk_4` FOREIGN KEY (`id_equipement_restaurant`) REFERENCES `equipement_restaurant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `demande_intervention_ibfk_5` FOREIGN KEY (`id_piece_rechange`) REFERENCES `piece_de_rechange` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `demande_utilisateur`
---
-ALTER TABLE `demande_utilisateur`
-  ADD CONSTRAINT `demande_utilisateur_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `demande_utilisateur_ibfk_2` FOREIGN KEY (`id_demande`) REFERENCES `demande_intervention` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `droit_role_assoc`
---
-ALTER TABLE `droit_role_assoc`
-  ADD CONSTRAINT `droit_role_assoc_ibfk_1` FOREIGN KEY (`id_droit`) REFERENCES `droit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `droit_role_assoc_ibfk_2` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `equipement_hotel`
---
-ALTER TABLE `equipement_hotel`
-  ADD CONSTRAINT `equipement_hotel_ibfk_1` FOREIGN KEY (`id_chambre`) REFERENCES `chambre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `equipement_restaurant`
---
-ALTER TABLE `equipement_restaurant`
-  ADD CONSTRAINT `equipement_restaurant_ibfk_1` FOREIGN KEY (`id_table`) REFERENCES `table` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `equipement_spa`
---
-ALTER TABLE `equipement_spa`
-  ADD CONSTRAINT `equipement_spa_ibfk_1` FOREIGN KEY (`id_spa`) REFERENCES `spa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `facturation_assoc`
---
-ALTER TABLE `facturation_assoc`
-  ADD CONSTRAINT `facturation_assoc_ibfk_1` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `facturation_assoc_ibfk_2` FOREIGN KEY (`id_facture`) REFERENCES `facture` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `facturation_assoc_ibfk_3` FOREIGN KEY (`id_reservation_spa`) REFERENCES `reservation_spa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `facturation_assoc_ibfk_4` FOREIGN KEY (`id_reservation_restaurant`) REFERENCES `reservation_restaurant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `facturation_assoc_ibfk_5` FOREIGN KEY (`id_reservation_hotel`) REFERENCES `reservation_hotel` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `plat_aliment_assoc`
---
-ALTER TABLE `plat_aliment_assoc`
-  ADD CONSTRAINT `plat_aliment_assoc_ibfk_1` FOREIGN KEY (`id_plat`) REFERENCES `plat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `plat_aliment_assoc_ibfk_2` FOREIGN KEY (`id_aliment`) REFERENCES `aliment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `rapport`
---
-ALTER TABLE `rapport`
-  ADD CONSTRAINT `rapport_ibfk_1` FOREIGN KEY (`id_demande_intervention`) REFERENCES `demande_intervention` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `reservation_hotel`
---
-ALTER TABLE `reservation_hotel`
-  ADD CONSTRAINT `reservation_hotel_ibfk_1` FOREIGN KEY (`id_tva`) REFERENCES `tva` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reservation_hotel_ibfk_2` FOREIGN KEY (`id_chambre`) REFERENCES `chambre` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `reservation_restaurant`
---
-ALTER TABLE `reservation_restaurant`
-  ADD CONSTRAINT `reservation_restaurant_ibfk_1` FOREIGN KEY (`id_tva`) REFERENCES `tva` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reservation_restaurant_ibfk_2` FOREIGN KEY (`id_table`) REFERENCES `table` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `reservation_spa`
---
-ALTER TABLE `reservation_spa`
-  ADD CONSTRAINT `reservation_spa_ibfk_1` FOREIGN KEY (`id_tva`) REFERENCES `tva` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `reservation_spa_ibfk_2` FOREIGN KEY (`id_spa`) REFERENCES `spa` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `restaurant_assoc`
---
-ALTER TABLE `restaurant_assoc`
-  ADD CONSTRAINT `restaurant_assoc_ibfk_1` FOREIGN KEY (`id_menu`) REFERENCES `menu` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `restaurant_assoc_ibfk_2` FOREIGN KEY (`id_boisson`) REFERENCES `boisson` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `restaurant_assoc_ibfk_3` FOREIGN KEY (`id_plat`) REFERENCES `plat` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `restaurant_assoc_ibfk_4` FOREIGN KEY (`id_reservation_restaurant`) REFERENCES `reservation_restaurant` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `utilisateur`
---
-ALTER TABLE `utilisateur`
-  ADD CONSTRAINT `utilisateur_ibfk_1` FOREIGN KEY (`id_role`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

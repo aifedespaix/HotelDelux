@@ -2,6 +2,9 @@ package src.Metier;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import java.sql.Date;
 import java.util.Collection;
 
@@ -10,34 +13,40 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "reservation_hotel")
-public class ReservationHotel {
+public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     private int id;
-    private Date dateArrivee;
+    private Date dateFin;
     private Date dateDebut;
+    private int nbEnfants;
+    private int nbAdultes;
+    private Boolean valide;
+    private String informationsComplementaires;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
-    private int id_client;
-    private Collection<FacturationAssoc> facturationAssocsById;
+    private int idClient;
 
-    public ReservationHotel(int id, Date dateArrivee, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
-			Collection<FacturationAssoc> facturationAssocsById) {
+    public ReservationHotel(int id, Date dateFin, Date dateDebut, Boolean valide, String informationsComplementaires, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes, int idClient) {
 		super();
 		this.id = id;
-		this.dateArrivee = dateArrivee;
+		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
+		this.valide = valide;
+		this.informationsComplementaires = informationsComplementaires;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
-		this.facturationAssocsById = facturationAssocsById;
+		this.nbAdultes = nbAdultes;
+		this.nbEnfants = nbEnfants;
+		this.idClient = idClient;
 	}
 
-	public ReservationHotel(Date dateArrivee, Date dateDebut, Tva tvaByIdTva, Chambre chambreByIdChambre,
-			Collection<FacturationAssoc> facturationAssocsById) {
+	public ReservationHotel(Date dateFin, Date dateDebut, Boolean valide, String informationsComplementaires, Tva tvaByIdTva, Chambre chambreByIdChambre) {
 		super();
-		this.dateArrivee = dateArrivee;
+		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
+		this.valide = valide;
+		this.informationsComplementaires = informationsComplementaires;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
-		this.facturationAssocsById = facturationAssocsById;
 	}
 
 	public ReservationHotel() {
@@ -47,9 +56,9 @@ public class ReservationHotel {
 
 	@Override
 	public String toString() {
-		return "ReservationHotel [id=" + id + ", dateArrivee=" + dateArrivee + ", dateDebut=" + dateDebut
-				+ ", tvaByIdTva=" + tvaByIdTva + ", chambreByIdChambre=" + chambreByIdChambre
-				+ ", facturationAssocsById=" + facturationAssocsById + "]";
+		return "ReservationHotel [id=" + id + ", dateFin=" + dateFin + ", dateDebut=" + dateDebut
+				+ ", tvaByIdTva=" + tvaByIdTva.getId() + ", chambreByIdChambre=" + chambreByIdChambre.getId()
+				+ "]";
 	}
 
 	public void setId(Integer id) {
@@ -67,13 +76,13 @@ public class ReservationHotel {
     }
 
     @Basic
-    @Column(name = "date_arrivee", nullable = false)
-    public Date getDateArrivee() {
-        return dateArrivee;
+    @Column(name = "date_fin", nullable = false)
+    public Date getDateFin() {
+        return dateFin;
     }
 
-    public void setDateArrivee(Date dateArrivee) {
-        this.dateArrivee = dateArrivee;
+    public void setDateFin(Date dateFin) {
+        this.dateFin = dateFin;
     }
 
     @Basic
@@ -88,12 +97,54 @@ public class ReservationHotel {
     
     @Basic
     @Column(name = "id_client", nullable = false)
-    public int getidClient(){
-    	return this.id_client;
+    public int getIdClient(){
+    	return this.idClient;
     }
     
-    public void setidClient(int id_client){
-    	this.id_client = id_client;
+    public void setIdClient(int id_client){
+    	this.idClient = id_client;
+    }
+    
+    
+    @Basic
+    @Column(name = "valide")
+    public Boolean getValide() {
+		return valide;
+	}
+
+	public void setValide(Boolean valide) {
+		this.valide = valide;
+	}
+	
+	
+	@Basic
+    @Column(name = "infos_complementaires")
+	public String getInformationsComplementaires() {
+		return informationsComplementaires;
+	}
+
+	public void setInformationsComplementaires(String informationsComplementaires) {
+		this.informationsComplementaires = informationsComplementaires;
+	}
+
+	@Basic
+    @Column(name = "nb_enfants", nullable = false)
+    public int getNbEnfants() {
+        return this.nbEnfants;
+    }
+
+    public void setNbEnfants(int nbEnfants) {
+        this.nbEnfants = nbEnfants;
+    }
+    
+    @Basic
+    @Column(name = "nb_adultes", nullable = false)
+    public int getNbAdultes() {
+        return this.nbAdultes;
+    }
+
+    public void setNbAdultes(int nbAdultes) {
+        this.nbAdultes = nbAdultes;
     }
 
     @ManyToOne
@@ -114,14 +165,5 @@ public class ReservationHotel {
 
     public void setChambreByIdChambre(Chambre chambreByIdChambre) {
         this.chambreByIdChambre = chambreByIdChambre;
-    }
-
-    @OneToMany(mappedBy = "reservationHotelByIdReservationHotel")
-    public Collection<FacturationAssoc> getFacturationAssocsById() {
-        return facturationAssocsById;
-    }
-
-    public void setFacturationAssocsById(Collection<FacturationAssoc> facturationAssocsById) {
-        this.facturationAssocsById = facturationAssocsById;
     }
 }

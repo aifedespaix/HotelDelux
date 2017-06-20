@@ -1,11 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane fx:controller="src.Controller.ClientDetails" prefHeight="278.0" prefWidth="457.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111">
+<AnchorPane prefHeight="569.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.ClientDetails">
    <children>
-      <JFXTextField fx:id="txtName" layoutX="83.0" layoutY="45.0" />
+      <Text fx:id="lblName" layoutX="126.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="lblAddress" layoutX="126.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse : " />
+      <Text fx:id="lblPhone" layoutX="126.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone : " />
+      <Text fx:id="lblBirth" layoutX="126.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance :" />
+      <Text fx:id="lblBirth1" layoutX="35.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires : " />
+      <JFXTextArea fx:id="areaInfos" layoutX="35.0" layoutY="285.0" prefHeight="185.0" prefWidth="324.0" />
+      <Text fx:id="lblResaChambre" layoutX="424.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réservtion de chambre :" />
+      <JFXButton layoutX="418.0" layoutY="110.0" text="Ajouter une réservation" />
+      <Text fx:id="lblBirth2" layoutX="412.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Historique des réservations" />
+      <JFXTreeTableView fx:id="tableResaChambreClient" layoutX="412.0" layoutY="276.0" prefHeight="204.0" prefWidth="248.0" />
+      <JFXButton fx:id="btnEditClient" layoutX="412.0" layoutY="515.0" onAction="#editClient" text="Editer" />
    </children>
 </AnchorPane>
