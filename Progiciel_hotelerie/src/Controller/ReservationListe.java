@@ -130,38 +130,22 @@ public class ReservationListe implements Initializable {
 				}
 		});
 		
-		
-		/**
-		 * Cr�� la colonne en la nommant, d�finie sa taille par d�fault puis Ajoute une valeur � la ligne (boucle sur la liste d'observables
-		 */
 		JFXTreeTableColumn<ReservationHotel, String> client = new JFXTreeTableColumn<>("Client");
 		client.setPrefWidth(100);
 		client.setCellValueFactory(param -> new SimpleStringProperty(AccesData.getClientById(param.getValue().getValue().getIdClient()).getNom() + " " + AccesData.getClientById(param.getValue().getValue().getIdClient()).getPrenom()));
-		
-		/**
-		 * Cr�� la colonne en la nommant, d�finie sa taille par d�fault puis Ajoute une valeur � la ligne (boucle sur la liste d'observables
-		 */
+
 		JFXTreeTableColumn<ReservationHotel, String> numChambre = new JFXTreeTableColumn<>("Num�ro de chambre");
 		numChambre.setPrefWidth(100);
 		numChambre.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getChambreByIdChambre().getNumeroChambre())));
-		
-		/**
-		 * Cr�� la colonne en la nommant, d�finie sa taille par d�fault puis Ajoute une valeur � la ligne (boucle sur la liste d'observables
-		 */
+
 		JFXTreeTableColumn<ReservationHotel, String> dateArrivee = new JFXTreeTableColumn<>("Date arriv�e");
 		dateArrivee.setPrefWidth(100);
 		dateArrivee.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateDebut())));
-		
-		/**
-		 * Cr�� la colonne en la nommant, d�finie sa taille par d�fault puis Ajoute une valeur � la ligne (boucle sur la liste d'observables
-		 */
+
 		JFXTreeTableColumn<ReservationHotel, String> dateFin = new JFXTreeTableColumn<>("Date d�part");
 		dateFin.setPrefWidth(100);
 		dateFin.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateFin())));
-		
-		/**
-		 * Cr�� la colonne en la nommant, d�finie sa taille par d�fault puis Ajoute une valeur � la ligne (boucle sur la liste d'observables
-		 */
+
 		JFXTreeTableColumn<ReservationHotel, String> prix = new JFXTreeTableColumn<>("Prix");
 		prix.setPrefWidth(100);		
 		prix.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(generalFunctions.calculPrixChambre(param.getValue().getValue().getChambreByIdChambre().getPrix(),param.getValue().getValue().getDateDebut(), param.getValue().getValue().getDateFin()))));
@@ -170,21 +154,13 @@ public class ReservationListe implements Initializable {
 		JFXTreeTableColumn<ReservationHotel, String> valide = new JFXTreeTableColumn<>("Valid�e");
 		valide.setPrefWidth(100);		
 		valide.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.isValidate(param.getValue().getValue().getValide())));
-		
-		
-		/**
-		 * Ajoute l'arbre de clients au panel
-		 */
+
 		tableReservations.setRoot(root);
 		tableReservations.setShowRoot(false);
-		
-		/**
-		 * R�cup�re les colonnes du tableau puis ajoute les nouvelles colonnes pr�c�demment d�clar�es
-		 */
+
 		tableReservations.getColumns().setAll(voir,client,numChambre,dateArrivee,dateFin,prix,valide);
 
 	}
-	
 	
 	public void search(){
 		listeReservationHotel.clear();
@@ -209,6 +185,17 @@ public class ReservationListe implements Initializable {
 	}
 	
 	public void createReservation(){
+		
+		try {
+			AnchorPane menuHebergement;
+			BorderPane root = Launcher.getRoot();
+			FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/Views/newReservationHebergement.fxml"));
+			menuHebergement = loaderHebergement.load();
+			root.setCenter(menuHebergement);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

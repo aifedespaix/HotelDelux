@@ -9,6 +9,7 @@ import src.Metier.Chambre;
 import src.Metier.Client;
 import src.Metier.EquipementHotel;
 import src.Metier.ReservationHotel;
+import src.Metier.Tva;
 import src.Metier.Utilisateur;
 
 import java.sql.Date;
@@ -41,7 +42,7 @@ public class AccesData {
 		return e;
 	}
 	/**
-	 * Fonction de récupération des clients
+	 * Fonction de rï¿½cupï¿½ration des clients
 	 * @return
 	 */
 	public static List<Client> getClients(){
@@ -93,10 +94,10 @@ public class AccesData {
 		}
 	 
 	/**
-	  * Génére un filtre sous la forme : colonne LIKE '%filterValue%'
+	  * Gï¿½nï¿½re un filtre sous la forme : colonne LIKE '%filterValue%'
 	  * @param filterConfig String[][] Tableau de config de la forme :
-	  * @return String Composante de la requête permettant le filtre, séparé par des espaces pour éviter tout problème
-	  * Renvoie une chaîne vide si la filterValue est nulle.
+	  * @return String Composante de la requï¿½te permettant le filtre, sï¿½parï¿½ par des espaces pour ï¿½viter tout problï¿½me
+	  * Renvoie une chaï¿½ne vide si la filterValue est nulle.
 	  */
 	 private static String whereFilter(String[][] filterConfig) {
 	  Boolean firstFilter = true;
@@ -119,7 +120,7 @@ public class AccesData {
 	 /**
 	  *
 	  * @param filter String Element filtrant
-	  * @param cols String[] Liste des colonnes ciblées
+	  * @param cols String[] Liste des colonnes ciblï¿½es
 	  * @param add {@link Boolean} ajouter ADD devant
 	  * @return String
 	  */
@@ -226,6 +227,34 @@ public class AccesData {
 	
 	public static ReservationHotel getReservationHotelById(int id){
 		return (ReservationHotel) s.get(ReservationHotel.class, id);
+	}
+	
+	public static List<Chambre> getFreeRoom(Date dateDebut, Date dateFin){
+		//List<Chambre> listeR = s.createQuery("SELECT C FROM Chambre C, ReservationHotel R WHERE C.id = R.chambreByIdChambre.id AND C.id NOT IN (SELECT R.chambreByIdChambre.id FROM reservationHotel R WHERE R.dateDebut > '" + dateDebut + "' AND R.dateFin < '" + dateFin + "'").list();
+		List<Chambre> listeR = s.createQuery("SELECT DISTINCT C FROM Chambre C, ReservationHotel R WHERE C.id = R.chambreByIdChambre.id AND C.id NOT IN (SELECT R.chambreByIdChambre.id FROM ReservationHotel R WHERE R.dateDebut > '" + dateDebut + "' AND R.dateFin < '" + dateFin + "')").list();
+		return listeR;
+	}
+	
+	public static Chambre getRoomByNum(int numChambre){
+		List<Chambre> listC = s.createQuery("FROM Chambre C WHERE C.numeroChambre = " + numChambre).list();
+		return listC.get(0);
+	}
+	
+	public static Tva getTVAById(int idTva){
+		return (Tva) s.get(Tva.class, idTva);
+	}
+
+	public static boolean ajouterModifierReservationHotel(ReservationHotel reservation){
+		boolean ok = false;
+		try{
+			t=s.beginTransaction();
+			s.saveOrUpdate(reservation);
+			t.commit();
+			ok = true;
+		} catch(HibernateException e){
+			ok = false;
+		}
+		return ok;
 	}
 	
 //	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){
