@@ -2,4 +2,6 @@
 out/
 *.class
 .idea/
+Progiciel_hotelerie/Progiciel_hotelerie.iml
 Progiciel_hotelerie/hibernate.cfg.xml
+test/
