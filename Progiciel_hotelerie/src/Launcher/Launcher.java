@@ -3,6 +3,7 @@ package src.Launcher;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -26,14 +27,14 @@ public class Launcher extends Application {
 //			FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/Views/menu.fxml"));
 //			AnchorPane menu = loader.load();
 //			root.setTop(menu);
-			
-			
+
 			//FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/src/Views/login.fxml"));
+			primaryStage.getIcons().add(new Image("file:Progiciel_hotelerie/src/image/Hotel/favicon.png"));
+			primaryStage.setTitle("Grand Hôtel du Parc");
+
 			URL login = getClass().getResource("/src/Views/login.fxml");
 			AnchorPane login2 = FXMLLoader.load(login);
 			root.setCenter(login2);
-			
-			
 	        
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
