@@ -8,7 +8,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 public class HibernateSession {
 	private static final SessionFactory sessionFactory;
 
-	// Cr�e une unique instance de la SessionFactory � partir de hibernate.cfg.xml
+	// Crée une unique instance de la SessionFactory à partir de hibernate.cfg.xml
 	static {
 		try {
 			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();

@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import src.Persistance.AccesData;
 
 import java.net.URL;
 
@@ -24,29 +23,26 @@ public class Launcher extends Application {
 
     public void start(Stage primaryStage) {
         try {
+//            System.out.println(Parametre.getCheminFichier("aa", "aa", new Date(1990, 10, 12), Parametre.FILETYPE_FACTURE_HEBERGEMENT));
 //			FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/Views/menu.fxml"));
 //			AnchorPane menu = loader.load();
 //			root.setTop(menu);
 
             //FXMLLoader loader2 = new FXMLLoader(getClass().getResource("/src/Views/login.fxml"));
-            try {
-                // Titre Application
-                primaryStage.setTitle("Grand Hôtel du Parc");
-                // Favicon
-                primaryStage.getIcons().add(new Image("file:/src/image/Hotel/favicon.png"));
 
-                URL login = getClass().getResource("src/Views/login.fxml");
-                AnchorPane login2 = FXMLLoader.load(login);
-                root.setCenter(login2);
-            } catch (Exception e) {
-                System.err.println(e.getMessage());
-            }
+            // Titre Application
+            primaryStage.setTitle("Grand Hôtel du Parc");
+            // Favicon
+            primaryStage.getIcons().add(new Image("/src/image/Hotel/favicon.png"));
+
+            URL login = getClass().getResource("/src/Views/login.fxml");
+            AnchorPane login2 = FXMLLoader.load(login);
+            root.setCenter(login2);
 
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
 
-            System.out.println(AccesData.getChambreClientActuelle(1));
 //			loader.setLocation(getClass().getResource("/src/Views/login.fxml"));
 //			Parent content = loader.load();
 //			root.setTop(content);
