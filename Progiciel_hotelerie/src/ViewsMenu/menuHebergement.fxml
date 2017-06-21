@@ -44,8 +44,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
             <StackPane alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="136.0">
                <children>
-                  <ImageView fitHeight="101.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" />
-                  <JFXButton fx:id="btnNewDemande" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openNewDemande" prefHeight="60.0" prefWidth="77.0" style="-fx-background-color: #FFF;" text=" " textAlignment="CENTER">
+                  <JFXButton fx:id="btnNewDemande" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openNewDemande" prefHeight="60.0" prefWidth="72.0" ripplerFill="WHITE" style="-fx-background-color: #FFF;" text=" " textAlignment="CENTER">
                      <font>
                         <Font size="18.0" />
                      </font>
