@@ -42,11 +42,11 @@ public class generationFactureHebergement {
 			image1.setAbsolutePosition(35f, 700F);
 			document.add(image1);
 			
-			Paragraph para1 = new Paragraph("Facture de l'hôtel");
+			Paragraph para1 = new Paragraph("Facture de l'hÃ´tel");
 			para1.setAlignment(Element.ALIGN_RIGHT);			
 			document.add(para1);
 			
-			Paragraph para2 = new Paragraph("Facture éditée le " + timeNow);			
+			Paragraph para2 = new Paragraph("Facture Ã©ditÃ©e le " + timeNow);			
 			para2.setAlignment(Element.ALIGN_RIGHT);			
 			document.add(para2);
 			
@@ -72,7 +72,7 @@ public class generationFactureHebergement {
 			PdfPTable table = new PdfPTable(4);
 			
 			PdfPCell cell1 = new PdfPCell(new Paragraph("Nuit", fontWhite));
-			PdfPCell cell2 = new PdfPCell(new Paragraph("Numéro de chambre", fontWhite));
+			PdfPCell cell2 = new PdfPCell(new Paragraph("NumÃ©ro de chambre", fontWhite));
 			PdfPCell cell3 = new PdfPCell(new Paragraph("Nombre de personnes", fontWhite));
 			PdfPCell cell4 = new PdfPCell(new Paragraph("Total HT", fontWhite));
 		
@@ -165,7 +165,7 @@ public class generationFactureHebergement {
 			double TVA = (double) Math.round((prixGlobal * 0.2) * 100) / 100;
 			double totalTTC = prixGlobal + TVA;
 			
-			PdfPCell cell1Tab2 = new PdfPCell(new Paragraph("Total général HT"));
+			PdfPCell cell1Tab2 = new PdfPCell(new Paragraph("Total gÃ©nÃ©ral HT"));
 			cell1Tab2.setColspan(3);
 			cell1Tab2.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
 			PdfPCell cell2Tab2 = new PdfPCell(new Paragraph(String.valueOf(prixGlobal)));

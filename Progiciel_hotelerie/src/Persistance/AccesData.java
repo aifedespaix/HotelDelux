@@ -41,7 +41,7 @@ public class AccesData {
 		return e;
 	}
 	/**
-	 * Fonction de récupération des clients
+	 * Fonction de rÃ©cupÃ©ration des clients
 	 * @return
 	 */
 	public static List<Client> getClients(){
@@ -93,10 +93,10 @@ public class AccesData {
 		}
 	 
 	/**
-	  * Génére un filtre sous la forme : colonne LIKE '%filterValue%'
+	  * GÃ©nÃ©re un filtre sous la forme : colonne LIKE '%filterValue%'
 	  * @param filterConfig String[][] Tableau de config de la forme :
-	  * @return String Composante de la requête permettant le filtre, séparé par des espaces pour éviter tout problème
-	  * Renvoie une chaîne vide si la filterValue est nulle.
+	  * @return String Composante de la requÃªte permettant le filtre, sÃ©parÃ© par des espaces pour Ã©viter tout problÃ¨me
+	  * Renvoie une chaÃ®ne vide si la filterValue est nulle.
 	  */
 	 private static String whereFilter(String[][] filterConfig) {
 	  Boolean firstFilter = true;
@@ -119,7 +119,7 @@ public class AccesData {
 	 /**
 	  *
 	  * @param filter String Element filtrant
-	  * @param cols String[] Liste des colonnes ciblées
+	  * @param cols String[] Liste des colonnes ciblÃ©es
 	  * @param add {@link Boolean} ajouter ADD devant
 	  * @return String
 	  */
