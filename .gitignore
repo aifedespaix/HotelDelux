@@ -3,3 +3,5 @@ out/
 *.class
 .idea/
 Progiciel_hotelerie/hibernate.cfg.xml
+HotelDeluXxX.iml
+test/
