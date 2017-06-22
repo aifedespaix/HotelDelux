@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import com.jfoenix.controls.JFXTreeView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="554.0" prefWidth="814.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuTab">
+   <children>
+      <AnchorPane layoutX="14.0" layoutY="38.0" prefHeight="505.0" prefWidth="242.0">
+         <children>
+            <JFXTreeView prefHeight="360.0" prefWidth="310.0" />
+            <JFXButton layoutX="14.0" layoutY="438.0" mnemonicParsing="false" prefWidth="135.0" text="Button" />
+            <JFXButton layoutX="69.0" layoutY="385.0" mnemonicParsing="false" prefWidth="105.0" text="Button" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="404.0" layoutY="29.0" prefHeight="514.0" prefWidth="398.0">
+         <children>
+            <JFXTextField layoutX="85.0" layoutY="59.0" />
+            <JFXTreeTableView layoutX="14.0" layoutY="180.0" prefHeight="102.0" prefWidth="135.0" />
+            <JFXTreeTableView layoutX="161.0" layoutY="180.0" prefHeight="102.0" prefWidth="105.0" />
+            <JFXTreeTableView layoutY="316.0" prefHeight="102.0" prefWidth="310.0" />
+            <JFXComboBox layoutX="78.0" layoutY="424.0" prefWidth="150.0" />
+            <JFXButton layoutX="85.0" layoutY="475.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Enregistrer" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
