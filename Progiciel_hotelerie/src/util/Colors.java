@@ -13,8 +13,8 @@ public class Colors {
 
     public static void primary(JFXButton b) {
         b.setBackground(new Background(new BackgroundFill(Paint.valueOf("#337ab7"),null, null)));
-        b.setStyle("-fx-text-fill:#fff");
         b.setStyle("-fx-cursor: hand");
+        b.setTextFill(Paint.valueOf("#fff"));
     }
 
 }
