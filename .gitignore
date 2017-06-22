@@ -2,7 +2,9 @@
 out/
 *.class
 .idea/
-Progiciel_hotelerie/Progiciel_hotelerie.iml
+
+Progiciel_hotelerie.iml
+HotelDeluXxX.iml
+
 hibernate.cfg.xml
 test/
-HotelDeluXxX.iml
