@@ -14,11 +14,11 @@ public class ReservationRestaurant {
     private Date dateArrivee;
     private Date dateDepart;
     private Tva tvaByIdTva;
-    private Table tableByIdTable;
+    private TableRestaurant tableByIdTable;
     private Collection<FacturationAssoc> facturationAssocsById;
     private Collection<RestaurantAssoc> restaurantAssocsById;
 
-    public ReservationRestaurant(int id, Date dateArrivee, Date dateDepart, Tva tvaByIdTva, Table tableByIdTable,
+    public ReservationRestaurant(int id, Date dateArrivee, Date dateDepart, Tva tvaByIdTva, TableRestaurant tableByIdTable,
 			Collection<FacturationAssoc> facturationAssocsById, Collection<RestaurantAssoc> restaurantAssocsById) {
 		super();
 		this.id = id;
@@ -30,7 +30,7 @@ public class ReservationRestaurant {
 		this.restaurantAssocsById = restaurantAssocsById;
 	}
 
-	public ReservationRestaurant(Date dateArrivee, Date dateDepart, Tva tvaByIdTva, Table tableByIdTable,
+	public ReservationRestaurant(Date dateArrivee, Date dateDepart, Tva tvaByIdTva, TableRestaurant tableByIdTable,
 			Collection<FacturationAssoc> facturationAssocsById, Collection<RestaurantAssoc> restaurantAssocsById) {
 		super();
 		this.dateArrivee = dateArrivee;
@@ -99,11 +99,11 @@ public class ReservationRestaurant {
 
     @ManyToOne
     @JoinColumn(name = "id_table", referencedColumnName = "id", nullable = false)
-    public Table getTableByIdTable() {
+    public TableRestaurant getTableByIdTable() {
         return tableByIdTable;
     }
 
-    public void setTableByIdTable(Table tableByIdTable) {
+    public void setTableByIdTable(TableRestaurant tableByIdTable) {
         this.tableByIdTable = tableByIdTable;
     }
 

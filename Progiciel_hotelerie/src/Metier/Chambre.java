@@ -9,30 +9,30 @@ import java.util.Collection;
 @Entity
 public class Chambre {
     private int id;
-    private double prixAdulte;
-    private double prixEnfant;
+    private Integer numeroChambre;
+    private double prix;
     private int capacite;
-    private int etage;
+    private int etage;    
     private Collection<EquipementHotel> equipementHotelsById;
     private Collection<ReservationHotel> reservationHotelsById;
 
-    public Chambre(int id, double prixAdulte, double prixEnfant, int capacite, int etage,
+    public Chambre(int id,int numeroChambre, double prix, int capacite, int etage,
 			Collection<EquipementHotel> equipementHotelsById, Collection<ReservationHotel> reservationHotelsById) {
 		super();
 		this.id = id;
-		this.prixAdulte = prixAdulte;
-		this.prixEnfant = prixEnfant;
+		this.numeroChambre = numeroChambre;
+		this.prix = prix;
 		this.capacite = capacite;
 		this.etage = etage;
 		this.equipementHotelsById = equipementHotelsById;
 		this.reservationHotelsById = reservationHotelsById;
 	}
 
-	public Chambre(double prixAdulte, double prixEnfant, int capacite, int etage,
+	public Chambre(int numeroChambre, double prix, int capacite, int etage,
 			Collection<EquipementHotel> equipementHotelsById, Collection<ReservationHotel> reservationHotelsById) {
 		super();
-		this.prixAdulte = prixAdulte;
-		this.prixEnfant = prixEnfant;
+		this.numeroChambre = numeroChambre;
+		this.prix = prix;
 		this.capacite = capacite;
 		this.etage = etage;
 		this.equipementHotelsById = equipementHotelsById;
@@ -46,9 +46,7 @@ public class Chambre {
 
 	@Override
 	public String toString() {
-		return "Chambre [id=" + id + ", prixAdulte=" + prixAdulte + ", prixEnfant=" + prixEnfant + ", capacite="
-				+ capacite + ", etage=" + etage + ", equipementHotelsById=" + equipementHotelsById
-				+ ", reservationHotelsById=" + reservationHotelsById + "]";
+		return numeroChambre.toString();
 	}
 
 	public void setCapacite(int capacite) {
@@ -59,12 +57,8 @@ public class Chambre {
         this.id = id;
     }
 
-    public void setPrixAdulte(Double prixAdulte) {
-        this.prixAdulte = prixAdulte;
-    }
-
-    public void setPrixEnfant(Double prixEnfant) {
-        this.prixEnfant = prixEnfant;
+    public void setPrix(Double prix) {
+        this.prix = prix;
     }
 
     public void setEtage(Integer etage) {
@@ -82,26 +76,21 @@ public class Chambre {
     }
 
     @Basic
-    @Column(name = "prix_adulte", nullable = false, precision = 0)
-    public double getPrixAdulte() {
-        return prixAdulte;
-    }
-
-    public void setPrixAdulte(double prixAdulte) {
-        this.prixAdulte = prixAdulte;
+    @Column(name = "prix", nullable = false, precision = 0)
+    public double getPrix() {
+        return this.prix;
     }
 
     @Basic
-    @Column(name = "prix_enfant", nullable = false, precision = 0)
-    public double getPrixEnfant() {
-        return prixEnfant;
+    @Column(name = "numero_chambre", nullable = false)
+    public int getNumeroChambre() {
+        return this.numeroChambre;
     }
 
-    public void setPrixEnfant(double prixEnfant) {
-        this.prixEnfant = prixEnfant;
+    public void setNumeroChambre(int numeroChambre) {
+        this.numeroChambre = numeroChambre;
     }
-
-
+    
     @Basic
     @Column(name = "etage", nullable = false)
     public int getEtage() {

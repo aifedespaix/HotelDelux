@@ -1,25 +1,42 @@
-package Launcher;
-	
+package src.Launcher;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.stage.Stage;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
+
+import java.net.URL;
 
 
 public class Launcher extends Application {
-	@Override
+	/**
+	 * Declaration du border Pan principale.
+	 */
+	private static BorderPane root = new BorderPane();
+	
+	public static BorderPane getRoot() {
+	    return root;
+	  }
+	
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
+
+            // Titre Application
+            primaryStage.setTitle("Grand Hôtel du Parc");
+            // Favicon
+            primaryStage.getIcons().add(new Image("/src/image/Hotel/favicon.png"));
+
+            URL login = getClass().getResource("/src/Views/login.fxml");
+			AnchorPane login2 = FXMLLoader.load(login);
+			root.setCenter(login2);
+
+			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
-			FXMLLoader loader = new FXMLLoader();
-			loader.setLocation(getClass().getResource("/src/Views/login.fxml"));
-			Parent content = loader.load();
-			root.setTop(content);
 			primaryStage.show();
+
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -27,7 +44,5 @@ public class Launcher extends Application {
 	
 	public static void main(String[] args) {
 		launch(args);
-		//Utilisateur u = new Utilisateur(1,"bb","aa");
-		//System.out.println(AccesData.getLoginUtilisateur(u.getLogin(), u.getMdp()));
 	}
 }
