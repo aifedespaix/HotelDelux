@@ -11,57 +11,62 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #99DDFB;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuHebergement">
+<AnchorPane prefHeight="50.0" style="-fx-background-color: #99DDFB;" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuHebergement">
    <children>
-      <HBox alignment="CENTER" prefHeight="113.0" prefWidth="962.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="logoHebergement" fitHeight="113.0" fitWidth="118.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../image/icons/Hebergement.png" />
-               </image></ImageView>
-            <JFXButton fx:id="btnReservations" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToReservation" prefHeight="60.0" prefWidth="127.0" style="-fx-background-color: #FFF;" text="Réservations" textAlignment="CENTER">
+            <AnchorPane prefHeight="50.0" prefWidth="100.0">
+               <children>
+                  <JFXButton layoutX="9.0" layoutY="7.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFF;" styleClass="service_logo" />
+               </children></AnchorPane>
+            <StackPane prefHeight="50.0" prefWidth="200.0" />
+            <AnchorPane prefHeight="50.0" prefWidth="200.0" />
+            <JFXButton fx:id="btnReservations" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToReservation" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #FFF;" text="Réservations" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnClient" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToClient" prefHeight="60.0" prefWidth="100.0" style="-fx-background-color: #FFF;" text="Clients" textAlignment="CENTER">
+            <JFXButton fx:id="btnClient" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToClient" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #FFF;" text="Clients" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="104.0" style="-fx-background-color: #FFF;" text="Agences" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="104.0" style="-fx-background-color: #FFF;" text="Agences" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="109.0" style="-fx-background-color: #FFF;" text="Notoriété" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="109.0" style="-fx-background-color: #FFF;" text="Notoriété" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="btnNewDemande" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openNewDemande" prefHeight="60.0" prefWidth="77.0" style="-fx-background-color: #FFF;" text=" " textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../image/icons/maintenance-icon.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <HBox.margin>
-                  <Insets left="100.0" />
-               </HBox.margin>
-            </JFXButton>
-            <VBox alignment="CENTER" prefHeight="113.0" prefWidth="173.0" spacing="20.0">
+            <AnchorPane prefHeight="50.0" prefWidth="200.0" />
+            <StackPane alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="136.0">
+               <children>
+                  <JFXButton fx:id="btnNewDemande" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openNewDemande" prefHeight="50.0" prefWidth="72.0" ripplerFill="WHITE" style="-fx-background-color: #FFF;" text=" " textAlignment="CENTER">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../image/icons/maintenance-icon.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+               </children>
+            </StackPane>
+            <AnchorPane prefHeight="50.0" prefWidth="200.0" />
+            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="173.0" spacing="20.0">
                <children>
                   <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="139.9765625">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="145.0" text="Déconnexion">
+                  <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="145.0" text="Déconnexion">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -70,15 +75,8 @@
                <padding>
                   <Insets left="20.0" right="20.0" />
                </padding>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
             </VBox>
-            <StackPane alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="136.0">
-               <children>
-                  <ImageView fitHeight="101.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </StackPane>
+            <AnchorPane prefHeight="50.0" prefWidth="100.0" />
          </children>
       </HBox>
    </children>

@@ -62,7 +62,7 @@ public class Login
 	       			root.setTop(menuHebergement);
                    break;
                case 4:
-                   System.out.println("Réception");
+                   System.out.println("RÃ©ception");
                    FXMLLoader loaderReception = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuReception.fxml"));
 	       		   AnchorPane menuReception = loaderReception.load();
 	       		   root.setTop(menuReception);
