@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="569.0" prefWidth="777.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.ReservationHebergementDetails">
    <children>
       <Text fx:id="lblNumReservation" layoutX="117.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Réservation n°" />
       <Text fx:id="lblValide" layoutX="276.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Validée :" />
-      <JFXButton fx:id="btnFacture" layoutX="499.0" layoutY="44.0" text="Facture" />
+      <JFXButton fx:id="btnFacture" layoutX="499.0" layoutY="44.0" onAction="#generateFacture" text="Facture" />
       <Text fx:id="lblDateArrivee" layoutX="276.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Arrivée le " />
       <Text fx:id="lblDateDepart" layoutX="395.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Départ le " />
       <Text layoutX="117.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" />

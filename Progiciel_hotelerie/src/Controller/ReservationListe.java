@@ -7,7 +7,6 @@ import java.sql.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import org.hibernate.cfg.Configuration;
 import javafx.fxml.*;
 
 import com.jfoenix.controls.JFXButton;
@@ -16,10 +15,8 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
-import com.jfoenix.controls.cells.editors.base.JFXTreeTableCell;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
 
-import javafx.application.Application.Parameters;
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -28,26 +25,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.TableCell;
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeTableCell;
-import javafx.scene.control.TreeTableColumn;
-import javafx.scene.control.TreeTableColumn.CellDataFeatures;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
-import javafx.util.Callback;
 import src.Launcher.Launcher;
-import src.Metier.Client;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
-import util.generalFunctions;
+import src.util.generalFunctions;
 
 public class ReservationListe implements Initializable {
 	
 	/**
-	 * Déclaration des objets présents dans la vue pour y ajouter des événements
+	 * Dï¿½claration des objets prï¿½sents dans la vue pour y ajouter des ï¿½vï¿½nements
 	 */
 	@FXML private JFXTreeTableView<ReservationHotel> tableReservations;
 	@FXML private JFXTextField txtName;
@@ -56,7 +45,7 @@ public class ReservationListe implements Initializable {
 	@FXML private JFXDatePicker dateDepart;
 	@SuppressWarnings(value = { "" })
 	/**
-	 * Déclaration de la liste d'observables qui contiendra les objets a afficher dans le tableau
+	 * Dï¿½claration de la liste d'observables qui contiendra les objets a afficher dans le tableau
 	 */
 	private ObservableList<ReservationHotel> listeReservationHotel = FXCollections.observableArrayList();
 
@@ -67,13 +56,13 @@ public class ReservationListe implements Initializable {
 		//List<Client> listec = AccesData.getClients();
 		List<ReservationHotel> listeResasHotel = AccesData.getReservationsHotel();
 		/**
-		 * Ajoute chaque client récupéré à la liste d'observable de clients
+		 * Ajoute chaque client rï¿½cupï¿½rï¿½ ï¿½ la liste d'observable de clients
 		 */
 		for(ReservationHotel r : listeResasHotel){
 			listeReservationHotel.add(r);
 		}
 		/**
-		 * Créé l'arbre d'objets avec la liste d'observables de clients
+		 * Crï¿½ï¿½ l'arbre d'objets avec la liste d'observables de clients
 		 */
 		final TreeItem<ReservationHotel> root = new RecursiveTreeItem<ReservationHotel>(listeReservationHotel, RecursiveTreeObject::getChildren);	
 		
@@ -143,42 +132,42 @@ public class ReservationListe implements Initializable {
 		
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
 		JFXTreeTableColumn<ReservationHotel, String> client = new JFXTreeTableColumn<>("Client");
 		client.setPrefWidth(100);
 		client.setCellValueFactory(param -> new SimpleStringProperty(AccesData.getClientById(param.getValue().getValue().getIdClient()).getNom() + " " + AccesData.getClientById(param.getValue().getValue().getIdClient()).getPrenom()));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
-		JFXTreeTableColumn<ReservationHotel, String> numChambre = new JFXTreeTableColumn<>("Numéro de chambre");
+		JFXTreeTableColumn<ReservationHotel, String> numChambre = new JFXTreeTableColumn<>("Numï¿½ro de chambre");
 		numChambre.setPrefWidth(100);
 		numChambre.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getChambreByIdChambre().getNumeroChambre())));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
-		JFXTreeTableColumn<ReservationHotel, String> dateArrivee = new JFXTreeTableColumn<>("Date arrivée");
+		JFXTreeTableColumn<ReservationHotel, String> dateArrivee = new JFXTreeTableColumn<>("Date arrivï¿½e");
 		dateArrivee.setPrefWidth(100);
 		dateArrivee.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateDebut())));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
-		JFXTreeTableColumn<ReservationHotel, String> dateFin = new JFXTreeTableColumn<>("Date départ");
+		JFXTreeTableColumn<ReservationHotel, String> dateFin = new JFXTreeTableColumn<>("Date dï¿½part");
 		dateFin.setPrefWidth(100);
 		dateFin.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateFin())));
 		
 		/**
-		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		 */
 		JFXTreeTableColumn<ReservationHotel, String> prix = new JFXTreeTableColumn<>("Prix");
 		prix.setPrefWidth(100);		
 		prix.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(generalFunctions.calculPrixChambre(param.getValue().getValue().getChambreByIdChambre().getPrix(),param.getValue().getValue().getDateDebut(), param.getValue().getValue().getDateFin()))));
 		
 
-		JFXTreeTableColumn<ReservationHotel, String> valide = new JFXTreeTableColumn<>("Validée");
+		JFXTreeTableColumn<ReservationHotel, String> valide = new JFXTreeTableColumn<>("Validï¿½e");
 		valide.setPrefWidth(100);		
 		valide.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.isValidate(param.getValue().getValue().getValide())));
 		
@@ -190,7 +179,7 @@ public class ReservationListe implements Initializable {
 		tableReservations.setShowRoot(false);
 		
 		/**
-		 * Récupère les colonnes du tableau puis ajoute les nouvelles colonnes précédemment déclarées
+		 * Rï¿½cupï¿½re les colonnes du tableau puis ajoute les nouvelles colonnes prï¿½cï¿½demment dï¿½clarï¿½es
 		 */
 		tableReservations.getColumns().setAll(voir,client,numChambre,dateArrivee,dateFin,prix,valide);
 
