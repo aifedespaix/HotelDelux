@@ -5,11 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.transform.Transformers;
 
-import src.Metier.Chambre;
-import src.Metier.Client;
-import src.Metier.EquipementHotel;
-import src.Metier.ReservationHotel;
-import src.Metier.Utilisateur;
+import src.Metier.*;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -41,7 +37,7 @@ public class AccesData {
 		return e;
 	}
 	/**
-	 * Fonction de récupération des clients
+	 * Fonction de rï¿½cupï¿½ration des clients
 	 * @return
 	 */
 	public static List<Client> getClients(){
@@ -93,10 +89,10 @@ public class AccesData {
 		}
 	 
 	/**
-	  * Génére un filtre sous la forme : colonne LIKE '%filterValue%'
+	  * Gï¿½nï¿½re un filtre sous la forme : colonne LIKE '%filterValue%'
 	  * @param filterConfig String[][] Tableau de config de la forme :
-	  * @return String Composante de la requête permettant le filtre, séparé par des espaces pour éviter tout problème
-	  * Renvoie une chaîne vide si la filterValue est nulle.
+	  * @return String Composante de la requï¿½te permettant le filtre, sï¿½parï¿½ par des espaces pour ï¿½viter tout problï¿½me
+	  * Renvoie une chaï¿½ne vide si la filterValue est nulle.
 	  */
 	 private static String whereFilter(String[][] filterConfig) {
 	  Boolean firstFilter = true;
@@ -119,7 +115,7 @@ public class AccesData {
 	 /**
 	  *
 	  * @param filter String Element filtrant
-	  * @param cols String[] Liste des colonnes ciblées
+	  * @param cols String[] Liste des colonnes ciblï¿½es
 	  * @param add {@link Boolean} ajouter ADD devant
 	  * @return String
 	  */
@@ -227,6 +223,23 @@ public class AccesData {
 	public static ReservationHotel getReservationHotelById(int id){
 		return (ReservationHotel) s.get(ReservationHotel.class, id);
 	}
+
+	public static List<Plat> getPlatByType(int typePlat){
+		List<Plat> listeTP = s.createQuery("FROM Plat TP WHERE TP.type = " + typePlat).list();
+		return listeTP;
+	}
+
+	public static List<Plat> getPlat(){
+		List<Plat> listeP = s.createQuery("FROM Plat P").list();
+		return listeP;
+	}
+
+	public static List<Menu> getMenuTreeList(){
+		List<Menu> listeM = s.createQuery("FROM Menu P").list();
+		return listeM;
+	}
+
+
 	
 //	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){
 //		System.out.println(prenom);

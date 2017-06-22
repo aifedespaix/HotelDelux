@@ -1,5 +1,7 @@
 package src.Metier;
 
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -7,7 +9,7 @@ import java.util.Collection;
  * Created by ledze on 17/05/2017.
  */
 @Entity
-public class Plat {
+public class Plat extends RecursiveTreeObject<Plat> {
     private int id;
     private String libelle;
     private double prix;

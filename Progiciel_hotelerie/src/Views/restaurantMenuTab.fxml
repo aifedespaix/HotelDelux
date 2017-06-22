@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="540.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Views.RestaurantMenuTab">
+<AnchorPane prefHeight="540.0" prefWidth="695.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.RestaurantMenuTab">
    <children>
       <JFXButton fx:id="btnNewMenu" layoutX="14.0" layoutY="300.0" mnemonicParsing="false" text="Nouveau menu" />
       <JFXButton fx:id="btnDelete" layoutX="125.0" layoutY="300.0" mnemonicParsing="false" text="Supprimer" />
@@ -22,8 +22,6 @@
       <Label layoutX="461.0" layoutY="134.0" text="Plat" />
       <JFXTreeTableView fx:id="ttvDessert" layoutX="278.0" layoutY="313.0" prefHeight="124.0" prefWidth="407.0" />
       <Label layoutX="276.0" layoutY="292.0" text="Dessert" />
-      <JFXComboBox fx:id="cbxBoisson" layoutX="386.0" layoutY="455.0" prefWidth="150.0" />
-      <Label layoutX="331.0" layoutY="459.0" text="Boisson" />
       <JFXButton fx:id="btnEnregistrer" layoutX="423.0" layoutY="501.0" mnemonicParsing="false" text="Enregistrer" />
    </children>
 </AnchorPane>
