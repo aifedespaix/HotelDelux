@@ -3,8 +3,12 @@ package src.Controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Text;
+import src.Launcher.Launcher;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
 import src.util.generalFunctions;
@@ -54,27 +58,32 @@ public class ReservationHebergementDetails implements Initializable {
 	public void generateFacture(){
 		generationFactureHebergement.editFactureLauncher(this.reservation);
 	}
-	public void editClient(){
-//		/**
-//    	 * Recupere la fenetre
-//    	 */
-//    	BorderPane rootPane = Launcher.getRoot();
-//    	/**
-//    	 * Charge la vue client details
-//    	 */
-//    	FXMLLoader loaderClientEdit = new FXMLLoader(getClass().getResource("/src/Views/editClient.fxml"));
-//			AnchorPane editClient;
-//		try {
-//			editClient = loaderClientEdit.load();
-//			rootPane.setCenter(editClient);
-//	        //System.out.println(c);
-//	        EditClient controllerEditClient = loaderClientEdit.<EditClient>getController();
-//	        controllerEditClient.setClient(this.client);
-//	        controllerEditClient.fieldContent();
-//	    } catch (IOException e1) {
-//			// TODO Auto-generated catch block
-//			e1.printStackTrace();
-//		}
+	public void edit(){
+
+		/**
+    	 * Recupere la fenetre
+    	 */
+    	BorderPane rootPane = Launcher.getRoot();
+    	/**
+    	 * Charge la vue client details
+    	 */
+    	FXMLLoader loaderReservationEdit = new FXMLLoader(getClass().getResource("/src/Views/editReservationHebergement.fxml"));
+			AnchorPane editReservation;
+		try {
+			editReservation = loaderReservationEdit.load();
+			rootPane.setCenter(editReservation);
+	        //System.out.println(c);
+			EditReservationHebergement controllerEditReservation = loaderReservationEdit.<EditReservationHebergement>getController();
+			controllerEditReservation.setReservationToInsert(this.reservation);
+			controllerEditReservation.fieldContent();
+	    } catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+
+	public void cloture(){
+
 	}
 	
 

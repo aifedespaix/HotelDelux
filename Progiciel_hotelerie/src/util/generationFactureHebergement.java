@@ -8,6 +8,7 @@ import src.Metier.Client;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
 
+import java.awt.Desktop;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -28,7 +29,7 @@ public class generationFactureHebergement {
 		BaseColor grisClair = new BaseColor(240,240,240);
 		Document document = new Document();
 		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
-		String cheminFichier = Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow, Parametre.FILETYPE_FACTURE_HEBERGEMENT);
+		String cheminFichier = Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow);
 		System.out.println(cheminFichier);
 		try{
 			PdfWriter.getInstance(document, new FileOutputStream(cheminFichier));
@@ -46,7 +47,7 @@ public class generationFactureHebergement {
 			para1.setAlignment(Element.ALIGN_RIGHT);			
 			document.add(para1);
 			
-			Paragraph para2 = new Paragraph("Facture éditée le " + timeNow);			
+			Paragraph para2 = new Paragraph("Facture éditée le " + timeNow);
 			para2.setAlignment(Element.ALIGN_RIGHT);			
 			document.add(para2);
 			
@@ -56,14 +57,22 @@ public class generationFactureHebergement {
 			String adresseRue = clientReservation.getAdresseRue();
 			String adresseVille = clientReservation.getAdresseVille();
 			String cp = clientReservation.getCodePostal();
-			
+			String dateDebut = String.valueOf(reservation.getDateDebut());
+			String dateFin = String.valueOf(reservation.getDateFin());
+
 			Paragraph para3 = new Paragraph(nom + " " + prenom + "\n" + adresseRue + "\n" + cp + " " + adresseVille);			
 			para3.setIndentationLeft(300);
 			para3.setSpacingBefore(100);
-			para3.setSpacingAfter(50);	
+			para3.setSpacingAfter(50);
 			
+			Paragraph para5 = new Paragraph("Séjour du " + dateDebut + " au " + dateFin);
+			para5.setIndentationLeft(50);
+			para5.setSpacingBefore(40);
+			para5.setSpacingAfter(50);
+
 			document.add(para3);
-			
+			document.add(para5);
+
 			int nbNuits = (int) (reservation.getDateFin().getTime() - reservation.getDateDebut().getTime()) / (1000 * 60 * 60 * 24);
 			int numChambre = reservation.getChambreByIdChambre().getNumeroChambre();
 			int nbPersonnes = reservation.getNbAdultes() + reservation.getNbEnfants();
@@ -81,15 +90,15 @@ public class generationFactureHebergement {
 			cell3.setBackgroundColor(color);
 			cell4.setBackgroundColor(color);
 	
-			cell1.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-			cell2.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-			cell3.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-			cell4.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+			cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
 			
-			cell1.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
-			cell2.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
-			cell3.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
-			cell4.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
+			cell1.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+			cell2.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+			cell3.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+			cell4.setHorizontalAlignment(Element.ALIGN_MIDDLE);
 			
 			cell1.setPadding(10);
 			cell2.setPadding(10);
@@ -110,7 +119,7 @@ public class generationFactureHebergement {
 			
 			for(int j = 0; j < nbNuits; j++){
 				
-					PdfPCell cell6 = new PdfPCell(new Paragraph(String.valueOf(j)));
+					PdfPCell cell6 = new PdfPCell(new Paragraph(String.valueOf(j + 1)));
 					PdfPCell cell7 = new PdfPCell(new Paragraph(String.valueOf(numChambre)));
 					PdfPCell cell8 = new PdfPCell(new Paragraph(String.valueOf(nbPersonnes)));
 					PdfPCell cell9 = new PdfPCell(new Paragraph(String.valueOf(tarifChambre)));
@@ -121,15 +130,15 @@ public class generationFactureHebergement {
 						cell8.setBackgroundColor(grisClair);
 						cell9.setBackgroundColor(grisClair);
 					}
-					cell6.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-					cell7.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-					cell8.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
-					cell9.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+					cell6.setHorizontalAlignment(Element.ALIGN_CENTER);
+					cell7.setHorizontalAlignment(Element.ALIGN_CENTER);
+					cell8.setHorizontalAlignment(Element.ALIGN_CENTER);
+					cell9.setHorizontalAlignment(Element.ALIGN_CENTER);
 					
-					cell6.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
-					cell7.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
-					cell8.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
-					cell9.setHorizontalAlignment(PdfPCell.ALIGN_MIDDLE);
+					cell6.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+					cell7.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+					cell8.setHorizontalAlignment(Element.ALIGN_MIDDLE);
+					cell9.setHorizontalAlignment(Element.ALIGN_MIDDLE);
 					
 					cell6.setBorder(0);
 					cell7.setBorder(0);
@@ -167,21 +176,21 @@ public class generationFactureHebergement {
 			
 			PdfPCell cell1Tab2 = new PdfPCell(new Paragraph("Total général HT"));
 			cell1Tab2.setColspan(3);
-			cell1Tab2.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
+			cell1Tab2.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			PdfPCell cell2Tab2 = new PdfPCell(new Paragraph(String.valueOf(prixGlobal)));
-			cell2Tab2.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			cell2Tab2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			
 			PdfPCell cell3Tab2 = new PdfPCell(new Paragraph("Montant TVA"));
 			cell3Tab2.setColspan(3);
-			cell3Tab2.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
+			cell3Tab2.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			PdfPCell cell4Tab2 = new PdfPCell(new Paragraph(String.valueOf(TVA)));
-			cell4Tab2.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			cell4Tab2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			
 			PdfPCell cell5Tab2 = new PdfPCell(new Paragraph("Total TTC"));
 			cell5Tab2.setColspan(3);
-			cell5Tab2.setHorizontalAlignment(PdfPCell.ALIGN_RIGHT);
+			cell5Tab2.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			PdfPCell cell6Tab2 = new PdfPCell(new Paragraph(String.valueOf(totalTTC),fontWhite));
-			cell6Tab2.setHorizontalAlignment(PdfPCell.ALIGN_CENTER);
+			cell6Tab2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			cell6Tab2.setBackgroundColor(color);
 			
 			cell1Tab2.setBorder(0);
@@ -206,9 +215,9 @@ public class generationFactureHebergement {
 			table2.addCell(cell6Tab2);
 
 			document.add(table2);
-			
-			document.close();
 
+			document.close();
+			Desktop d = Desktop.getDesktop();
 			Runtime.getRuntime().exec("explorer.exe " + cheminFichier);
 		} catch(DocumentException e){
 			e.printStackTrace();

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="726.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditReservationHebergement">
+   <children>
+      <Text layoutX="42.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle réservation" wrappingWidth="131.13671875" />
+      <JFXComboBox fx:id="comboRoom" layoutX="647.0" layoutY="81.0" />
+      <JFXDatePicker fx:id="dateBegin" layoutX="72.0" layoutY="79.0" />
+      <JFXDatePicker fx:id="dateEnd" layoutX="387.0" layoutY="79.0" onAction="#loadRoomList" />
+      <Text layoutX="126.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" />
+      <JFXTextField fx:id="txtName" layoutX="154.0" layoutY="181.0" />
+      <JFXTextField fx:id="txtPrenom" layoutX="411.0" layoutY="181.0" />
+      <JFXButton layoutX="589.0" layoutY="181.0" onAction="#searchClient" text="Rechercher" />
+      <JFXTreeTableView fx:id="tableClient" layoutX="154.0" layoutY="234.0" prefHeight="153.0" prefWidth="473.0" />
+      <Spinner fx:id="nbAdultes" layoutX="242.0" layoutY="585.0" prefHeight="25.0" prefWidth="56.0" />
+      <Spinner fx:id="nbEnfants" layoutX="242.0" layoutY="644.0" prefHeight="25.0" prefWidth="56.0" />
+      <Text layoutX="119.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'adultes" />
+      <Text layoutX="121.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'enfants" />
+      <JFXRadioButton layoutX="457.0" layoutY="570.0" text="All-inclusive">
+         <toggleGroup>
+            <ToggleGroup fx:id="formule" />
+         </toggleGroup>
+      </JFXRadioButton>
+      <JFXRadioButton layoutX="458.0" layoutY="603.0" prefHeight="17.0" prefWidth="131.0" text="Demi-pensionnaire" toggleGroup="$formule" />
+      <JFXRadioButton layoutX="458.0" layoutY="633.0" text="Externe" toggleGroup="$formule" />
+      <Text layoutX="401.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Formule :" wrappingWidth="55.99999898672104" />
+      <JFXButton fx:id="btnSave" layoutX="318.0" layoutY="680.0" onAction="#save" text="Enregistrer" />
+      <JFXButton fx:id="btnCancel" layoutX="426.0" layoutY="680.0" onAction="#cancel" text="Annuler" />
+      <Text layoutX="73.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'arrivée :" />
+      <Text layoutX="392.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de départ :" />
+      <Text layoutX="648.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chambre :" />
+      <Text layoutX="93.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
+      <Text layoutX="347.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
+      <JFXTextArea fx:id="areaInfos" layoutX="159.0" layoutY="443.0" prefHeight="79.0" prefWidth="464.0" />
+      <Text layoutX="153.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires :" />
+   </children>
+</AnchorPane>

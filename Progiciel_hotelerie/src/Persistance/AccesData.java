@@ -9,6 +9,7 @@ import src.Metier.Chambre;
 import src.Metier.Client;
 import src.Metier.EquipementHotel;
 import src.Metier.ReservationHotel;
+import src.Metier.Tva;
 import src.Metier.Utilisateur;
 
 import java.sql.Date;
@@ -228,6 +229,34 @@ public class AccesData {
 		return (ReservationHotel) s.get(ReservationHotel.class, id);
 	}
 	
+	public static List<Chambre> getFreeRoom(Date dateDebut, Date dateFin){
+		//List<Chambre> listeR = s.createQuery("SELECT C FROM Chambre C, ReservationHotel R WHERE C.id = R.chambreByIdChambre.id AND C.id NOT IN (SELECT R.chambreByIdChambre.id FROM reservationHotel R WHERE R.dateDebut > '" + dateDebut + "' AND R.dateFin < '" + dateFin + "'").list();
+		List<Chambre> listeR = s.createQuery("SELECT DISTINCT C FROM Chambre C, ReservationHotel R WHERE C.id = R.chambreByIdChambre.id AND C.id NOT IN (SELECT R.chambreByIdChambre.id FROM ReservationHotel R WHERE R.dateDebut > '" + dateDebut + "' AND R.dateFin < '" + dateFin + "')").list();
+		return listeR;
+	}
+
+	public static Chambre getRoomByNum(int numChambre){
+		List<Chambre> listC = s.createQuery("FROM Chambre C WHERE C.numeroChambre = " + numChambre).list();
+		return listC.get(0);
+	}
+
+	public static Tva getTVAById(int idTva){
+		return (Tva) s.get(Tva.class, idTva);
+	}
+
+	public static boolean ajouterModifierReservationHotel(ReservationHotel reservation){
+		boolean ok = false;
+		try{
+			t=s.beginTransaction();
+			s.saveOrUpdate(reservation);
+			t.commit();
+			ok = true;
+		} catch(HibernateException e){
+			ok = false;
+		}
+		return ok;
+	}
+
 //	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){
 //		System.out.println(prenom);
 //		List<ReservationHotel> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		
