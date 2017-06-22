@@ -44,7 +44,7 @@ public class ReservationHebergementDetails implements Initializable {
 	}
 	
 	public void update(){
-		lblNumReservation.setText("Réservation né" + this.reservation.getId());
+		lblNumReservation.setText("Réservation n°" + this.reservation.getId());
 		lblValide.setText("Validée : " + generalFunctions.isValidate(this.reservation.getValide()));
 		lblNumeroChambre.setText("Chambre né : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
 		lblDateArrivee.setText("Arrivée le " + this.reservation.getDateDebut());
@@ -53,7 +53,7 @@ public class ReservationHebergementDetails implements Initializable {
 		lblNbAdultes.setText("Nombre d'adulte(s) : " + this.reservation.getNbAdultes());
 		lblNbEnfants.setText("Nombre d'enfant(s) : " + this.reservation.getNbEnfants());
 		areaInfosComp.setText(this.reservation.getInformationsComplementaires());
-		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "é");
+		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "€");
 
 	}
 	public void generateFacture(){
