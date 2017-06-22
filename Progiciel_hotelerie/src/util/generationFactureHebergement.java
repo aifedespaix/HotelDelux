@@ -28,7 +28,7 @@ public class generationFactureHebergement {
 		BaseColor grisClair = new BaseColor(240,240,240);
 		Document document = new Document();
 		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
-		String cheminFichier = Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow);
+		String cheminFichier = Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow, Parametre.FILETYPE_FACTURE_HEBERGEMENT);
 		System.out.println(cheminFichier);
 		try{
 			PdfWriter.getInstance(document, new FileOutputStream(cheminFichier));
@@ -208,10 +208,9 @@ public class generationFactureHebergement {
 			
 			document.add(table2);
 			
-			
-			
 			document.close();
-			Runtime.getRuntime().exec("explorer.exe " + Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow));
+
+			Runtime.getRuntime().exec("explorer.exe " + cheminFichier);
 		} catch(DocumentException e){
 			e.printStackTrace();
 		} catch(FileNotFoundException e){
