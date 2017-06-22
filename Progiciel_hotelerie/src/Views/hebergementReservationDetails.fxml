@@ -20,5 +20,7 @@
       <JFXTextArea fx:id="areaInfosComp" layoutX="121.0" layoutY="363.0" />
       <Text fx:id="lblPrixChambre" layoutX="474.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total :" />
       <Text fx:id="lblNumeroChambre" layoutX="121.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <JFXButton fx:id="btnEdit" layoutX="647.0" layoutY="451.0" onAction="#edit" text="Editer" />
+      <JFXButton fx:id="btnCloture" layoutX="647.0" layoutY="491.0" onAction="#cloture" text="Cloturer" />
    </children>
 </AnchorPane>
