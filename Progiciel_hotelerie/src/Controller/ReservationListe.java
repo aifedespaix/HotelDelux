@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import src.Launcher.Launcher;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
+import src.util.Colors;
 import src.util.generalFunctions;
 
 import java.io.IOException;
@@ -87,7 +88,8 @@ public class ReservationListe implements Initializable {
 				public Object getValue() {
 					// TODO Auto-generated method stub
 					JFXButton bouton = new JFXButton("Visualiser");
-					
+					Colors.primary(bouton);
+
 					/**
 					 * Id pour recupere le client correspondant a la ligne
 					 */

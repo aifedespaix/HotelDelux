@@ -20,6 +20,7 @@ import javafx.scene.layout.BorderPane;
 import src.Launcher.Launcher;
 import src.Metier.Client;
 import src.Persistance.AccesData;
+import src.util.Colors;
 
 import java.io.IOException;
 import java.net.URL;
@@ -92,6 +93,7 @@ public class HebergementClients implements Initializable {
 				public Object getValue() {
 					// TODO Auto-generated method stub
 					JFXButton bouton = new JFXButton("Visualiser");
+					Colors.primary(bouton);
 					
 					/**
 					 * Id pour recupere le client correspondant a la ligne
