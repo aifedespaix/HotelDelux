@@ -1,12 +1,7 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +13,9 @@ import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
 import src.util.generalFunctions;
 import src.util.generationFactureHebergement;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ReservationHebergementDetails implements Initializable {
 	ReservationHotel reservation = new ReservationHotel();
@@ -45,23 +43,23 @@ public class ReservationHebergementDetails implements Initializable {
 	}
 	
 	public void update(){
-		lblNumReservation.setText("R�servation n�" + this.reservation.getId());
-		lblValide.setText("Valid�e : " + generalFunctions.isValidate(this.reservation.getValide()));
-		lblNumeroChambre.setText("Chambre n� : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
-		lblDateArrivee.setText("Arriv�e le " + this.reservation.getDateDebut());
-		lblDateDepart.setText("D�part le " + this.reservation.getDateFin());		
+		lblNumReservation.setText("Réservation né" + this.reservation.getId());
+		lblValide.setText("Validée : " + generalFunctions.isValidate(this.reservation.getValide()));
+		lblNumeroChambre.setText("Chambre né : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
+		lblDateArrivee.setText("Arrivée le " + this.reservation.getDateDebut());
+		lblDateDepart.setText("Départ le " + this.reservation.getDateFin());
 		lblClientName.setText(AccesData.getClientById(this.reservation.getIdClient()).getNom() + " " + AccesData.getClientById(this.reservation.getIdClient()).getPrenom());
 		lblNbAdultes.setText("Nombre d'adulte(s) : " + this.reservation.getNbAdultes());
 		lblNbEnfants.setText("Nombre d'enfant(s) : " + this.reservation.getNbEnfants());
 		areaInfosComp.setText(this.reservation.getInformationsComplementaires());
-		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "�");
+		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "é");
 
 	}
 	public void generateFacture(){
 		generationFactureHebergement.editFactureLauncher(this.reservation);
 	}
 	public void edit(){
-		
+
 		/**
     	 * Recupere la fenetre
     	 */
@@ -83,9 +81,9 @@ public class ReservationHebergementDetails implements Initializable {
 			e1.printStackTrace();
 		}
 	}
-	
+
 	public void cloture(){
-		
+
 	}
 	
 

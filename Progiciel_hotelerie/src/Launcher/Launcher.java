@@ -1,5 +1,5 @@
 package src.Launcher;
-	
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,10 +24,15 @@ public class Launcher extends Application {
 	public void start(Stage primaryStage) {
 		try {
 
-			URL login = getClass().getResource("/src/Views/login.fxml");
+            // Titre Application
+            primaryStage.setTitle("Grand Hôtel du Parc");
+            // Favicon
+            primaryStage.getIcons().add(new Image("/src/image/Hotel/favicon.png"));
+
+            URL login = getClass().getResource("/src/Views/login.fxml");
 			AnchorPane login2 = FXMLLoader.load(login);
 			root.setCenter(login2);
-	        
+
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.show();

@@ -43,14 +43,15 @@ public class generationFactureHebergement {
 			image1.setAbsolutePosition(35f, 700F);
 			document.add(image1);
 			
-			Paragraph para1 = new Paragraph("Facture de l'h�tel");
+			Paragraph para1 = new Paragraph("Facture de l'hôtel");
 			para1.setAlignment(Element.ALIGN_RIGHT);			
 			document.add(para1);
 			
-			Paragraph para2 = new Paragraph("Facture �dit�e le " + timeNow);			
+			Paragraph para2 = new Paragraph("Facture éditée le " + timeNow);
 			para2.setAlignment(Element.ALIGN_RIGHT);			
 			document.add(para2);
 			
+			//Info Habitation
 			String nom = clientReservation.getNom();
 			String prenom = clientReservation.getPrenom();
 			String adresseRue = clientReservation.getAdresseRue();
@@ -58,20 +59,20 @@ public class generationFactureHebergement {
 			String cp = clientReservation.getCodePostal();
 			String dateDebut = String.valueOf(reservation.getDateDebut());
 			String dateFin = String.valueOf(reservation.getDateFin());
-			
+
 			Paragraph para3 = new Paragraph(nom + " " + prenom + "\n" + adresseRue + "\n" + cp + " " + adresseVille);			
 			para3.setIndentationLeft(300);
 			para3.setSpacingBefore(100);
 			para3.setSpacingAfter(50);
 			
-			Paragraph para5 = new Paragraph("Séjour du " + dateDebut + " au " + dateFin);			
+			Paragraph para5 = new Paragraph("Séjour du " + dateDebut + " au " + dateFin);
 			para5.setIndentationLeft(50);
 			para5.setSpacingBefore(40);
 			para5.setSpacingAfter(50);
-			
+
 			document.add(para3);
 			document.add(para5);
-			
+
 			int nbNuits = (int) (reservation.getDateFin().getTime() - reservation.getDateDebut().getTime()) / (1000 * 60 * 60 * 24);
 			int numChambre = reservation.getChambreByIdChambre().getNumeroChambre();
 			int nbPersonnes = reservation.getNbAdultes() + reservation.getNbEnfants();
@@ -80,7 +81,7 @@ public class generationFactureHebergement {
 			PdfPTable table = new PdfPTable(4);
 			
 			PdfPCell cell1 = new PdfPCell(new Paragraph("Nuit", fontWhite));
-			PdfPCell cell2 = new PdfPCell(new Paragraph("Num�ro de chambre", fontWhite));
+			PdfPCell cell2 = new PdfPCell(new Paragraph("Numéro de chambre", fontWhite));
 			PdfPCell cell3 = new PdfPCell(new Paragraph("Nombre de personnes", fontWhite));
 			PdfPCell cell4 = new PdfPCell(new Paragraph("Total HT", fontWhite));
 		
@@ -173,7 +174,7 @@ public class generationFactureHebergement {
 			double TVA = (double) Math.round((prixGlobal * 0.2) * 100) / 100;
 			double totalTTC = prixGlobal + TVA;
 			
-			PdfPCell cell1Tab2 = new PdfPCell(new Paragraph("Total g�n�ral HT"));
+			PdfPCell cell1Tab2 = new PdfPCell(new Paragraph("Total général HT"));
 			cell1Tab2.setColspan(3);
 			cell1Tab2.setHorizontalAlignment(Element.ALIGN_RIGHT);
 			PdfPCell cell2Tab2 = new PdfPCell(new Paragraph(String.valueOf(prixGlobal)));
@@ -212,15 +213,12 @@ public class generationFactureHebergement {
 			table2.addCell(cell4Tab2);
 			table2.addCell(cell5Tab2);
 			table2.addCell(cell6Tab2);
-			
-			
+
 			document.add(table2);
-			
-			
-			
+
 			document.close();
 			Desktop d = Desktop.getDesktop();
-			Runtime.getRuntime().exec("explorer.exe " + Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow));
+			Runtime.getRuntime().exec("explorer.exe " + cheminFichier);
 		} catch(DocumentException e){
 			e.printStackTrace();
 		} catch(FileNotFoundException e){
