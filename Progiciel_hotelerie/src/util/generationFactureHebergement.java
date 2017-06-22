@@ -29,7 +29,7 @@ public class generationFactureHebergement {
 		BaseColor grisClair = new BaseColor(240,240,240);
 		Document document = new Document();
 		java.sql.Date timeNow = new Date(Calendar.getInstance().getTimeInMillis());
-		String cheminFichier = Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow);
+		String cheminFichier = Parametre.getCheminFichier(clientReservation.getNom(), clientReservation.getPrenom(), timeNow, Parametre.FILETYPE_FACTURE_HEBERGEMENT);
 		System.out.println(cheminFichier);
 		try{
 			PdfWriter.getInstance(document, new FileOutputStream(cheminFichier));
@@ -39,7 +39,7 @@ public class generationFactureHebergement {
 			fontWhite.setColor(255,255,255);
 			
 			//Image
-			Image image1 = Image.getInstance ("src/image/Hotel/ghdp.png");
+			Image image1 = Image.getInstance ("Progiciel_hotelerie/src/image/Hotel/ghdp.png");
 			image1.setAbsolutePosition(35f, 700F);
 			document.add(image1);
 			
