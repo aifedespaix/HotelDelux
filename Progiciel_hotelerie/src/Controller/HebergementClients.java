@@ -54,7 +54,7 @@ public class HebergementClients implements Initializable {
 	@FXML private JFXTextField txtPhone;
 	@SuppressWarnings(value = { "" })
 	/**
-	 * Dï¿½claration de la liste d'observables qui contiendra les objets a afficher dans le tableau
+	 * Déclaration de la liste d'observables qui contiendra les objets a afficher dans le tableau
 	 */
 	private ObservableList<Client> listeClients = FXCollections.observableArrayList();
 
@@ -63,19 +63,19 @@ public class HebergementClients implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		/**
-		 * Rï¿½cupï¿½re la liste de tous les clients		
+		 * Récupère la liste de tous les clients		
 		 */
 		List<Client> listec = AccesData.getClients();
 		
 		/**
-		 * Ajoute chaque client rï¿½cupï¿½rï¿½ ï¿½ la liste d'observable de clients
+		 * Ajoute chaque client récupéré à la liste d'observable de clients
 		 */
 		for(Client c : listec){
 			listeClients.add(c);
 		}
 		
 		/**
-		 * Crï¿½ï¿½ l'arbre d'objets avec la liste d'observables de clients
+		 * Créé l'arbre d'objets avec la liste d'observables de clients
 		 */
 		final TreeItem<Client> root = new RecursiveTreeItem<Client>(listeClients, RecursiveTreeObject::getChildren);	
 		
@@ -131,17 +131,15 @@ public class HebergementClients implements Initializable {
 								clientDetails = loaderClientDetails.load();
 								rootPane.setCenter(clientDetails);
 								/**
-								 * Recupere le client correspondant ï¿½ l'id
+								 * Recupere le client correspondant à l'id
 								 */
 						    	Client c = AccesData.getClientById(Integer.parseInt(bouton.getId()));
-						        //System.out.println(c);
 						        ClientDetails controllerClient = loaderClientDetails.<ClientDetails>getController();
 						        controllerClient.setClient(c);
 						        controllerClient.update();
 						    } catch (IOException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
-							}   
+							}
 					    }
 					});
 					return bouton;
@@ -156,36 +154,24 @@ public class HebergementClients implements Initializable {
 		
 		
 		/**
-		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
+		 * Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
 		 */
 		JFXTreeTableColumn<Client, String> nom = new JFXTreeTableColumn<>("Nom");
 		nom.setPrefWidth(100);
 		nom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNom()));
 		
-		/**
-		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
-		 */
-		JFXTreeTableColumn<Client, String> prenom = new JFXTreeTableColumn<>("Prï¿½nom");
+		JFXTreeTableColumn<Client, String> prenom = new JFXTreeTableColumn<>("Prénom");
 		prenom.setPrefWidth(100);
 		prenom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getPrenom()));
 		
-		/**
-		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
-		 */
 		JFXTreeTableColumn<Client, String> adresse = new JFXTreeTableColumn<>("Adresse");
 		adresse.setPrefWidth(100);
 		adresse.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAdresseRue() + ", " + param.getValue().getValue().getAdresseVille() + ", " + param.getValue().getValue().getCodePostal()));
 		
-		/**
-		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
-		 */
-		JFXTreeTableColumn<Client, String> telephone = new JFXTreeTableColumn<>("Tï¿½lï¿½phone");
+		JFXTreeTableColumn<Client, String> telephone = new JFXTreeTableColumn<>("Téléphone");
 		telephone.setPrefWidth(100);
 		telephone.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTelephone()));
 		
-		/**
-		 * Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
-		 */
 		JFXTreeTableColumn<Client, String> chambre = new JFXTreeTableColumn<>("Chambre actuelle");
 		chambre.setPrefWidth(100);		
 		chambre.setCellValueFactory(param -> new SimpleStringProperty(AccesData.getChambreClientActuelle(param.getValue().getValue().getId())));
@@ -198,7 +184,7 @@ public class HebergementClients implements Initializable {
 		tableHebergementClient.setShowRoot(false);
 		
 		/**
-		 * Rï¿½cupï¿½re les colonnes du tableau puis ajoute les nouvelles colonnes prï¿½cï¿½demment dï¿½clarï¿½es
+		 * Réupère les colonnes du tableau puis ajoute les nouvelles colonnes précédemment déclarées
 		 */
 		tableHebergementClient.getColumns().setAll(voir,nom,prenom,adresse,telephone,chambre);
 
@@ -228,7 +214,7 @@ public class HebergementClients implements Initializable {
 //		}		
 		
 		/**
-		 * Ajoute les clients ï¿½ la liste d'observables pour qu'ils soient affichï¿½s
+		 * Ajoute les clients à la liste d'observables pour qu'ils soient affichés
 		 */
 		if(listeClient.size() > 0){
 			for(Client c : listeClient){
@@ -239,10 +225,12 @@ public class HebergementClients implements Initializable {
 	
 	public void createClient(){
 		BorderPane root = Launcher.getRoot();
-		FXMLLoader loaderClientNew = new FXMLLoader(getClass().getResource("/src/Views/newClient.fxml"));
+		FXMLLoader loaderClientNew = new FXMLLoader(getClass().getResource("/src/Views/editClient.fxml"));
 		AnchorPane newClient;
 		try {
 			newClient = loaderClientNew.load();
+			EditClient controllerEditClient = loaderClientNew.<EditClient>getController();
+			controllerEditClient.setTitreLabel();
 			root.setCenter(newClient);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

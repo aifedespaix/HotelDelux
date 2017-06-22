@@ -27,9 +27,9 @@ public class generalFunctions {
 	public static String isValidate(Boolean valide){
 		String isValide = "";
 		if( valide == true){
-			isValide = "Validï¿½e";
+			isValide = "Validée";
 		} else {
-			isValide = "Non validï¿½e";
+			isValide = "Non validée";
 		}
 		return isValide;
 	}
