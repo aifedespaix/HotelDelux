@@ -18,91 +18,92 @@ import java.io.IOException;
 /**
  * Created by ledze on 12/05/2017.
  */
-public class Login
-{
+public class Login {
     @FXML
-   private JFXTextField login;
+    private JFXTextField login;
     @FXML
     private JFXPasswordField password;
     @FXML
     private JFXButton btn_login;
-    
+
     Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-   	double width = screenSize.getWidth();
-   	double height = screenSize.getHeight();
-   	BorderPane root = Launcher.getRoot();
-    
-    public void connexion() throws IOException
-    {
+    double width = screenSize.getWidth();
+    double height = screenSize.getHeight();
+    BorderPane root = Launcher.getRoot();
+
+    public void connexion() throws IOException {
         Utilisateur u = null;
         u = AccesData.getLoginUtilisateur(login.getText(), password.getText());
-        if(u != null)
-        {
-        	Stage primaryStage = (Stage) password.getScene().getWindow();
-        	primaryStage.setMaximized(true);
-        	
-        	root.prefHeightProperty().bind(primaryStage.heightProperty());
+        if (u != null) {
+            Stage primaryStage = (Stage) password.getScene().getWindow();
+            primaryStage.setMaximized(true);
+
+            root.prefHeightProperty().bind(primaryStage.heightProperty());
             root.prefWidthProperty().bind(primaryStage.widthProperty());
-           switch (u.getRoleByIdRole().getId())
-           {
-               case 1:
-                   System.out.println("Admin");
-                   break;
-               case 2:
+            switch (u.getRoleByIdRole().getId()) {
+                case 1:
+                    System.out.println("Admin");
+                    break;
+                case 2:
                     System.out.println("Direction");
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuDirecteur.fxml"));
-	       			AnchorPane menu = loader.load();
-	       			root.setTop(menu);
-	       			root.setCenter(null);
-                   break;
-               case 3:
+                    AnchorPane menu = loader.load();
+
+                    root.setTop(menu);
+                    root.setCenter(null);
+                    break;
+                case 3:
                     System.out.println("Hebergement");
                     FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuHebergement.fxml"));
-	       			AnchorPane menuHebergement = loaderHebergement.load();
-	       			root.setTop(menuHebergement);
-                   break;
-               case 4:
-                   System.out.println("Réception");
-                   FXMLLoader loaderReception = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuReception.fxml"));
-	       		   AnchorPane menuReception = loaderReception.load();
-	       		   root.setTop(menuReception);
-	       		   break;
-               case 5:
-            	   System.out.println("Restaurant");
-                   FXMLLoader loaderRestaurant = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuRestaurant.fxml"));
-	       		   AnchorPane menuRestaurant = loaderRestaurant.load();
-	       		   root.setTop(menuRestaurant);
-                   break;
-               case 6:
-                   System.out.println("Spa");
-                   FXMLLoader loaderSpa = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuSpa.fxml"));
-	       			AnchorPane menuSpa = loaderSpa.load();
-	       			root.setTop(menuSpa);
-                   break;
-               case 7:
-                   System.out.println("Maintenance");
-                   FXMLLoader loaderMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
-	       		   AnchorPane menuMaintenance = loaderMaintenance.load();
-	       		   root.setTop(menuMaintenance);
-                   break;
-               case 8:
-            	   System.out.println("Entretien");
-            	   FXMLLoader loaderEntretien = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuEntretien.fxml"));
-	       		   AnchorPane menuEntretien = loaderEntretien.load();
-	       		   root.setTop(menuEntretien);
-                   break;
-               default:
-                   	System.out.println("default");
-           }
-        }
-        else
-        {
+                    AnchorPane menuHebergement = loaderHebergement.load();
+
+                    MenuHebergement controllerMenuHebergement = loaderHebergement.<MenuHebergement>getController();
+                    controllerMenuHebergement.setLogin(login.getText());
+                    controllerMenuHebergement.update();
+
+                    root.setTop(menuHebergement);
+                    break;
+                case 4:
+                    System.out.println("Réception");
+                    FXMLLoader loaderReception = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuReception.fxml"));
+                    AnchorPane menuReception = loaderReception.load();
+                    root.setTop(menuReception);
+                    break;
+                case 5:
+                    System.out.println("Restaurant");
+                    FXMLLoader loaderRestaurant = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuRestaurant.fxml"));
+                    AnchorPane menuRestaurant = loaderRestaurant.load();
+                    root.setTop(menuRestaurant);
+                    break;
+                case 6:
+                    System.out.println("Spa");
+                    FXMLLoader loaderSpa = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuSpa.fxml"));
+                    AnchorPane menuSpa = loaderSpa.load();
+                    root.setTop(menuSpa);
+                    break;
+                case 7:
+                    System.out.println("Maintenance");
+                    FXMLLoader loaderMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
+                    AnchorPane menuMaintenance = loaderMaintenance.load();
+                    root.setTop(menuMaintenance);
+                    break;
+                case 8:
+                    System.out.println("Entretien");
+                    FXMLLoader loaderEntretien = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuEntretien.fxml"));
+                    AnchorPane menuEntretien = loaderEntretien.load();
+                    root.setTop(menuEntretien);
+                    break;
+                default:
+                    System.out.println("default");
+            }
+        } else {
             System.out.println("Echec");
             // Efface les champs et remet le curseur sur le champs du login
-        	login.setText("");
-        	password.setText("");
-        	login.requestFocus();
+            login.setText("");
+            password.setText("");
+            login.requestFocus();
         }
 
     }
+
 }

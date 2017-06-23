@@ -1,3 +1,19 @@
 .service_logo {
-    fx-background-color: red;
+    -fx-cursor: hand;
+}
+
+.background-image {
+    -fx-background-color: #fff;
+}
+
+.btn {
+    -fx-cursor: hand;
+    -fx-background-color: #fff;
+    -fx-border-radius: 0;
+}
+
+
+.btn_logout {
+    -fx-cursor: hand;
+    /*-fx-background-color: #fff;*/
 }

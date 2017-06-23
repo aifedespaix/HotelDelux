@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,73 +12,92 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="50.0" style="-fx-background-color: #99DDFB;" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuHebergement">
-   <children>
-      <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane prefHeight="50.0" prefWidth="100.0">
+<AnchorPane prefHeight="50.0" style="-fx-background-color: #99DDFB;" styleClass="menu_hebergement" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuHebergement">
+    <children>
+        <HBox alignment="CENTER" prefHeight="50.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <AnchorPane prefHeight="50.0" prefWidth="100.0">
+                    <children>
+                        <JFXButton fx:id="menu_btnAccueil" ellipsisString="" layoutX="9.0" layoutY="7.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="80.0" styleClass="btn">
+                            <graphic>
+                                <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/icons/Hebergement.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                    </children>
+                </AnchorPane>
+                <StackPane prefHeight="50.0" prefWidth="200.0" />
+                <AnchorPane prefHeight="50.0" prefWidth="200.0" />
+                <JFXButton fx:id="btnReservations" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToReservation" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Réservations" textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton fx:id="btnClient" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToClient" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Clients" textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="104.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Agences" textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="109.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Notoriété" textAlignment="CENTER">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </JFXButton>
+                <AnchorPane prefHeight="50.0" prefWidth="200.0" />
+                <StackPane alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="136.0">
+                    <children>
+                        <JFXButton fx:id="btnNewDemande" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openNewDemande" prefHeight="50.0" prefWidth="72.0" ripplerFill="WHITE" style="-fx-background-color: #FFF;" text=" " textAlignment="CENTER">
+                            <font>
+                                <Font size="18.0" />
+                            </font>
+                            <graphic>
+                                <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../image/icons/maintenance-icon.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </JFXButton>
+                    </children>
+                </StackPane>
+                <AnchorPane prefHeight="50.0" prefWidth="200.0" />
+                <AnchorPane prefHeight="94.0" prefWidth="161.0">
                <children>
-                  <JFXButton layoutX="9.0" layoutY="7.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="80.0" style="-fx-background-color: #FFF;" styleClass="service_logo" />
+                      <VBox alignment="CENTER" layoutX="24.0" prefHeight="94.0" prefWidth="188.0" spacing="20.0">
+                          <children>
+                              <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="139.9765625">
+                                  <font>
+                                      <Font size="18.0" />
+                                  </font>
+                              </Text>
+                              <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="62.0" styleClass="btn_logout">
+                                  <graphic>
+                                      <ImageView fitHeight="27.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="@../image/icons/logout.png" />
+                                          </image>
+                                      </ImageView>
+                                  </graphic>
+                              </JFXButton>
+                          </children>
+                          <padding>
+                              <Insets left="20.0" right="20.0" />
+                          </padding>
+                      </VBox>
                </children></AnchorPane>
-            <StackPane prefHeight="50.0" prefWidth="200.0" />
-            <AnchorPane prefHeight="50.0" prefWidth="200.0" />
-            <JFXButton fx:id="btnReservations" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToReservation" prefHeight="50.0" prefWidth="136.0" style="-fx-background-color: #FFF;" text="Réservations" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton fx:id="btnClient" alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#accessToClient" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: #FFF;" text="Clients" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="104.0" style="-fx-background-color: #FFF;" text="Agences" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="109.0" style="-fx-background-color: #FFF;" text="Notoriété" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <AnchorPane prefHeight="50.0" prefWidth="200.0" />
-            <StackPane alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="136.0">
-               <children>
-                  <JFXButton fx:id="btnNewDemande" alignment="CENTER" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openNewDemande" prefHeight="50.0" prefWidth="72.0" ripplerFill="WHITE" style="-fx-background-color: #FFF;" text=" " textAlignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <graphic>
-                        <ImageView fitHeight="50.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../image/icons/maintenance-icon.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </JFXButton>
-               </children>
-            </StackPane>
-            <AnchorPane prefHeight="50.0" prefWidth="200.0" />
-            <VBox alignment="CENTER" prefHeight="50.0" prefWidth="173.0" spacing="20.0">
-               <children>
-                  <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="139.9765625">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="145.0" text="Déconnexion">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-               <padding>
-                  <Insets left="20.0" right="20.0" />
-               </padding>
-            </VBox>
-            <AnchorPane prefHeight="50.0" prefWidth="100.0" />
-         </children>
-      </HBox>
-   </children>
+            </children>
+        </HBox>
+    </children>
+    <!-- todo pour activer CSS c'est là !! lol -->
+    <stylesheets>
+        <URL value="@menu.css" />
+    </stylesheets>
 </AnchorPane>
