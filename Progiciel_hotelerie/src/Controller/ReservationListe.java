@@ -145,12 +145,12 @@ public class ReservationListe implements Initializable {
 		JFXTreeTableColumn<ReservationHotel, String> dateArrivee = new JFXTreeTableColumn<>("Date arrivée");
 		dateArrivee.setPrefWidth(150);
 		dateArrivee.setMinWidth(100);
-		dateArrivee.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateDebut())));
+		dateArrivee.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateDebut())));
 		
 		JFXTreeTableColumn<ReservationHotel, String> dateFin = new JFXTreeTableColumn<>("Date départ");
 		dateFin.setPrefWidth(150);
 		dateFin.setMinWidth(100);
-		dateFin.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateFin())));
+		dateFin.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateFin())));
 
 		JFXTreeTableColumn<ReservationHotel, String> prix = new JFXTreeTableColumn<>("Prix");
 		prix.setPrefWidth(150);
@@ -161,6 +161,11 @@ public class ReservationListe implements Initializable {
 		valide.setPrefWidth(150);
 		valide.setMinWidth(100);
 		valide.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.isValidate(param.getValue().getValue().getValide())));
+		
+		JFXTreeTableColumn<ReservationHotel, String> formule = new JFXTreeTableColumn<>("Formule");
+		formule.setPrefWidth(150);
+		formule.setMinWidth(100);
+		formule.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.idFormuleToString(param.getValue().getValue().getFormule())));
 
 		tableReservations.setRoot(root);
 		tableReservations.setShowRoot(false);
@@ -168,7 +173,7 @@ public class ReservationListe implements Initializable {
 		/**
 		 * Récupère les colonnes du tableau puis ajoute les nouvelles colonnes précédemment déclarées
 		 */
-		tableReservations.getColumns().setAll(voir,client,numChambre,dateArrivee,dateFin,prix,valide);
+		tableReservations.getColumns().setAll(voir,client,numChambre,dateArrivee,dateFin,prix,valide, formule);
 
 	}
 

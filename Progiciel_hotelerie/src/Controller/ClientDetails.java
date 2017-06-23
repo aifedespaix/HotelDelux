@@ -19,6 +19,7 @@ import src.Launcher.Launcher;
 import src.Metier.Client;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
+import src.util.generalFunctions;
 
 import java.io.IOException;
 import java.net.URL;
@@ -45,11 +46,11 @@ public class ClientDetails implements Initializable {
 	public void update(){
 		lblName.setText(this.client.getNom() + " " + this.client.getPrenom());
 		lblPhone.setText(this.client.getTelephone());
-		lblBirth.setText(this.client.getDateNaissance().toString());
+		lblBirth.setText(generalFunctions.formatDate(this.client.getDateNaissance()));
 		lblAddress.setText(this.client.getAdresseRue() + " " + this.client.getAdresseVille() + " " + this.client.getCodePostal());
 
 		areaInfos.setText(this.client.getAllergies());
-		lblResaChambre.setText("R√©servation en cours : " + AccesData.getChambreClientActuelle(this.client.getId()));
+		lblResaChambre.setText("RÈservation en cours : " + AccesData.getChambreClientActuelle(this.client.getId()));
 		
 		
 		
@@ -59,17 +60,17 @@ public class ClientDetails implements Initializable {
 		}
 		final TreeItem<ReservationHotel> root = new RecursiveTreeItem<ReservationHotel>(listeReservationsHotel, RecursiveTreeObject::getChildren);	
 
-		JFXTreeTableColumn<ReservationHotel, String> reservationNumber = new JFXTreeTableColumn<>("Num√©ro de r√©servation");
+		JFXTreeTableColumn<ReservationHotel, String> reservationNumber = new JFXTreeTableColumn<>("NumÈro de rÈservation");
 		reservationNumber.setPrefWidth(100);
 		reservationNumber.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getId())));
 		
-		JFXTreeTableColumn<ReservationHotel, String> beginDateResa = new JFXTreeTableColumn<>("Date de d'arriv√©e");
+		JFXTreeTableColumn<ReservationHotel, String> beginDateResa = new JFXTreeTableColumn<>("Date de d'arrivÈe");
 		beginDateResa.setPrefWidth(100);
-		beginDateResa.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateDebut())));
+		beginDateResa.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateDebut())));
 		
-		JFXTreeTableColumn<ReservationHotel, String> endDateResa = new JFXTreeTableColumn<>("Date de d√©part");
+		JFXTreeTableColumn<ReservationHotel, String> endDateResa = new JFXTreeTableColumn<>("Date de dÈpart");
 		endDateResa.setPrefWidth(100);
-		endDateResa.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateFin())));
+		endDateResa.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateFin())));
 		
 		tableResaChambreClient.setRoot(root);
 		tableResaChambreClient.setShowRoot(false);

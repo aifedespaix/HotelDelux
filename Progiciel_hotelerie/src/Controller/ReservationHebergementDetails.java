@@ -23,6 +23,7 @@ public class ReservationHebergementDetails implements Initializable {
 
 	@FXML private Text lblNumReservation;
 	@FXML private Text lblValide;
+	@FXML private Text formuleLabel;
 	@FXML private JFXButton btnFacture;
 	@FXML private Text lblNumeroChambre;
 	@FXML private Text lblDateArrivee;
@@ -30,7 +31,7 @@ public class ReservationHebergementDetails implements Initializable {
 	@FXML private Text lblClientName;
 	@FXML private Text lblNbAdultes;
 	@FXML private Text lblNbEnfants;
-	@FXML private JFXTextArea areaInfosComp;
+	@FXML private Text areaInfosComp;
 	@FXML private Text lblPrixChambre;
 	
 	@Override
@@ -44,12 +45,18 @@ public class ReservationHebergementDetails implements Initializable {
 		lblNumReservation.setText("Réservation n°" + this.reservation.getId());
 		lblValide.setText("Validée : " + generalFunctions.isValidate(this.reservation.getValide()));
 		lblNumeroChambre.setText("Chambre n° : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
-		lblDateArrivee.setText("Arrivée le " + this.reservation.getDateDebut());
-		lblDateDepart.setText("Départ le " + this.reservation.getDateFin());
+		lblDateArrivee.setText("Arrivée le " + generalFunctions.formatDate(this.reservation.getDateDebut()));
+		lblDateDepart.setText("Départ le " + generalFunctions.formatDate(this.reservation.getDateFin()));
 		lblClientName.setText(AccesData.getClientById(this.reservation.getIdClient()).getNom() + " " + AccesData.getClientById(this.reservation.getIdClient()).getPrenom());
 		lblNbAdultes.setText("Nombre d'adulte(s) : " + this.reservation.getNbAdultes());
 		lblNbEnfants.setText("Nombre d'enfant(s) : " + this.reservation.getNbEnfants());
 		areaInfosComp.setText(this.reservation.getInformationsComplementaires());
+		switch(this.reservation.getFormule()) {
+			case 0 : formuleLabel.setText("Formule : All-Inclusive"); break;
+			case 1 : formuleLabel.setText("Formule : Demi-Pensionnaire"); break;
+			case 2 : formuleLabel.setText("Formule : Externe"); break;
+			default : formuleLabel.setText("Problème avec la formule : " + this.reservation.getFormule());
+		}
 		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "€");
 
 	}

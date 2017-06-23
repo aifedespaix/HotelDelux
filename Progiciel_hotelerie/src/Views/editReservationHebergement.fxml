@@ -26,14 +26,14 @@
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
-            <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="23.0" vgrow="NEVER" />
             <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
-            <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
             <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="178.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="96.0" minHeight="0.0" prefHeight="96.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
         </rowConstraints>
          <children>
             <Text fx:id="titreLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle/Edition réservation" wrappingWidth="285.13671875">
@@ -153,11 +153,11 @@
                     </rowConstraints>
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formule :" wrappingWidth="55.99999898672104" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <JFXRadioButton id="0" fx:id="allInclusive" selected="true" text="All-inclusive" GridPane.columnIndex="1">
+                        <JFXRadioButton id="0" fx:id="inclusive" selected="true" text="All-inclusive" GridPane.columnIndex="1">
                            <toggleGroup>
                               <ToggleGroup fx:id="formule" />
                            </toggleGroup></JFXRadioButton>
-                        <JFXRadioButton id="1" fx:id="demiPensionnaire" prefHeight="17.0" prefWidth="131.0" text="Demi-pensionnaire" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXRadioButton id="1" fx:id="demi" prefHeight="17.0" prefWidth="131.0" text="Demi-pensionnaire" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <JFXRadioButton id="2" fx:id="externe" text="Externe" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
@@ -172,8 +172,14 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton fx:id="btnSave" onAction="#save" text="Enregistrer" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                  <JFXButton fx:id="btnCancel" onAction="#cancel" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="btnSave" onAction="#save" text="Enregistrer" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font></JFXButton>
+                  <JFXButton fx:id="btnCancel" onAction="#cancel" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font></JFXButton>
                </children>
             </GridPane>
          </children>

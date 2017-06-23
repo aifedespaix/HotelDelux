@@ -69,7 +69,11 @@ public class EditReservationHebergement implements Initializable  {
 	private ReservationHotel reservationToInsert;
 	
 	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {	}
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		inclusive.setUserData(0);
+		demi.setUserData(1);
+		externe.setUserData(2);
+	}
 
 	public void setReservationToInsert(ReservationHotel reservationToInsert) {
 		this.reservationToInsert = reservationToInsert;
@@ -92,7 +96,6 @@ public class EditReservationHebergement implements Initializable  {
 		comboRoom.setDisable(false);
 		List<Chambre> listeChambreDisponibles = AccesData.getFreeRoom(Date.valueOf(dateBegin.getValue()), Date.valueOf(dateEnd.getValue()));
 		comboRoom.getItems().addAll(listeChambreDisponibles);
-		System.out.println("Séléctionné : " + formule.getSelectedToggle());
 	}
 	
 	public void save(){		
@@ -104,7 +107,7 @@ public class EditReservationHebergement implements Initializable  {
 		this.reservationToInsert.setChambreByIdChambre(comboRoom.getValue());
 		this.reservationToInsert.setValide(false);
 		this.reservationToInsert.setInformationsComplementaires(areaInfos.getText());
-		//this.reservationToInsert.setFormule(formule.getSelectedToggle().);
+		this.reservationToInsert.setFormule((int) formule.getSelectedToggle().getUserData());
 		
 		AccesData.ajouterModifierReservationHotel(this.reservationToInsert);
 	}
@@ -208,7 +211,13 @@ public class EditReservationHebergement implements Initializable  {
 		SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.reservationToInsert.getChambreByIdChambre().getCapacite() - this.reservationToInsert.getNbAdultes(), this.reservationToInsert.getNbEnfants());
 		nbEnfants.setValueFactory(valueFactory2);
 		areaInfos.setText(this.reservationToInsert.getInformationsComplementaires());
-		//formule.set
+		switch(this.reservationToInsert.getFormule()) {
+		case 0 : formule.selectToggle(inclusive); break;
+		case 1 : formule.selectToggle(demi); break;
+		case 2 : formule.selectToggle(externe); break;
+		default : System.err.println("Il y a une erreur dans la formule de la réservation " + this.reservationToInsert);
+		}
+		
 	}
 	
 	/**
