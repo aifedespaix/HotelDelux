@@ -19,6 +19,9 @@ import java.io.IOException;
  * Created by ledze on 12/05/2017.
  */
 public class Login {
+
+    private static String username;
+
     @FXML
     private JFXTextField login;
     @FXML
@@ -40,9 +43,17 @@ public class Login {
 
             root.prefHeightProperty().bind(primaryStage.heightProperty());
             root.prefWidthProperty().bind(primaryStage.widthProperty());
+
+            Login.username = login.getText();
+
             switch (u.getRoleByIdRole().getId()) {
                 case 1:
                     System.out.println("Admin");
+                    FXMLLoader loaderAdmin = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuAdministration.fxml"));
+                    AnchorPane menuAdmin = loaderAdmin.load();
+
+                    root.setTop(menuAdmin);
+                    root.setCenter(null);
                     break;
                 case 2:
                     System.out.println("Direction");
@@ -57,41 +68,43 @@ public class Login {
                     FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuHebergement.fxml"));
                     AnchorPane menuHebergement = loaderHebergement.load();
 
-                    MenuHebergement controllerMenuHebergement = loaderHebergement.<MenuHebergement>getController();
-                    controllerMenuHebergement.setLogin(login.getText());
-                    controllerMenuHebergement.update();
-
                     root.setTop(menuHebergement);
+                    root.setCenter(null);
                     break;
                 case 4:
                     System.out.println("Réception");
                     FXMLLoader loaderReception = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuReception.fxml"));
                     AnchorPane menuReception = loaderReception.load();
                     root.setTop(menuReception);
+                    root.setCenter(null);
                     break;
                 case 5:
                     System.out.println("Restaurant");
                     FXMLLoader loaderRestaurant = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuRestaurant.fxml"));
                     AnchorPane menuRestaurant = loaderRestaurant.load();
                     root.setTop(menuRestaurant);
+                    root.setCenter(null);
                     break;
                 case 6:
                     System.out.println("Spa");
                     FXMLLoader loaderSpa = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuSpa.fxml"));
                     AnchorPane menuSpa = loaderSpa.load();
                     root.setTop(menuSpa);
+                    root.setCenter(null);
                     break;
                 case 7:
                     System.out.println("Maintenance");
                     FXMLLoader loaderMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
                     AnchorPane menuMaintenance = loaderMaintenance.load();
                     root.setTop(menuMaintenance);
+                    root.setCenter(null);
                     break;
                 case 8:
                     System.out.println("Entretien");
                     FXMLLoader loaderEntretien = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuEntretien.fxml"));
                     AnchorPane menuEntretien = loaderEntretien.load();
                     root.setTop(menuEntretien);
+                    root.setCenter(null);
                     break;
                 default:
                     System.out.println("default");
@@ -104,6 +117,10 @@ public class Login {
             login.requestFocus();
         }
 
+    }
+
+    public static String getUsername() {
+        return username;
     }
 
 }

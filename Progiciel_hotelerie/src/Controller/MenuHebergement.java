@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Text;
 import src.Launcher.Launcher;
 
 import java.io.IOException;
@@ -16,9 +15,9 @@ import java.util.ResourceBundle;
 
 public class MenuHebergement implements Initializable {
 
-	private String login;
+//	private String login;
 
-	@FXML private Text usernameLabel;
+//	@FXML private Text usernameLabel;
 
 	@FXML private JFXButton btnClient;
 	@FXML private JFXButton btnReservations;
@@ -61,14 +60,5 @@ public class MenuHebergement implements Initializable {
 		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("src/Views/newDemande.fxml"));
 		MenuMaintenance.openWindowNewDemande(root);
     }
-
-	public void setLogin(String login) {
-		this.login = login;
-	}
-
-	public void update() {
-		this.usernameLabel.setText(login);
-	}
-
 
 }

@@ -104,27 +104,8 @@
                </children>
             </StackPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" />
-            <VBox alignment="CENTER" prefHeight="113.0" prefWidth="173.0" spacing="20.0">
-               <children>
-                  <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="139.9765625">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Text>
-                  <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="145.0" text="Déconnexion">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></JFXButton>
-               </children>
-               <padding>
-                  <Insets left="20.0" right="20.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </VBox>
+
+            <fx:include source="menuRight.fxml"></fx:include>
             <AnchorPane prefHeight="200.0" prefWidth="15.0" />
          </children>
       </HBox>

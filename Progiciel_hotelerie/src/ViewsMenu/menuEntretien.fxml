@@ -44,26 +44,9 @@
                   <Insets left="150.0" />
                </HBox.margin>
             </JFXButton>
-            <VBox alignment="CENTER" prefHeight="113.0" prefWidth="173.0" spacing="20.0">
-               <children>
-                  <Text fx:id="usernameLabel" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="139.9765625">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Text>
-                  <JFXButton minHeight="-Infinity" minWidth="-Infinity" prefHeight="39.0" prefWidth="145.0" text="Déconnexion">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </JFXButton>
-               </children>
-               <padding>
-                  <Insets left="20.0" right="20.0" />
-               </padding>
-               <HBox.margin>
-                  <Insets />
-               </HBox.margin>
-            </VBox>
+
+            <fx:include source="menuRight.fxml"></fx:include>
+
             <StackPane alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="136.0">
                <children>
                   <ImageView fitHeight="101.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" />

@@ -25,7 +25,7 @@ public class Launcher extends Application {
 		try {
 
             // Titre Application
-            primaryStage.setTitle("Grand Hôtel du Parc");
+            primaryStage.setTitle("Grand HÃ´tel du Parc");
             // Favicon
             primaryStage.getIcons().add(new Image("/src/image/Hotel/favicon.png"));
 
