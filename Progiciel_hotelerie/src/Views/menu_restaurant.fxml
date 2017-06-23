@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuRestaurant">
+   <children>
+       <JFXTabPane layoutY="64.0" prefHeight="204.0" prefWidth="601.0" tabClosingPolicy="UNAVAILABLE">
+           <tabs>
+               <Tab text="Menu">
+                   <content>
+                       <fx:include fx:id="menuTab" source="menuTab.fxml" />
+                   </content>
+               </Tab>
+               <Tab text="Plats">
+                   <content>
+                       <fx:include fx:id="platTab" source="platTab.fxml" />
+                   </content>
+               </Tab>
+               <Tab text="Boisson">
+                   <content>
+                       <fx:include fx:id="boissontab" source="boissonTab.fxml" />
+                   </content>
+               </Tab>
+           </tabs>
+       </JFXTabPane>
+   </children>
+</AnchorPane>

@@ -1,22 +1,8 @@
 package src.Controller;
 
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import javafx.fxml.*;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -25,18 +11,28 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.Launcher.Launcher;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
+import src.util.Colors;
 import src.util.generalFunctions;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ReservationListe implements Initializable {
 	
 	/**
-	 * Dï¿½claration des objets prï¿½sents dans la vue pour y ajouter des ï¿½vï¿½nements
+	 * Déclaration des objets présents dans la vue pour y ajouter des événements
 	 */
 	@FXML private JFXTreeTableView<ReservationHotel> tableReservations;
 	@FXML private JFXTextField txtName;
@@ -93,7 +89,8 @@ public class ReservationListe implements Initializable {
 				public Object getValue() {
 					// TODO Auto-generated method stub
 					JFXButton bouton = new JFXButton("Visualiser");
-					
+					Colors.primary(bouton);
+
 					/**
 					 * Id pour recupere le client correspondant a la ligne
 					 */
@@ -154,22 +151,17 @@ public class ReservationListe implements Initializable {
 		dateFin.setPrefWidth(150);
 		dateFin.setMinWidth(100);
 		dateFin.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(param.getValue().getValue().getDateFin())));
-		
+
 		JFXTreeTableColumn<ReservationHotel, String> prix = new JFXTreeTableColumn<>("Prix");
 		prix.setPrefWidth(150);
 		prix.setMinWidth(100);
 		prix.setCellValueFactory(param -> new SimpleStringProperty(String.valueOf(generalFunctions.calculPrixChambre(param.getValue().getValue().getChambreByIdChambre().getPrix(),param.getValue().getValue().getDateDebut(), param.getValue().getValue().getDateFin()))));
 		
-
 		JFXTreeTableColumn<ReservationHotel, String> valide = new JFXTreeTableColumn<>("Validée");
 		valide.setPrefWidth(150);
 		valide.setMinWidth(100);
 		valide.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.isValidate(param.getValue().getValue().getValide())));
-		
-		
-		/**
-		 * Ajoute l'arbre de clients au panel
-		 */
+
 		tableReservations.setRoot(root);
 		tableReservations.setShowRoot(false);
 		
@@ -179,8 +171,7 @@ public class ReservationListe implements Initializable {
 		tableReservations.getColumns().setAll(voir,client,numChambre,dateArrivee,dateFin,prix,valide);
 
 	}
-	
-	
+
 	public void search(){
 		listeReservationHotel.clear();
 		
@@ -205,6 +196,17 @@ public class ReservationListe implements Initializable {
 	
 	public void createReservation(){
 		
+		try {
+			AnchorPane menuHebergement;
+			BorderPane root = Launcher.getRoot();
+			FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/Views/newReservationHebergement.fxml"));
+			menuHebergement = loaderHebergement.load();
+			root.setCenter(menuHebergement);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 //	

@@ -1,14 +1,8 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +12,11 @@ import javafx.scene.text.Text;
 import src.Launcher.Launcher;
 import src.Metier.Client;
 import src.Persistance.AccesData;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.util.ResourceBundle;
 
 public class EditClient implements Initializable {
 
@@ -32,14 +31,13 @@ public class EditClient implements Initializable {
 	@FXML private JFXTextArea txtComplementaire;
 	
 	Client client;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) { }
-	
 	public void setClient(Client client){
 	    this.client = client;
 	}
-	
+
 	public void fieldContent(){
 		txtNom.setText(this.client.getNom());
 		txtPrenom.setText(this.client.getPrenom());
@@ -63,7 +61,7 @@ public class EditClient implements Initializable {
 			// Il a déjà été setté au moment de la création de la vue.
 		}
 	}
-	
+
 	public void cancel(){
 		BorderPane root = Launcher.getRoot();
 		FXMLLoader loaderHebergementClients = new FXMLLoader(getClass().getResource("/src/Views/hebergementClients.fxml"));
@@ -75,9 +73,9 @@ public class EditClient implements Initializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	public void saveClientEdit(){
 		this.client.setNom(txtNom.getText());
 		this.client.setPrenom(txtPrenom.getText());
@@ -87,7 +85,7 @@ public class EditClient implements Initializable {
 		this.client.setDateNaissance(Date.valueOf(dateBirth.getValue()));
 		this.client.setCodePostal(txtCp.getText());
 		this.client.setAllergies(txtComplementaire.getText());
-		
+
 		AccesData.ajouterModifierClient(this.client);
 		
 		// On affiche la vue détail du client qui vient d'être créé

@@ -33,9 +33,4 @@ public class generalFunctions {
 		}
 		return isValide;
 	}
-	
-//	public static <T> T read(Class<T> theClass) {
-//			theClass.getClass();
-//		    return o;
-//		}
 }

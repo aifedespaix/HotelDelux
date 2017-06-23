@@ -39,12 +39,11 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
 		this.idClient = idClient;
 	}
 
-	public ReservationHotel(Date dateFin, Date dateDebut, Boolean valide, String informationsComplementaires, Tva tvaByIdTva, Chambre chambreByIdChambre) {
+	public ReservationHotel(Date dateFin, Date dateDebut, Boolean valide, Tva tvaByIdTva, Chambre chambreByIdChambre) {
 		super();
 		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
-		this.valide = valide;
-		this.informationsComplementaires = informationsComplementaires;
+		this.valide = false;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
 	}
