@@ -3,14 +3,7 @@ package src.Persistance;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.transform.Transformers;
-
-import src.Metier.Chambre;
-import src.Metier.Client;
-import src.Metier.EquipementHotel;
-import src.Metier.ReservationHotel;
-import src.Metier.Tva;
-import src.Metier.Utilisateur;
+import src.Metier.*;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -228,7 +221,24 @@ public class AccesData {
 	public static ReservationHotel getReservationHotelById(int id){
 		return (ReservationHotel) s.get(ReservationHotel.class, id);
 	}
-	
+
+	public static List<Plat> getPlatByType(int typePlat){
+		List<Plat> listeTP = s.createQuery("FROM Plat TP WHERE TP.type = " + typePlat).list();
+		return listeTP;
+	}
+
+	public static List<Plat> getPlat(){
+		List<Plat> listeP = s.createQuery("FROM Plat P").list();
+		return listeP;
+	}
+
+	public static List<Menu> getMenuTreeList(){
+		List<Menu> listeM = s.createQuery("FROM Menu P").list();
+		return listeM;
+	}
+
+
+
 	public static List<Chambre> getFreeRoom(Date dateDebut, Date dateFin){
 		//List<Chambre> listeR = s.createQuery("SELECT C FROM Chambre C, ReservationHotel R WHERE C.id = R.chambreByIdChambre.id AND C.id NOT IN (SELECT R.chambreByIdChambre.id FROM reservationHotel R WHERE R.dateDebut > '" + dateDebut + "' AND R.dateFin < '" + dateFin + "'").list();
 		List<Chambre> listeR = s.createQuery("SELECT DISTINCT C FROM Chambre C, ReservationHotel R WHERE C.id = R.chambreByIdChambre.id AND C.id NOT IN (SELECT R.chambreByIdChambre.id FROM ReservationHotel R WHERE R.dateDebut > '" + dateDebut + "' AND R.dateFin < '" + dateFin + "')").list();
