@@ -215,9 +215,8 @@ public class generationFactureHebergement {
 			table2.addCell(cell6Tab2);
 
 			document.add(table2);
-
 			document.close();
-			Desktop d = Desktop.getDesktop();
+
 			Runtime.getRuntime().exec("explorer.exe " + cheminFichier);
 		} catch(DocumentException e){
 			e.printStackTrace();

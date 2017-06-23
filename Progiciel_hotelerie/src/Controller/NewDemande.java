@@ -64,6 +64,9 @@ public class NewDemande implements Initializable {
 		criticite.getItems().addAll(AccesDataNewDemande.getListeCriticite());
 	}
 	
+	/**
+	 * Met à jour le label du temps de prise en charge en fonction de la criticité sélectionnée
+	 */
 	public void tempsPriseEnCharge() {
 		priseEnCharge.setText("Temps de prise en charge : " + criticite.getValue().getTempsMaximum().toString());
 	}
@@ -104,7 +107,7 @@ public class NewDemande implements Initializable {
 				new Date(0), //date de création
 				objetField.getText(),
 				descriptionField.getText(),
-				true, //valide
+				false, // la demande n'est pas validé par défaut
 				criticite.getValue(),
 				(EquipementSpa) equipementSpa, //spa
 				(EquipementHotel) equipementHotel, // hotel ou jardin

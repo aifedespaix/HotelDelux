@@ -34,26 +34,23 @@ public class ReservationHebergementDetails implements Initializable {
 	@FXML private Text lblPrixChambre;
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void initialize(URL location, ResourceBundle resources) { }
 	
 	public void setReservationHotel(ReservationHotel reservation){
 	    this.reservation = reservation;
 	}
 	
 	public void update(){
-		lblNumReservation.setText("RÃ©servation nÂ°" + this.reservation.getId());
-		lblValide.setText("ValidÃ©e : " + generalFunctions.isValidate(this.reservation.getValide()));
-		lblNumeroChambre.setText("Chambre nÃ© : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
-		lblDateArrivee.setText("ArrivÃ©e le " + this.reservation.getDateDebut());
-		lblDateDepart.setText("DÃ©part le " + this.reservation.getDateFin());
+		lblNumReservation.setText("Réservation n°" + this.reservation.getId());
+		lblValide.setText("Validée : " + generalFunctions.isValidate(this.reservation.getValide()));
+		lblNumeroChambre.setText("Chambre n° : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
+		lblDateArrivee.setText("Arrivée le " + this.reservation.getDateDebut());
+		lblDateDepart.setText("Départ le " + this.reservation.getDateFin());
 		lblClientName.setText(AccesData.getClientById(this.reservation.getIdClient()).getNom() + " " + AccesData.getClientById(this.reservation.getIdClient()).getPrenom());
 		lblNbAdultes.setText("Nombre d'adulte(s) : " + this.reservation.getNbAdultes());
 		lblNbEnfants.setText("Nombre d'enfant(s) : " + this.reservation.getNbEnfants());
 		areaInfosComp.setText(this.reservation.getInformationsComplementaires());
-		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "â‚¬");
+		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "€");
 
 	}
 	public void generateFacture(){
@@ -69,16 +66,15 @@ public class ReservationHebergementDetails implements Initializable {
     	 * Charge la vue client details
     	 */
     	FXMLLoader loaderReservationEdit = new FXMLLoader(getClass().getResource("/src/Views/editReservationHebergement.fxml"));
-			AnchorPane editReservation;
+		AnchorPane editReservation;
 		try {
 			editReservation = loaderReservationEdit.load();
 			rootPane.setCenter(editReservation);
-	        //System.out.println(c);
 			EditReservationHebergement controllerEditReservation = loaderReservationEdit.<EditReservationHebergement>getController();
 			controllerEditReservation.setReservationToInsert(this.reservation);
+			controllerEditReservation.setTitreLabel();
 			controllerEditReservation.fieldContent();
 	    } catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

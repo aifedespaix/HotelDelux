@@ -118,4 +118,10 @@ public class Chambre {
     public void setReservationHotelsById(Collection<ReservationHotel> reservationHotelsById) {
         this.reservationHotelsById = reservationHotelsById;
     }
+
+	public int getCapacite() {
+		return capacite;
+	}
+    
+    
 }

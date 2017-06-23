@@ -7,42 +7,179 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="726.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditReservationHebergement">
+<AnchorPane prefHeight="562.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditReservationHebergement">
    <children>
-      <Text layoutX="42.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle réservation" wrappingWidth="131.13671875" />
-      <JFXComboBox fx:id="comboRoom" layoutX="647.0" layoutY="81.0" />
-      <JFXDatePicker fx:id="dateBegin" layoutX="72.0" layoutY="79.0" />
-      <JFXDatePicker fx:id="dateEnd" layoutX="387.0" layoutY="79.0" onAction="#loadRoomList" />
-      <Text layoutX="126.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Client" />
-      <JFXTextField fx:id="txtName" layoutX="154.0" layoutY="181.0" />
-      <JFXTextField fx:id="txtPrenom" layoutX="411.0" layoutY="181.0" />
-      <JFXButton layoutX="589.0" layoutY="181.0" onAction="#searchClient" text="Rechercher" />
-      <JFXTreeTableView fx:id="tableClient" layoutX="154.0" layoutY="234.0" prefHeight="153.0" prefWidth="473.0" />
-      <Spinner fx:id="nbAdultes" layoutX="242.0" layoutY="585.0" prefHeight="25.0" prefWidth="56.0" />
-      <Spinner fx:id="nbEnfants" layoutX="242.0" layoutY="644.0" prefHeight="25.0" prefWidth="56.0" />
-      <Text layoutX="119.0" layoutY="602.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'adultes" />
-      <Text layoutX="121.0" layoutY="661.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'enfants" />
-      <JFXRadioButton layoutX="457.0" layoutY="570.0" text="All-inclusive">
-         <toggleGroup>
-            <ToggleGroup fx:id="formule" />
-         </toggleGroup>
-      </JFXRadioButton>
-      <JFXRadioButton layoutX="458.0" layoutY="603.0" prefHeight="17.0" prefWidth="131.0" text="Demi-pensionnaire" toggleGroup="$formule" />
-      <JFXRadioButton layoutX="458.0" layoutY="633.0" text="Externe" toggleGroup="$formule" />
-      <Text layoutX="401.0" layoutY="556.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Formule :" wrappingWidth="55.99999898672104" />
-      <JFXButton fx:id="btnSave" layoutX="318.0" layoutY="680.0" onAction="#save" text="Enregistrer" />
-      <JFXButton fx:id="btnCancel" layoutX="426.0" layoutY="680.0" onAction="#cancel" text="Annuler" />
-      <Text layoutX="73.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'arrivée :" />
-      <Text layoutX="392.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de départ :" />
-      <Text layoutX="648.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Chambre :" />
-      <Text layoutX="93.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
-      <Text layoutX="347.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" />
-      <JFXTextArea fx:id="areaInfos" layoutX="159.0" layoutY="443.0" prefHeight="79.0" prefWidth="464.0" />
-      <Text layoutX="153.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires :" />
+      <GridPane prefHeight="544.0" prefWidth="839.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-36.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints maxHeight="48.0" minHeight="10.0" prefHeight="23.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="83.0" minHeight="10.0" prefHeight="41.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="132.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="178.0" minHeight="10.0" prefHeight="108.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="96.0" minHeight="0.0" prefHeight="96.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fx:id="titreLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouvelle/Edition réservation" wrappingWidth="285.13671875">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin></Text>
+            <GridPane hgap="10.0" prefHeight="47.0" prefWidth="887.0" GridPane.rowIndex="1">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="71.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="201.0" minWidth="10.0" prefWidth="152.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="149.0" minWidth="10.0" prefWidth="102.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="280.0" minWidth="10.0" prefWidth="192.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="223.0" minWidth="10.0" prefWidth="102.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="216.0" minWidth="10.0" prefWidth="216.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chambre :" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXComboBox fx:id="comboRoom" disable="true" onAction="#updateMaxStepper" GridPane.columnIndex="5" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'arrivée :" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXDatePicker fx:id="dateBegin" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de départ :" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXDatePicker fx:id="dateEnd" onAction="#loadRoomList" GridPane.columnIndex="3" />
+               </children>
+            </GridPane>
+            <HBox GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="30.0" />
+               </GridPane.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choix du Client : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="clientLabel" layoutX="10.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <GridPane hgap="10.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="45.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="269.0" minWidth="10.0" prefWidth="269.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="137.0" minWidth="10.0" prefWidth="86.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="198.0" minWidth="10.0" prefWidth="198.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXButton onAction="#searchClient" text="Rechercher" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXTextField fx:id="txtName" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXTextField fx:id="txtPrenom" GridPane.columnIndex="3" />
+               </children>
+            </GridPane>
+            <JFXTreeTableView fx:id="tableClient" maxWidth="-Infinity" prefHeight="100.0" prefWidth="900.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="5">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires :">
+                     <VBox.margin>
+                        <Insets left="30.0" />
+                     </VBox.margin></Text>
+                  <JFXTextArea fx:id="areaInfos" prefHeight="79.0" prefWidth="464.0">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="30.0" right="30.0" />
+                     </VBox.margin></JFXTextArea>
+               </children>
+            </VBox>
+            <GridPane prefHeight="63.0" prefWidth="984.0" GridPane.rowIndex="6">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane hgap="20.0" vgap="10.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="239.0" minWidth="10.0" prefWidth="220.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.0" minWidth="10.0" prefWidth="267.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'adultes" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'enfants" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                        <Spinner fx:id="nbAdultes" disable="true" onKeyReleased="#updateNbEnfants" onMouseClicked="#updateNbEnfants" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Spinner fx:id="nbEnfants" disable="true" onKeyReleased="#updateNbAdulte" onMouseClicked="#updateNbAdulte" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Text layoutX="125.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacité maximale de la chambre" GridPane.halignment="RIGHT" />
+                        <Text fx:id="capaciteMax" strokeType="OUTSIDE" strokeWidth="0.0" text="(Veuillez sélectionner une chambre)" GridPane.columnIndex="1" />
+                     </children>
+                  </GridPane>
+                  <GridPane hgap="10.0" vgap="10.0" GridPane.columnIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formule :" wrappingWidth="55.99999898672104" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                        <JFXRadioButton id="0" fx:id="allInclusive" selected="true" text="All-inclusive" GridPane.columnIndex="1">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="formule" />
+                           </toggleGroup></JFXRadioButton>
+                        <JFXRadioButton id="1" fx:id="demiPensionnaire" prefHeight="17.0" prefWidth="131.0" text="Demi-pensionnaire" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXRadioButton id="2" fx:id="externe" text="Externe" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                     </children>
+                  </GridPane>
+               </children>
+            </GridPane>
+            <GridPane GridPane.rowIndex="7">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXButton fx:id="btnSave" onAction="#save" text="Enregistrer" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="btnCancel" onAction="#cancel" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+               </children>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </GridPane>
    </children>
 </AnchorPane>

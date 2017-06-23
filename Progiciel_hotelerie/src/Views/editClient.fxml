@@ -4,31 +4,105 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="499.0" prefWidth="648.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditClient">
+<AnchorPane prefHeight="543.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditClient">
    <children>
-      <Text layoutX="47.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edition du client" wrappingWidth="110.13671875" />
-      <Text layoutX="42.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom : " />
-      <Text layoutX="36.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone :" />
-      <Text layoutX="36.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse :" />
-      <Text layoutX="45.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ville :" />
-      <Text layoutX="332.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom :" />
-      <Text layoutX="329.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance :" />
-      <Text layoutX="333.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Code postal :" />
-      <Text layoutX="340.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pays : " />
-      <Text layoutX="36.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires :" />
-      <JFXTextArea fx:id="txtComplementaire" layoutX="32.0" layoutY="290.0" />
-      <JFXTextField fx:id="txtNom" layoutX="120.0" layoutY="66.0" />
-      <JFXTextField fx:id="txtPhone" layoutX="120.0" layoutY="105.0" />
-      <JFXTextField fx:id="txtAdress" layoutX="120.0" layoutY="143.0" />
-      <JFXTextField fx:id="txtCity" layoutX="120.0" layoutY="183.0" />
-      <JFXTextField fx:id="txtPrenom" layoutX="445.0" layoutY="84.0" />
-      <JFXTextField fx:id="txtCp" layoutX="445.0" layoutY="161.0" />
-      <JFXTextField fx:id="txtCountry" layoutX="445.0" layoutY="201.0" />
-      <JFXButton fx:id="btnSave" layoutX="539.0" layoutY="337.0" onAction="#saveClientEdit" text="Enregistrer" />
-      <JFXButton fx:id="btnCancel" layoutX="543.0" layoutY="391.0" onAction="#cancel" text="Annuler" />
-      <JFXDatePicker fx:id="dateBirth" layoutX="442.0" layoutY="129.0" />
+      <GridPane vgap="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="50.0" minHeight="-Infinity" prefHeight="40.0" vgrow="NEVER" />
+          <RowConstraints maxHeight="-Infinity" prefHeight="215.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="244.0" minHeight="10.0" prefHeight="244.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text fx:id="titreLabel" strokeType="OUTSIDE" strokeWidth="0.0" text="Nouveau/Edition du client" wrappingWidth="291.13671875" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets left="50.0" />
+               </GridPane.margin>
+            </Text>
+            <GridPane hgap="10.0" prefHeight="207.0" prefWidth="647.0" GridPane.rowIndex="1">
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="39.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="10.0" prefWidth="241.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="241.0" minWidth="10.0" prefWidth="117.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="260.0" minWidth="10.0" prefWidth="260.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="79.0" minHeight="-Infinity" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="155.0" minHeight="-Infinity" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="191.0" minHeight="-Infinity" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="208.0" minHeight="-Infinity" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" GridPane.halignment="RIGHT" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+                  <JFXTextField fx:id="txtNom" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="txtPrenom" GridPane.columnIndex="3" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ville" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="txtPhone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="txtAdress" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="txtCity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code postal" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="txtCp" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <JFXDatePicker fx:id="dateBirth" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+               </children>
+               <GridPane.margin>
+                  <Insets left="30.0" right="30.0" />
+               </GridPane.margin>
+            </GridPane>
+            <GridPane GridPane.rowIndex="2">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="677.0" minWidth="10.0" prefWidth="677.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="319.0" minWidth="10.0" prefWidth="256.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="20.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Informations complémentaires">
+                           <font>
+                              <Font size="18.0" />
+                           </font></Text>
+                        <JFXTextArea fx:id="txtComplementaire" />
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1">
+                     <children>
+                        <JFXButton fx:id="btnSave" defaultButton="true" onAction="#saveClientEdit" text="Enregistrer">
+                           <font>
+                              <Font size="18.0" />
+                           </font></JFXButton>
+                        <JFXButton fx:id="btnCancel" cancelButton="true" onAction="#cancel" text="Annuler">
+                           <font>
+                              <Font size="18.0" />
+                           </font></JFXButton>
+                     </children>
+                  </HBox>
+               </children>
+               <GridPane.margin>
+                  <Insets left="10.0" right="10.0" />
+               </GridPane.margin>
+            </GridPane>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>

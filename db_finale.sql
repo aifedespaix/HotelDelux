@@ -724,6 +724,7 @@ CREATE TABLE IF NOT EXISTS `reservation_hotel` (
   `nb_adultes` int(11) NOT NULL DEFAULT '0',
   `valide` tinyint(1) NOT NULL DEFAULT '0',
   `infos_complementaires` varchar(250) NOT NULL,
+  `formule` int(11) NOT NULL DEFAULT 0,
   `id_tva` int(11) NOT NULL,
   `id_chambre` int(11) NOT NULL,
   `id_client` int(11) NOT NULL,
