@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -56,20 +57,30 @@
               </rowConstraints>
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chambre :" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                  <JFXComboBox fx:id="comboRoom" GridPane.columnIndex="5" />
+                  <JFXComboBox fx:id="comboRoom" disable="true" onAction="#updateMaxStepper" GridPane.columnIndex="5" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'arrivée :" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
                   <JFXDatePicker fx:id="dateBegin" GridPane.columnIndex="1" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de départ :" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
                   <JFXDatePicker fx:id="dateEnd" onAction="#loadRoomList" GridPane.columnIndex="3" />
                </children>
             </GridPane>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choix du Client" GridPane.rowIndex="2">
-               <font>
-                  <Font size="18.0" />
-               </font>
+            <HBox GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="30.0" />
-               </GridPane.margin></Text>
+               </GridPane.margin>
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Choix du Client : ">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="clientLabel" layoutX="10.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
             <GridPane hgap="10.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" maxWidth="152.0" minWidth="10.0" prefWidth="45.0" />
@@ -102,7 +113,7 @@
                      </VBox.margin></JFXTextArea>
                </children>
             </VBox>
-            <GridPane GridPane.rowIndex="6">
+            <GridPane prefHeight="63.0" prefWidth="984.0" GridPane.rowIndex="6">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -117,14 +128,17 @@
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="339.0" minWidth="10.0" prefWidth="267.0" />
                     </columnConstraints>
                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'adultes" GridPane.halignment="RIGHT" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'enfants" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                        <Spinner fx:id="nbAdultes" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="1" />
-                        <Spinner fx:id="nbEnfants" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'adultes" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre d'enfants" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                        <Spinner fx:id="nbAdultes" disable="true" onKeyReleased="#updateNbEnfants" onMouseClicked="#updateNbEnfants" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Spinner fx:id="nbEnfants" disable="true" onKeyReleased="#updateNbAdulte" onMouseClicked="#updateNbAdulte" prefHeight="25.0" prefWidth="56.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Text layoutX="125.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Capacité maximale de la chambre" GridPane.halignment="RIGHT" />
+                        <Text fx:id="capaciteMax" strokeType="OUTSIDE" strokeWidth="0.0" text="(Veuillez sélectionner une chambre)" GridPane.columnIndex="1" />
                      </children>
                   </GridPane>
                   <GridPane hgap="10.0" vgap="10.0" GridPane.columnIndex="1">
@@ -139,12 +153,12 @@
                     </rowConstraints>
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Formule :" wrappingWidth="55.99999898672104" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                        <JFXRadioButton text="All-inclusive" GridPane.columnIndex="1">
+                        <JFXRadioButton id="0" fx:id="allInclusive" selected="true" text="All-inclusive" GridPane.columnIndex="1">
                            <toggleGroup>
                               <ToggleGroup fx:id="formule" />
                            </toggleGroup></JFXRadioButton>
-                        <JFXRadioButton prefHeight="17.0" prefWidth="131.0" text="Demi-pensionnaire" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <JFXRadioButton text="Externe" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <JFXRadioButton id="1" fx:id="demiPensionnaire" prefHeight="17.0" prefWidth="131.0" text="Demi-pensionnaire" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <JFXRadioButton id="2" fx:id="externe" text="Externe" toggleGroup="$formule" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                      </children>
                   </GridPane>
                </children>
@@ -158,8 +172,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton fx:id="btnSave" onAction="#save" text="Enregistrer" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <JFXButton fx:id="btnCancel" onAction="#cancel" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="btnSave" onAction="#save" text="Enregistrer" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="btnCancel" onAction="#cancel" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>

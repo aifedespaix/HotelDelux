@@ -13,7 +13,7 @@ public class HibernateSession {
 		try {
 			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
 		} catch (HibernateException ex) {
-			throw new RuntimeException("ProblÃ¨me de configuration : " + ex.getMessage(), ex);
+			throw new RuntimeException("Problème de configuration : " + ex.getMessage(), ex);
 		}
 	}
 

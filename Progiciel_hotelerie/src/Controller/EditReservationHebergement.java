@@ -33,6 +33,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.TreeItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -50,15 +51,18 @@ public class EditReservationHebergement implements Initializable  {
 	@FXML private JFXComboBox<Chambre> comboRoom;
 	@FXML private JFXDatePicker dateBegin;
 	@FXML private JFXDatePicker dateEnd;
+	@FXML private Text clientLabel;
 	@FXML private JFXTextField txtName;
 	@FXML private JFXTextField txtPrenom;
 	@FXML private JFXTreeTableView<Client> tableClient;
-	@FXML private Spinner nbAdultes;
-	@FXML private Spinner nbEnfants;
+	@FXML private Text capaciteMax;
+	@FXML private Spinner<Integer> nbAdultes;
+	@FXML private Spinner<Integer> nbEnfants;
 	@FXML private JFXRadioButton inclusive;
 	@FXML private JFXRadioButton demi;
 	@FXML private JFXRadioButton externe;
 	@FXML private JFXTextArea areaInfos;
+	@FXML private ToggleGroup formule;
 	
 	BorderPane root = Launcher.getRoot();
 	private ObservableList<Client> listeClientReservations = FXCollections.observableArrayList();
@@ -85,8 +89,10 @@ public class EditReservationHebergement implements Initializable  {
 	}
 	
 	public void loadRoomList(){
+		comboRoom.setDisable(false);
 		List<Chambre> listeChambreDisponibles = AccesData.getFreeRoom(Date.valueOf(dateBegin.getValue()), Date.valueOf(dateEnd.getValue()));
 		comboRoom.getItems().addAll(listeChambreDisponibles);
+		System.out.println("Séléctionné : " + formule.getSelectedToggle());
 	}
 	
 	public void save(){		
@@ -98,6 +104,7 @@ public class EditReservationHebergement implements Initializable  {
 		this.reservationToInsert.setChambreByIdChambre(comboRoom.getValue());
 		this.reservationToInsert.setValide(false);
 		this.reservationToInsert.setInformationsComplementaires(areaInfos.getText());
+		//this.reservationToInsert.setFormule(formule.getSelectedToggle().);
 		
 		AccesData.ajouterModifierReservationHotel(this.reservationToInsert);
 	}
@@ -147,7 +154,10 @@ public class EditReservationHebergement implements Initializable  {
 					 */
 					bouton.setOnAction(new EventHandler<ActionEvent>() {
 					    @Override public void handle(ActionEvent e) {
-					    	reservationToInsert.setIdClient(Integer.valueOf(bouton.getId()));
+					    	// Récupération du client
+					    	Client client = AccesData.getClientById(Integer.valueOf(bouton.getId()));
+					    	reservationToInsert.setIdClient(client.getId());
+					    	clientLabel.setText(client.getPrenom() + " " + client.getNom());
 					    }
 					});
 					return bouton;
@@ -185,16 +195,54 @@ public class EditReservationHebergement implements Initializable  {
 		this.dateEnd.setValue(this.reservationToInsert.getDateFin().toLocalDate());
 		this.loadRoomList();
 		comboRoom.setValue(this.reservationToInsert.getChambreByIdChambre());
-		txtName.setText(AccesData.getClientById(this.reservationToInsert.getIdClient()).getNom());
-		txtPrenom.setText(AccesData.getClientById(this.reservationToInsert.getIdClient()).getPrenom());
+		Client client = AccesData.getClientById(this.reservationToInsert.getIdClient());
+		txtName.setText(client.getNom());
+		txtPrenom.setText(client.getPrenom());
 		this.searchClient();
-		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 5, this.reservationToInsert.getNbAdultes());
+		clientLabel.setText(client.getPrenom() + " " + client.getNom());
+		capaciteMax.setText(Integer.toString(comboRoom.getValue().getCapacite()));
+		nbAdultes.setDisable(false);
+		nbEnfants.setDisable(false);
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.reservationToInsert.getChambreByIdChambre().getCapacite() - this.reservationToInsert.getNbEnfants(), this.reservationToInsert.getNbAdultes());
 		nbAdultes.setValueFactory(valueFactory);		
-		SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 5, this.reservationToInsert.getNbAdultes());
+		SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.reservationToInsert.getChambreByIdChambre().getCapacite() - this.reservationToInsert.getNbAdultes(), this.reservationToInsert.getNbEnfants());
 		nbEnfants.setValueFactory(valueFactory2);
 		areaInfos.setText(this.reservationToInsert.getInformationsComplementaires());
+		//formule.set
 	}
 	
+	/**
+	 * Rempli les stepper pour le nb d'adulte et d'enfants en fonction de la capacité max de la chambre
+	 */
+	public void updateMaxStepper() {
+		//Informe la capacité max de la chambre
+		capaciteMax.setText(Integer.toString(comboRoom.getValue().getCapacite()));
+		
+		//Rend disponible les steppers
+		nbAdultes.setDisable(false);
+		nbEnfants.setDisable(false);
+		
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.comboRoom.getValue().getCapacite());
+		nbAdultes.setValueFactory(valueFactory);
+		
+		SpinnerValueFactory<Integer> valueFactory2 = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.comboRoom.getValue().getCapacite());
+		nbEnfants.setValueFactory(valueFactory2);
+	}
 	
+	/**
+	 * Remet à jour la valeur max du stepper pour le nb d'adulte en fonction du nb d'enfants sélectionné
+	 */
+	public void updateNbAdulte() {
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.comboRoom.getValue().getCapacite() - this.nbEnfants.getValue(), this.nbAdultes.getValue());
+		nbAdultes.setValueFactory(valueFactory);
+	}
+	
+	/**
+	 * Remet à jour la valeur max du stepper pour le nb d'enfants en fonction du nb d'adulte sélectionné
+	 */
+	public void updateNbEnfants() {
+		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.comboRoom.getValue().getCapacite() - this.nbAdultes.getValue(), this.nbEnfants.getValue());
+		nbEnfants.setValueFactory(valueFactory);
+	}
 
 }
