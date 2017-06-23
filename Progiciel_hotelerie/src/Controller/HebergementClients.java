@@ -30,7 +30,7 @@ import java.util.ResourceBundle;
 public class HebergementClients implements Initializable {
 
 	/**
-	 * D√©claration des objets pr√©sents dans la vue pour y ajouter des √©v√©nements
+	 * DÈclaration des objets prÈsents dans la vue pour y ajouter des ÈvÈnements
 	 */
 	@FXML private AnchorPane hebergementClientPane;
 	@FXML private JFXTreeTableView<Client> tableHebergementClient;
@@ -41,28 +41,28 @@ public class HebergementClients implements Initializable {
 	@FXML private JFXTextField txtPhone;
 	@SuppressWarnings(value = { "" })
 	/**
-	 * D√©claration de la liste d'observables qui contiendra les objets a afficher dans le tableau
+	 * DÈclaration de la liste d'observables qui contiendra les objets a afficher dans le tableau
 	 */
 	private ObservableList<Client> listeClients = FXCollections.observableArrayList();
 
 	@SuppressWarnings({ "unchecked", "unchecked", "unchecked", "unchecked" })
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		/**
-		 * R√©cup√©re la liste de tous les clients
+		 * RÈcupËre la liste de tous les clients
 		 */
 		List<Client> listec = AccesData.getClients();
 
 		/**
-		 * Ajoute chaque client r√©cup√©r√© √† la liste d'observable de clients
+		 * Ajoute chaque client rÈcupÈrÈ ‡ la liste d'observable de clients
 		 */
 		for(Client c : listec){
 			listeClients.add(c);
 		}
 
 		/**
-		 * Cr√©√© l'arbre d'objets avec la liste d'observables de clients
+		 * CrÈÈ l'arbre d'objets avec la liste d'observables de clients
+
 		 */
 		final TreeItem<Client> root = new RecursiveTreeItem<Client>(listeClients, RecursiveTreeObject::getChildren);
 
@@ -114,15 +114,13 @@ public class HebergementClients implements Initializable {
 								clientDetails = loaderClientDetails.load();
 								rootPane.setCenter(clientDetails);
 								/**
-								 * Recupere le client correspondant √† l'id
+								 * Recupere le client correspondant ‡ l'id
 								 */
 						    	Client c = AccesData.getClientById(Integer.parseInt(bouton.getId()));
-						        //System.out.println(c);
 						        ClientDetails controllerClient = loaderClientDetails.<ClientDetails>getController();
 						        controllerClient.setClient(c);
 						        controllerClient.update();
 						    } catch (IOException e1) {
-								// TODO Auto-generated catch block
 								e1.printStackTrace();
 							}
 					    }
@@ -139,36 +137,27 @@ public class HebergementClients implements Initializable {
 
 
 		/**
-		 * Cr√©√© la colonne en la nommant, d√©finie sa taille par d√©fault puis Ajoute une valeur √† la ligne (boucle sur la liste d'observables
+		 * CrÈÈ la colonne en la nommant, dÈfinie sa taille par dÈfault puis Ajoute une valeur ‡ la ligne (boucle sur la liste d'observables
+
 		 */
 		JFXTreeTableColumn<Client, String> nom = new JFXTreeTableColumn<>("Nom");
 		nom.setPrefWidth(100);
 		nom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNom()));
 
-		/**
-		 * Cr√©√© la colonne en la nommant, d√©finie sa taille par d√©fault puis Ajoute une valeur √† la ligne (boucle sur la liste d'observables
-		 */
-		JFXTreeTableColumn<Client, String> prenom = new JFXTreeTableColumn<>("Pr√©nom");
+		
+		JFXTreeTableColumn<Client, String> prenom = new JFXTreeTableColumn<>("PrÈnom");
+
 		prenom.setPrefWidth(100);
 		prenom.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getPrenom()));
 
-		/**
-		 * Cr√©√© la colonne en la nommant, d√©finie sa taille par d√©fault puis Ajoute une valeur √† la ligne (boucle sur la liste d'observables
-		 */
 		JFXTreeTableColumn<Client, String> adresse = new JFXTreeTableColumn<>("Adresse");
 		adresse.setPrefWidth(100);
 		adresse.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getAdresseRue() + ", " + param.getValue().getValue().getAdresseVille() + ", " + param.getValue().getValue().getCodePostal()));
 
-		/**
-		 * Cr√©√© la colonne en la nommant, d√©finie sa taille par d√©fault puis Ajoute une valeur √† la ligne (boucle sur la liste d'observables
-		 */
-		JFXTreeTableColumn<Client, String> telephone = new JFXTreeTableColumn<>("T√©l√©phone");
+		JFXTreeTableColumn<Client, String> telephone = new JFXTreeTableColumn<>("TÈlÈphone");
 		telephone.setPrefWidth(100);
 		telephone.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTelephone()));
 
-		/**
-		 * Cr√©√© la colonne en la nommant, d√©finie sa taille par d√©fault puis Ajoute une valeur √† la ligne (boucle sur la liste d'observables
-		 */
 		JFXTreeTableColumn<Client, String> chambre = new JFXTreeTableColumn<>("Chambre actuelle");
 		chambre.setPrefWidth(100);
 		chambre.setCellValueFactory(param -> new SimpleStringProperty(AccesData.getChambreClientActuelle(param.getValue().getValue().getId())));
@@ -181,7 +170,7 @@ public class HebergementClients implements Initializable {
 		tableHebergementClient.setShowRoot(false);
 
 		/**
-		 * R√©cup√©re les colonnes du tableau puis ajoute les nouvelles colonnes pr√©c√©demment d√©clar√©es
+		 * RÈupËre les colonnes du tableau puis ajoute les nouvelles colonnes prÈcÈdemment dÈclarÈes
 		 */
 		tableHebergementClient.getColumns().setAll(voir,nom,prenom,adresse,telephone,chambre);
 
@@ -202,7 +191,7 @@ public class HebergementClients implements Initializable {
 		 List<Client> listeClient = AccesData.getClientFiltre(this.txtName.getText(), this.txtPrenom.getText(), this.txtAdresse.getText(), this.txtPhone.getText());
 
 		/**
-		 * Ajoute les clients √† la liste d'observables pour qu'ils soient affich√©s
+		 * Ajoute les clients ‡ la liste d'observables pour qu'ils soient affichÈs
 		 */
 		if(listeClient.size() > 0){
 			for(Client c : listeClient){
@@ -213,10 +202,12 @@ public class HebergementClients implements Initializable {
 
 	public void createClient(){
 		BorderPane root = Launcher.getRoot();
-		FXMLLoader loaderClientNew = new FXMLLoader(getClass().getResource("/src/Views/newClient.fxml"));
+		FXMLLoader loaderClientNew = new FXMLLoader(getClass().getResource("/src/Views/editClient.fxml"));
 		AnchorPane newClient;
 		try {
 			newClient = loaderClientNew.load();
+			EditClient controllerEditClient = loaderClientNew.<EditClient>getController();
+			controllerEditClient.setTitreLabel();
 			root.setCenter(newClient);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

@@ -31,25 +31,23 @@ public class ClientDetails implements Initializable {
 	@FXML private Text lblPhone;
 	@FXML private Text lblBirth;
 	@FXML private Text lblAddress;
-	@FXML private JFXTextArea areaInfos;
+	@FXML private Text areaInfos;
 	@FXML private Text lblResaChambre;
 	@FXML private JFXTreeTableView<ReservationHotel> tableResaChambreClient;
 	private ObservableList<ReservationHotel> listeReservationsHotel = FXCollections.observableArrayList();
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void initialize(URL location, ResourceBundle resources) { }
 	
 	public void setClient(Client client){
 	    this.client = client;
 	}
 	public void update(){
 		lblName.setText(this.client.getNom() + " " + this.client.getPrenom());
-		lblPhone.setText("Téléphone : " + this.client.getTelephone());
-		lblBirth.setText("Date de naissance : " + this.client.getDateNaissance().toString());
-		lblAddress.setText("Adresse : " + this.client.getAdresseRue() + " " + this.client.getAdresseVille() + " " + this.client.getCodePostal());
+		lblPhone.setText(this.client.getTelephone());
+		lblBirth.setText(this.client.getDateNaissance().toString());
+		lblAddress.setText(this.client.getAdresseRue() + " " + this.client.getAdresseVille() + " " + this.client.getCodePostal());
+
 		areaInfos.setText(this.client.getAllergies());
 		lblResaChambre.setText("Réservation en cours : " + AccesData.getChambreClientActuelle(this.client.getId()));
 		
@@ -88,15 +86,15 @@ public class ClientDetails implements Initializable {
     	 * Charge la vue client details
     	 */
     	FXMLLoader loaderClientEdit = new FXMLLoader(getClass().getResource("/src/Views/editClient.fxml"));
-			AnchorPane editClient;
+		AnchorPane editClient;
 		try {
 			editClient = loaderClientEdit.load();
 			rootPane.setCenter(editClient);
 	        EditClient controllerEditClient = loaderClientEdit.<EditClient>getController();
 	        controllerEditClient.setClient(this.client);
+	        controllerEditClient.setTitreLabel();
 	        controllerEditClient.fieldContent();
 	    } catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 	}

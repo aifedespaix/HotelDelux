@@ -21,17 +21,19 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     private int nbAdultes;
     private Boolean valide;
     private String informationsComplementaires;
+    private int formule;
     private Tva tvaByIdTva;
     private Chambre chambreByIdChambre;
     private int idClient;
 
-    public ReservationHotel(int id, Date dateFin, Date dateDebut, Boolean valide, String informationsComplementaires, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes, int idClient) {
+    public ReservationHotel(int id, Date dateFin, Date dateDebut, Boolean valide, String informationsComplementaires, int formule, Tva tvaByIdTva, Chambre chambreByIdChambre,int nbEnfants,int nbAdultes, int idClient) {
 		super();
 		this.id = id;
 		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
 		this.valide = valide;
 		this.informationsComplementaires = informationsComplementaires;
+		this.formule = formule;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
 		this.nbAdultes = nbAdultes;
@@ -39,11 +41,12 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
 		this.idClient = idClient;
 	}
 
-	public ReservationHotel(Date dateFin, Date dateDebut, Boolean valide, Tva tvaByIdTva, Chambre chambreByIdChambre) {
+	public ReservationHotel(Date dateFin, Date dateDebut, Boolean valide, int formule, Tva tvaByIdTva, Chambre chambreByIdChambre) {
 		super();
 		this.dateFin = dateFin;
 		this.dateDebut = dateDebut;
 		this.valide = false;
+		this.formule = formule;
 		this.tvaByIdTva = tvaByIdTva;
 		this.chambreByIdChambre = chambreByIdChambre;
 	}
@@ -165,4 +168,16 @@ public class ReservationHotel  extends RecursiveTreeObject<ReservationHotel>{
     public void setChambreByIdChambre(Chambre chambreByIdChambre) {
         this.chambreByIdChambre = chambreByIdChambre;
     }
+
+    @Basic
+    @Column(name = "formule", nullable = false)
+	public int getFormule() {
+		return formule;
+	}
+
+	public void setFormule(int formule) {
+		this.formule = formule;
+	}
+    
+    
 }
