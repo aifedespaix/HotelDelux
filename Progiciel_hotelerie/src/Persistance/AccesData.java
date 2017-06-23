@@ -5,6 +5,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.transform.Transformers;
 
+import src.Metier.Agence;
 import src.Metier.Chambre;
 import src.Metier.Client;
 import src.Metier.EquipementHotel;
@@ -257,6 +258,11 @@ public class AccesData {
 		return ok;
 	}
 
+	public static List<Agence> getAgences(){
+		List<Agence> listA = s.createQuery("FROM Agence A").list();
+		return listA;
+	}
+	
 //	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){
 //		System.out.println(prenom);
 //		List<ReservationHotel> listeC = s.createQuery("FROM Client C WHERE C.prenom LIKE '%" + prenom + "%'").list();		

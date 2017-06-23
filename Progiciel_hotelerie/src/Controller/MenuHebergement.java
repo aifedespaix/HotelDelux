@@ -15,6 +15,7 @@ public class MenuHebergement {
 	
 	@FXML private JFXButton btnClient;
 	@FXML private JFXButton btnReservations;
+	@FXML private JFXButton btnAgences;
 	BorderPane root = Launcher.getRoot();
 	
 	
@@ -43,8 +44,20 @@ public class MenuHebergement {
 		}
 	}
 	
+	public void accessToAgences(){
+		FXMLLoader loaderAgences = new FXMLLoader(getClass().getResource("/src/Views/agencesList.fxml"));
+		AnchorPane menuAgence;
+		try {
+			menuAgence = loaderAgences.load();
+			root.setCenter(menuAgence);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/**
-	 * Appelle la fonction dans le menu maintenance qui permet d'ouvrir la fenêtre de nouvelle demande
+	 * Appelle la fonction dans le menu maintenance qui permet d'ouvrir la fenï¿½tre de nouvelle demande
 	 * @throws IOException
 	 */
 	public void openNewDemande() throws IOException
