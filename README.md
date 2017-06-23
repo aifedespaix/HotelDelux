@@ -34,3 +34,7 @@ Le porno est en suplément, mais les luxxx est présent !
   identifiant   : a
   mot de passe  : a
   
+# Bonne journée !
+
+# Jour du rendu
+Penser à vérifeir les pdf facture

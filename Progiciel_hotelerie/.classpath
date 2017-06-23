@@ -24,5 +24,6 @@
 	<classpathentry kind="lib" path="Librairies/Java/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="lib" path="Librairies/Java/slf4j-simple-1.5.6.jar"/>
 	<classpathentry kind="lib" path="Librairies/JavaFx Material Design/jfoenix.jar"/>
+	<classpathentry kind="lib" path="Librairies/Java/itextpdf-5.5.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

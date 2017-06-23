@@ -1,0 +1,7 @@
+.primaryButton{
+    -fx-background-color: #337ab7;
+}
+
+.login{
+    -fx-max-width: 300px;
+}
