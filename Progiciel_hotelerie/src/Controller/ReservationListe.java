@@ -195,15 +195,15 @@ public class ReservationListe implements Initializable {
 	}
 	
 	public void createReservation(){
-		
+		AnchorPane newReservation;
+		BorderPane root = Launcher.getRoot();
 		try {
-			AnchorPane menuHebergement;
-			BorderPane root = Launcher.getRoot();
-			FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/Views/newReservationHebergement.fxml"));
-			menuHebergement = loaderHebergement.load();
-			root.setCenter(menuHebergement);
+			FXMLLoader loaderReservation = new FXMLLoader(getClass().getResource("/src/Views/editReservationHebergement.fxml"));
+			newReservation = loaderReservation.load();
+			EditReservationHebergement controllerEditReservation = loaderReservation.<EditReservationHebergement>getController();
+			controllerEditReservation.setTitreLabel();
+			root.setCenter(newReservation);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

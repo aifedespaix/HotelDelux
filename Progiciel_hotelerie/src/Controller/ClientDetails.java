@@ -37,10 +37,7 @@ public class ClientDetails implements Initializable {
 	private ObservableList<ReservationHotel> listeReservationsHotel = FXCollections.observableArrayList();
 	
 	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void initialize(URL location, ResourceBundle resources) { }
 	
 	public void setClient(Client client){
 	    this.client = client;
