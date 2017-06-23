@@ -3,14 +3,7 @@ package src.Persistance;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.transform.Transformers;
-
-import src.Metier.Chambre;
-import src.Metier.Client;
-import src.Metier.EquipementHotel;
-import src.Metier.ReservationHotel;
-import src.Metier.Tva;
-import src.Metier.Utilisateur;
+import src.Metier.*;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
