@@ -21,6 +21,7 @@ public class MenuHebergement implements Initializable {
 
 	@FXML private JFXButton btnClient;
 	@FXML private JFXButton btnReservations;
+	@FXML private JFXButton btnAgences;
 	BorderPane root = Launcher.getRoot();
 
 	@Override
@@ -46,6 +47,18 @@ public class MenuHebergement implements Initializable {
 		try {
 			menuReservations = loaderReservations.load();
 			root.setCenter(menuReservations);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void accessToAgences(){
+		FXMLLoader loaderAgences = new FXMLLoader(getClass().getResource("/src/Views/agencesList.fxml"));
+		AnchorPane menuAgence;
+		try {
+			menuAgence = loaderAgences.load();
+			root.setCenter(menuAgence);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

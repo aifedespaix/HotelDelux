@@ -3,6 +3,7 @@ package src.Persistance;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import src.Metier.Agence;
 import src.Metier.*;
 
 import java.sql.Date;
@@ -265,6 +266,11 @@ public class AccesData {
 			ok = false;
 		}
 		return ok;
+	}
+
+	public static List<Agence> getAgences(){
+		List<Agence> listA = s.createQuery("FROM Agence A").list();
+		return listA;
 	}
 
 //	public static List<ReservationHotel> getReservationHotelPrenom(String prenom){

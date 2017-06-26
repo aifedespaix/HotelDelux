@@ -13,23 +13,26 @@ public class Agence {
     private int telephone;
     private String email;
     private Collection<ClientAgenceAssoc> clientAgenceAssocsById;
+    private String image;
 
     public Agence(int id, String nom, int telephone, String email,
-			Collection<ClientAgenceAssoc> clientAgenceAssocsById) {
+			Collection<ClientAgenceAssoc> clientAgenceAssocsById, String image) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.telephone = telephone;
 		this.email = email;
 		this.clientAgenceAssocsById = clientAgenceAssocsById;
+		this.image = image;
 	}
 
-	public Agence(String nom, int telephone, String email, Collection<ClientAgenceAssoc> clientAgenceAssocsById) {
+	public Agence(String nom, int telephone, String email, Collection<ClientAgenceAssoc> clientAgenceAssocsById,String image) {
 		super();
 		this.nom = nom;
 		this.telephone = telephone;
 		this.email = email;
 		this.clientAgenceAssocsById = clientAgenceAssocsById;
+		this.image = image;
 	}
 
 	@Override
@@ -90,8 +93,19 @@ public class Agence {
     public void setEmail(String email) {
         this.email = email;
     }
+    
+    
+    @Basic
+    @Column(name = "image")
+    public String getImage() {
+		return image;
+	}
 
-    @OneToMany(mappedBy = "agenceByIdAgence")
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	@OneToMany(mappedBy = "agenceByIdAgence")
     public Collection<ClientAgenceAssoc> getClientAgenceAssocsById() {
         return clientAgenceAssocsById;
     }
