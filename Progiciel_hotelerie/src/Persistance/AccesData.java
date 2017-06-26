@@ -73,7 +73,7 @@ public class AccesData {
 		    {"C.phone", f_phone}
 		  };
 
-		  where += whereFilter(filtreClientConfig);
+		  where += whereFilter(filtreClientConfig, true);
 
 		  String[] filtreClientConfigAdress = {"C.adresseRue", "C.adresseVille", "C.codePostal"};
 		  if(where.equals("")) {
@@ -92,10 +92,9 @@ public class AccesData {
 	  * @return String Composante de la requête permettant le filtre, séparé par des espaces pour éviter tout problème
 	  * Renvoie une chaîne vide si la filterValue est nulle.
 	  */
-	 private static String whereFilter(String[][] filterConfig) {
-	  Boolean firstFilter = true;
+	 public static String whereFilter(String[][] filterConfig, Boolean firstFilter) {
+	  
 	  String filter = "";
-
 
 	  for(String[] filterConfigElem : filterConfig) {
 	   if(!filterConfigElem[1].equals("")) {
@@ -117,7 +116,7 @@ public class AccesData {
 	  * @param add {@link Boolean} ajouter ADD devant
 	  * @return String
 	  */
-	 private static String whereFilterCompose(String filter, String[] cols, Boolean add) {
+	 public static String whereFilterCompose(String filter, String[] cols, Boolean add) {
 	  String filterSQL = "";
 
 	  if(!filter.equals("")) {

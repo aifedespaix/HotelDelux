@@ -37,8 +37,7 @@ public class Role {
 
 	@Override
 	public String toString() {
-		return "Role [id=" + id + ", libelle=" + libelle + ", droitRoleAssocsById=" + droitRoleAssocsById
-				+ ", utilisateursById=" + utilisateursById + "]";
+		return libelle;
 	}
 
 	public void setId(Integer id) {

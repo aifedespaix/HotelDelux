@@ -20,7 +20,7 @@ import java.io.IOException;
  */
 public class Login {
 
-    private static String username;
+    private static Utilisateur user;
 
     @FXML
     private JFXTextField login;
@@ -44,7 +44,7 @@ public class Login {
             root.prefHeightProperty().bind(primaryStage.heightProperty());
             root.prefWidthProperty().bind(primaryStage.widthProperty());
 
-            Login.username = login.getText();
+            Login.user = u;
 
             switch (u.getRoleByIdRole().getId()) {
                 case 1:
@@ -72,7 +72,7 @@ public class Login {
                     root.setCenter(null);
                     break;
                 case 4:
-                    System.out.println("RÃ©ception");
+                    System.out.println("Réception");
                     FXMLLoader loaderReception = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuReception.fxml"));
                     AnchorPane menuReception = loaderReception.load();
                     root.setTop(menuReception);
@@ -94,10 +94,12 @@ public class Login {
                     break;
                 case 7:
                     System.out.println("Maintenance");
-                    FXMLLoader loaderMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
-                    AnchorPane menuMaintenance = loaderMaintenance.load();
+                    FXMLLoader loaderMenuMaintenance = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuMaintenance.fxml"));
+                    AnchorPane menuMaintenance = loaderMenuMaintenance.load();
                     root.setTop(menuMaintenance);
-                    root.setCenter(null);
+                    FXMLLoader loaderListeDemandes = new FXMLLoader(getClass().getResource("/src/Views/listeDemandes.fxml"));
+                    AnchorPane listeDemandes = loaderListeDemandes.load();
+                    root.setCenter(listeDemandes);
                     break;
                 case 8:
                     System.out.println("Entretien");
@@ -119,8 +121,18 @@ public class Login {
 
     }
 
+    /**
+     * @return String le login de connexion de l'utilisateur connecté
+     */
     public static String getUsername() {
-        return username;
+        return user.getNom();
+    }
+    
+    /**
+     * @return {@link Utilisateur} l'utilisateur connecté
+     */
+    public static Utilisateur getConnectedUser() {
+    	return user;
     }
 
 }
