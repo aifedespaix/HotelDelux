@@ -11,9 +11,9 @@ public class HibernateSession {
 	// Crée une unique instance de la SessionFactory à partir de hibernate.cfg.xml
 	static {
 		try {
-			sessionFactory = new AnnotationConfiguration().configure().buildSessionFactory();
+			sessionFactory = new AnnotationConfiguration().configure("src/hibernate.cfg.xml").buildSessionFactory();
 		} catch (HibernateException ex) {
-			throw new RuntimeException("Probl�me de configuration : " + ex.getMessage(), ex);
+			throw new RuntimeException("Probl�me de configuration : " + ex.getMessage(), ex);
 		}
 	}
 
