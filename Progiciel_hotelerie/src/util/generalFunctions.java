@@ -1,6 +1,8 @@
 package src.util;
 
 import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class generalFunctions {
 
@@ -32,5 +34,19 @@ public class generalFunctions {
 			isValide = "Non validée";
 		}
 		return isValide;
+	}
+	
+	public static String idFormuleToString(int id) {
+		switch(id) {
+			case 0 : return "All-Inclusive";
+			case 1 : return "Demi-Pensionnaire";
+			case 2 : return "Externe";
+			default : return "Erreur sur l'id de la formule";
+		}
+	}
+	
+	public static String formatDate(Date date) {
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+    	return formatter.format(date);
 	}
 }
