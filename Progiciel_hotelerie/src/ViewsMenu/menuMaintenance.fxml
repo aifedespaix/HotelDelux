@@ -27,7 +27,7 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="105.0" style="-fx-background-color: #FFF;" text="Rapports" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openListeRapports" prefHeight="60.0" prefWidth="105.0" style="-fx-background-color: #FFF;" text="Rapports" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

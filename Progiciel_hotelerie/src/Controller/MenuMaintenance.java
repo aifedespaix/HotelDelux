@@ -17,13 +17,22 @@ public class MenuMaintenance {
 	
 	private BorderPane root = Launcher.getRoot();
 	
-	public void openListeDemandes() throws IOException {	
-		System.out.println("chargement liste demandes");
-		
+	public void openListeDemandes() throws IOException {
 		try {
 			FXMLLoader loaderListeDemandes = new FXMLLoader(getClass().getResource("/src/Views/listeDemandes.fxml"));
 			AnchorPane menuMaintenance;
 			menuMaintenance = loaderListeDemandes.load();
+			root.setCenter(menuMaintenance);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public void openListeRapports() throws IOException {
+		try {
+			FXMLLoader loaderListeRapports = new FXMLLoader(getClass().getResource("/src/Views/listeRapports.fxml"));
+			AnchorPane menuMaintenance;
+			menuMaintenance = loaderListeRapports.load();
 			root.setCenter(menuMaintenance);
 		} catch (IOException e) {
 			e.printStackTrace();

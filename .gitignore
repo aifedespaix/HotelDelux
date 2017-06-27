@@ -1,10 +1,17 @@
 # Created by .ignore support plugin (hsz.mobi)
+
 out/
-*.class
+*
+.class
+
 .idea/
 
+
 Progiciel_hotelerie.iml
+
 HotelDeluXxX.iml
 
+
 hibernate.cfg.xml
+
 test/
