@@ -1,6 +1,7 @@
 package src.Persistance;
 
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import src.Metier.*;
@@ -16,13 +17,17 @@ public class AccesData {
 	private static Session s = HibernateSession.getSession();
 	private static Transaction t;
 	
+	/**
+	 * Retourne l'utilisateur qui s'est authentifié
+	 * @param login
+	 * @param mdp
+	 * @return utilisateur connecté
+	 */
 	public static Utilisateur getLoginUtilisateur(String login, String mdp){
-		Utilisateur u = null;
-		List<Utilisateur> listeU = s.createQuery("FROM Utilisateur U WHERE U.login = '" + login + "' AND U.password = '" + mdp + "'").list();
-		if(listeU.size() == 1){
-			u = listeU.get(0);
-		}
-		return u;
+		Query q = s.createQuery("FROM Utilisateur WHERE login = :login AND password = :mdp");
+		q.setString("login", login);
+		q.setString("mdp", mdp);
+		return (Utilisateur) q.uniqueResult();
 	}
 	
 	public static EquipementHotel getEquipementHotel(int id){

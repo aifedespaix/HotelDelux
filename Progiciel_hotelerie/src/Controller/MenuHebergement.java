@@ -25,7 +25,6 @@ public class MenuHebergement implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-//		usernameLabel.setText(login);
 	}
 
 	public void accessToClient(){
@@ -35,7 +34,6 @@ public class MenuHebergement implements Initializable {
 				menuHebergementClients = loaderHebergementClients.load();
 				root.setCenter(menuHebergementClients);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}		
 	}
@@ -47,13 +45,12 @@ public class MenuHebergement implements Initializable {
 			menuReservations = loaderReservations.load();
 			root.setCenter(menuReservations);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * Appelle la fonction dans le menu maintenance qui permet d'ouvrir la fen�tre de nouvelle demande
+	 * Appelle la fonction dans le menu maintenance qui permet d'ouvrir la fenêtre de nouvelle demande
 	 * @throws IOException
 	 */
 	public void openNewDemande() throws IOException {

@@ -2,7 +2,6 @@ package src.Controller;
 
 import java.net.URL;
 import java.sql.Date;
-import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 import com.jfoenix.controls.JFXButton;
@@ -26,8 +25,8 @@ import src.Persistance.Maintenance.AccesDataNewDemande;
 public class NewDemande implements Initializable {
 	
 	@FXML private JFXTabPane onglet;
-	@FXML private JFXComboBox etages;
-	@FXML private JFXComboBox chambres;
+	@FXML private JFXComboBox<Integer> etages;
+	@FXML private JFXComboBox<Integer> chambres;
 	@FXML private JFXComboBox<EquipementHotel> equipementsHotel;
 	@FXML private JFXComboBox<EquipementHotel> equipementsJardin;
 	@FXML private JFXComboBox<EquipementRestaurant> equipementsRestaurant;
@@ -46,78 +45,70 @@ public class NewDemande implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		locationEquipement = 1; // => Hôtel
+		locationEquipement = 1; // => HÃ´tel
 		
-		// Charge la liste des étages dans le combo box correspondant
+		// Charge la liste des Ã©tages dans le combo box correspondant
 		etages.getItems().addAll(AccesDataNewDemande.getListeEtages());
 		
-		// Charge la liste de toutes les chambres par défaut
-		// Une fois un étage sélectionné, la liste des cjhambres sera rechargé et de même pour les équipements
+		// Charge la liste de toutes les chambres par dÃ©faut
+		// Une fois un Ã©tage sÃ©lectionnÃ©, la liste des chambres sera rechargÃ© et de mÃªme pour les Ã©quipements
 		chambres.getItems().addAll(AccesDataNewDemande.getListeChambres());
 		
-		// Charge la liste des équipements
+		// Charge la liste des Ã©quipements
 		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipement());
 		equipementsJardin.getItems().addAll(AccesDataNewDemande.getListeEquipementJardin());
 		equipementsRestaurant.getItems().addAll(AccesDataNewDemande.getListeEquipementRestaurant());
 		equipementsSpa.getItems().addAll(AccesDataNewDemande.getListeEquipementSpa());
 		
-		// Charge la liste des criticité
+		// Charge la liste des criticitÃ©
 		criticite.getItems().addAll(AccesDataNewDemande.getListeCriticite());
 	}
 	
 	/**
-	 * Met à jour le label du temps de prise en charge en fonction de la criticité sélectionnée
+	 * Met Ã  jour le label du temps de prise en charge en fonction de la criticitÃ© sÃ©lectionnÃ©e
 	 */
 	public void tempsPriseEnCharge() {
 		priseEnCharge.setText("Temps de prise en charge : " + criticite.getValue().getTempsMaximum().toString());
 	}
 	
 	/**
-	 * Permet de créer une demande à partir des éléments renseignés dans la fenêtre
+	 * Permet de crÃ©er une demande Ã  partir des Ã©lÃ©ments renseignÃ©s dans la fenÃªtre
 	 */
 	public void createDemande() {
-		System.out.println("Objet : " + objetField.getText());
-		System.out.println("Description : " + descriptionField.getText());
-		System.out.println("Criticité : " + criticite.getValue());
-		
 		EquipementHotel equipementHotel = null;
 		EquipementRestaurant equipementRestaurant = null;
 		EquipementSpa equipementSpa = null;
 		
 		switch (locationEquipement) {
 			case ID_ONGLET_HOTEL :
-				System.out.println("Equipement Hôtel : " + equipementsHotel.getValue());
 				equipementHotel = equipementsHotel.getValue();
 				break;
 			case ID_ONGLET_JARDIN :
-				System.out.println("Equipement Jardin : " + equipementsJardin.getValue());
 				equipementHotel = equipementsJardin.getValue();
 				break;
 			case ID_ONGLET_RESTAURANT :
-				System.out.println("Equipement Restaurant : " + equipementsRestaurant.getValue());
 				equipementRestaurant = equipementsRestaurant.getValue();
 				break;
 			case ID_ONGLET_SPA :
-				System.out.println("Equipement Spa : " + equipementsSpa.getValue());
 				equipementSpa = equipementsSpa.getValue();
 				break;
 		}
 		
-		// Création de la demande
+		// CrÃ©ation de la demande
 		DemandeIntervention newDemande = new DemandeIntervention(
-				new Date(0), //date de création
+				new Date(0), //date de crÃ©ation
 				objetField.getText(),
 				descriptionField.getText(),
-				false, // la demande n'est pas validé par défaut
+				false, // la demande n'est pas validÃ© par dÃ©faut
 				criticite.getValue(),
 				(EquipementSpa) equipementSpa, //spa
 				(EquipementHotel) equipementHotel, // hotel ou jardin
 				(EquipementRestaurant) equipementRestaurant, //restaurant
-				null, //pièce de rechange
+				null, //piÃ¨ce de rechange
 				null, //demande utilisateur
 				null, //rapport
 				Login.getConnectedUser(), // Demandeur
-				new Etat(1) // Etat en prise de connaissance par défaut
+				new Etat(1) // Etat en prise de connaissance par dï¿½faut
 				);
 		//Persistance dans la base
 		AccesDataNewDemande.ajouterDemande(newDemande);
@@ -127,45 +118,35 @@ public class NewDemande implements Initializable {
 	}
 	
 	/**
-	 * Filtre les autres combo box en fonction de l'étage sélectionné
+	 * Filtre les autres combo box en fonction de l'Ã©tage sÃ©lectionnÃ©
 	 */
 	public void filterEtage() {
 		chambres.getItems().clear();
-		chambres.getItems().addAll(AccesDataNewDemande.getListeChambres((int) etages.getValue()));
+		chambres.getItems().addAll(AccesDataNewDemande.getListeChambres(etages.getValue()));
 		equipementsHotel.getItems().clear();
-		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByEtage((int) etages.getValue()));
+		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByEtage(etages.getValue()));
 	}
 	
 	/**
-	 * Filtre la liste des équipements en fonction de la chambre sélectionnée
+	 * Filtre la liste des Ã©quipements en fonction de la chambre sÃ©lectionnÃ©e
 	 */
 	public void filterChambre() {
 		equipementsHotel.getItems().clear();
-		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByChambre((int) chambres.getValue()));
+		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByChambre(chambres.getValue()));
 	}
 	
 	/**
-	 * Ferme la fenêtre
+	 * Ferme la fenÃªtre
 	 */
 	public void closeButtonAction(){
-	    // Récupère la scène et la ferme
+	    // RÃ©cupÃ¨re la scÃ¨ne et la ferme
 	    Stage stage = (Stage) closeButton.getScene().getWindow();
 	    stage.close();
 	}
 	
-	public void setOngletHotel() {
-		locationEquipement = 1;
-	}
-	
-	public void setOngletJardin() {
-		locationEquipement = 2;
-	}
-	
-	public void setOngletRestaurant() {
-		locationEquipement = 3;
-	}
-	
-	public void setOngletSpa() {
-		locationEquipement = 4;
-	}
+	// Les fonctions suivantes permmetent de savoir sur quel onglet on se trouve pour ajouter le bon Ã©quipement Ã  la demande
+	public void setOngletHotel() { locationEquipement = 1; }
+	public void setOngletJardin() { locationEquipement = 2; }
+	public void setOngletRestaurant() { locationEquipement = 3;	}
+	public void setOngletSpa() { locationEquipement = 4; }
 }

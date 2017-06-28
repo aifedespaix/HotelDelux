@@ -50,7 +50,7 @@ public class EditClient implements Initializable {
 	}
 	
 	/**
-	 * Change le titre de la page en fonction de si c'est une édition ou une création de client
+	 * Change le titre de la page en fonction de si c'est une ï¿½dition ou une crï¿½ation de client
 	 */
 	public void setTitreLabel() {
 		if (client == null) {
@@ -58,7 +58,7 @@ public class EditClient implements Initializable {
 			client = new Client();
 		} else {
 			titreLabel.setText("Edition du client " + client.getPrenom() + " " + client.getNom());
-			// Il a déjà été setté au moment de la création de la vue.
+			// Il a dÃ©jÃ  Ã©tÃ© settÃ© au moment de la crÃ©ation de la vue.
 		}
 	}
 
@@ -70,7 +70,6 @@ public class EditClient implements Initializable {
 			hebergementClients = loaderHebergementClients.load();
 			root.setCenter(hebergementClients);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -88,7 +87,7 @@ public class EditClient implements Initializable {
 
 		AccesData.ajouterModifierClient(this.client);
 		
-		// On affiche la vue détail du client qui vient d'être créé
+		// On affiche la vue dÃ©tail du client qui vient d'Ãªtre crÃ©Ã©
 		BorderPane rootPane = Launcher.getRoot();
     	FXMLLoader loaderClientDetails = new FXMLLoader(getClass().getResource("/src/Views/clientDetails.fxml"));
 		AnchorPane clientDetails;

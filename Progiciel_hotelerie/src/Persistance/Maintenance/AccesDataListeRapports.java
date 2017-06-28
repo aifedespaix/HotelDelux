@@ -20,7 +20,7 @@ public class AccesDataListeRapports {
 	private static Transaction t;
 	
 	/**
-	 * Obtenir la totalité des demandes d'intervention dans la base
+	 * Obtenir la totalitÃ© des demandes d'intervention dans la base
 	 * @return
 	 */
 	public static List<Rapport> getRapports() {
@@ -30,11 +30,10 @@ public class AccesDataListeRapports {
 	
 	public static List<DemandeIntervention> getRequeteFiltre(String objet, String demandeur, String date, String service, String etat, String criticite) {
 		// Filtre sur le service
-		String filtreService = " WHERE"; // Initialisation de la partie de la
-											// requête concernant le service
+		String filtreService = " WHERE"; // Initialisation de la partie de la requÃªte concernant le service
 		if (service != null) {
 			switch (service) {
-			case "Hôtel":
+			case "Hï¿½tel":
 				filtreService = ", EquipementHotel EH WHERE D.equipementHotelByIdEquipementHotel IS NOT NULL AND D.equipementHotelByIdEquipementHotel = EH.id AND EH.estEquipementJardin = 0 AND";
 				break;
 			case "Jardin":
@@ -72,7 +71,7 @@ public class AccesDataListeRapports {
 	}
 
 	/**
-	 * Permet de retrouver une demande à partir de son id
+	 * Permet de retrouver une demande Ã  partir de son id
 	 * @param id l'id de la demande
 	 * @return la demande d'intervention
 	 */

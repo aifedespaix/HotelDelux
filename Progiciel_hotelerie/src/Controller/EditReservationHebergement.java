@@ -80,15 +80,15 @@ public class EditReservationHebergement implements Initializable  {
 	}
 
 	/**
-	 * Change le titre de la page en fonction de si c'est une édition ou une création de réservation
+	 * Change le titre de la page en fonction de si c'est une Ã©dition ou une crÃ©ation de rÃ©servation
 	 */
 	public void setTitreLabel() {
 		if (reservationToInsert == null) {
-			titreLabel.setText("Nouvelle Réservation");
+			titreLabel.setText("Nouvelle RÃ©servation");
 			reservationToInsert = new ReservationHotel();
 		} else {
-			titreLabel.setText("Edition de la réservation n°" + reservationToInsert.getId());
-			// Elle a déjà été setté au moment de la création de la vue.
+			titreLabel.setText("Edition de la rÃ©servation nÂ°" + reservationToInsert.getId());
+			// Elle a dÃ©jÃ  Ã©tÃ© settÃ© au moment de la crÃ©ation de la vue.
 		}
 	}
 	
@@ -130,7 +130,7 @@ public class EditReservationHebergement implements Initializable  {
 		final TreeItem<Client> root = new RecursiveTreeItem<Client>(listeClientReservations, RecursiveTreeObject::getChildren);	
 
 		
-		JFXTreeTableColumn<Client, JFXButton> ajouter = new JFXTreeTableColumn<>("Sélectionner");
+		JFXTreeTableColumn<Client, JFXButton> ajouter = new JFXTreeTableColumn<>("SÃ©lectionner");
 		ajouter.setPrefWidth(100);		
 		ajouter.setCellValueFactory(param -> new ObservableValue() {
 				
@@ -145,7 +145,7 @@ public class EditReservationHebergement implements Initializable  {
 
 				@Override
 				public Object getValue() {
-					JFXButton bouton = new JFXButton("Sélectionner");
+					JFXButton bouton = new JFXButton("SÃ©lectionner");
 					
 					/**
 					 * Id pour recupere le client correspondant a la ligne
@@ -157,7 +157,7 @@ public class EditReservationHebergement implements Initializable  {
 					 */
 					bouton.setOnAction(new EventHandler<ActionEvent>() {
 					    @Override public void handle(ActionEvent e) {
-					    	// Récupération du client
+					    	// RÃ©cupÃ©ration du client
 					    	Client client = AccesData.getClientById(Integer.valueOf(bouton.getId()));
 					    	reservationToInsert.setIdClient(client.getId());
 					    	clientLabel.setText(client.getPrenom() + " " + client.getNom());
@@ -174,7 +174,7 @@ public class EditReservationHebergement implements Initializable  {
 		client.setPrefWidth(100);
 		client.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getNom()));
 		
-		JFXTreeTableColumn<Client, String> numChambre = new JFXTreeTableColumn<>("Prenom");
+		JFXTreeTableColumn<Client, String> numChambre = new JFXTreeTableColumn<>("PrÃ©nom");
 		numChambre.setPrefWidth(100);
 		numChambre.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getPrenom()));
 
@@ -215,16 +215,16 @@ public class EditReservationHebergement implements Initializable  {
 		case 0 : formule.selectToggle(inclusive); break;
 		case 1 : formule.selectToggle(demi); break;
 		case 2 : formule.selectToggle(externe); break;
-		default : System.err.println("Il y a une erreur dans la formule de la réservation " + this.reservationToInsert);
+		default : System.err.println("Il y a une erreur dans la formule de la rÃ©servation " + this.reservationToInsert);
 		}
 		
 	}
 	
 	/**
-	 * Rempli les stepper pour le nb d'adulte et d'enfants en fonction de la capacité max de la chambre
+	 * Rempli les stepper pour le nb d'adulte et d'enfants en fonction de la capacitÃ© max de la chambre
 	 */
 	public void updateMaxStepper() {
-		//Informe la capacité max de la chambre
+		//Informe la capacitÃ© max de la chambre
 		capaciteMax.setText(Integer.toString(comboRoom.getValue().getCapacite()));
 		
 		//Rend disponible les steppers
@@ -239,7 +239,7 @@ public class EditReservationHebergement implements Initializable  {
 	}
 	
 	/**
-	 * Remet à jour la valeur max du stepper pour le nb d'adulte en fonction du nb d'enfants sélectionné
+	 * Remet Ã  jour la valeur max du stepper pour le nb d'adulte en fonction du nb d'enfants sÃ©lectionnÃ©
 	 */
 	public void updateNbAdulte() {
 		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.comboRoom.getValue().getCapacite() - this.nbEnfants.getValue(), this.nbAdultes.getValue());
@@ -247,7 +247,7 @@ public class EditReservationHebergement implements Initializable  {
 	}
 	
 	/**
-	 * Remet à jour la valeur max du stepper pour le nb d'enfants en fonction du nb d'adulte sélectionné
+	 * Remet Ã  jour la valeur max du stepper pour le nb d'enfants en fonction du nb d'adulte sÃ©lectionnÃ©
 	 */
 	public void updateNbEnfants() {
 		SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(0, this.comboRoom.getValue().getCapacite() - this.nbAdultes.getValue(), this.nbEnfants.getValue());

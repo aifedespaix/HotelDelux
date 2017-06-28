@@ -1,25 +1,19 @@
 package src.Persistance.Maintenance;
 
-import java.sql.Date;
 import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 
-import src.Metier.Criticite;
 import src.Metier.DemandeIntervention;
-import src.Metier.Etat;
 import src.Persistance.AccesData;
 import src.Persistance.HibernateSession;
 
 public class AccesDataListeDemandes {
 	
 	private static Session s = HibernateSession.getSession();
-	private static Transaction t;
-	
 	/**
-	 * Obtenir la totalité des demandes d'intervention dans la base
+	 * Obtenir la totalitÃ© des demandes d'intervention dans la base
 	 * @return
 	 */
 	public static List<DemandeIntervention> getDemandeInterventions() {
@@ -29,11 +23,10 @@ public class AccesDataListeDemandes {
 	
 	public static List<DemandeIntervention> getRequeteFiltre(String objet, String demandeur, String date, String service, String etat, String criticite) {
 		// Filtre sur le service
-		String filtreService = " WHERE"; // Initialisation de la partie de la
-											// requête concernant le service
+		String filtreService = " WHERE"; // Initialisation de la partie de la requÃªte concernant le service
 		if (service != null) {
 			switch (service) {
-			case "Hôtel":
+			case "Hï¿½tel":
 				filtreService = ", EquipementHotel EH WHERE D.equipementHotelByIdEquipementHotel IS NOT NULL AND D.equipementHotelByIdEquipementHotel = EH.id AND EH.estEquipementJardin = 0 AND";
 				break;
 			case "Jardin":
@@ -71,7 +64,7 @@ public class AccesDataListeDemandes {
 	}
 
 	/**
-	 * Permet de retrouver une demande à partir de son id
+	 * Permet de retrouver une demande Ã  partir de son id
 	 * @param id l'id de la demande
 	 * @return la demande d'intervention
 	 */

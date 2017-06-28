@@ -26,7 +26,7 @@ public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention
     private EquipementRestaurant equipementRestaurantByIdEquipementRestaurant;
     private PieceDeRechange pieceDeRechangeByIdPieceRechange;
     private Collection<DemandeUtilisateur> demandeUtilisateursById;
-    private Collection<Rapport> rapportsById;
+    private Rapport rapport;
     private Utilisateur demandeurById;
     private Etat etat;
     
@@ -35,7 +35,7 @@ public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention
 			EquipementHotel equipementHotelByIdEquipementHotel,
 			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
 			PieceDeRechange pieceDeRechangeByIdPieceRechange, Collection<DemandeUtilisateur> demandeUtilisateursById,
-			Collection<Rapport> rapportsById, Utilisateur demandeurById, Etat etat) {
+			Rapport rapport, Utilisateur demandeurById, Etat etat) {
 		super();
 		this.id = id;
 		this.dateCreation = dateCreation;
@@ -48,7 +48,7 @@ public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention
 		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
 		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
 		this.demandeUtilisateursById = demandeUtilisateursById;
-		this.rapportsById = rapportsById;
+		this.rapport = rapport;
 		this.demandeurById = demandeurById;
 		this.etat = etat;
 	}
@@ -58,7 +58,7 @@ public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention
 			EquipementHotel equipementHotelByIdEquipementHotel,
 			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
 			PieceDeRechange pieceDeRechangeByIdPieceRechange, Collection<DemandeUtilisateur> demandeUtilisateursById,
-			Collection<Rapport> rapportsById, Utilisateur demandeurById, Etat etat) {
+			Rapport rapport, Utilisateur demandeurById, Etat etat) {
 		super();
 		this.dateCreation = dateCreation;
 		this.objet = objet;
@@ -70,7 +70,7 @@ public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention
 		this.equipementRestaurantByIdEquipementRestaurant = equipementRestaurantByIdEquipementRestaurant;
 		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
 		this.demandeUtilisateursById = demandeUtilisateursById;
-		this.rapportsById = rapportsById;
+		this.rapport = rapport;
 		this.demandeurById = demandeurById;
 		this.etat = etat;
 	}
@@ -88,7 +88,7 @@ public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention
 				+ ", equipementHotelByIdEquipementHotel=" + equipementHotelByIdEquipementHotel
 				+ ", equipementRestaurantByIdEquipementRestaurant=" + equipementRestaurantByIdEquipementRestaurant
 				+ ", pieceDeRechangeByIdPieceRechange=" + pieceDeRechangeByIdPieceRechange
-				+ ", demandeUtilisateursById=" + demandeUtilisateursById + ", rapportsById=" + rapportsById + "]";
+				+ ", demandeUtilisateursById=" + demandeUtilisateursById + ", rapport=" + rapport + "]";
 	}
 
 	public void setId(Integer id) {
@@ -203,14 +203,13 @@ public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention
     public void setDemandeUtilisateursById(Collection<DemandeUtilisateur> demandeUtilisateursById) {
         this.demandeUtilisateursById = demandeUtilisateursById;
     }
-
-    @OneToMany(mappedBy = "demandeInterventionByIdDemandeIntervention")
-    public Collection<Rapport> getRapportsById() {
-        return rapportsById;
+    @OneToOne(mappedBy = "demandeIntervention")
+    public Rapport getRapport() {
+        return rapport;
     }
 
-    public void setRapportsById(Collection<Rapport> rapportsById) {
-        this.rapportsById = rapportsById;
+    public void setRapport(Rapport rapport) {
+        this.rapport = rapport;
     }
     
     @ManyToOne

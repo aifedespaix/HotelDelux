@@ -46,7 +46,7 @@ public class ListeRapports implements Initializable {
 	@FXML private JFXTextField champsDemandeur;
 	@FXML private JFXTextField champsTechnicien;
 	@FXML private JFXDatePicker champsDateDebut;
-	@FXML private JFXDatePicker champsDateArrivée;
+	@FXML private JFXDatePicker champsDateArrivee;
 	@FXML private JFXComboBox<String> champsService;
 	@FXML private JFXComboBox<Etat> champsEtat;
 	@FXML private JFXComboBox<Criticite> champsCriticite;
@@ -55,7 +55,7 @@ public class ListeRapports implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// Charge la liste des rapports dans le tableau prévu à cet effet
+		// Charge la liste des rapports dans le tableau prÃ©vu Ã  cet effet
 		List<Rapport> liste = AccesDataListeRapports.getRapports();
 		
 		for (Rapport rapport : liste) {
@@ -108,18 +108,18 @@ public class ListeRapports implements Initializable {
 				public void removeListener(ChangeListener listener) { }
 		});
 		
-		//Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		//CrÃ©Ã© la colonne en la nommant, dÃ©finie sa taille par dÃ©fault puis Ajoute une valeur Ã  la ligne (boucle sur la liste d'observables
 		JFXTreeTableColumn<Rapport, String> objet = new JFXTreeTableColumn<>("Objet");
 		objet.setPrefWidth(150);
 		objet.setMinWidth(100);
-		objet.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getObjet()));
+		objet.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getObjet()));
 		
 		JFXTreeTableColumn<Rapport, String> equipement = new JFXTreeTableColumn<>("Equipement");
 		equipement.setPrefWidth(150);
 		equipement.setMinWidth(100);
-		equipement.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getEquipementDemande(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention())));
+		equipement.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getEquipementDemande(param.getValue().getValue().getDemandeIntervention())));
 		
-		JFXTreeTableColumn<Rapport, String> dateDebut = new JFXTreeTableColumn<>("Date Début");
+		JFXTreeTableColumn<Rapport, String> dateDebut = new JFXTreeTableColumn<>("Date DÃ©but");
 		dateDebut.setPrefWidth(150);
 		dateDebut.setMinWidth(100);
 		dateDebut.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateDebut())));
@@ -132,59 +132,59 @@ public class ListeRapports implements Initializable {
 		JFXTreeTableColumn<Rapport, String> demandeur = new JFXTreeTableColumn<>("Demandeur");
 		demandeur.setPrefWidth(150);
 		demandeur.setMinWidth(100);
-		demandeur.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getDemandeurById().toString()));
+		demandeur.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getDemandeurById().toString()));
 		
 		JFXTreeTableColumn<Rapport, String> service = new JFXTreeTableColumn<>("Service");
 		service.setPrefWidth(150);
 		service.setMinWidth(100);
-		service.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getServiceDemande(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention())));
+		service.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getServiceDemande(param.getValue().getValue().getDemandeIntervention())));
 		
 		JFXTreeTableColumn<Rapport, String> technicien = new JFXTreeTableColumn<>("Technicien");
 		technicien.setPrefWidth(150);
 		technicien.setMinWidth(100);
-		technicien.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTechnicien() != null ? param.getValue().getValue().getTechnicien().toString() : "Non affecté"));
+		technicien.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTechnicien() != null ? param.getValue().getValue().getTechnicien().toString() : "Non affectÃ©"));
 		
 		JFXTreeTableColumn<Rapport, String> etat = new JFXTreeTableColumn<>("Etat");
 		etat.setPrefWidth(150);
 		etat.setMinWidth(100);
-		etat.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getEtat().getLibelle()));
+		etat.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getEtat().getLibelle()));
 		
-		JFXTreeTableColumn<Rapport, String> criticite = new JFXTreeTableColumn<>("Criticté");
+		JFXTreeTableColumn<Rapport, String> criticite = new JFXTreeTableColumn<>("CritictÃ©");
 		criticite.setPrefWidth(150);
 		criticite.setMinWidth(100);
-		criticite.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getCriticiteByIdCriticite().getLibelle()));
+		criticite.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getCriticiteByIdCriticite().getLibelle()));
 		
 		tableRapports.setRoot(root);
 		tableRapports.setShowRoot(false);
 		
 		tableRapports.getColumns().setAll(voir, objet, equipement, dateDebut, dateFin, demandeur, service, technicien, etat, criticite);
 		
-		// Charge les différents services
-		champsService.getItems().add("Hôtel");
+		// Charge les diffï¿½rents services
+		champsService.getItems().add("HÃ´tel");
 		champsService.getItems().add("Jardin");
 		champsService.getItems().add("Restaurant");
 		champsService.getItems().add("Spa");
 		
-		// Charge les états pour le filtre
+		// Charge les Ã©tats pour le filtre
 		champsEtat.getItems().addAll(AccesDataMaintenance.getListeEtat());
 		
-		// Charge les criticités pour le filtre
+		// Charge les criticitÃ©s pour le filtre
 		champsCriticite.getItems().addAll(AccesDataMaintenance.getListeCriticite());
 	}
 	
 	/**
-	 * Fonction appelé lors de l'appui sur le bouton de recherche. Permet de filtrer les résultats de la liste
+	 * Fonction appelï¿½ lors de l'appui sur le bouton de recherche. Permet de filtrer les rï¿½sultats de la liste
 	 */
 	public void search(){
 		// Nettoie le tableau
 		listeRapports.clear();
-		// Recrée une nouvelle liste pour stocker les demandes
+		// RecrÃ©e une nouvelle liste pour stocker les demandes
 		/*
 		String date = champsDate.getValue() != null ? champsDate.getValue().toString() : "";
 		String etat = champsEtat.getValue() != null ? String.valueOf(champsEtat.getValue().getId()) : "";
 		String criticite = champsCriticite.getValue() != null ? String.valueOf(champsCriticite.getValue().getId()) : "";
 		
-		// Récupération du service et appel de la fonction en conséquence
+		// RÃ©cupÃ©ration du service et appel de la fonction en consÃ©quence
 		String service = champsService.getValue();
 		
 		List<DemandeIntervention> liste = AccesDataListeDemandes.getRequeteFiltre(champsObjet.getText(), champsDemandeur.getText(),

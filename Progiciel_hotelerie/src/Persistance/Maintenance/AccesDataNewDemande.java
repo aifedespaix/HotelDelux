@@ -20,7 +20,7 @@ public class AccesDataNewDemande {
 	
 	/**
 	 *  Ajoute la nouvelle demande dans la base
-	 * @param newDemande la demande créée dans la fenêtre
+	 * @param newDemande la demande crÃ©Ã©e dans la fenÃªtre
 	 */
 	public static void ajouterDemande(DemandeIntervention newDemande) {
 		System.out.println(newDemande);
@@ -34,7 +34,7 @@ public class AccesDataNewDemande {
 	}
 	
 	/**
-	 * @return la liste de tous les étages de l'hôtel
+	 * @return la liste de tous les Ã©tages de l'hÃ´tel
 	 */
 	public static List<Integer> getListeEtages() {
 		List<Integer> listeEtage = s.createQuery("SELECT distinct etage FROM Chambre").list();
@@ -42,7 +42,7 @@ public class AccesDataNewDemande {
 	}
 	
 	/**
-	 * @return la liste de toutes les chambres de l'hôtel
+	 * @return la liste de toutes les chambres de l'hÃ´tel
 	 */
 	public static List<Integer> getListeChambres() {
 		List<Integer> listeChambres = s.createQuery("SELECT id FROM Chambre").list();
@@ -51,7 +51,7 @@ public class AccesDataNewDemande {
 	
 	/**
 	 * @param etage
-	 * @return la liste de toutes les chambres à un étage donné
+	 * @return la liste de toutes les chambres Ã  un Ã©tage donnÃ©
 	 */
 	public static List<Integer> getListeChambres(int etage) {
 		Query query = s.createQuery("SELECT id FROM Chambre WHERE etage = :etage");
@@ -61,7 +61,7 @@ public class AccesDataNewDemande {
 	}
 	
 	/**
-	 * @return la liste de tous les équipements de l'hôtel
+	 * @return la liste de tous les Ã©quipements de l'hÃ´tel
 	 */
 	public static List<EquipementHotel> getListeEquipement() {
 		List<EquipementHotel> listeEquipements = s.createQuery("FROM EquipementHotel").list();
@@ -70,7 +70,7 @@ public class AccesDataNewDemande {
 	
 	/**
 	 * @param etage
-	 * @return la liste de tous les équipements d'un étage donné
+	 * @return la liste de tous les Ã©quipements d'un Ã©tage donnÃ©
 	 */
 	public static List<EquipementHotel> getListeEquipementByEtage(int etage) {
 		Query query = s.createQuery("SELECT eh FROM EquipementHotel eh, Chambre c WHERE c.id = eh.chambreByIdChambre AND c.etage = :etage");
@@ -81,7 +81,7 @@ public class AccesDataNewDemande {
 	
 	/**
 	 * @param chambre
-	 * @return la liste de tous les équipements d'une chambre donnée
+	 * @return la liste de tous les Ã©quipements d'une chambre donnÃ©e
 	 */
 	public static List<EquipementHotel> getListeEquipementByChambre(int chambre) {
 		Query query =  s.createQuery("FROM EquipementHotel where chambreByIdChambre = :chambre");
@@ -91,7 +91,7 @@ public class AccesDataNewDemande {
 	}
 	
 	/**
-	 * @return la liste des criticités
+	 * @return la liste des criticitÃ©s
 	 */
 	public static List<Criticite> getListeCriticite() {
 		List<Criticite> listeCriticite = s.createQuery("FROM Criticite").list();
@@ -99,7 +99,7 @@ public class AccesDataNewDemande {
 	}
 	
 	/**
-	 * @return la liste de tous les équipements du jardin
+	 * @return la liste de tous les Ã©quipements du jardin
 	 */
 	public static List<EquipementHotel> getListeEquipementJardin() {
 		List<EquipementHotel> listeEquipements = s.createQuery("FROM EquipementHotel WHERE estEquipementJardin = 1").list();
@@ -107,7 +107,7 @@ public class AccesDataNewDemande {
 	}
 	
 	/**
-	 * @return la liste de tous les équipements du restaurant
+	 * @return la liste de tous les Ã©quipements du restaurant
 	 */
 	public static List<EquipementRestaurant> getListeEquipementRestaurant() {
 		List<EquipementRestaurant> listeEquipements = s.createQuery("FROM EquipementRestaurant").list();
@@ -115,7 +115,7 @@ public class AccesDataNewDemande {
 	}
 	
 	/**
-	 * @return la liste de tous les équipements du spa
+	 * @return la liste de tous les Ã©quipements du spa
 	 */
 	public static List<EquipementSpa> getListeEquipementSpa() {
 		List<EquipementSpa> listeEquipements = s.createQuery("FROM EquipementSpa").list();
