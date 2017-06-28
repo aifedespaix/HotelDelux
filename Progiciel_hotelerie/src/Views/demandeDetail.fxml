@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="100.0" minWidth="200.0" prefHeight="470.0" prefWidth="742.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.DemandeDetail">
+<AnchorPane minHeight="100.0" minWidth="200.0" prefHeight="470.0" prefWidth="742.0" stylesheets="@css/container.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.DemandeDetail">
    <children>
       <GridPane minHeight="300.0" minWidth="400.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -112,7 +112,7 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="rapportBtn" layoutX="700.0" layoutY="33.0" onAction="#rapport" text="Rapport">
+                  <JFXButton fx:id="rapportBtn" layoutX="700.0" layoutY="33.0" onAction="#rapport" styleClass="icone_btn" text="Rapport">
                      <font>
                         <Font size="15.0" />
                      </font>
