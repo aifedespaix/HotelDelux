@@ -28,12 +28,12 @@ public class AccesDataListeRapports {
 		return listeRapports;
 	}
 	
-	public static List<DemandeIntervention> getRequeteFiltre(String objet, String demandeur, String date, String service, String etat, String criticite) {
+	public static List<Rapport> getRequeteFiltre(String objet, String demandeur, String technicien, String dateDebut, String dateFin, String service, String etat, String criticite) {
 		// Filtre sur le service
 		String filtreService = " WHERE"; // Initialisation de la partie de la requête concernant le service
 		if (service != null) {
 			switch (service) {
-			case "H�tel":
+			case "Hôtel":
 				filtreService = ", EquipementHotel EH WHERE D.equipementHotelByIdEquipementHotel IS NOT NULL AND D.equipementHotelByIdEquipementHotel = EH.id AND EH.estEquipementJardin = 0 AND";
 				break;
 			case "Jardin":
@@ -52,20 +52,30 @@ public class AccesDataListeRapports {
 
 		String where = "";
 
-		String[][] filtreClientConfig = { { "D.objet", objet }, { "D.dateCreation", date }, { "D.etat", etat },
-				{ "D.criticiteByIdCriticite", criticite } };
+		String[][] filtreClientConfig = {
+				{ "D.objet", objet },
+				{ "R.dateDebut", dateDebut },
+				{ "R.dateFin", dateFin },
+				{ "D.etat", etat },
+				{ "D.criticiteByIdCriticite", criticite }
+			};
 
 		where += AccesData.whereFilter(filtreClientConfig, false);
 
-		String[] filtreDemandeur = { "U.nom", "U.prenom" };
+		// Filtre pour le demandeur
+		String[] filtreDemandeur = { "demandeur.nom", "demandeur.prenom" };
 		where += AccesData.whereFilterCompose(demandeur, filtreDemandeur, true);
+		
+		// Filtre pour le technicien
+		String[] filtreTechnicien = { "technicien.nom", "technicien.prenom" };
+		where += AccesData.whereFilterCompose(technicien, filtreTechnicien, true);
 
 		System.out.println("SELECT D FROM DemandeIntervention D, Utilisateur U" + filtreService
 				+ " D.demandeurById = U.id " + where);
 
-		List<DemandeIntervention> listeDemandesFiltres = s
-				.createQuery("SELECT D FROM DemandeIntervention D, Utilisateur U" + filtreService
-						+ " D.demandeurById = U.id " + where)
+		List<Rapport> listeDemandesFiltres = s
+				.createQuery("SELECT R FROM Rapport R, DemandeIntervention D, Utilisateur demandeur, Utilisateur technicien" + filtreService
+						+ " D.demandeurById = demandeur.id AND R.technicien = technicien.id AND R.demandeIntervention = D.id" + where)
 				.list();
 		return listeDemandesFiltres;
 	}

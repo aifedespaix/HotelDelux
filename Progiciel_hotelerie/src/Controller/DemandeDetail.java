@@ -145,8 +145,8 @@ public class DemandeDetail {
 	public void rapport() {
 		try {
 			if (this.rapport ==null) {
-				// Création du rapport
-				this.rapport = new Rapport(new Date(0), new Date(0),"", demande, null);
+				// Création du rapport et l'affecte automatiquement à l'utilisateur connecté
+				this.rapport = new Rapport(new Date(0), new Date(0),"", demande, Login.getConnectedUser());
 				//Persistance dans la base
 				AccesDataMaintenance.ajouterRapport(this.rapport);
 			}
