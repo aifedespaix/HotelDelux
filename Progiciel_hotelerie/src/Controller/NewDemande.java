@@ -20,6 +20,7 @@ import src.Metier.DemandeIntervention;
 import src.Metier.EquipementHotel;
 import src.Metier.EquipementRestaurant;
 import src.Metier.EquipementSpa;
+import src.Metier.Etat;
 import src.Persistance.Maintenance.AccesDataNewDemande;
 
 public class NewDemande implements Initializable {
@@ -114,7 +115,9 @@ public class NewDemande implements Initializable {
 				(EquipementRestaurant) equipementRestaurant, //restaurant
 				null, //pièce de rechange
 				null, //demande utilisateur
-				null //rapport
+				null, //rapport
+				Login.getConnectedUser(), // Demandeur
+				new Etat(1) // Etat en prise de connaissance par défaut
 				);
 		//Persistance dans la base
 		AccesDataNewDemande.ajouterDemande(newDemande);

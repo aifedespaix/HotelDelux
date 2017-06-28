@@ -7,9 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #EF5350;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuMaintenance">
    <children>
@@ -19,7 +17,7 @@
                <image>
                   <Image url="@../image/icons/Maintenance.png" />
                </image></ImageView>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="114.0" style="-fx-background-color: #FFF;" text="Demandes" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openListeDemandes" prefHeight="60.0" prefWidth="114.0" style="-fx-background-color: #FFF;" text="Demandes" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -29,7 +27,7 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="105.0" style="-fx-background-color: #FFF;" text="Rapports" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openListeRapports" prefHeight="60.0" prefWidth="105.0" style="-fx-background-color: #FFF;" text="Rapports" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -60,7 +58,7 @@
                </HBox.margin>
             </JFXButton>
 
-            <fx:include source="menuRight.fxml"></fx:include>
+            <fx:include source="menuRight.fxml" />
 
             <StackPane alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="136.0">
                <children>

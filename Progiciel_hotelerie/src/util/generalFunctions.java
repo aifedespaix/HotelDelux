@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import src.Metier.DemandeIntervention;
+
 public class generalFunctions {
 
 	/**
@@ -45,8 +47,44 @@ public class generalFunctions {
 		}
 	}
 	
+	/**
+	 * Formate la date en jj/mm/aaaa
+	 * @param date la date à formater
+	 * @return la date formatée
+	 */
 	public static String formatDate(Date date) {
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     	return formatter.format(date);
+	}
+	
+	/**
+	 * Retrouve la location de l'équipement sur lequel a été fait la demande
+	 * @param demande
+	 * @return le service dans lequel se trouve l'équipement
+	 */
+	public static String getServiceDemande(DemandeIntervention demande) {
+		if (demande.getEquipementHotelByIdEquipementHotel() == null) {
+			if (demande.getEquipementRestaurantByIdEquipementRestaurant() == null) {
+				return "Spa";
+			} else {
+				return "Restaurant";
+			}
+		} else {
+			if (demande.getEquipementHotelByIdEquipementHotel().getEstEquipementJardin()) {
+				return "Jardin";
+			} else {
+				return "Hôtel";
+			}
+		}
+	}
+
+	public static String getEquipementDemande(DemandeIntervention demande) {
+		if (demande.getEquipementHotelByIdEquipementHotel() != null) {
+			return demande.getEquipementHotelByIdEquipementHotel().getLibelle();
+		} else if (demande.getEquipementRestaurantByIdEquipementRestaurant() != null) {
+			return demande.getEquipementRestaurantByIdEquipementRestaurant().getLibelle();
+		} else {
+			return demande.getEquipementSpaByIdEquipementSpa().getLibelle();
+		}
 	}
 }

@@ -1,48 +1,53 @@
 package src.Metier;
 
 import javax.persistence.*;
+
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import java.sql.Date;
 
 /**
  * Created by ledze on 17/05/2017.
  */
 @Entity
-public class Rapport {
+public class Rapport extends RecursiveTreeObject<Rapport> {
     private int id;
     private Date dateDebut;
     private Date dateFin;
     private String description;
-    private DemandeIntervention demandeInterventionByIdDemandeIntervention;
+    private DemandeIntervention demandeIntervention;
+    private Utilisateur technicien;
 
     public Rapport(int id, Date dateDebut, Date dateFin, String description,
-			DemandeIntervention demandeInterventionByIdDemandeIntervention) {
+			DemandeIntervention demandeINtervention, Utilisateur technicien) {
 		super();
 		this.id = id;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.description = description;
-		this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
+		this.demandeIntervention = demandeINtervention;
+		this.technicien = technicien;
 	}
 
 	public Rapport(Date dateDebut, Date dateFin, String description,
-			DemandeIntervention demandeInterventionByIdDemandeIntervention) {
+			DemandeIntervention demandeIntervention, Utilisateur technicien) {
 		super();
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.description = description;
-		this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
+		this.demandeIntervention = demandeIntervention;
+		this.technicien = technicien;
 	}
 
 	public Rapport() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
 		return "Rapport [id=" + id + ", dateDebut=" + dateDebut + ", dateFin=" + dateFin + ", description="
-				+ description + ", demandeInterventionByIdDemandeIntervention="
-				+ demandeInterventionByIdDemandeIntervention + "]";
+				+ description + ", demandeIntervention="
+				+ demandeIntervention + "]";
 	}
 
 	public void setId(Integer id) {
@@ -92,10 +97,20 @@ public class Rapport {
     @ManyToOne
     @JoinColumn(name = "id_demande_intervention", referencedColumnName = "id", nullable = false)
     public DemandeIntervention getDemandeInterventionByIdDemandeIntervention() {
-        return demandeInterventionByIdDemandeIntervention;
+        return demandeIntervention;
     }
 
     public void setDemandeInterventionByIdDemandeIntervention(DemandeIntervention demandeInterventionByIdDemandeIntervention) {
-        this.demandeInterventionByIdDemandeIntervention = demandeInterventionByIdDemandeIntervention;
+        this.demandeIntervention = demandeInterventionByIdDemandeIntervention;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "id_technicien", referencedColumnName = "id", nullable = true)
+	public Utilisateur getTechnicien() {
+		return technicien;
+	}
+
+	public void setTechnicien(Utilisateur technicien) {
+		this.technicien = technicien;
+	}
 }

@@ -1,14 +1,43 @@
 package src.Controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import src.Launcher.Launcher;
 
 public class MenuMaintenance {
+	
+	private BorderPane root = Launcher.getRoot();
+	
+	public void openListeDemandes() throws IOException {
+		try {
+			FXMLLoader loaderListeDemandes = new FXMLLoader(getClass().getResource("/src/Views/listeDemandes.fxml"));
+			AnchorPane menuMaintenance;
+			menuMaintenance = loaderListeDemandes.load();
+			root.setCenter(menuMaintenance);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public void openListeRapports() throws IOException {
+		try {
+			FXMLLoader loaderListeRapports = new FXMLLoader(getClass().getResource("/src/Views/listeRapports.fxml"));
+			AnchorPane menuMaintenance;
+			menuMaintenance = loaderListeRapports.load();
+			root.setCenter(menuMaintenance);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}	
+	}
 	
 	public void openNewDemande() throws IOException {
 		Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("src/Views/newDemande.fxml"));

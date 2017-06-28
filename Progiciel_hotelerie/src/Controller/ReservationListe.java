@@ -69,21 +69,13 @@ public class ReservationListe implements Initializable {
 		voir.setCellValueFactory(param -> new ObservableValue() {
 				
 				@Override
-				public void addListener(InvalidationListener listener) {
-					// TODO Auto-generated method stub
-				}
+				public void addListener(InvalidationListener listener) { }
 
 				@Override
-				public void removeListener(InvalidationListener listener) {
-					// TODO Auto-generated method stub
-					
-				}
+				public void removeListener(InvalidationListener listener) { }
 
 				@Override
-				public void addListener(ChangeListener listener) {
-					// TODO Auto-generated method stub
-					
-				}
+				public void addListener(ChangeListener listener) { }
 
 				@Override
 				public Object getValue() {
@@ -122,10 +114,7 @@ public class ReservationListe implements Initializable {
 				}
 
 				@Override
-				public void removeListener(ChangeListener listener) {
-					// TODO Auto-generated method stub
-					
-				}
+				public void removeListener(ChangeListener listener) { }
 		});
 		
 		

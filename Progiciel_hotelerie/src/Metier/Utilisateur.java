@@ -47,9 +47,7 @@ public class Utilisateur {
 
 	@Override
 	public String toString() {
-		return "Utilisateur [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", login=" + login + ", password="
-				+ password + ", demandeUtilisateursById=" + demandeUtilisateursById + ", roleByIdRole=" + roleByIdRole
-				+ "]";
+		return prenom + " " + nom;
 	}
 
 	public void setId(Integer id) {

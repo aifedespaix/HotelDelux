@@ -2,6 +2,10 @@ package src.Metier;
 
 import javax.persistence.*;
 import javax.persistence.Table;
+
+import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+import com.mysql.jdbc.Util;
+
 import java.sql.Date;
 import java.util.Collection;
 
@@ -10,7 +14,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "demande_intervention", schema = "hotel", catalog = "")
-public class DemandeIntervention {
+public class DemandeIntervention extends RecursiveTreeObject<DemandeIntervention> {
     private int id;
     private Date dateCreation;
     private String objet;
@@ -23,14 +27,15 @@ public class DemandeIntervention {
     private PieceDeRechange pieceDeRechangeByIdPieceRechange;
     private Collection<DemandeUtilisateur> demandeUtilisateursById;
     private Collection<Rapport> rapportsById;
-
+    private Utilisateur demandeurById;
+    private Etat etat;
     
     public DemandeIntervention(int id, Date dateCreation, String objet, String description, boolean valide,
 			Criticite criticiteByIdCriticite, EquipementSpa equipementSpaByIdEquipementSpa,
 			EquipementHotel equipementHotelByIdEquipementHotel,
 			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
 			PieceDeRechange pieceDeRechangeByIdPieceRechange, Collection<DemandeUtilisateur> demandeUtilisateursById,
-			Collection<Rapport> rapportsById) {
+			Collection<Rapport> rapportsById, Utilisateur demandeurById, Etat etat) {
 		super();
 		this.id = id;
 		this.dateCreation = dateCreation;
@@ -44,6 +49,8 @@ public class DemandeIntervention {
 		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
 		this.demandeUtilisateursById = demandeUtilisateursById;
 		this.rapportsById = rapportsById;
+		this.demandeurById = demandeurById;
+		this.etat = etat;
 	}
 
 	public DemandeIntervention(Date dateCreation, String objet, String description, boolean valide,
@@ -51,7 +58,7 @@ public class DemandeIntervention {
 			EquipementHotel equipementHotelByIdEquipementHotel,
 			EquipementRestaurant equipementRestaurantByIdEquipementRestaurant,
 			PieceDeRechange pieceDeRechangeByIdPieceRechange, Collection<DemandeUtilisateur> demandeUtilisateursById,
-			Collection<Rapport> rapportsById) {
+			Collection<Rapport> rapportsById, Utilisateur demandeurById, Etat etat) {
 		super();
 		this.dateCreation = dateCreation;
 		this.objet = objet;
@@ -64,6 +71,8 @@ public class DemandeIntervention {
 		this.pieceDeRechangeByIdPieceRechange = pieceDeRechangeByIdPieceRechange;
 		this.demandeUtilisateursById = demandeUtilisateursById;
 		this.rapportsById = rapportsById;
+		this.demandeurById = demandeurById;
+		this.etat = etat;
 	}
 
 	public DemandeIntervention() {
@@ -203,4 +212,24 @@ public class DemandeIntervention {
     public void setRapportsById(Collection<Rapport> rapportsById) {
         this.rapportsById = rapportsById;
     }
+    
+    @ManyToOne
+    @JoinColumn(name = "id_demandeur", referencedColumnName = "id", nullable = false)
+	public Utilisateur getDemandeurById() {
+		return demandeurById;
+	}
+
+	public void setDemandeurById(Utilisateur demandeurById) {
+		this.demandeurById = demandeurById;
+	}
+
+	@ManyToOne
+    @JoinColumn(name = "id_etat", referencedColumnName = "id", nullable = false)
+	public Etat getEtat() {
+		return etat;
+	}
+
+	public void setEtat(Etat etat) {
+		this.etat = etat;
+	}
 }
