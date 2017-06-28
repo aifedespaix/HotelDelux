@@ -19,13 +19,13 @@ public class Rapport extends RecursiveTreeObject<Rapport> {
     private Utilisateur technicien;
 
     public Rapport(int id, Date dateDebut, Date dateFin, String description,
-			DemandeIntervention demandeINtervention, Utilisateur technicien) {
+			DemandeIntervention demandeItervention, Utilisateur technicien) {
 		super();
 		this.id = id;
 		this.dateDebut = dateDebut;
 		this.dateFin = dateFin;
 		this.description = description;
-		this.demandeIntervention = demandeINtervention;
+		this.demandeIntervention = demandeItervention;
 		this.technicien = technicien;
 	}
 
@@ -94,14 +94,14 @@ public class Rapport extends RecursiveTreeObject<Rapport> {
         this.description = description;
     }
     
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_demande_intervention", referencedColumnName = "id", nullable = false)
-    public DemandeIntervention getDemandeInterventionByIdDemandeIntervention() {
+    public DemandeIntervention getDemandeIntervention() {
         return demandeIntervention;
     }
 
-    public void setDemandeInterventionByIdDemandeIntervention(DemandeIntervention demandeInterventionByIdDemandeIntervention) {
-        this.demandeIntervention = demandeInterventionByIdDemandeIntervention;
+    public void setDemandeIntervention(DemandeIntervention demandeIntervention) {
+        this.demandeIntervention = demandeIntervention;
     }
 
     @ManyToOne

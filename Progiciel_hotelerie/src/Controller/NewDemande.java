@@ -1,6 +1,15 @@
 package src.Controller;
 
-import com.jfoenix.controls.*;
+import java.net.URL;
+import java.sql.Date;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXTabPane;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
@@ -13,15 +22,11 @@ import src.Metier.EquipementSpa;
 import src.Metier.Etat;
 import src.Persistance.Maintenance.AccesDataNewDemande;
 
-import java.net.URL;
-import java.sql.Date;
-import java.util.ResourceBundle;
-
 public class NewDemande implements Initializable {
 	
 	@FXML private JFXTabPane onglet;
-	@FXML private JFXComboBox etages;
-	@FXML private JFXComboBox chambres;
+	@FXML private JFXComboBox<Integer> etages;
+	@FXML private JFXComboBox<Integer> chambres;
 	@FXML private JFXComboBox<EquipementHotel> equipementsHotel;
 	@FXML private JFXComboBox<EquipementHotel> equipementsJardin;
 	@FXML private JFXComboBox<EquipementRestaurant> equipementsRestaurant;
@@ -40,74 +45,66 @@ public class NewDemande implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		locationEquipement = 1; // => H�tel
+		locationEquipement = 1; // => Hôtel
 		
-		// Charge la liste des �tages dans le combo box correspondant
+		// Charge la liste des étages dans le combo box correspondant
 		etages.getItems().addAll(AccesDataNewDemande.getListeEtages());
 		
-		// Charge la liste de toutes les chambres par d�faut
-		// Une fois un �tage s�lectionn�, la liste des cjhambres sera recharg� et de m�me pour les �quipements
+		// Charge la liste de toutes les chambres par défaut
+		// Une fois un étage sélectionné, la liste des chambres sera rechargé et de même pour les équipements
 		chambres.getItems().addAll(AccesDataNewDemande.getListeChambres());
 		
-		// Charge la liste des �quipements
+		// Charge la liste des équipements
 		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipement());
 		equipementsJardin.getItems().addAll(AccesDataNewDemande.getListeEquipementJardin());
 		equipementsRestaurant.getItems().addAll(AccesDataNewDemande.getListeEquipementRestaurant());
 		equipementsSpa.getItems().addAll(AccesDataNewDemande.getListeEquipementSpa());
 		
-		// Charge la liste des criticit�
+		// Charge la liste des criticité
 		criticite.getItems().addAll(AccesDataNewDemande.getListeCriticite());
 	}
 	
 	/**
-	 * Met � jour le label du temps de prise en charge en fonction de la criticit� s�lectionn�e
+	 * Met à jour le label du temps de prise en charge en fonction de la criticité sélectionnée
 	 */
 	public void tempsPriseEnCharge() {
 		priseEnCharge.setText("Temps de prise en charge : " + criticite.getValue().getTempsMaximum().toString());
 	}
 	
 	/**
-	 * Permet de cr�er une demande � partir des �l�ments renseign�s dans la fen�tre
+	 * Permet de créer une demande à partir des éléments renseignés dans la fenêtre
 	 */
 	public void createDemande() {
-		System.out.println("Objet : " + objetField.getText());
-		System.out.println("Description : " + descriptionField.getText());
-		System.out.println("Criticit� : " + criticite.getValue());
-		
 		EquipementHotel equipementHotel = null;
 		EquipementRestaurant equipementRestaurant = null;
 		EquipementSpa equipementSpa = null;
 		
 		switch (locationEquipement) {
 			case ID_ONGLET_HOTEL :
-				System.out.println("Equipement H�tel : " + equipementsHotel.getValue());
 				equipementHotel = equipementsHotel.getValue();
 				break;
 			case ID_ONGLET_JARDIN :
-				System.out.println("Equipement Jardin : " + equipementsJardin.getValue());
 				equipementHotel = equipementsJardin.getValue();
 				break;
 			case ID_ONGLET_RESTAURANT :
-				System.out.println("Equipement Restaurant : " + equipementsRestaurant.getValue());
 				equipementRestaurant = equipementsRestaurant.getValue();
 				break;
 			case ID_ONGLET_SPA :
-				System.out.println("Equipement Spa : " + equipementsSpa.getValue());
 				equipementSpa = equipementsSpa.getValue();
 				break;
 		}
 		
-		// Cr�ation de la demande
+		// Création de la demande
 		DemandeIntervention newDemande = new DemandeIntervention(
-				new Date(0), //date de cr�ation
+				new Date(0), //date de création
 				objetField.getText(),
 				descriptionField.getText(),
-				false, // la demande n'est pas valid� par d�faut
+				false, // la demande n'est pas validé par défaut
 				criticite.getValue(),
 				(EquipementSpa) equipementSpa, //spa
 				(EquipementHotel) equipementHotel, // hotel ou jardin
 				(EquipementRestaurant) equipementRestaurant, //restaurant
-				null, //pi�ce de rechange
+				null, //pièce de rechange
 				null, //demande utilisateur
 				null, //rapport
 				Login.getConnectedUser(), // Demandeur
@@ -121,45 +118,35 @@ public class NewDemande implements Initializable {
 	}
 	
 	/**
-	 * Filtre les autres combo box en fonction de l'�tage s�lectionn�
+	 * Filtre les autres combo box en fonction de l'étage sélectionné
 	 */
 	public void filterEtage() {
 		chambres.getItems().clear();
-		chambres.getItems().addAll(AccesDataNewDemande.getListeChambres((int) etages.getValue()));
+		chambres.getItems().addAll(AccesDataNewDemande.getListeChambres(etages.getValue()));
 		equipementsHotel.getItems().clear();
-		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByEtage((int) etages.getValue()));
+		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByEtage(etages.getValue()));
 	}
 	
 	/**
-	 * Filtre la liste des �quipements en fonction de la chambre s�lectionn�e
+	 * Filtre la liste des équipements en fonction de la chambre sélectionnée
 	 */
 	public void filterChambre() {
 		equipementsHotel.getItems().clear();
-		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByChambre((int) chambres.getValue()));
+		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipementByChambre(chambres.getValue()));
 	}
 	
 	/**
-	 * Ferme la fen�tre
+	 * Ferme la fenêtre
 	 */
 	public void closeButtonAction(){
-	    // R�cup�re la sc�ne et la ferme
+	    // Récupère la scène et la ferme
 	    Stage stage = (Stage) closeButton.getScene().getWindow();
 	    stage.close();
 	}
 	
-	public void setOngletHotel() {
-		locationEquipement = 1;
-	}
-	
-	public void setOngletJardin() {
-		locationEquipement = 2;
-	}
-	
-	public void setOngletRestaurant() {
-		locationEquipement = 3;
-	}
-	
-	public void setOngletSpa() {
-		locationEquipement = 4;
-	}
+	// Les fonctions suivantes permmetent de savoir sur quel onglet on se trouve pour ajouter le bon équipement à la demande
+	public void setOngletHotel() { locationEquipement = 1; }
+	public void setOngletJardin() { locationEquipement = 2; }
+	public void setOngletRestaurant() { locationEquipement = 3;	}
+	public void setOngletSpa() { locationEquipement = 4; }
 }

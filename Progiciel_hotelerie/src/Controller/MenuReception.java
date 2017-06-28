@@ -8,7 +8,7 @@ import javafx.scene.Parent;
 public class MenuReception {
 	
 	/**
-	 * Appelle la fonction dans le menu maintenance qui permet d'ouvrir la fenêtre de nouvelle demande
+	 * Appelle la fonction dans le menu maintenance qui permet d'ouvrir la fenÃªtre de nouvelle demande
 	 * @throws IOException
 	 */
 	public void openNewDemande() throws IOException

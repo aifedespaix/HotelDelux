@@ -67,12 +67,13 @@ public class Login {
                     System.out.println("Hebergement");
                     FXMLLoader loaderHebergement = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuHebergement.fxml"));
                     AnchorPane menuHebergement = loaderHebergement.load();
-
                     root.setTop(menuHebergement);
-                    root.setCenter(null);
+                    FXMLLoader loaderListeReservations = new FXMLLoader(getClass().getResource("/src/Views/reservationsList.fxml"));
+                    AnchorPane listeReservations = loaderListeReservations.load();
+                    root.setCenter(listeReservations);
                     break;
                 case 4:
-                    System.out.println("Réception");
+                    System.out.println("RÃ©ception");
                     FXMLLoader loaderReception = new FXMLLoader(getClass().getResource("/src/ViewsMenu/menuReception.fxml"));
                     AnchorPane menuReception = loaderReception.load();
                     root.setTop(menuReception);
@@ -122,14 +123,14 @@ public class Login {
     }
 
     /**
-     * @return String le login de connexion de l'utilisateur connecté
+     * @return String le login de connexion de l'utilisateur connectÃ©
      */
     public static String getUsername() {
         return user.getNom();
     }
     
     /**
-     * @return {@link Utilisateur} l'utilisateur connecté
+     * @return {@link Utilisateur} l'utilisateur connectÃ©
      */
     public static Utilisateur getConnectedUser() {
     	return user;

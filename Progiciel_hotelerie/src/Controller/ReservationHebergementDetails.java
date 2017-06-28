@@ -1,7 +1,6 @@
 package src.Controller;
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXTextArea;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,11 +41,11 @@ public class ReservationHebergementDetails implements Initializable {
 	}
 	
 	public void update(){
-		lblNumReservation.setText("Réservation n°" + this.reservation.getId());
-		lblValide.setText("Validée : " + generalFunctions.isValidate(this.reservation.getValide()));
-		lblNumeroChambre.setText("Chambre n° : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
-		lblDateArrivee.setText("Arrivée le " + generalFunctions.formatDate(this.reservation.getDateDebut()));
-		lblDateDepart.setText("Départ le " + generalFunctions.formatDate(this.reservation.getDateFin()));
+		lblNumReservation.setText("RÃ©servation nÂ°" + this.reservation.getId());
+		lblValide.setText("ValidÃ©e : " + generalFunctions.isValidate(this.reservation.getValide()));
+		lblNumeroChambre.setText("Chambre nÂ° : " + String.valueOf(this.reservation.getChambreByIdChambre().getNumeroChambre()));
+		lblDateArrivee.setText("ArrivÃ©e le " + generalFunctions.formatDate(this.reservation.getDateDebut()));
+		lblDateDepart.setText("DÃ©part le " + generalFunctions.formatDate(this.reservation.getDateFin()));
 		lblClientName.setText(AccesData.getClientById(this.reservation.getIdClient()).getNom() + " " + AccesData.getClientById(this.reservation.getIdClient()).getPrenom());
 		lblNbAdultes.setText("Nombre d'adulte(s) : " + this.reservation.getNbAdultes());
 		lblNbEnfants.setText("Nombre d'enfant(s) : " + this.reservation.getNbEnfants());
@@ -55,9 +54,9 @@ public class ReservationHebergementDetails implements Initializable {
 			case 0 : formuleLabel.setText("Formule : All-Inclusive"); break;
 			case 1 : formuleLabel.setText("Formule : Demi-Pensionnaire"); break;
 			case 2 : formuleLabel.setText("Formule : Externe"); break;
-			default : formuleLabel.setText("Problème avec la formule : " + this.reservation.getFormule());
+			default : formuleLabel.setText("ProblÃ¨me avec la formule : " + this.reservation.getFormule());
 		}
-		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "€");
+		lblPrixChambre.setText("Total : " + generalFunctions.calculPrixChambre(this.reservation.getChambreByIdChambre().getPrix(), this.reservation.getDateDebut(), this.reservation.getDateFin()) + "â‚¬");
 
 	}
 	public void generateFacture(){

@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #EF5350;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuMaintenance">
+<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #EF5350;" stylesheets="@menu.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuMaintenance">
    <children>
       <HBox alignment="CENTER" prefHeight="113.0" prefWidth="962.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,27 +18,30 @@
                <image>
                   <Image url="@../image/icons/Maintenance.png" />
                </image></ImageView>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openListeDemandes" prefHeight="60.0" prefWidth="114.0" style="-fx-background-color: #FFF;" text="Demandes" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openListeDemandes" prefHeight="60.0" prefWidth="114.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Demandes" textAlignment="CENTER">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </JFXButton>
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="118.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Planning" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="118.0" style="-fx-background-color: #FFF;" text="Planning" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openListeRapports" prefHeight="60.0" prefWidth="105.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Rapports" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" onAction="#openListeRapports" prefHeight="60.0" prefWidth="105.0" style="-fx-background-color: #FFF;" text="Rapports" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="89.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Stock" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="89.0" style="-fx-background-color: #FFF;" text="Stock" textAlignment="CENTER">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="135.0" style="-fx-background-color: #FFF;" text="Commandes" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="135.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Commandes" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

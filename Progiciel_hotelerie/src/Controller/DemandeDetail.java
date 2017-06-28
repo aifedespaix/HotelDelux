@@ -1,6 +1,9 @@
 package src.Controller;
 
 import java.io.IOException;
+import java.sql.Date;
+
+import com.jfoenix.controls.JFXButton;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
@@ -9,16 +12,23 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import src.Launcher.Launcher;
 import src.Metier.DemandeIntervention;
+import src.Metier.Rapport;
+import src.Persistance.Maintenance.AccesDataListeDemandes;
+import src.Persistance.Maintenance.AccesDataListeRapports;
+import src.Persistance.Maintenance.AccesDataMaintenance;
+import src.Persistance.Maintenance.AccesDataNewDemande;
 import src.util.generalFunctions;
 
 public class DemandeDetail {
 	
-	DemandeIntervention demande;
+	private DemandeIntervention demande;
+	private Rapport rapport;
 	
 	@FXML private Text demandeLabel;
 	@FXML private Text demandeurLabel;
@@ -27,6 +37,7 @@ public class DemandeDetail {
 	@FXML private Text serviceLabel;
 	@FXML private HBox hBoxEquipement;
 	@FXML private Text descriptionLabel;
+	@FXML JFXButton rapportBtn;
 	
 	public void setDemande(DemandeIntervention demande) {
 		this.demande = demande;
@@ -41,10 +52,10 @@ public class DemandeDetail {
 		String service = generalFunctions.getServiceDemande(demande);
 		serviceLabel.setText(serviceLabel.getText() + service);
 		switch (service) {
-		case "HÙtel" :
+		case "H√¥tel" :
 			Text etage = new Text("Etage " + demande.getEquipementHotelByIdEquipementHotel().getChambreByIdChambre().getEtage());
 			etage.setFont(new Font(15));
-			Text chambre = new Text("Chambre n∞" + demande.getEquipementHotelByIdEquipementHotel().getChambreByIdChambre().getNumeroChambre());
+			Text chambre = new Text("Chambre n¬∞" + demande.getEquipementHotelByIdEquipementHotel().getChambreByIdChambre().getNumeroChambre());
 			chambre.setUnderline(true);
 			chambre.setFont(new Font(15));
 			Text equipementHotel = new Text(demande.getEquipementHotelByIdEquipementHotel().getLibelle());
@@ -60,8 +71,8 @@ public class DemandeDetail {
 			equipementHotel.setOnMouseClicked(new EventHandler<Event>() {
 				@Override
 				public void handle(Event event) {
-					System.out.println("Redirection vers l'Èquipement");
-					//Lien vers l'Èquipement
+					System.out.println("Redirection vers l'√©quipement");
+					//Lien vers l'√©quipement
 				}
 			});
 			hBoxEquipement.getChildren().add(etage);
@@ -83,8 +94,8 @@ public class DemandeDetail {
 			equipementJardin.setOnMouseClicked(new EventHandler<Event>() {
 				@Override
 				public void handle(Event event) {
-					System.out.println("Redirection vers l'Èquipement");
-					//Lien vers l'Èquipement
+					System.out.println("Redirection vers l'√©quipement");
+					//Lien vers l'√©quipement
 				}
 			});
 			hBoxEquipement.getChildren().add(equipementJardin);
@@ -96,8 +107,8 @@ public class DemandeDetail {
 			equipementRestaurant.setOnMouseClicked(new EventHandler<Event>() {
 				@Override
 				public void handle(Event event) {
-					System.out.println("Redirection vers l'Èquipement");
-					//Lien vers l'Èquipement
+					System.out.println("Redirection vers l'√©quipement");
+					//Lien vers l'√©quipement
 				}
 			});
 			hBoxEquipement.getChildren().add(equipementRestaurant);
@@ -109,8 +120,8 @@ public class DemandeDetail {
 			equipementSpa.setOnMouseClicked(new EventHandler<Event>() {
 				@Override
 				public void handle(Event event) {
-					System.out.println("Redirection vers l'Èquipement");
-					//Lien vers l'Èquipement
+					System.out.println("Redirection vers l'√©quipement");
+					//Lien vers l'√©quipement
 				}
 			});
 			hBoxEquipement.getChildren().add(equipementSpa);
@@ -118,10 +129,43 @@ public class DemandeDetail {
 		default : System.err.println("Erreur sur le service");
 		}
 		descriptionLabel.setText(demande.getDescription());
+		
+		// Changement du libell√© du bouton Rapport en fonction si un rapport est associ√© √† la demande
+		if ((this.rapport = demande.getRapport()) != null) {
+			rapportBtn.setText("Voir le rapport");
+		} else {
+			rapportBtn.setText("Cr√©er le rapport");
+			
+		}
 	}
 	
 	/**
-	 * Permet de revenir ‡ la liste
+	 * Bouton cr√©ation du rapport associ√© √† la demande
+	 */
+	public void rapport() {
+		try {
+			if (this.rapport ==null) {
+				// Cr√©ation du rapport
+				this.rapport = new Rapport(new Date(0), new Date(0),"", demande, null);
+				//Persistance dans la base
+				AccesDataMaintenance.ajouterRapport(this.rapport);
+			}
+			// Charge la page du rapport fraichement cr√©√©
+			BorderPane rootPane = Launcher.getRoot();
+	    	FXMLLoader loaderRapportDetail = new FXMLLoader(getClass().getResource("/src/Views/rapportDetail.fxml"));
+   			AnchorPane rapportDetail;
+			rapportDetail = loaderRapportDetail.load();
+			rootPane.setCenter(rapportDetail);
+	        RapportDetail controllerRapportDetail = loaderRapportDetail.<RapportDetail>getController();
+	        controllerRapportDetail.setRapport(this.rapport);
+	        controllerRapportDetail.update();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+	}
+	
+	/**
+	 * Permet de revenir √† la liste
 	 * @throws IOException
 	 */
 	public void cancel() throws IOException{

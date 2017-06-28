@@ -1,7 +1,20 @@
 package src.Controller;
 
-import com.jfoenix.controls.*;
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTreeTableColumn;
+import com.jfoenix.controls.JFXTreeTableView;
+import com.jfoenix.controls.RecursiveTreeItem;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
+
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -18,17 +31,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.Launcher.Launcher;
 import src.Metier.Criticite;
+import src.Metier.DemandeIntervention;
 import src.Metier.Etat;
 import src.Metier.Rapport;
 import src.Persistance.Maintenance.AccesDataListeRapports;
 import src.Persistance.Maintenance.AccesDataMaintenance;
 import src.util.Colors;
 import src.util.generalFunctions;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 
 public class ListeRapports implements Initializable {
 	
@@ -46,7 +55,7 @@ public class ListeRapports implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// Charge la liste des rapports dans le tableau pr�vu � cet effet
+		// Charge la liste des rapports dans le tableau prévu à cet effet
 		List<Rapport> liste = AccesDataListeRapports.getRapports();
 		
 		for (Rapport rapport : liste) {
@@ -99,18 +108,18 @@ public class ListeRapports implements Initializable {
 				public void removeListener(ChangeListener listener) { }
 		});
 		
-		//Cr�� la colonne en la nommant, d�finie sa taille par d�fault puis Ajoute une valeur � la ligne (boucle sur la liste d'observables
+		//Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
 		JFXTreeTableColumn<Rapport, String> objet = new JFXTreeTableColumn<>("Objet");
 		objet.setPrefWidth(150);
 		objet.setMinWidth(100);
-		objet.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getObjet()));
+		objet.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getObjet()));
 		
 		JFXTreeTableColumn<Rapport, String> equipement = new JFXTreeTableColumn<>("Equipement");
 		equipement.setPrefWidth(150);
 		equipement.setMinWidth(100);
-		equipement.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getEquipementDemande(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention())));
+		equipement.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getEquipementDemande(param.getValue().getValue().getDemandeIntervention())));
 		
-		JFXTreeTableColumn<Rapport, String> dateDebut = new JFXTreeTableColumn<>("Date D�but");
+		JFXTreeTableColumn<Rapport, String> dateDebut = new JFXTreeTableColumn<>("Date Début");
 		dateDebut.setPrefWidth(150);
 		dateDebut.setMinWidth(100);
 		dateDebut.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateDebut())));
@@ -123,27 +132,27 @@ public class ListeRapports implements Initializable {
 		JFXTreeTableColumn<Rapport, String> demandeur = new JFXTreeTableColumn<>("Demandeur");
 		demandeur.setPrefWidth(150);
 		demandeur.setMinWidth(100);
-		demandeur.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getDemandeurById().toString()));
+		demandeur.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getDemandeurById().toString()));
 		
 		JFXTreeTableColumn<Rapport, String> service = new JFXTreeTableColumn<>("Service");
 		service.setPrefWidth(150);
 		service.setMinWidth(100);
-		service.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getServiceDemande(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention())));
+		service.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getServiceDemande(param.getValue().getValue().getDemandeIntervention())));
 		
 		JFXTreeTableColumn<Rapport, String> technicien = new JFXTreeTableColumn<>("Technicien");
 		technicien.setPrefWidth(150);
 		technicien.setMinWidth(100);
-		technicien.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTechnicien() != null ? param.getValue().getValue().getTechnicien().toString() : "Non affect�"));
+		technicien.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTechnicien() != null ? param.getValue().getValue().getTechnicien().toString() : "Non affecté"));
 		
 		JFXTreeTableColumn<Rapport, String> etat = new JFXTreeTableColumn<>("Etat");
 		etat.setPrefWidth(150);
 		etat.setMinWidth(100);
-		etat.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getEtat().getLibelle()));
+		etat.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getEtat().getLibelle()));
 		
-		JFXTreeTableColumn<Rapport, String> criticite = new JFXTreeTableColumn<>("Critict�");
+		JFXTreeTableColumn<Rapport, String> criticite = new JFXTreeTableColumn<>("Criticté");
 		criticite.setPrefWidth(150);
 		criticite.setMinWidth(100);
-		criticite.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getCriticiteByIdCriticite().getLibelle()));
+		criticite.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeIntervention().getCriticiteByIdCriticite().getLibelle()));
 		
 		tableRapports.setRoot(root);
 		tableRapports.setShowRoot(false);
@@ -151,15 +160,15 @@ public class ListeRapports implements Initializable {
 		tableRapports.getColumns().setAll(voir, objet, equipement, dateDebut, dateFin, demandeur, service, technicien, etat, criticite);
 		
 		// Charge les diff�rents services
-		champsService.getItems().add("H�tel");
+		champsService.getItems().add("Hôtel");
 		champsService.getItems().add("Jardin");
 		champsService.getItems().add("Restaurant");
 		champsService.getItems().add("Spa");
 		
-		// Charge les �tats pour le filtre
+		// Charge les états pour le filtre
 		champsEtat.getItems().addAll(AccesDataMaintenance.getListeEtat());
 		
-		// Charge les criticit�s pour le filtre
+		// Charge les criticités pour le filtre
 		champsCriticite.getItems().addAll(AccesDataMaintenance.getListeCriticite());
 	}
 	
@@ -169,13 +178,13 @@ public class ListeRapports implements Initializable {
 	public void search(){
 		// Nettoie le tableau
 		listeRapports.clear();
-		// Recr�e une nouvelle liste pour stocker les demandes
+		// Recrée une nouvelle liste pour stocker les demandes
 		/*
 		String date = champsDate.getValue() != null ? champsDate.getValue().toString() : "";
 		String etat = champsEtat.getValue() != null ? String.valueOf(champsEtat.getValue().getId()) : "";
 		String criticite = champsCriticite.getValue() != null ? String.valueOf(champsCriticite.getValue().getId()) : "";
 		
-		// R�cup�ration du service et appel de la fonction en cons�quence
+		// Récupération du service et appel de la fonction en conséquence
 		String service = champsService.getValue();
 		
 		List<DemandeIntervention> liste = AccesDataListeDemandes.getRequeteFiltre(champsObjet.getText(), champsDemandeur.getText(),

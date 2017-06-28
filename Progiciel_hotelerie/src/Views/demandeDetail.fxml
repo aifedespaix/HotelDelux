@@ -112,7 +112,7 @@
                         <Font size="15.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="700.0" layoutY="33.0" text="Rapport">
+                  <JFXButton fx:id="rapportBtn" layoutX="700.0" layoutY="33.0" onAction="#rapport" text="Rapport">
                      <font>
                         <Font size="15.0" />
                      </font>

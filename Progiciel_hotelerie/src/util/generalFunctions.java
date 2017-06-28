@@ -31,9 +31,9 @@ public class generalFunctions {
 	public static String isValidate(Boolean valide){
 		String isValide = "";
 		if( valide == true){
-			isValide = "Validée";
+			isValide = "ValidÃ©e";
 		} else {
-			isValide = "Non validée";
+			isValide = "Non validÃ©e";
 		}
 		return isValide;
 	}
@@ -49,8 +49,8 @@ public class generalFunctions {
 	
 	/**
 	 * Formate la date en jj/mm/aaaa
-	 * @param date la date à formater
-	 * @return la date formatée
+	 * @param date la date Ã  formater
+	 * @return la date formatÃ©e
 	 */
 	public static String formatDate(Date date) {
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
@@ -58,9 +58,9 @@ public class generalFunctions {
 	}
 	
 	/**
-	 * Retrouve la location de l'équipement sur lequel a été fait la demande
+	 * Retrouve la location de l'Ã©quipement sur lequel a Ã©tÃ© fait la demande
 	 * @param demande
-	 * @return le service dans lequel se trouve l'équipement
+	 * @return le service dans lequel se trouve l'Ã©quipement
 	 */
 	public static String getServiceDemande(DemandeIntervention demande) {
 		if (demande.getEquipementHotelByIdEquipementHotel() == null) {
@@ -73,7 +73,7 @@ public class generalFunctions {
 			if (demande.getEquipementHotelByIdEquipementHotel().getEstEquipementJardin()) {
 				return "Jardin";
 			} else {
-				return "Hôtel";
+				return "HÃ´tel";
 			}
 		}
 	}
