@@ -1,3 +1,4 @@
+use hotel;
 -- phpMyAdmin SQL Dump
 -- version 4.6.4
 -- https://www.phpmyadmin.net/
@@ -22,30 +23,26 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
--- Structure de la table `agence`
---
-
+DROP TABLE IF EXISTS `agence`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `agence` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(250) NOT NULL,
   `telephone` int(10) NOT NULL,
-  `email` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `email` varchar(250) NOT NULL,
+  `image` varchar(60) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Contenu de la table `agence`
+-- Dumping data for table `agence`
 --
 
-INSERT INTO `agence` (`id`, `nom`, `telephone`, `email`) VALUES
-(1, 'AZUR_DIFFUSION', 675621538, 'azur_diffusion@gmail.com'),
-(2, 'CAPITAL EVASION', 698585463, 'capital_evasion@gmail.com'),
-(3, 'SUD EVASION', 612365485, 'sud_evasion@gmail.com'),
-(4, 'EURO MER AVIGNON', 645695874, 'euro_mer@gmail.com'),
-(5, 'SOLOWAYS', 605238759, 'soloways@gmail.com'),
-(6, 'SELECTOUR MASSILIA VOYAGES', 698811311, 'selectour@gmail.com'),
-(7, 'Move Around Provence', 629424352, 'move@gmail.com'),
-(8, 'CLUB MED', 621252635, 'club_med@gmail.com');
+/*!40000 ALTER TABLE `agence` DISABLE KEYS */;
+INSERT INTO `agence` VALUES (1,'AZUR_DIFFUSION',675621538,'azur_diffusion@gmail.com',NULL),(2,'CAPITAL EVASION',698585463,'capital_evasion@gmail.com',NULL),(3,'SUD EVASION',612365485,'sud_evasion@gmail.com',NULL),(4,'EURO MER AVIGNON',645695874,'euro_mer@gmail.com',NULL),(5,'SOLOWAYS',605238759,'soloways@gmail.com',NULL),(6,'SELECTOUR MASSILIA VOYAGES',698811311,'selectour@gmail.com',NULL),(7,'Move Around Provence',629424352,'move@gmail.com',NULL),(8,'CLUB MED',621252635,'club_med@gmail.com',NULL);
+/*!40000 ALTER TABLE `agence` ENABLE KEYS */;
 
 -- --------------------------------------------------------
 
@@ -917,11 +914,11 @@ INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `password`, `id_role`
 -- Index pour les tables exportées
 --
 
---
--- Index pour la table `agence`
---
-ALTER TABLE `agence`
-  ADD PRIMARY KEY (`id`);
+# --
+# -- Index pour la table `agence`
+# --
+# ALTER TABLE `agence`
+#   ADD PRIMARY KEY (`id`);
 
 --
 -- Index pour la table `aliment`
@@ -1186,9 +1183,9 @@ ALTER TABLE `utilisateur`
 
 --
 -- AUTO_INCREMENT pour la table `agence`
---
-ALTER TABLE `agence`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+# --
+# ALTER TABLE `agence`
+#   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT pour la table `aliment`
 --

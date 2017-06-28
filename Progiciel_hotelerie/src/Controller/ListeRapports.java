@@ -1,20 +1,7 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -31,13 +18,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.Launcher.Launcher;
 import src.Metier.Criticite;
-import src.Metier.DemandeIntervention;
 import src.Metier.Etat;
 import src.Metier.Rapport;
 import src.Persistance.Maintenance.AccesDataListeRapports;
 import src.Persistance.Maintenance.AccesDataMaintenance;
 import src.util.Colors;
 import src.util.generalFunctions;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ListeRapports implements Initializable {
 	
@@ -46,7 +37,7 @@ public class ListeRapports implements Initializable {
 	@FXML private JFXTextField champsDemandeur;
 	@FXML private JFXTextField champsTechnicien;
 	@FXML private JFXDatePicker champsDateDebut;
-	@FXML private JFXDatePicker champsDateArrivée;
+	@FXML private JFXDatePicker champsDateArrivee;
 	@FXML private JFXComboBox<String> champsService;
 	@FXML private JFXComboBox<Etat> champsEtat;
 	@FXML private JFXComboBox<Criticite> champsCriticite;
@@ -55,7 +46,7 @@ public class ListeRapports implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// Charge la liste des rapports dans le tableau prévu à cet effet
+		// Charge la liste des rapports dans le tableau prï¿½vu ï¿½ cet effet
 		List<Rapport> liste = AccesDataListeRapports.getRapports();
 		
 		for (Rapport rapport : liste) {
@@ -108,7 +99,7 @@ public class ListeRapports implements Initializable {
 				public void removeListener(ChangeListener listener) { }
 		});
 		
-		//Créé la colonne en la nommant, définie sa taille par défault puis Ajoute une valeur à la ligne (boucle sur la liste d'observables
+		//Crï¿½ï¿½ la colonne en la nommant, dï¿½finie sa taille par dï¿½fault puis Ajoute une valeur ï¿½ la ligne (boucle sur la liste d'observables
 		JFXTreeTableColumn<Rapport, String> objet = new JFXTreeTableColumn<>("Objet");
 		objet.setPrefWidth(150);
 		objet.setMinWidth(100);
@@ -119,7 +110,7 @@ public class ListeRapports implements Initializable {
 		equipement.setMinWidth(100);
 		equipement.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getEquipementDemande(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention())));
 		
-		JFXTreeTableColumn<Rapport, String> dateDebut = new JFXTreeTableColumn<>("Date Début");
+		JFXTreeTableColumn<Rapport, String> dateDebut = new JFXTreeTableColumn<>("Date Dï¿½but");
 		dateDebut.setPrefWidth(150);
 		dateDebut.setMinWidth(100);
 		dateDebut.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateDebut())));
@@ -142,14 +133,14 @@ public class ListeRapports implements Initializable {
 		JFXTreeTableColumn<Rapport, String> technicien = new JFXTreeTableColumn<>("Technicien");
 		technicien.setPrefWidth(150);
 		technicien.setMinWidth(100);
-		technicien.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTechnicien() != null ? param.getValue().getValue().getTechnicien().toString() : "Non affecté"));
+		technicien.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getTechnicien() != null ? param.getValue().getValue().getTechnicien().toString() : "Non affectï¿½"));
 		
 		JFXTreeTableColumn<Rapport, String> etat = new JFXTreeTableColumn<>("Etat");
 		etat.setPrefWidth(150);
 		etat.setMinWidth(100);
 		etat.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getEtat().getLibelle()));
 		
-		JFXTreeTableColumn<Rapport, String> criticite = new JFXTreeTableColumn<>("Criticté");
+		JFXTreeTableColumn<Rapport, String> criticite = new JFXTreeTableColumn<>("Critictï¿½");
 		criticite.setPrefWidth(150);
 		criticite.setMinWidth(100);
 		criticite.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().getValue().getDemandeInterventionByIdDemandeIntervention().getCriticiteByIdCriticite().getLibelle()));
@@ -159,32 +150,32 @@ public class ListeRapports implements Initializable {
 		
 		tableRapports.getColumns().setAll(voir, objet, equipement, dateDebut, dateFin, demandeur, service, technicien, etat, criticite);
 		
-		// Charge les différents services
-		champsService.getItems().add("Hôtel");
+		// Charge les diffï¿½rents services
+		champsService.getItems().add("Hï¿½tel");
 		champsService.getItems().add("Jardin");
 		champsService.getItems().add("Restaurant");
 		champsService.getItems().add("Spa");
 		
-		// Charge les états pour le filtre
+		// Charge les ï¿½tats pour le filtre
 		champsEtat.getItems().addAll(AccesDataMaintenance.getListeEtat());
 		
-		// Charge les criticités pour le filtre
+		// Charge les criticitï¿½s pour le filtre
 		champsCriticite.getItems().addAll(AccesDataMaintenance.getListeCriticite());
 	}
 	
 	/**
-	 * Fonction appelé lors de l'appui sur le bouton de recherche. Permet de filtrer les résultats de la liste
+	 * Fonction appelï¿½ lors de l'appui sur le bouton de recherche. Permet de filtrer les rï¿½sultats de la liste
 	 */
 	public void search(){
 		// Nettoie le tableau
 		listeRapports.clear();
-		// Recrée une nouvelle liste pour stocker les demandes
+		// Recrï¿½e une nouvelle liste pour stocker les demandes
 		/*
 		String date = champsDate.getValue() != null ? champsDate.getValue().toString() : "";
 		String etat = champsEtat.getValue() != null ? String.valueOf(champsEtat.getValue().getId()) : "";
 		String criticite = champsCriticite.getValue() != null ? String.valueOf(champsCriticite.getValue().getId()) : "";
 		
-		// Récupération du service et appel de la fonction en conséquence
+		// Rï¿½cupï¿½ration du service et appel de la fonction en consï¿½quence
 		String service = champsService.getValue();
 		
 		List<DemandeIntervention> liste = AccesDataListeDemandes.getRequeteFiltre(champsObjet.getText(), champsDemandeur.getText(),

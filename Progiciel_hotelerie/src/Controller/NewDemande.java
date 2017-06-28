@@ -1,16 +1,6 @@
 package src.Controller;
 
-import java.net.URL;
-import java.sql.Date;
-import java.time.LocalDateTime;
-import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTabPane;
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-
+import com.jfoenix.controls.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
@@ -22,6 +12,10 @@ import src.Metier.EquipementRestaurant;
 import src.Metier.EquipementSpa;
 import src.Metier.Etat;
 import src.Persistance.Maintenance.AccesDataNewDemande;
+
+import java.net.URL;
+import java.sql.Date;
+import java.util.ResourceBundle;
 
 public class NewDemande implements Initializable {
 	
@@ -46,39 +40,39 @@ public class NewDemande implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		locationEquipement = 1; // => Hôtel
+		locationEquipement = 1; // => Hï¿½tel
 		
-		// Charge la liste des étages dans le combo box correspondant
+		// Charge la liste des ï¿½tages dans le combo box correspondant
 		etages.getItems().addAll(AccesDataNewDemande.getListeEtages());
 		
-		// Charge la liste de toutes les chambres par défaut
-		// Une fois un étage sélectionné, la liste des cjhambres sera rechargé et de même pour les équipements
+		// Charge la liste de toutes les chambres par dï¿½faut
+		// Une fois un ï¿½tage sï¿½lectionnï¿½, la liste des cjhambres sera rechargï¿½ et de mï¿½me pour les ï¿½quipements
 		chambres.getItems().addAll(AccesDataNewDemande.getListeChambres());
 		
-		// Charge la liste des équipements
+		// Charge la liste des ï¿½quipements
 		equipementsHotel.getItems().addAll(AccesDataNewDemande.getListeEquipement());
 		equipementsJardin.getItems().addAll(AccesDataNewDemande.getListeEquipementJardin());
 		equipementsRestaurant.getItems().addAll(AccesDataNewDemande.getListeEquipementRestaurant());
 		equipementsSpa.getItems().addAll(AccesDataNewDemande.getListeEquipementSpa());
 		
-		// Charge la liste des criticité
+		// Charge la liste des criticitï¿½
 		criticite.getItems().addAll(AccesDataNewDemande.getListeCriticite());
 	}
 	
 	/**
-	 * Met à jour le label du temps de prise en charge en fonction de la criticité sélectionnée
+	 * Met ï¿½ jour le label du temps de prise en charge en fonction de la criticitï¿½ sï¿½lectionnï¿½e
 	 */
 	public void tempsPriseEnCharge() {
 		priseEnCharge.setText("Temps de prise en charge : " + criticite.getValue().getTempsMaximum().toString());
 	}
 	
 	/**
-	 * Permet de créer une demande à partir des éléments renseignés dans la fenêtre
+	 * Permet de crï¿½er une demande ï¿½ partir des ï¿½lï¿½ments renseignï¿½s dans la fenï¿½tre
 	 */
 	public void createDemande() {
 		System.out.println("Objet : " + objetField.getText());
 		System.out.println("Description : " + descriptionField.getText());
-		System.out.println("Criticité : " + criticite.getValue());
+		System.out.println("Criticitï¿½ : " + criticite.getValue());
 		
 		EquipementHotel equipementHotel = null;
 		EquipementRestaurant equipementRestaurant = null;
@@ -86,7 +80,7 @@ public class NewDemande implements Initializable {
 		
 		switch (locationEquipement) {
 			case ID_ONGLET_HOTEL :
-				System.out.println("Equipement Hôtel : " + equipementsHotel.getValue());
+				System.out.println("Equipement Hï¿½tel : " + equipementsHotel.getValue());
 				equipementHotel = equipementsHotel.getValue();
 				break;
 			case ID_ONGLET_JARDIN :
@@ -103,21 +97,21 @@ public class NewDemande implements Initializable {
 				break;
 		}
 		
-		// Création de la demande
+		// Crï¿½ation de la demande
 		DemandeIntervention newDemande = new DemandeIntervention(
-				new Date(0), //date de création
+				new Date(0), //date de crï¿½ation
 				objetField.getText(),
 				descriptionField.getText(),
-				false, // la demande n'est pas validé par défaut
+				false, // la demande n'est pas validï¿½ par dï¿½faut
 				criticite.getValue(),
 				(EquipementSpa) equipementSpa, //spa
 				(EquipementHotel) equipementHotel, // hotel ou jardin
 				(EquipementRestaurant) equipementRestaurant, //restaurant
-				null, //pièce de rechange
+				null, //piï¿½ce de rechange
 				null, //demande utilisateur
 				null, //rapport
 				Login.getConnectedUser(), // Demandeur
-				new Etat(1) // Etat en prise de connaissance par défaut
+				new Etat(1) // Etat en prise de connaissance par dï¿½faut
 				);
 		//Persistance dans la base
 		AccesDataNewDemande.ajouterDemande(newDemande);
@@ -127,7 +121,7 @@ public class NewDemande implements Initializable {
 	}
 	
 	/**
-	 * Filtre les autres combo box en fonction de l'étage sélectionné
+	 * Filtre les autres combo box en fonction de l'ï¿½tage sï¿½lectionnï¿½
 	 */
 	public void filterEtage() {
 		chambres.getItems().clear();
@@ -137,7 +131,7 @@ public class NewDemande implements Initializable {
 	}
 	
 	/**
-	 * Filtre la liste des équipements en fonction de la chambre sélectionnée
+	 * Filtre la liste des ï¿½quipements en fonction de la chambre sï¿½lectionnï¿½e
 	 */
 	public void filterChambre() {
 		equipementsHotel.getItems().clear();
@@ -145,10 +139,10 @@ public class NewDemande implements Initializable {
 	}
 	
 	/**
-	 * Ferme la fenêtre
+	 * Ferme la fenï¿½tre
 	 */
 	public void closeButtonAction(){
-	    // Récupère la scène et la ferme
+	    // Rï¿½cupï¿½re la scï¿½ne et la ferme
 	    Stage stage = (Stage) closeButton.getScene().getWindow();
 	    stage.close();
 	}
