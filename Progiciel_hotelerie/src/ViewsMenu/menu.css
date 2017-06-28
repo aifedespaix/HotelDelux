@@ -17,3 +17,9 @@
     -fx-cursor: hand;
     /*-fx-background-color: #fff;*/
 }
+
+.btn_primary {
+    -fx-background-color: #337ab7;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+}

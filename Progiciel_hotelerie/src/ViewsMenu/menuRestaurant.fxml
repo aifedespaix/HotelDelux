@@ -7,11 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #4CAF50;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuRestaurant">
+<AnchorPane prefHeight="113.0" prefWidth="1149.0" style="-fx-background-color: #4CAF50;" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.MenuRestaurant">
    <children>
       <HBox alignment="CENTER" prefHeight="113.0" prefWidth="962.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -19,7 +17,7 @@
                <image>
                   <Image url="@../image/icons/Restaurant.png" />
                </image></ImageView>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="92.0" style="-fx-background-color: #FFF;" text="Tables" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="92.0" style="-fx-background-color: #FFF;" text="Tables" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -29,17 +27,17 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="131.0" style="-fx-background-color: #FFF;" text="Réservations" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="131.0" style="-fx-background-color: #FFF;" text="Réservations" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="86.0" style="-fx-background-color: #FFF;" text="Stock" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="86.0" style="-fx-background-color: #FFF;" text="Stock" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="73.0" style="-fx-background-color: #FFF;" text="TVA" textAlignment="CENTER">
+            <JFXButton alignment="CENTER" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="73.0" style="-fx-background-color: #FFF;" text="TVA" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>
@@ -59,7 +57,7 @@
                   <Insets left="100.0" />
                </HBox.margin>
             </JFXButton>
-            <fx:include source="menuRight.fxml"></fx:include>
+            <fx:include source="menuRight.fxml" />
             <StackPane alignment="CENTER_RIGHT" prefHeight="113.0" prefWidth="136.0">
                <children>
                   <ImageView fitHeight="101.0" fitWidth="110.0" pickOnBounds="true" preserveRatio="true" />

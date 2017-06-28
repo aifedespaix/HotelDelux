@@ -5,6 +5,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="444.0" prefWidth="879.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.ListeRapports">
+<AnchorPane prefHeight="444.0" prefWidth="879.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.ListeRapports">
    <children>
       <GridPane alignment="CENTER" prefHeight="444.0" prefWidth="775.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -58,7 +59,7 @@
                         <Insets />
                      </GridPane.margin>
                   </JFXDatePicker>
-                  <JFXButton fx:id="searchButton" defaultButton="true" onAction="#search" prefHeight="40.0" prefWidth="91.0" text="Rechercher" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="searchButton" defaultButton="true" onAction="#search" prefHeight="40.0" prefWidth="91.0" styleClass="btn_primary" text="Rechercher" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.rowSpan="2" GridPane.valignment="CENTER" />
                   <JFXComboBox fx:id="champsService" prefHeight="25.0" prefWidth="228.0" promptText="Service" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <JFXComboBox fx:id="champsEtat" prefHeight="25.0" prefWidth="222.0" promptText="Etat" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                   <JFXComboBox fx:id="champsCriticite" prefHeight="25.0" prefWidth="222.0" promptText="Criticité" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
@@ -91,4 +92,7 @@
          </padding>
       </GridPane>
    </children>
+   <stylesheets>
+      <URL value="@css/design.css" />
+   </stylesheets>
 </AnchorPane>

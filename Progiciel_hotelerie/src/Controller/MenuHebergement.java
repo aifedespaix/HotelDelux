@@ -53,6 +53,7 @@ public class MenuHebergement implements Initializable {
 	public void accessToAgences(){
 		FXMLLoader loaderAgences = new FXMLLoader(getClass().getResource("/src/Views/agencesList.fxml"));
 		AnchorPane menuAgence;
+		System.out.println("aaazazazazaz");
 		try {
 			menuAgence = loaderAgences.load();
 			root.setCenter(menuAgence);

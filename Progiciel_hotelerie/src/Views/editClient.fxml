@@ -4,6 +4,7 @@
 <?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -14,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="543.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditClient">
+<AnchorPane prefHeight="543.0" prefWidth="995.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditClient">
    <children>
       <GridPane alignment="CENTER" vgap="20.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
@@ -48,20 +49,19 @@
                   <RowConstraints maxHeight="208.0" minHeight="-Infinity" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" GridPane.halignment="RIGHT" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
-                  <JFXTextField fx:id="txtNom" GridPane.columnIndex="1" />
-                  <JFXTextField fx:id="txtPrenom" GridPane.columnIndex="3" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Téléphone" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Adresse" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ville" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-                  <JFXTextField fx:id="txtPhone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <JFXTextField fx:id="txtAdress" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
-                  <JFXTextField fx:id="txtCity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de naissance" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Code postal" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
-                  <JFXTextField fx:id="txtCp" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                  <JFXDatePicker fx:id="dateBirth" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="RIGHT" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" />
+                  <JFXTextField fx:id="txtNom" labelFloat="true" promptText="Nom" GridPane.columnIndex="1" />
+                  <JFXTextField fx:id="txtPrenom" labelFloat="true" promptText="Prénom" GridPane.columnIndex="3" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="txtPhone" labelFloat="true" promptText="Téléphone" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXTextField fx:id="txtAdress" labelFloat="true" promptText="Adresse" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="2" />
+                  <JFXTextField fx:id="txtCity" labelFloat="true" promptText="Ville" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <JFXTextField fx:id="txtCp" labelFloat="true" promptText="Code Postal" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <JFXDatePicker fx:id="dateBirth" overLay="true" promptText="Date de naissance" GridPane.columnIndex="3" GridPane.rowIndex="1" />
                </children>
                <GridPane.margin>
                   <Insets left="30.0" right="30.0" />
@@ -87,11 +87,11 @@
                   </VBox>
                   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" GridPane.columnIndex="1">
                      <children>
-                        <JFXButton fx:id="btnSave" defaultButton="true" onAction="#saveClientEdit" text="Enregistrer">
+                        <JFXButton fx:id="btnSave" defaultButton="true" onAction="#saveClientEdit" styleClass="btn_primary" text="Enregistrer">
                            <font>
                               <Font size="18.0" />
                            </font></JFXButton>
-                        <JFXButton fx:id="btnCancel" cancelButton="true" onAction="#cancel" text="Annuler">
+                        <JFXButton fx:id="btnCancel" cancelButton="true" onAction="#cancel" styleClass="btn_danger" text="Annuler">
                            <font>
                               <Font size="18.0" />
                            </font></JFXButton>
@@ -105,4 +105,7 @@
          </children>
       </GridPane>
    </children>
+    <stylesheets>
+        <URL value="@css/design.css" />
+    </stylesheets>
 </AnchorPane>

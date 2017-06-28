@@ -1,0 +1,16 @@
+.btn_primary {
+    -fx-background-color: #337ab7;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+}
+.btn_danger {
+    -fx-background-color: #C00003;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+}
+
+.btn_medium {
+    -fx-background-color: #FF5400;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+}

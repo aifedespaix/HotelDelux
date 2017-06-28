@@ -1,17 +1,15 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import src.Launcher.Launcher;
+
+import java.io.IOException;
 
 public class MenuMaintenance {
 	
@@ -48,6 +46,7 @@ public class MenuMaintenance {
     {
         Stage stage = new Stage();
         stage.setTitle("Nouvelle demande de maintenance");
+        stage.getIcons().add(new Image("/src/image/Hotel/favicon.png"));
         stage.setScene(new Scene(root,800, 700));
         stage.show();
         

@@ -3,6 +3,7 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="hebergementClientPane" prefHeight="444.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.HebergementClients">
+<AnchorPane id="hebergementClientPane" prefHeight="444.0" prefWidth="766.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.HebergementClients">
    <children>
       <GridPane alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="444.0" prefWidth="775.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <columnConstraints>
@@ -50,7 +51,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                      </GridPane.margin>
                   </JFXTextField>
-                  <JFXButton fx:id="searchButton" defaultButton="true" onAction="#search" prefHeight="40.0" prefWidth="91.0" text="Rechercher" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                  <JFXButton fx:id="searchButton" defaultButton="true" onAction="#search" prefHeight="40.0" prefWidth="91.0" styleClass="btn_primary" text="Rechercher" GridPane.columnIndex="4" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
                   <JFXTextField fx:id="txtAdresse" labelFloat="true" promptText="Adresse" GridPane.columnIndex="2" />
                   <JFXTextField fx:id="txtPhone" labelFloat="true" promptText="Téléphone" GridPane.columnIndex="3" />
                </children>
@@ -72,7 +73,7 @@
                         <Insets left="50.0" />
                      </GridPane.margin>
                   </Text>
-                  <JFXButton fx:id="btnCreate" onAction="#createClient" prefHeight="41.0" prefWidth="78.0" text="Créer" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXButton fx:id="btnCreate" onAction="#createClient" prefHeight="41.0" prefWidth="78.0" styleClass="btn_primary" text="Créer" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets right="50.0" />
                      </GridPane.margin>
@@ -88,4 +89,7 @@
          </padding>
       </GridPane>
    </children>
+   <stylesheets>
+      <URL value="@css/design.css" />
+   </stylesheets>
 </AnchorPane>
