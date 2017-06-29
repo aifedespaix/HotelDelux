@@ -198,21 +198,24 @@ CREATE TABLE `client` (
 --
 
 INSERT INTO `client` (`id`, `nom`, `prenom`, `adresse_rue`, `adresse_ville`, `code_postal`, `telephone`, `date_naissance`, `allergies`) VALUES
-(1, 'Perkins', 'Thomas', 'Lodewijk De Raetlaan 303', 'Clermont', '56505650', '0471786439', '2017-06-22', 'gluten'),
-(2, 'Audet edit', 'Shelley edit', 'Blancefloerlaan 217 edit', 'Borsbeek edit', '2150 edit', '0481452833 edit', '2017-06-08', 'fruit de mer edit'),
-(3, 'Bassett', 'Margaret', 'Ctra. Hornos, 54', 'Hormilla', '26223', '762309866', '2017-06-22', ''),
-(4, 'Edwards', 'Kevin', 'Ctra. de Fuentenueva, 40', 'Fresnedillas de la Oliva', '28214', '727467873', '2017-06-22', ''),
-(5, 'Stone', 'Kelly', '84, Rue de Verdun', 'MONTFERMEIL', '93370', '0114864961', '2017-06-22', ''),
-(6, 'Peters', 'Swen', '26, Place de la Madeleine', 'PARIS', '75009 ', '0225784936', '2017-06-22', ''),
-(7, 'Schiffer', 'Uta', '1440 Peck Court', 'El Toro', 'CA 92630', '9495804455', '2017-06-22', 'féculent'),
-(8, 'Balducci', 'Hanna', '2757 Timber Oak Drive', 'Montecito,', 'CA 93108', '8059696474', '2017-06-22', ''),
-(11, 'nom', 'prenom', 'adresse', 'ville', '69230', '06', '2017-06-04', 'allergique au gluthene'),
-(12, 'Test', 'regfg', 'zregfb', 'reg', 'zregf', 'ergfb', '2017-06-14', 'egrtfbrgef'),
-(13, 'test', 'fgcjhgv', 'bhhvjghg ,', 'gj;hj ,', ' ,  hj', 'jvhvgkj', '2017-06-14', 'tryhtnhbgfvfr\n'),
-(14, 'ufyuvg', 'cygjkch ', 'h , hg ', 'h,g', ' g ', 'vj h,,v', '2017-06-12', 'iuvchghb'),
-(15, 'yfg', 'ckgjh', 'v', 'gv', 'vhkh', ';vgvj', '2017-06-14', 'dfghg'),
-(16, 'Super', 'Cool', '10 rue Jean Moulin', 'St-Priest', '69800', '0605041666', '2017-06-13', 'Bien bien bien');
-
+(1, 'Perkins', 'Thomas', 'Lodewijk De Raetlaan 303', 'Clermont', '56505650', '0471786439', '1950-06-22', 'gluten'),
+(2, 'Audet edit', 'Shelley edit', 'Blancefloerlaan 217 edit', 'Borsbeek edit', '2150 edit', '0481452833 edit', '1965-06-08', 'fruit de mer'),
+(3, 'Bassett', 'Margaret', 'Ctra. Hornos, 54', 'Hormilla', '26223', '762309866', '1964-06-22', ''),
+(4, 'Edwards', 'Kevin', 'Ctra. de Fuentenueva, 40', 'Fresnedillas de la Oliva', '28214', '0133224879', '1960-06-22', ''),
+(5, 'Stone', 'Kelly', '84, Rue de Verdun', 'MONTFERMEIL', '93370', '0114864961', '1970-06-22', ''),
+(6, 'Peters', 'Swen', '26, Place de la Madeleine', 'PARIS', '75009 ', '0225784936', '1968-06-22', ''),
+(7, 'Schiffer', 'Uta', '1440 Peck Court', 'El Toro', 'CA 92630', '9495804455', '1960-06-22', 'féculent'),
+(8, 'Balducci', 'Hanna', '2757 Timber Oak Drive', 'Montecito,', 'CA 93108', '8059696474', '1966-06-22', ''),
+(11, 'Turman', 'Uma', '8 rue des Paillettes', 'Saint Peterzbourg', '69230', '06', '1978-06-04', 'gluthene'),
+(12, 'Jean', 'Jouguy', '7 rue des steacks', 'Bouchela', '48777', '0211445587', '1999-06-14', 'Beure'),
+(13, 'Jackson', 'Michel', '7 rue des blancs ,', 'Paris', ' ,  75001', '0145849658', '1945-06-14', 'Coca-Cola'),
+(14, 'Super', 'Didier ', '5 rue de la Veille', 'Saint Lazarre', '69888', '0677841256', '1960-06-12', ''),
+(15, 'Jonnas', 'Malcolm', '10 Avenue de la vache folle', 'Marly Gomont', '13002', '0155879501', '1960-06-14', ''),
+(16, 'Briant', 'Danny', '10 rue Jean Moulin', 'St-Priest', '69800', '0605041666', '1960-06-13', 'Sel'),
+(17, 'Lavoine', 'Marc', '25 rue Jean Moulin', 'St-Priest', '69800', '0658749854', '1980-12-15', ''),
+(18, 'Brant', 'Mike', '4 rue du Virage', 'Nulpart-Sur-Aileur', '88752', '0648758395', '1986-04-03', ''),
+(19, 'Moucha', 'Raser', '8 rue des coupures', 'Gilet', '76001', '0435675824', '1978-01-05', ''),
+(20, 'Joachim', 'Boulastier', '8 rue des pleutres', 'Saint Moutarde', '33680', '0122548798', '1982-04-05', '');
 -- --------------------------------------------------------
 
 --
@@ -357,14 +360,14 @@ CREATE TABLE `demande_intervention` (
 --
 
 INSERT INTO `demande_intervention` (`id`, `date_creation`, `objet`, `description`, `valide`, `id_criticite`, `id_equipement_spa`, `id_equipement_hotel`, `id_equipement_restaurant`, `id_piece_rechange`, `id_demandeur`, `id_etat`) VALUES
-(1, '2017-07-12', 'réparation de la lampe', 'description', 0, 2, NULL, 1, NULL, 1, 2, 1),
-(2, '2017-07-11', 'réparation de la table', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a libero neque. Suspendisse quis egestas arcu. Suspendisse porta mi vitae felis elementum, non venenatis dui euismod. Suspendisse erat magna, feugiat eget porttitor molestie, porttitor sed.', 1, 3, NULL, 2, NULL, 2, 1, 1),
-(3, '2017-07-10', 'réparation de la douche', 'description', 0, 1, 3, NULL, NULL, 3, 1, 2),
-(4, '2017-07-09', 'changement du frigo', 'description', 1, 4, 4, NULL, NULL, 4, 8, 1),
-(5, '2017-07-08', 'réparation de la cafetière', 'description', 0, 6, NULL, NULL, 5, 5, 1, 3),
-(6, '2017-07-07', 'réparation de la baignoire', 'description', 1, 2, NULL, NULL, 6, 6, 1, 3),
-(7, '2017-07-06', 'réparation de la fenêtre', 'description', 0, 3, NULL, 5, NULL, 7, 9, 4),
-(8, '2017-07-05', 'réparation de la vitre', 'description', 1, 5, NULL, 4, NULL, 8, 1, 2);
+(1, '2017-07-12', 'réparation de la lampe', 'L\'ampoule est cassée', 0, 2, NULL, 1, NULL, 1, 2, 1),
+(2, '2017-07-11', 'réparation de la table', 'Le pied ets bancal.', 1, 3, NULL, 2, NULL, 2, 1, 1),
+(3, '2017-07-10', 'réparation de la douche', 'L\'eau ne coule plus', 0, 1, 3, NULL, NULL, 3, 1, 2),
+(4, '2017-07-09', 'changement du frigo', 'Il ne fonctionne plus, le moteur est cassé', 1, 4, 4, NULL, NULL, 4, 8, 1),
+(5, '2017-07-08', 'réparation de la cafetière', 'Il y a de la moisisure à l\'intérieur du filtre', 0, 6, NULL, NULL, 5, 5, 1, 3),
+(6, '2017-07-07', 'réparation de la baignoire', 'La baignoire se vide toute seule', 1, 2, NULL, NULL, 6, 6, 1, 3),
+(7, '2017-07-06', 'réparation de la fenêtre', 'La poignée est branlante', 0, 3, NULL, 5, NULL, 7, 9, 4),
+(8, '2017-07-05', 'réparation de la vitre', 'Il y a un impact plus petit qu\'une pièce de deux euros', 1, 5, NULL, 4, NULL, 8, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -920,18 +923,18 @@ CREATE TABLE `utilisateur` (
 --
 
 INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `login`, `password`, `id_role`) VALUES
-(1, 'Tassel', 'Joan', 'joan', 'fdp', 1),
+(1, 'fdp', 'j', 'j', 'j', 1),
 (2, 'Troadec', 'Kevin', 'kevtro', 'breton', 1),
 (3, 'Thibault', 'tmv', 'tmv', 'tmv', 1),
-(4, 'BB', 'B', 'b', 'b', 7),
+(4, 'Boulad', 'B', 'b', 'b', 7),
 (5, 'Thomas', 'Vincent', 'thv', '', 1),
-(6, 'Directeur', 'hotel', 'direction', 'a', 2),
-(7, 'Directeur', 'restaurant', 'restaurant', 'a', 5),
-(8, 'Directeur', 'spa', 'spa', 'a', 6),
-(9, 'Directeur', 'hebergement', 'hebergement', 'a', 3),
-(10, 'Directeur', 'maintenance', 'maintenance', 'a', 7),
-(11, 'Directeur', 'reception', 'reception', 'a', 4),
-(12, 'Directeur', 'entretien', 'entretien', 'a', 8);
+(6, 'Richard', 'hotel', 'direction', 'a', 2),
+(7, 'Michael', 'restaurant', 'restaurant', 'a', 5),
+(8, 'Michel', 'spa', 'spa', 'a', 6),
+(9, 'Antoni', 'hebergement', 'hebergement', 'a', 3),
+(10, 'Marjorie', 'maintenance', 'maintenance', 'a', 7),
+(11, 'Pénéloppe', 'reception', 'reception', 'a', 4),
+(12, 'Danatol', 'entretien', 'entretien', 'a', 8);
 
 --
 -- Index pour les tables exportées
