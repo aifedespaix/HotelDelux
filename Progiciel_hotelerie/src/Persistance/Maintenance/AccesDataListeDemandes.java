@@ -1,13 +1,12 @@
 package src.Persistance.Maintenance;
 
-import java.util.List;
-
 import org.hibernate.Query;
 import org.hibernate.Session;
-
 import src.Metier.DemandeIntervention;
 import src.Persistance.AccesData;
 import src.Persistance.HibernateSession;
+
+import java.util.List;
 
 public class AccesDataListeDemandes {
 	
@@ -26,7 +25,7 @@ public class AccesDataListeDemandes {
 		String filtreService = " WHERE"; // Initialisation de la partie de la requête concernant le service
 		if (service != null) {
 			switch (service) {
-			case "H�tel":
+			case "Hôtel":
 				filtreService = ", EquipementHotel EH WHERE D.equipementHotelByIdEquipementHotel IS NOT NULL AND D.equipementHotelByIdEquipementHotel = EH.id AND EH.estEquipementJardin = 0 AND";
 				break;
 			case "Jardin":

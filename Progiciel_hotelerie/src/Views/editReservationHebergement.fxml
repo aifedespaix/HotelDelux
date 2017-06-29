@@ -7,6 +7,7 @@
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import com.jfoenix.controls.JFXTreeTableView?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -19,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="562.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditReservationHebergement">
+<AnchorPane prefHeight="562.0" prefWidth="957.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="src.Controller.EditReservationHebergement">
    <children>
       <GridPane alignment="CENTER" prefHeight="544.0" prefWidth="839.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-36.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -56,12 +57,12 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Chambre :" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                  <JFXComboBox fx:id="comboRoom" disable="true" onAction="#updateMaxStepper" GridPane.columnIndex="5" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date d'arrivée :" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                  <JFXDatePicker fx:id="dateBegin" GridPane.columnIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date de départ :" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
-                  <JFXDatePicker fx:id="dateEnd" onAction="#loadRoomList" GridPane.columnIndex="3" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXComboBox fx:id="comboRoom" disable="true" labelFloat="true" onAction="#updateMaxStepper" promptText="Chambre" GridPane.columnIndex="5" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXDatePicker fx:id="dateBegin" overLay="true" promptText="Date d'arrivée" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="CENTER" />
+                  <JFXDatePicker fx:id="dateEnd" onAction="#loadRoomList" overLay="true" promptText="Date de départ" GridPane.columnIndex="3" />
                </children>
             </GridPane>
             <HBox GridPane.rowIndex="2">
@@ -93,11 +94,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton onAction="#searchClient" text="Rechercher" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <JFXTextField fx:id="txtName" GridPane.columnIndex="1" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Prénom" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <JFXTextField fx:id="txtPrenom" GridPane.columnIndex="3" />
+                  <JFXButton onAction="#searchClient" styleClass="btn_primary" text="Rechercher" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXTextField fx:id="txtName" labelFloat="true" promptText="Nom" GridPane.columnIndex="1" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <JFXTextField fx:id="txtPrenom" labelFloat="true" promptText="Prénom" GridPane.columnIndex="3" />
                </children>
             </GridPane>
             <JFXTreeTableView fx:id="tableClient" maxWidth="-Infinity" prefHeight="100.0" prefWidth="900.0" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
@@ -172,11 +173,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <JFXButton fx:id="btnSave" onAction="#save" text="Enregistrer" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXButton fx:id="btnSave" defaultButton="true" onAction="#save" styleClass="btn_primary" text="Enregistrer" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font></JFXButton>
-                  <JFXButton fx:id="btnCancel" onAction="#cancel" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                  <JFXButton fx:id="btnCancel" onAction="#cancel" styleClass="btn_danger" text="Annuler" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font></JFXButton>
@@ -188,4 +189,7 @@
          </padding>
       </GridPane>
    </children>
+    <stylesheets>
+        <URL value="@css/design.css" />
+    </stylesheets>
 </AnchorPane>

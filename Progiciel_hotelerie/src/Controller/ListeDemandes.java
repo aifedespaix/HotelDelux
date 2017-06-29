@@ -1,21 +1,7 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import com.itextpdf.text.log.SysoCounter;
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -38,6 +24,11 @@ import src.Persistance.Maintenance.AccesDataListeDemandes;
 import src.Persistance.Maintenance.AccesDataMaintenance;
 import src.util.Colors;
 import src.util.generalFunctions;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ListeDemandes implements Initializable {
 	
@@ -116,7 +107,7 @@ public class ListeDemandes implements Initializable {
 		equipement.setMinWidth(100);
 		equipement.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getEquipementDemande(param.getValue().getValue())));
 		
-		JFXTreeTableColumn<DemandeIntervention, String> date = new JFXTreeTableColumn<>("Date Cr�ation");
+		JFXTreeTableColumn<DemandeIntervention, String> date = new JFXTreeTableColumn<>("Date Création");
 		date.setPrefWidth(150);
 		date.setMinWidth(100);
 		date.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateCreation())));

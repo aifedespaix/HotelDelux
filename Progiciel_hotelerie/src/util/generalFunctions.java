@@ -1,21 +1,18 @@
 package src.util;
 
+import src.Metier.DemandeIntervention;
+
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-
-import src.Metier.DemandeIntervention;
 
 public class generalFunctions {
 
 	/**
 	 * Function qui calcule le prix d'une chambre en fonction du nombre d'enfants, adultes, des prix et du nombre de jours dans l'hotel
-	 * @param nbAdultes
-	 * @param nbEnfants
-	 * @param prixAdulte
-	 * @param prixEnfant
-	 * @param dateDebut
-	 * @param dateFin
+	 * @param prix double
+	 * @param dateDebut {@link Date}
+	 * @param dateFin {@link Date}
 	 * @return
 	 */
 	

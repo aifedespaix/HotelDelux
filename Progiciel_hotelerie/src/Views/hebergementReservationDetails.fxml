@@ -46,7 +46,7 @@
                         <Font size="18.0" />
                      </font>
                   </Text>
-                  <JFXButton fx:id="btnFacture" onAction="#generateFacture" text="Facture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+                  <JFXButton fx:id="btnFacture" onAction="#generateFacture" styleClass="btn_primary" text="Facture" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -117,7 +117,7 @@
                         <Font size="20.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton fx:id="btnCloture" onAction="#cloture" styleClass="btn_danger" text="Cloturer">
+                  <JFXButton fx:id="btnCloture" disable="true" onAction="#cloture" styleClass="" text="Cloturer">
                      <font>
                         <Font size="20.0" />
                      </font>

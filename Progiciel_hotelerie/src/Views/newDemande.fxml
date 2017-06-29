@@ -70,12 +70,12 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Text layoutX="43.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipement" wrappingWidth="152.62109375">
+                              <Text layoutX="43.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="152.62109375">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <JFXComboBox fx:id="equipementsJardin" layoutX="212.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" />
+                              <JFXComboBox fx:id="equipementsJardin" labelFloat="true" layoutX="212.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" promptText="Equipement" />
                            </children></AnchorPane>
                      </content>
                   </Tab>
@@ -83,12 +83,12 @@
                   <content>
                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Text layoutX="40.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipement" wrappingWidth="152.62109375">
+                              <Text layoutX="40.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="152.62109375">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <JFXComboBox fx:id="equipementsRestaurant" layoutX="226.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" />
+                              <JFXComboBox fx:id="equipementsRestaurant" labelFloat="true" layoutX="226.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" promptText="Equipement" />
                            </children></AnchorPane>
                   </content>
                 </Tab>
@@ -96,12 +96,12 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <Text layoutX="40.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Equipement" wrappingWidth="152.62109375">
+                              <Text layoutX="40.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="152.62109375">
                                  <font>
                                     <Font size="26.0" />
                                  </font>
                               </Text>
-                              <JFXComboBox fx:id="equipementsSpa" layoutX="218.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" />
+                              <JFXComboBox fx:id="equipementsSpa" labelFloat="true" layoutX="218.0" layoutY="34.0" prefHeight="25.0" prefWidth="217.0" promptText="Equipement" />
                            </children></AnchorPane>
                      </content>
                   </Tab>
