@@ -46,7 +46,7 @@ public class ListeRapports implements Initializable {
 	@FXML private JFXTextField champsDemandeur;
 	@FXML private JFXTextField champsTechnicien;
 	@FXML private JFXDatePicker champsDateDebut;
-	@FXML private JFXDatePicker champsDateArrivee;
+	@FXML private JFXDatePicker champsDateFin;
 	@FXML private JFXComboBox<String> champsService;
 	@FXML private JFXComboBox<Etat> champsEtat;
 	@FXML private JFXComboBox<Criticite> champsCriticite;
@@ -178,19 +178,20 @@ public class ListeRapports implements Initializable {
 	public void search(){
 		// Nettoie le tableau
 		listeRapports.clear();
+		
 		// Recrée une nouvelle liste pour stocker les demandes
-		/*
-		String date = champsDate.getValue() != null ? champsDate.getValue().toString() : "";
+		String dateDebut = champsDateDebut.getValue() != null ? champsDateDebut.getValue().toString() : "";
+		String dateFin = champsDateFin.getValue() != null ? champsDateFin.getValue().toString() : "";
 		String etat = champsEtat.getValue() != null ? String.valueOf(champsEtat.getValue().getId()) : "";
 		String criticite = champsCriticite.getValue() != null ? String.valueOf(champsCriticite.getValue().getId()) : "";
 		
 		// Récupération du service et appel de la fonction en conséquence
 		String service = champsService.getValue();
 		
-		List<DemandeIntervention> liste = AccesDataListeDemandes.getRequeteFiltre(champsObjet.getText(), champsDemandeur.getText(),
-				date, champsService.getValue(), etat, criticite);
+		List<Rapport> liste = AccesDataListeRapports.getRequeteFiltre(champsObjet.getText(), champsDemandeur.getText(),
+				champsTechnicien.getText(), dateDebut, dateFin, champsService.getValue(), etat, criticite);
 		
-		listeRapports.addAll(liste);*/
+		listeRapports.addAll(liste);
 	}
 	
 }

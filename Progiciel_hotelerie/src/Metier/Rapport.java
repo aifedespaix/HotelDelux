@@ -105,7 +105,7 @@ public class Rapport extends RecursiveTreeObject<Rapport> {
     }
 
     @ManyToOne
-    @JoinColumn(name = "id_technicien", referencedColumnName = "id", nullable = true)
+    @JoinColumn(name = "id_technicien", referencedColumnName = "id")
 	public Utilisateur getTechnicien() {
 		return technicien;
 	}
