@@ -1,7 +1,5 @@
 package src.Controller;
 
-import java.io.IOException;
-
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -11,9 +9,15 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import src.Launcher.Launcher;
+import src.Metier.Etat;
 import src.Metier.Rapport;
+import src.Persistance.HibernateSession;
 import src.util.generalFunctions;
+
+import java.io.IOException;
 
 public class RapportDetail {
 	
@@ -34,8 +38,8 @@ public class RapportDetail {
 
 	public void update() {
 		// Dynamisation des champs
-		rapportLabel.setText(rapportLabel.getText() + rapport.getId());
-		demandeurLabel.setText(demandeurLabel.getText() + rapport.getDemandeIntervention().getDemandeurById());
+		rapportLabel.setText(rapportLabel.getText() + rapport.getId() + " - " + rapport.getDemandeIntervention().getObjet());
+		demandeurLabel.setText(demandeurLabel.getText() + rapport.getDemandeIntervention().getDemandeurById()+ " le " + generalFunctions.formatDate(rapport.getDemandeIntervention().getDateCreation()));
 		if (rapport.getTechnicien() != null) { //Si le technicien est renseigné
 			technicienLabel.setText("Pris en charge par " + rapport.getTechnicien().toString());
 		}
@@ -121,6 +125,19 @@ public class RapportDetail {
 		default : System.err.println("Erreur sur le service");
 		}
 		descriptionDemandeLabel.setText(rapport.getDemandeIntervention().getDescription());
+	}
+
+	public void cloturer() {
+		Session s = HibernateSession.getSession();
+		Transaction t;
+		rapport.getDemandeIntervention().setEtat(new Etat(4));
+		try {
+			t = s.beginTransaction();
+			s.save(rapport.getDemandeIntervention());
+			t.commit();
+		} catch (org.hibernate.HibernateException e) {
+			System.err.println("Erreur Hibernate : " + e.getMessage());
+		}
 	}
 	
 	/**

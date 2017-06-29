@@ -1,20 +1,7 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -31,13 +18,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import src.Launcher.Launcher;
 import src.Metier.Criticite;
-import src.Metier.DemandeIntervention;
 import src.Metier.Etat;
 import src.Metier.Rapport;
 import src.Persistance.Maintenance.AccesDataListeRapports;
 import src.Persistance.Maintenance.AccesDataMaintenance;
 import src.util.Colors;
 import src.util.generalFunctions;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class ListeRapports implements Initializable {
 	

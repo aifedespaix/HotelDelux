@@ -43,11 +43,11 @@
                         <Font size="18.0" />
                     </font>
                 </JFXButton>
-                <JFXButton alignment="CENTER" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="109.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Notoriété" textAlignment="CENTER">
-                    <font>
-                        <Font size="18.0" />
-                    </font>
-                </JFXButton>
+                <!--<JFXButton alignment="CENTER" disable="true" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="109.0" style="-fx-background-color: #FFF;" styleClass="btn" text="Notoriété" textAlignment="CENTER">-->
+                    <!--<font>-->
+                        <!--<Font size="18.0" />-->
+                    <!--</font>-->
+                <!--</JFXButton>-->
                 <AnchorPane prefHeight="50.0" prefWidth="200.0" />
                 <StackPane alignment="CENTER_RIGHT" prefHeight="50.0" prefWidth="136.0">
                     <children>

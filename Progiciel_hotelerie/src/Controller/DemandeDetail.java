@@ -1,15 +1,10 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.sql.Date;
-
 import com.jfoenix.controls.JFXButton;
-
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -19,11 +14,11 @@ import javafx.scene.text.Text;
 import src.Launcher.Launcher;
 import src.Metier.DemandeIntervention;
 import src.Metier.Rapport;
-import src.Persistance.Maintenance.AccesDataListeDemandes;
-import src.Persistance.Maintenance.AccesDataListeRapports;
 import src.Persistance.Maintenance.AccesDataMaintenance;
-import src.Persistance.Maintenance.AccesDataNewDemande;
 import src.util.generalFunctions;
+
+import java.io.IOException;
+import java.sql.Date;
 
 public class DemandeDetail {
 	
@@ -45,8 +40,8 @@ public class DemandeDetail {
 
 	public void update() {
 		// Dynamisation des champs
-		demandeLabel.setText(demandeLabel.getText() + demande.getId());
-		demandeurLabel.setText(demandeurLabel.getText() + demande.getDemandeurById());
+		demandeLabel.setText(demandeLabel.getText() + demande.getId() + " - " + demande.getObjet());
+		demandeurLabel.setText(demandeurLabel.getText() + demande.getDemandeurById() + " le " + generalFunctions.formatDate(demande.getDateCreation()));
 		etatLabel.setText(etatLabel.getText() + demande.getEtat());
 		criticiteLabel.setText(criticiteLabel.getText() + demande.getCriticiteByIdCriticite());
 		String service = generalFunctions.getServiceDemande(demande);

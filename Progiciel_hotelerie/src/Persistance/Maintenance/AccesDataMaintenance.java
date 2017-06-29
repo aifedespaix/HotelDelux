@@ -1,14 +1,13 @@
 package src.Persistance.Maintenance;
 
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import src.Metier.Criticite;
 import src.Metier.Etat;
 import src.Metier.Rapport;
 import src.Persistance.HibernateSession;
+
+import java.util.List;
 
 public class AccesDataMaintenance {
 	
