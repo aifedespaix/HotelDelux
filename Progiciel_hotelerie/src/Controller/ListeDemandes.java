@@ -107,7 +107,7 @@ public class ListeDemandes implements Initializable {
 		equipement.setMinWidth(100);
 		equipement.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.getEquipementDemande(param.getValue().getValue())));
 		
-		JFXTreeTableColumn<DemandeIntervention, String> date = new JFXTreeTableColumn<>("Date Création");
+		JFXTreeTableColumn<DemandeIntervention, String> date = new JFXTreeTableColumn<>("Date Cration");
 		date.setPrefWidth(150);
 		date.setMinWidth(100);
 		date.setCellValueFactory(param -> new SimpleStringProperty(generalFunctions.formatDate(param.getValue().getValue().getDateCreation())));

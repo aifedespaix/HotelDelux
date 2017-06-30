@@ -1,6 +1,5 @@
 package src.Controller;
 
-import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTreeTableColumn;
 import com.jfoenix.controls.JFXTreeTableView;
 import com.jfoenix.controls.RecursiveTreeItem;
@@ -100,5 +99,18 @@ public class ClientDetails implements Initializable {
 		}
 	}
 	
-
+	public void ajouterReservation() {
+		BorderPane rootPane = Launcher.getRoot();
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("/src/Views/editReservationHebergement.fxml"));
+		AnchorPane editResa;
+		try {
+			editResa = loader.load();
+			rootPane.setCenter(editResa);
+			EditReservationHebergement controller = loader.<EditReservationHebergement>getController();
+			controller.setTitreLabel();
+			controller.fieldClient(client.getId());
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+	}
 }

@@ -1,24 +1,7 @@
 package src.Controller;
 
-import java.io.IOException;
-import java.net.URL;
-import java.sql.Date;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import org.omg.PortableServer.ServantRetentionPolicyValue;
-
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXDatePicker;
-import com.jfoenix.controls.JFXRadioButton;
-import com.jfoenix.controls.JFXTextArea;
-import com.jfoenix.controls.JFXTextField;
-import com.jfoenix.controls.JFXTreeTableColumn;
-import com.jfoenix.controls.JFXTreeTableView;
-import com.jfoenix.controls.RecursiveTreeItem;
+import com.jfoenix.controls.*;
 import com.jfoenix.controls.datamodels.treetable.RecursiveTreeObject;
-
 import javafx.beans.InvalidationListener;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -30,7 +13,6 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.ToggleGroup;
@@ -43,7 +25,12 @@ import src.Metier.Chambre;
 import src.Metier.Client;
 import src.Metier.ReservationHotel;
 import src.Persistance.AccesData;
-import src.util.generalFunctions;
+
+import java.io.IOException;
+import java.net.URL;
+import java.sql.Date;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class EditReservationHebergement implements Initializable  {
 
@@ -110,6 +97,16 @@ public class EditReservationHebergement implements Initializable  {
 		this.reservationToInsert.setFormule((int) formule.getSelectedToggle().getUserData());
 		
 		AccesData.ajouterModifierReservationHotel(this.reservationToInsert);
+
+		FXMLLoader loaderReservations = new FXMLLoader(getClass().getResource("/src/Views/reservationsList.fxml"));
+		AnchorPane reservation = null;
+		try {
+			reservation = loaderReservations.load();
+			root.setCenter(reservation);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 	
 	public void cancel() throws IOException{
@@ -198,11 +195,7 @@ public class EditReservationHebergement implements Initializable  {
 		this.dateEnd.setValue(this.reservationToInsert.getDateFin().toLocalDate());
 		this.loadRoomList();
 		comboRoom.setValue(this.reservationToInsert.getChambreByIdChambre());
-		Client client = AccesData.getClientById(this.reservationToInsert.getIdClient());
-		txtName.setText(client.getNom());
-		txtPrenom.setText(client.getPrenom());
-		this.searchClient();
-		clientLabel.setText(client.getPrenom() + " " + client.getNom());
+		fieldClient(this.reservationToInsert.getIdClient());
 		capaciteMax.setText(Integer.toString(comboRoom.getValue().getCapacite()));
 		nbAdultes.setDisable(false);
 		nbEnfants.setDisable(false);
@@ -217,7 +210,18 @@ public class EditReservationHebergement implements Initializable  {
 		case 2 : formule.selectToggle(externe); break;
 		default : System.err.println("Il y a une erreur dans la formule de la réservation " + this.reservationToInsert);
 		}
-		
+	}
+
+	/**
+	 * Rempli le champs concernant le client
+	 * @param idClient l'id du client à pré-remplir
+	 */
+	public void fieldClient(int idClient) {
+		Client client = AccesData.getClientById(idClient);
+		txtName.setText(client.getNom());
+		txtPrenom.setText(client.getPrenom());
+		this.searchClient();
+		clientLabel.setText(client.getPrenom() + " " + client.getNom());
 	}
 	
 	/**

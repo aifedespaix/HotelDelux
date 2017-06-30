@@ -62,7 +62,7 @@
             </GridPane>
             <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <JFXButton styleClass="btn_primary" text="Ajouter une réservation" />
+                  <JFXButton onAction="#ajouterReservation" styleClass="btn_primary" text="Ajouter une réservation" />
                   <Text fx:id="lblBirth2" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="btn_primary" text="Historique des réservations" />
                </children>
             </VBox>
